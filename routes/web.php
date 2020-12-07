@@ -14,10 +14,6 @@ use App\Subscriber;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 Route::get('/', 'HomeController@index')->name('home');
 
 
