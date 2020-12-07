@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
     	 //$this->call(UserSeeder::class);
 
         DB::table('users')->insert([
-            'name' => 'Andres',
-            'email' => 'omega@example.com',
-            'password' => Hash::make('omega1234')
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('admin')
         ]); 
 
     	$this->call(CategorySeeder::class);
