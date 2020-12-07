@@ -1,204 +1,200 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.0.1">
-    <title>Administración Ceaca</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
-    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <!-- Bootstrap core CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <title>Administración</title>
 
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/AdminLTE/dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-    <!-- Favicons -->
+  <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}">
 
+  <!--datables CSS básico-->
+  <link rel="stylesheet" type="text/css" href="{{ asset('vendor/datatables/datatables.min.css') }}" />
+  <!--datables estilo bootstrap 4 CSS-->
+  <link rel="stylesheet" type="text/css"
+      href="{{ asset('vendor/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css') }}">
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+  <!-- Axios -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
-  </head>
-  <body>
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Ceaca</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <form action="/logout" method="POST" id="form_salir_sesion">
-        @csrf
-        <a class="nav-link" onclick="cerrarSesion()" href="#">Sign out</a>
-      </form>
-    </li>
-  </ul>
-</nav>
+  <script src="/AdminLTE/plugins/jquery/jquery.min.js"></script>
+  <style>
+  .label_img{
+    cursor: pointer;
+    color: #007bff;
+  }
+  </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
-<div class="container-fluid">
-  <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="sidebar-sticky pt-3">
-        <ul class="nav flex-column">
+<!-- IDENTIFICADOR SECCIÓN -->
+//<input type="hidden" id="seccion_name" value="">
+
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-dark navbar-lightblue">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/cms" class="nav-link">Home</a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item d-none d-sm-inline-block">
+        <form action="/logout" id="logout_form" method="POST">
+          @csrf
+          <a href="#" onclick="document.getElementById('logout_form').submit()" class="nav-link">Cerrar Sesión</a>
+        </form>
+      </li>
+      <!--li-- class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
+            class="fas fa-th-large"></i></a>
+      </!--li-->
+    </ul>
+  </nav>
+
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/cms" class="brand-link">
+      <span class="brand-text font-weight-light">Dashboard</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Usuario: {{auth()->user()->name}}</a>
+        </div>
+      </div> -->
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
           <li class="nav-item">
             <a class="nav-link active" href="/cms">
-              <span data-feather="home"></span>
-              Dashboard <span class="sr-only">(current)</span>
+              <i class="nav-icon fas fa-home"></i>
+              <p>
+                Dashboard
+              </p>
+
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/cms/productos">
-              <span data-feather="users"></span>
-              Productos
+              <p>
+                <i class="nav-icon fas fa-store"></i>
+                Productos
+              </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/cms/blog/categorias">
-              <span data-feather="users"></span>
-              Categorias Blog
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link secciones tienda">
+              <i class="nav-icon fas fa-pencil-alt"></i>
+              <p>
+                Blog
+                <i class="fas fa-angle-left right"></i>
+              </p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/cms/blog/articulos">
-              <span data-feather="users"></span>
-              Articulos Blog
-            </a>
-          </li>
-<!--           <li class="nav-item">
-            <a class="nav-link" href="/cms/informacion">
-              <span data-feather="file"></span>
-              Informacion
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/cms/subscriptores">
-              <span data-feather="shopping-cart"></span>
-              Subscriptores
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/cms/club">
-              <span data-feather="users"></span>
-              Club CEACA
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/cms/categorias">
-              <span data-feather="users"></span>
-              Categorias de servicios
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/cms/servicios">
-              <span data-feather="users"></span>
-              Servicios técnicos
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/cms/publicidades">
-              <span data-feather="users"></span>
-              Publicidad
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/cms/cursos">
-              <span data-feather="users"></span>
-              Cursos
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/cms/crear/usuario">
-              <span data-feather="users"></span>
-              Crear Usuarios
-            </a>
-          </li> -->
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Integrations
-            </a>
-          </li>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/cms/blog/categorias" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Categorias Blog</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/cms/blog/articulos" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Articulos Blog</p>
+                </a>
+              </li>
+            </ul>
+          </li> 
         </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Saved reports</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Current month
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Last quarter
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Social engagement
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Year-end sale
-            </a>
-          </li> -->
-        </ul>
+
+  <div class="content-wrapper">
+
+    <section class="content">
+      <div class="container-fluid">
+
+        @yield('content')
       </div>
-    </nav>
+    </section>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-      @yield('content')
-    </main>
   </div>
+
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
 </div>
 
 
+<!-- Bootstrap -->
+<script src="/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="/AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/AdminLTE/dist/js/adminlte.js"></script>
+
+<!-- OPTIONAL SCRIPTS -->
+<script src="/AdminLTE/dist/js/demo.js"></script>
+
+<!-- PAGE PLUGINS -->
+<!-- jQuery Mapael -->
+<script src="/AdminLTE/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="/AdminLTE/plugins/raphael/raphael.min.js"></script>
+<script src="/AdminLTE/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="/AdminLTE/plugins/jquery-mapael/maps/usa_states.min.js"></script>
 
 
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+        let name = document.getElementById('seccion_name'),
+            enlaces =document.querySelectorAll('.secciones');
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  <script type="text/javascript">
-    function cerrarSesion(){
-      document.querySelector('#form_salir_sesion').submit();
+        changeColor(name.value, enlaces)
+
+    });
+
+    function changeColor(name, enlaces)
+    {
+        enlaces.forEach(enlace => {
+            if(enlace.classList.contains(name))
+            {
+                enlace.classList.add('active');
+            }
+        });
     }
-  </script>
-  </body>
+</script>
+
+</body>
 </html>
