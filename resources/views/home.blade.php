@@ -81,50 +81,50 @@
 
 
 
-<!-- text -->
-<section>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-10 col-lg-8">
-        <h3 class="text-decorated text-decorated--padding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- / text -->
 
 
-<!-- partners -->
-<section class="separator-top">
-  <div class="container">
-    <div class="row">
-      <div class="col partners align-items-center">
-        <div class="owl-carousel" data-items="[6,4,2]" data-loop="true" data-autoplay="true">
-          <div class="logo">
-            <img src="/go/app/assets/images/demo/logo/logo-1.png" alt="Logo">
+    <!-- presentation -->
+    <section class="section-lg">
+      <div class="container">
+        <div class="row text-center text-lg-left">
+          <div class="col-12 col-lg-9">
+            <div class="row">
+              <div class="col-lg-8">
+                <h2>A good place <br>to build your startup.</h2>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </div>
+            <div class="row gutter-0">
+              <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
+                <div class="bordered rising p-3">
+                  <i class="icon-maximize text-green fs-40 mb-3"></i>
+                  <h4 class="mb-0">1000 ft<sup>2</sup></h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-delay="150">
+                <div class="bordered rising p-3">
+                  <i class="icon-users2 text-green fs-40 mb-3"></i>
+                  <h4 class="mb-0">80 members</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-delay="300">
+                <div class="bordered rising p-3">
+                  <i class="icon-wifi2 text-green fs-40 mb-3"></i>
+                  <h4 class="mb-0">100 mb/s</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="logo">
-            <img src="/go/app/assets/images/demo/logo/logo-2.png" alt="Logo">
-          </div>
-          <div class="logo">
-            <img src="/go/app/assets/images/demo/logo/logo-3.png" alt="Logo">
-          </div>
-          <div class="logo">
-            <img src="/go/app/assets/images/demo/logo/logo-4.png" alt="Logo">
-          </div>
-          <div class="logo">
-            <img src="/go/app/assets/images/demo/logo/logo-5.png" alt="Logo">
-          </div>
-          <div class="logo">
-            <img src="/go/app/assets/images/demo/logo/logo-6.png" alt="Logo">
+          <div class="col-12 col-lg-3 presentation presentation-responsive">
+            <img class="left-25 vertical-align" src="../../assets/images/demo/stock/plant.png" alt="Image">
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- / partners -->
-
+    </section>
+    <!-- / presentation -->
 
 <!-- user carousel -->
 <section class="bg-light">
@@ -276,145 +276,91 @@
 <!-- / user carousel -->
 
 
-
-<!-- schedule -->
-<section class="bg-dark text-white">
-  <div class="container">
-    <div class="row mb-3">
-      <div class="col">
-        <div class="nav nav-text">
-          <a class="nav-item nav-link active" data-toggle="tab" href="#first">18 December</a>
-          <a class="nav-item nav-link" data-toggle="tab" href="#second">17 December</a>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane show active" id="first" role="tabpanel" aria-labelledby="first-tab">
-            <div class="accordion-group" data-accordion-group>
-              <div class="accordion" data-accordion>
-                <div class="accordion-control" data-control>
-                  <span class="fw-25">8:00 - 9:00</span>
-                  <h5>Registration</h5>
-                  <div class="speakers text-right">
-                    <ul class="user-list">
-                      <li><img src="/go/app/assets/images/demo/user-1.jpg" alt="" data-toggle="tooltip" data-placement="top" title="Valerie Doe"></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="accordion-content" data-content>
-                  <div class="accordion-content-wrapper">
-                    <p class="ml-lg-25 mr-lg-25">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion" data-accordion>
-                <div class="accordion-control" data-control>
-                  <span class="fw-25">9:00 - 10:30</span>
-                  <h5>Opening words from our headliner</h5>
-                  <div class="speakers text-right">
-                    <ul class="user-list">
-                      <li><img src="/go/app/assets/images/demo/user-2.jpg" alt="" data-toggle="tooltip" data-placement="top" title="Valerie Doe"></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="accordion-content" data-content>
-                  <div class="accordion-content-wrapper">
-                    <p class="ml-lg-25 mr-lg-25">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion" data-accordion>
-                <div class="accordion-control" data-control>
-                  <span class="fw-25">12:50 - 14:00</span>
-                  <h5>Master class from our top web designers in Europe</h5>
-                  <div class="speakers text-right">
-                    <ul class="user-list">
-                      <li><img src="/go/app/assets/images/demo/user-3.jpg" alt="" data-toggle="tooltip" data-placement="top" title="Valerie Doe"></li>
-                      <li><img src="/go/app/assets/images/demo/user-4.jpg" alt="" data-toggle="tooltip" data-placement="top" title="John Doe"></li>
-                      <li><img src="/go/app/assets/images/demo/user-5.jpg" alt="" data-toggle="tooltip" data-placement="top" title="John Doe"></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="accordion-content" data-content>
-                  <div class="accordion-content-wrapper">
-                    <p class="ml-lg-25 mr-lg-25">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion" data-accordion>
-                <div class="accordion-control" data-control>
-                  <span class="fw-25">14:00 - 15:20</span>
-                  <h5>Life of a successfull freelancer</h5>
-                  <div class="speakers text-right">
-                    <ul class="user-list">
-                      <li><img src="/go/app/assets/images/demo/user-6.jpg" alt="" data-toggle="tooltip" data-placement="top" title="Valerie Doe"></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="accordion-content" data-content>
-                  <div class="accordion-content-wrapper">
-                    <p class="ml-lg-25 mr-lg-25">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <!-- lessons -->
+    <section class="bg-dark">
+      <div class="container">
+        <div class="row text-white justify-content-between align-items-center">
+          <div class="col-md-4">
+            <h2 class="text-muted"><span class="text-white">120</span> lessons</h2>
           </div>
-          <div class="tab-pane" id="second" role="tabpanel" aria-labelledby="second-tab">
-            <div class="accordion-group" data-accordion-group>
-              <div class="accordion" data-accordion>
-                <div class="accordion-control" data-control>
-                  <span class="fw-25">8:00 - 9:00</span>
-                  <h5>Registration</h5>
-                </div>
-                <div class="accordion-content" data-content>
-                  <div class="accordion-content-wrapper">
-                    <p class="ml-lg-25 mr-lg-25">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion" data-accordion>
-                <div class="accordion-control" data-control>
-                  <span class="fw-25">9:00 - 10:30</span>
-                  <h5>Opening words from our headliner</h5>
-                  <div class="speakers text-right">
-                    <ul class="user-list">
-                      <li><img src="/go/app/assets/images/demo/user-7.jpg" alt="" data-toggle="tooltip" data-placement="top" title="Valerie Doe"></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="accordion-content" data-content>
-                  <div class="accordion-content-wrapper">
-                    <p class="ml-lg-25 mr-lg-25">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion" data-accordion>
-                <div class="accordion-control" data-control>
-                  <span class="fw-25">10:40 - 12:50</span>
-                  <h5>Review of our best case studies</h5>
-                  <div class="speakers text-right">
-                    <ul class="user-list">
-                      <li><img src="/go/app/assets/images/demo/user-8.jpg" alt="" data-toggle="tooltip" data-placement="top" title="John Doe"></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="accordion-content" data-content>
-                  <div class="accordion-content-wrapper">
-                    <p class="ml-lg-25 mr-lg-25">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
-                  </div>
-                </div>
+          <div class="col-md-7">
+            <div class="input-group rounded">
+              <input type="text" class="form-control px-3" placeholder="Search lessons ..." aria-label="Search lessons">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">Search</button>
               </div>
             </div>
           </div>
         </div>
+        <div class="row text-white" data-aos="fade-left">
+          <div class="col">
+            <div class="owl-carousel owl-carousel-library visible" data-loop="true" data-items="[3,2,1]" data-margin="30" data-nav="true">
+              <article class="tile tile-long">
+                <div class="tile-image" style="background-image: url(../../assets/images/demo/learning/learning-4.jpg)"></div>
+                <div>
+                  <div class="tile-header on-hover text-right">
+                    <button class="btn btn-sm btn-outline-white">Watch Now</button>
+                  </div>
+                  <div class="tile-footer">
+                    <span class="eyebrow">Development</span>
+                    <h3>Developing Wordpress Theme from Scratch</h3>
+                  </div>
+                </div>
+              </article>
+              <article class="tile tile-long">
+                <div class="tile-image" style="background-image: url(../../assets/images/demo/learning/learning-5.jpg)"></div>
+                <div>
+                  <div class="tile-header on-hover text-right">
+                    <button class="btn btn-sm btn-outline-white">Watch Now</button>
+                  </div>
+                  <div class="tile-footer">
+                    <span class="eyebrow">Photography</span>
+                    <h3>Finding the Right Exposure in Low Light</h3>
+                  </div>
+                </div>
+              </article>
+              <article class="tile tile-long">
+                <div class="tile-image" style="background-image: url(../../assets/images/demo/learning/learning-6.jpg)"></div>
+                <div>
+                  <div class="tile-header on-hover text-right">
+                    <button class="btn btn-sm btn-outline-white">Watch Now</button>
+                  </div>
+                  <div class="tile-footer">
+                    <span class="eyebrow">Design</span>
+                    <h3>Unleash Your Hand Drawing Skills</h3>
+                  </div>
+                </div>
+              </article>
+              <article class="tile tile-long">
+                <div class="tile-image" style="background-image: url(../../assets/images/demo/learning/learning-7.jpg)"></div>
+                <div>
+                  <div class="tile-header on-hover text-right">
+                    <button class="btn btn-sm btn-outline-white">Watch Now</button>
+                  </div>
+                  <div class="tile-footer">
+                    <span class="eyebrow">Dance</span>
+                    <h3>Modern Dancing</h3>
+                  </div>
+                </div>
+              </article>
+              <article class="tile tile-long">
+                <div class="tile-image" style="background-image: url(../../assets/images/demo/learning/learning-8.jpg)"></div>
+                <div>
+                  <div class="tile-header on-hover text-right">
+                    <button class="btn btn-sm btn-outline-white">Watch Now</button>
+                  </div>
+                  <div class="tile-footer">
+                    <span class="eyebrow">5 Day City Tour</span>
+                    <h3>New York</h3>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- / schedule -->
-
+    </section>
+    <!-- / lessons -->
 
 <!-- presentation -->
 <section>
@@ -464,8 +410,6 @@
   </div>
 </section>
 <!-- / presentation -->
-
-
 
 <!-- faq -->
 <section class="bg-light">
@@ -550,153 +494,6 @@
 </section>
 <!-- / faq -->
 
-<!-- pricing -->
-<section class="bg-primary">
-  <div class="container mb-0">
-    <div class="row align-items-center">
-      <div class="col-lg-4 text-white">
-        <h2>Pricing Plans</h2>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <div class="nav nav-switch mt-2">
-          <a class="nav-item nav-link active" id="first-tab" data-toggle="tab" href="#pricing-first">Monthly</a>
-          <a class="nav-item nav-link" id="second-tab" data-toggle="tab" href="#pricing-second">Yearly</a>
-        </div>
-      </div>
-      <div class="col-lg-8">
-        <div class="tab-content" id="myTabContent-2">
-          <div class="tab-pane show active" id="pricing-first" role="tabpanel" aria-labelledby="first-tab">
-            <div class="row gutter-2">
-              <div class="col-md-6 text-white" data-aos="fade-up">
-                <div class="card card-price bordered rising">
-                  <div class="card-body">
-                    <i class="svg-icon w-25 fs-60">
-                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                      <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="32,12 32,32 41,41 "/>
-                      <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="4" y1="32" x2="8" y2="32"/>
-                      <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="56" y1="32" x2="60" y2="32"/>
-                      <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="32" y1="60" x2="32" y2="56"/>
-                      <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="32" y1="8" x2="32" y2="4"/>
-                      <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M32,63c17.121,0,31-13.879,31-31S49.121,1,32,1"/>
-                      <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M32,63C14.879,63,1,49.121,1,32
-                        c0-6.713,2.134-12.926,5.759-18l5.62-5.621"/>
-                      <polyline fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="13,19 13,8 2,8 
-                        "/>
-                      </svg>
-                    </i>
-                    <h4 class="card-title">Starter Pack</h4>
-                    <ul class="list-group list-group-minimal text-muted">
-                      <li class="list-group-item">Cras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
-                      <li class="list-group-item">Morbi leo risus</li>
-                    </ul>
-                  </div>
-                  <a href="" class="card-footer">
-                    <strong class="card-price">$9</strong>/monthly
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-6" data-aos="fade-up" data-aos-delay="150">
-                <div class="card card-price bordered rising">
-                  <div class="card-body">
-                    <i class="svg-icon w-25 fs-60">
-                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                      <g>
-                        <circle fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="32" cy="19.001" r="4"/>
-                        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M45,21.023C44.968,13.276,39.181,7,32,7
-                          s-13,6.276-13,14.023C19,31.046,31.979,47,31.979,47S45.043,31.046,45,21.023z"/>
-                      </g>
-                      <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="21,37 12,37 1,57 32,57 63,57 52,37 43,37 
-                        "/>
-                      </svg>
-                    </i>
-                    <h4 class="card-title">Starter Pack</h4>
-                    <ul class="list-group list-group-minimal text-muted">
-                      <li class="list-group-item">Cras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
-                      <li class="list-group-item">Morbi leo risus</li>
-                    </ul>
-                  </div>
-                  <a href="" class="card-footer">
-                    <strong class="card-price">$19</strong>/monthly
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane" id="pricing-second" role="tabpanel" aria-labelledby="second-tab">
-            <div class="row gutter-2">
-              <div class="col-md-6 text-white">
-                <div class="card card-price bordered rising">
-                  <div class="card-body">
-                    <i class="svg-icon w-25 fs-60">
-                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                      <g>
-                        <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="1,26 32,45.434 63,26   "/>
-                        <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="11.334,21.667 1,26 1,63 63,63 63,26 
-                          63,26 52.666,21.667   "/>
-                        <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="11,32 11,1 53,1 53,32  "/>
-                      </g>
-                      </svg>
-                    </i>
-                    <h5 class="card-title">Starter Pack</h5>
-                    <ul class="list-group list-group-minimal text-muted">
-                      <li class="list-group-item">Cras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
-                      <li class="list-group-item">Morbi leo risus</li>
-                    </ul>
-                  </div>
-                  <a href="" class="card-footer">
-                    <strong class="card-price">$99</strong>/yearly
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card card-price bordered rising">
-                  <div class="card-body">
-                    <i class="svg-icon w-25 fs-60">
-                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                      <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M21,40v5h22l0.001-5.107C49,36.195,53,29.564,53,22
-                        c0-11.598-9.402-21-21-21s-21,9.402-21,21C11,29.565,14.998,36.304,21,40z"/>
-                      <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="28" y1="45" x2="25" y2="25"/>
-                      <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="36" y1="45" x2="39" y2="25"/>
-                      <polyline fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="25,26 29,29 32,26 35,29 39,26 "/>
-                      <rect x="21" y="45" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="22" height="6"/>
-                      <rect x="23" y="51" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="18" height="6"/>
-                      <rect x="25" y="57" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="14" height="6"/>
-                      </svg>
-                    </i>
-                    <h5 class="card-title">Starter Pack</h5>
-                    <ul class="list-group list-group-minimal text-muted">
-                      <li class="list-group-item">Cras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
-                      <li class="list-group-item">Morbi leo risus</li>
-                    </ul>
-                  </div>
-                  <a href="" class="card-footer">
-                    <strong class="card-price">$149</strong>/yearly
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col text-center text-white">
-            <p><span class="badge badge-pill badge-white text-blue mr-1">Important</span> All plans include free breakfast.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- / pricing -->
-
-
-
 <!-- blog -->
 <section>
   <div class="container">
@@ -744,217 +541,5 @@
 </section>
 <!-- / blog -->
 
-
-<!-- map -->
-<section class="map">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-5">
-        <div class="boxed p-5">
-          <h2>USA, New York, Broadway</h2>
-          <ul class="list-group list-group-line">
-            <li class="list-group-item d-flex align-items-center">
-              <i class="icon-map-pin2 fs-24 text-blue"></i>
-              <span>5th Avenue</span>
-            </li>
-            <li class="list-group-item d-flex align-items-center">
-              <i class="icon-mail fs-24 text-blue"></i>
-              <span>example@example.com</span>
-            </li>
-            <li class="list-group-item d-flex align-items-center">
-              <i class="icon-phone2 fs-24 text-blue"></i>
-              <span>(123) 456-7890</span>
-            </li>
-          </ul>
-          <a href="" class="btn btn-primary btn-block btn-rounded mt-2">View Full Map</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="map" class="map-area"></div>
-  <script>
-     function initMap() {
-       // Styles a map in night mode.
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 40.702888, lng: -74.012420},
-      zoom: 12,
-      disableDefaultUI: true,
-      styles: [
-        {
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#f5f5f5"
-            }
-          ]
-        },
-        {
-          "elementType": "labels.icon",
-          "stylers": [
-            {
-              "visibility": "off"
-            }
-          ]
-        },
-        {
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#616161"
-            }
-          ]
-        },
-        {
-          "elementType": "labels.text.stroke",
-          "stylers": [
-            {
-              "color": "#f5f5f5"
-            }
-          ]
-        },
-        {
-          "featureType": "administrative.land_parcel",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#bdbdbd"
-            }
-          ]
-        },
-        {
-          "featureType": "poi",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#eeeeee"
-            }
-          ]
-        },
-        {
-          "featureType": "poi",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#757575"
-            }
-          ]
-        },
-        {
-          "featureType": "poi.park",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#e5e5e5"
-            }
-          ]
-        },
-        {
-          "featureType": "poi.park",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#9e9e9e"
-            }
-          ]
-        },
-        {
-          "featureType": "road",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#ffffff"
-            }
-          ]
-        },
-        {
-          "featureType": "road.arterial",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#757575"
-            }
-          ]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#dadada"
-            }
-          ]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#616161"
-            }
-          ]
-        },
-        {
-          "featureType": "road.local",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#9e9e9e"
-            }
-          ]
-        },
-        {
-          "featureType": "transit.line",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#e5e5e5"
-            }
-          ]
-        },
-        {
-          "featureType": "transit.station",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#eeeeee"
-            }
-          ]
-        },
-        {
-          "featureType": "water",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#c9c9c9"
-            }
-          ]
-        },
-        {
-          "featureType": "water",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "color": "#9e9e9e"
-            }
-          ]
-        }
-      ]
-    });
-
-    map.panBy(0, -200);
-    
-    var pin ='/go/app/assets/images/pin-blue.svg';
-
-    var marker = new google.maps.Marker({
-      position: map.getCenter(),
-      icon: pin,
-      map: map
-    });
-     }
-   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHtKZB7XlS_CVrIFsPbgroMG0SgX3c-po&callback=initMap"
-  async defer></script>
-</section>
-<!-- / map -->
 
 @endsection
