@@ -21,6 +21,7 @@ use App\Subscriber;
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/vitrina', 'ProductsPageController@index')->name('vitrina');
+Route::get('/product', 'ProductsPageController@show')->name('product');
 
 Route::get('/test', function(){
 	return view('page_new.src.service');
