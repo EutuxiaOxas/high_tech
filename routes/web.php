@@ -15,6 +15,9 @@ use App\Subscriber;
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/nosotros', 'HomeController@nosotros')->name('nosotros');
+Route::get('/contacto', 'HomeController@contacto')->name('contacto');
+
 
 Route::get('/vitrina', 'ProductsPageController@index')->name('vitrina');
 Route::get('/product', 'ProductsPageController@show')->name('product');

@@ -2,7 +2,7 @@
  <header class="header-sticky header-dark">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="../../index.html">
+        <a class="navbar-brand" href="{{route('home')}}">
           <img class="navbar-logo navbar-logo-light" src="/go/app/assets/images/demo/logo/logo-light.svg" alt="Logo">
           <img class="navbar-logo navbar-logo-dark" src="/go/app/assets/images/demo/logo/logo-dark.svg" alt="Logo">
         </a>
@@ -11,17 +11,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav align-items-center mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="../../index.html" role="button">
+              <a class="nav-link" href="{{route('home')}}" role="button">
                 Inicio
               </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../../index.html" role="button">
+                <a class="nav-link" href="{{route('nosotros')}}" role="button">
                   Nosotros
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../../index.html" role="button">
+                <a class="nav-link" href="{{route('contacto')}}" role="button">
                   Contactanos
                 </a>
               </li>

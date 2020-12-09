@@ -81,4 +81,16 @@ class HomeController extends Controller
     {
         //
     }
+
+    //Controlador vista Nosotros
+    public function nosotros()
+    {
+        return view('nosotros');
+    }
+
+    //Controlador vista Contacto
+    public function contacto()
+    {
+        return view('contacto');
+    }
 }
