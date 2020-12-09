@@ -26,7 +26,8 @@ class CategoriesController extends Controller
     	    $file = $request->file('categoria_imagen');
     		$categoria = new BlogCategory;
 
-    		$categoria->name = $request->categoria_titulo;
+            $categoria->name = $request->categoria_titulo;
+    		$categoria->slug = $request->slug;
     		$categoria->description = $request->categoria_descripcion;
     		$categoria->parent_category_id = 1;
 

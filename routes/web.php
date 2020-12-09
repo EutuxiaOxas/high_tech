@@ -59,6 +59,9 @@ Route::middleware('auth')->group(function () {
 
 Auth::routes();
 
+Route::get('/blog', 'BlogController@index')->name('main.blog.home');
+Route::get('/blog/{slug}', 'BlogController@post')->name('main.blog.show');
+Route::get('/blog-categorie/{slug}', 'BlogController@postsWithCategorie')->name('main.blog.categorie');
 
 
 

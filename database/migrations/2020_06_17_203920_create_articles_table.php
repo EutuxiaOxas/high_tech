@@ -21,6 +21,7 @@ class CreateArticlesTable extends Migration
             $table->text('content');
             $table->string('picture');
             $table->string('keywords');
+            $table->string('slug')->unique();
             $table->date('date');
             $table->timestamps();
 

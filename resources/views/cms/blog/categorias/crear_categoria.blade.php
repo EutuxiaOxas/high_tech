@@ -14,9 +14,10 @@
 		@endif
 		<form action="/cms/blog/guardar/categoria" class="col-12" method="POST" enctype="multipart/form-data">
 			@csrf
+			<input type="hidden" id="blog_slug" value="" name="slug">
 			<div class="form-group">
 				<h5>Titulo</h5>
-				<input type="text" name="categoria_titulo" placeholder="Titulo..." class="form-control">
+				<input type="text" name="categoria_titulo" id="blog_cat_title" placeholder="Titulo..." class="form-control">
 			</div>
 			<div class="form-group">
 				<h5>descripción</h5>
@@ -31,5 +32,42 @@
 	</div>
 </section>
 
+<script type="text/javascript">
+	function string_to_slug (str) {
+	    str = str.replace(/^\s+|\s+$/g, ''); // trim
+	    str = str.toLowerCase();
+	  
+	    // remove accents, swap ñ for n, etc
+	    var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
+	    var to   = "aaaaaeeeeiiiioooouuuunc------";
+
+	    for (var i=0, l=from.length ; i<l ; i++) {
+	        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+	    }
+
+	    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+	        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+	        .replace(/-+/g, '-'); // collapse dashes
+
+	    return str;
+	}
+
+
+	
+
+	function init(){
+		const tituloBlog = document.getElementById('blog_cat_title')
+
+		tituloBlog.addEventListener('keyup', () => {
+			let titulo = string_to_slug(tituloBlog.value),
+				slug = document.getElementById('blog_slug');
+
+			slug.value = titulo;
+		});
+	}
+
+	init();
+
+</script>
 
 @endsection

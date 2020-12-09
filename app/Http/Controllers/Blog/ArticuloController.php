@@ -55,6 +55,7 @@ class ArticuloController extends Controller
             $articulo->date = $request->articulo_date;
             $articulo->autor_id = $autor_id;
             $articulo->category_id = $request->articulo_categoria;
+            $articulo->slug = $request->slug;
 
 
             if($file){

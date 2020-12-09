@@ -19,6 +19,7 @@ class CreateBlogCategoriesTable extends Migration
             $table->string('picture');
             $table->foreignId('parent_category_id');
             $table->string('description');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
