@@ -28,7 +28,7 @@
 			</div>
 			<div class="form-group">
 				<h5>Keywords</h5>
-				<input type="text" name="articulo_keywords" required maxlength="191" placeholder="Keywords..." class="form-control">
+				<input type="text" name="articulo_keywords" id="keywords_article" required maxlength="191" placeholder="Keywords..." class="form-control">
 			</div>
 			<div class="form-group">
 				<h5>Fecha</h5>
@@ -80,6 +80,11 @@
 
 	function init(){
 		const tituloBlog = document.getElementById('blog_title')
+		const keywords = document.getElementById('keywords_article')
+
+		keywords.addEventListener('blur', () => {
+			keywords.value = keywords.value.replace(/ /g, "").toLowerCase()
+		})
 
 		tituloBlog.addEventListener('keyup', () => {
 			let titulo = string_to_slug(tituloBlog.value),

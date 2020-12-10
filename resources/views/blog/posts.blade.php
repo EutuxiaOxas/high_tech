@@ -23,21 +23,6 @@
         </nav>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6 col-lg-4">
-        @foreach($posts as $post)
-        	<div class="card card-minimal">
-        	  <a href="{{route('main.blog.show', $post->slug)}}" class="card-img-container">
-        	    <img class="card-img" src="/blog_articulos_imagen/{{$post->picture}}" alt="Card image cap">
-        	  </a>
-        	  <div class="card-body">
-        	    <h5 class="card-title"><a href="">{{$post->title}}</a></h5>
-        	    <span class="card-meta">Posted in Travel by <a href="">Mike Ross</a></span>
-        	  </div>
-        	</div>
-        @endforeach
-      </div>
-    </div>
   </div>    
 </section>
 <!-- / hero -->
@@ -62,111 +47,44 @@
         <div class="widget">
           <span class="widget-title">Latest News</span>
           <ul class="feed">
-            <li>
-              <a href="" class="feed-item">
-                <img src="../../assets/images/demo/image-1.jpg" alt="Image">
-                <div class="feed-item-content">
-                  <h3>Top 10 most beautifull beaches of mediteranian sea</h3>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="" class="feed-item">
-                <img src="../../assets/images/demo/image-2.jpg" alt="Image">
-                <div class="feed-item-content">
-                  <h3>Amazing views of Paradise Bay</h3>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="" class="feed-item">
-                <img src="../../assets/images/demo/image-3.jpg" alt="Image">
-                <div class="feed-item-content">
-                  <h3>Amazing views of Paradise Bay</h3>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="" class="feed-item">
-                <img src="../../assets/images/demo/image-4.jpg" alt="Image">
-                <div class="feed-item-content">
-                  <h3>Amazing views of Paradise Bay</h3>
-                </div>
-              </a>
-            </li>
+            @foreach($latest_posts as $latest_post)
+              <li>
+                <a href="{{route('main.blog.show', $latest_post->slug)}}" class="feed-item">
+                  <img src="/blog_articulos_imagen/{{$latest_post->picture}}" alt="Image">
+                  <div class="feed-item-content">
+                    <h3>{{$latest_post->title}}</h3>
+                  </div>
+                </a>
+              </li>
+            @endforeach
           </ul>
         </div>
         <div class="widget">
           <span class="widget-title">Tags</span>
           <div class="tag-cloud">
-            <a href="">Design</a>
-            <a href="">Development</a>
-            <a href="">Travel</a>
-            <a href="">Web Design</a>
-            <a href="">Marketing</a>
-            <a href="">Research</a>
-            <a href="">Managment</a>
+            @foreach($tags as $tag)
+              <a href="{{route('main.blog.tag', $tag->keyword)}}">{{$tag->keyword}}</a>
+            @endforeach
           </div>
         </div>
       </aside>
       <div class="col-md-8">
         <ul class="masonry row gutter-3">
-          <li class="col-md-6">
-            <article class="card card-minimal">
-              <a href="" class="card-img-container">
-                <img class="card-img" src="../../assets/images/demo/image-1.jpg" alt="Card image cap">
-              </a>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Planning amazing weddings that you won’t forget.</a></h5>
-                <span class="card-meta">Posted in Travel by <a href="">Mike Ross</a></span>
-              </div>
-            </article>
-          </li>
-          <li class="col-md-6">
-            <article class="card card-minimal">
-              <a href="" class="card-img-container">
-                <img class="card-img" src="../../assets/images/demo/image-3.jpg" alt="Card image cap">
-              </a>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Planning amazing weddings that you won’t forget.</a></h5>
-                <span class="card-meta">Posted in Travel by <a href="">Mike Ross</a></span>
-              </div>
-            </article>
-          </li>
-          <li class="col-md-6">
-            <article class="card card-minimal">
-              <a href="" class="card-img-container">
-                <img class="card-img" src="../../assets/images/demo/image-2.jpg" alt="Card image cap">
-              </a>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Planning amazing weddings that you won’t forget.</a></h5>
-                <span class="card-meta">Posted in Travel by <a href="">Mike Ross</a></span>
-              </div>
-            </article>
-          </li>
-          <li class="col-md-6">
-            <article class="card card-minimal">
-              <a href="" class="card-img-container">
-                <img class="card-img" src="../../assets/images/demo/image-4.jpg" alt="Card image cap">
-              </a>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Planning amazing weddings that you won’t forget.</a></h5>
-                <span class="card-meta">Posted in Travel by <a href="">Mike Ross</a></span>
-              </div>
-            </article>
-          </li>
-          <li class="col-md-6">
-            <article class="card card-minimal">
-              <a href="" class="card-img-container">
-                <img class="card-img" src="../../assets/images/demo/image-5.jpg" alt="Card image cap">
-              </a>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Planning amazing weddings that you won’t forget.</a></h5>
-                <span class="card-meta">Posted in Travel by <a href="">Mike Ross</a></span>
-              </div>
-            </article>
-          </li>
+          @foreach($posts as $post)
+            <li class="col-md-6">
+              <article class="card card-minimal">
+                <a href="{{route('main.blog.show', $post->slug)}}" class="card-img-container">
+                  <img class="card-img" src="/blog_articulos_imagen/{{$post->picture}}" alt="Card image cap">
+                </a>
+                <div class="card-body">
+                  <h5 class="card-title"><a href="">{{$post->title}}</a></h5>
+                  
+                </div>
+              </article>
+            </li>
+          @endforeach
         </ul>
+        {{$posts->links()}}
       </div> 
     </div>
   </div>

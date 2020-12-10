@@ -79,13 +79,9 @@
     <div class="row justify-content-center">
       <div class="col-md-10 col-lg-8">
         <div class="tag-cloud">
-          <a href="">Design</a>
-          <a href="">Development</a>
-          <a href="">Travel</a>
-          <a href="">Web Design</a>
-          <a href="">Marketing</a>
-          <a href="">Research</a>
-          <a href="">Managment</a>
+          @foreach($post->keywords as $keyword)
+            <a href="{{route('main.blog.tag', $keyword->keyword)}}">{{$keyword->keyword}}</a>
+          @endforeach
         </div>
       </div>
     </div>
@@ -120,54 +116,24 @@
       </div>
     </div>
     <div class="row gutter-2">
-      <div class="col-md-6 col-lg-4">
-        <article class="tile">
-          <div class="tile-image" style="background-image: url(/go/app/assets/images/demo/image-square-1.jpg)"></div>
-          <a href="" class="tile-content">
-            <div class="tile-header">
-              <span class="eyebrow mb-1">Design</span>
-              <h3>Quick guide on traveling with friends.</h3>
-            </div>
-            <div class="tile-footer">
-              <button class="btn btn-ico btn-outline-white btn-rounded">
-                <i class="icon-arrow-right2 fs-20"></i>
-              </button>
-            </div>
-          </a>
-        </article>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <article class="tile">
-          <div class="tile-image" style="background-image: url(/go/app/assets/images/demo/image-square-2.jpg)"></div>
-          <a href="" class="tile-content">
-            <div class="tile-header">
-              <span class="eyebrow mb-1">Design</span>
-              <h3>Quick guide on traveling with friends.</h3>
-            </div>
-            <div class="tile-footer">
-              <button class="btn btn-ico btn-outline-white btn-rounded">
-                <i class="icon-arrow-right2 fs-20"></i>
-              </button>
-            </div>
-          </a>
-        </article>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <article class="tile">
-          <div class="tile-image" style="background-image: url(/go/app/assets/images/demo/image-square-3.jpg)"></div>
-          <a href="" class="tile-content">
-            <div class="tile-header">
-              <span class="eyebrow mb-1">Design</span>
-              <h3>Quick guide on traveling with friends.</h3>
-            </div>
-            <div class="tile-footer">
-              <button class="btn btn-ico btn-outline-white btn-rounded">
-                <i class="icon-arrow-right2 fs-20"></i>
-              </button>
-            </div>
-          </a>
-        </article>
-      </div>
+      @foreach($other_posts as $other_post)
+        <div class="col-md-6 col-lg-4">
+          <article class="tile">
+            <div class="tile-image" style="background-image: url(/blog_articulos_imagen/{{$other_post->picture}})"></div>
+            <a href="{{route('main.blog.show', $other_post->slug)}}" class="tile-content">
+              <div class="tile-header">
+                <span class="eyebrow mb-1">{{$other_post->categoria->name}}</span>
+                <h3>{{$other_post->title}}</h3>
+              </div>
+              <div class="tile-footer">
+                <button class="btn btn-ico btn-outline-white btn-rounded">
+                  <i class="icon-arrow-right2 fs-20"></i>
+                </button>
+              </div>
+            </a>
+          </article>
+        </div>
+      @endforeach
     </div>
   </div>
 </section>
