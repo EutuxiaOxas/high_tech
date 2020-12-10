@@ -3,8 +3,8 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="{{route('home')}}">
-          <img class="navbar-logo navbar-logo-light" src="/go/app/assets/images/demo/logo/logo-light.svg" alt="Logo">
-          <img class="navbar-logo navbar-logo-dark" src="/go/app/assets/images/demo/logo/logo-dark.svg" alt="Logo">
+          <img class="navbar-logo navbar-logo-light" src="{{asset('svg/logo-light.svg')}}" alt="Logo">
+          <img class="navbar-logo navbar-logo-dark" src="{{asset('svg/logo-dark.svg')}}" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="burger"><span></span></span></button>
 
@@ -67,8 +67,8 @@
 
           <ul class="navbar-nav align-items-center mr-0">
             <li class="nav-item">
-                <a href="tel:372-567-89-89" class="phone bordered">+372 567 89 89</a>
-              </li>
+                <a href="tel:1-561-713-40-17" class="phone bordered">+1 561 713 40 17</a>
+            </li>
           </ul>
         </div>
       </nav>

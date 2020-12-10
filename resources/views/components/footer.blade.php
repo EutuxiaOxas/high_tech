@@ -20,9 +20,9 @@
 </div>
 <div class="container">
     <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-4 text-center">
         <div class="mb-1">
-        <img class="logo-sm" src="../assets/images/demo/logo/logo-light.svg" alt="Logo">
+        <img  style="max-height: 6rem;"  src="{{asset('svg/logo-light.svg')}}" alt="Logo">
         </div>
         <span class="copyright-text">&copy; High Tech Bearings. 1976 - 2020<br>Todos los derechos reservados</span>
     </div>
@@ -44,7 +44,7 @@
         </ul>
     </div>
     <div class="col-lg-4 text-lg-right">
-        <a href="tel:372-567-89-89" class="phone bordered">+372 567 89 89</a>
+        <a href="tel:1-561-713-40-17" class="phone bordered">+1 561 713 40 17</a>
     </div>
     </div>
 </div>
