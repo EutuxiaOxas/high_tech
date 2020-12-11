@@ -34,19 +34,19 @@
         <div class="col-9">
             <div class="row card_product align-items-center mb-0">
                 <div class="col-12 img_product_card mb-3">
-                        <img class="img_product" src="/imagenes_pagina/04.jpg" alt="">
+                        <img class="img_product" src="/productos_imagen/{{$producto->imagen}}" alt="">
                 </div>
                 <div class="col-12">
-                    <h1 class="">Planning amazing weddings that you won’t forget.</h1>
+                    <h1 class="">{{$producto->titulo}}</h1>
                 </div>
                 <div class="col-12 px-4">
                     <div class="row mb-1">
                         <p class="">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo veniam harum hic et, voluptate aliquam ipsum nesciunt nisi possimus pariatur? Autem velit aliquam quam temporibus tempore cumque corrupti cum reprehenderit.
+                            {{$producto->descripcion}}
                         </p>
                     </div>
                     <div class="row mb-1">
-                        <span class=""><a href="">Categoria</a></span>
+                        <span class=""><a href="/categorias/{{$producto->categoria->id}}">{{$producto->categoria->category}}</a></span>
                     </div>
                 </div>
             </div>

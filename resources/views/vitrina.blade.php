@@ -28,32 +28,33 @@
             </div>
             <div class="col-7">
                 <!-- Search Input -->
-                <div class="row mb-1">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Buscar productos" aria-label="Buscar productos" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                          <button class="input-group-text bg-primary text-white" id="basic-addon2">Buscar</button>
-                        </div>
+                <form action="{{route('vitrina')}}">
+                    <div class="row mb-1">
+                        <div class="input-group mb-3">
+                            <input type="search" class="form-control" name="search" placeholder="Buscar productos" aria-label="Buscar productos" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                              <input type="submit" class="input-group-text bg-primary text-white" id="basic-addon2" value="Buscar">
+                            </div>
+                        </div>    
                     </div>
-                </div>                
+                </form>                
                 <!-- Filtros -->
                 <div class="row mb-1">
 
                 </div>
                 <!-- Listado de Productos -->
                 <div class="row">
-                    @include('common.card_product')
-                    @include('common.card_product')
-                    @include('common.card_product')
-                    @include('common.card_product')
-                    @include('common.card_product')
+                    @foreach($productos as $producto)
+                        @include('common.card_product')
+                    @endforeach
                 </div>
+                {{$productos->appends(request()->input())->links()}}
                 <!-- Productos relacionados -->
                 <div class="row">
                     <h5>Productos Realcionados</h5>
-                    @include('common.card_product')
-                    @include('common.card_product')
-                    @include('common.card_product')
+                    @foreach($other_products as $producto)
+                        @include('common.card_product')
+                    @endforeach
                 </div>
             </div>
             <div class="col-3">
