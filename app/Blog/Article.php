@@ -17,4 +17,9 @@ class Article extends Model
     {
     	return $this->belongsTo('App\User', 'autor_id');
     }
+
+    public function keywords()
+    {
+        return $this->belongsToMany('App\Blog\Keyword', 'keywords_articles', 'article_id', 'keyword_id');
+    }
 }

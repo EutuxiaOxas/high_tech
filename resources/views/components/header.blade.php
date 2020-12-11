@@ -26,7 +26,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../../index.html" role="button">
+                <a class="nav-link" href="{{route('main.blog.home')}}" role="button">
                   Blog
                 </a>
               </li>

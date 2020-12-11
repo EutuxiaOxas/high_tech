@@ -20,7 +20,7 @@
 			</div>
 			<div class="form-group">
 				<h5>Contenido</h5>
-				<textarea class="form-control" name="articulo_content">{{$articulo->content}}</textarea>
+				<textarea class="ckeditor" id="content" required name="articulo_content">{{$articulo->content}}</textarea>
 			</div>
 			<div class="form-group">
 				<h5>Keywords</h5>
@@ -48,5 +48,6 @@
 	</div>
 </section>
 
+<script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
 
 @endsection

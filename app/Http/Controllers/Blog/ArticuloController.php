@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use  App\Blog\Article;
 use  App\Blog\Category;
+use  App\Blog\Keyword;
 
 use File;
 class ArticuloController extends Controller
@@ -51,10 +52,10 @@ class ArticuloController extends Controller
             $articulo = new Article;
             $articulo->title = $request->articulo_title;
             $articulo->content = $request->articulo_content;
-            $articulo->keywords = $request->articulo_keywords;
             $articulo->date = $request->articulo_date;
             $articulo->autor_id = $autor_id;
             $articulo->category_id = $request->articulo_categoria;
+            $articulo->slug = $request->slug;
 
 
             if($file){
@@ -66,6 +67,32 @@ class ArticuloController extends Controller
                 if($moved){
                     $articulo->picture = $fileName;
                     $articulo->save();
+                    
+
+
+                    $keywords = $request->articulo_keywords;
+                    $tags = explode(",", $keywords);
+
+                    $keywords = [];
+
+                    foreach ($tags as $tag) 
+                    {
+                        $verificar = Keyword::where('keyword', $tag)->first();
+
+                        if(isset($verificar))
+                        {  
+                            $keywords[] = $verificar->id;
+                        }else {
+                            $keyword = Keyword::create([
+                                'keyword' => $tag,
+                            ]);
+
+                            $keywords[] = $keyword->id;
+                        }
+                    }
+
+                    $articulo->keywords()->sync($keywords);
+
                     return back()->with('message', 'Articulo creado con éxito');
                 }
             }
