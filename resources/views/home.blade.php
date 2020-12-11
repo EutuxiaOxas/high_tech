@@ -12,14 +12,14 @@
     data-top-bottom="transform: translateY(250px);">
     <div class="swiper-wrapper">
       <div class="swiper-slide vh-100">
-        <div class="image image-overlay image-zoom" style="background-image:url(/go/app/assets/images/demo/event/event-1.jpg)"></div>
+        <div class="image image-overlay image-zoom" style="background-image:url(/imagenes/imagenes_pagina/01.jpg)"></div>
         <div class="caption">
           <div class="container">
             <div class="row justify-content-between vh-100">
               <div class="col-lg-8 align-self-center text-white text-shadow" data-swiper-parallax="-100%">
                 <span class="eyebrow text-white mb-1">Rodamientos</span>
                 <h1 class="display-2"><b>HIGH TECH</b><br>BEARINGS</h1>
-                <a href="" class="btn btn-white btn-rounded px-5">Register</a>
+                <a href="{{route('vitrina')}}" class="btn btn-white btn-rounded px-5">Ver Productos</a>
               </div>
               <div class="col-lg-4 align-self-end">
                 <div class="row gutter-1">
@@ -115,7 +115,7 @@
     </section>
     <!-- / presentation -->
 
-<!-- user carousel -->
+<!-- Categorias -->
 <section class="bg-light">
   <div class="container">
     <div class="row">
@@ -134,32 +134,32 @@
          
           <figure class="user">
             <a href="" class="user-photo">
-              <img src="{{asset('/imagen_home/segundos-iconos-01.jpg')}}" alt="promo-1">
+              <img src="{{asset('/imagenes/imagen_home/segundos-iconos-01.jpg')}}" alt="promo-1">
             </a>
           </figure>
           <figure class="user">
             <a href="" class="user-photo">
-              <img src="{{asset('/imagen_home/segundos-iconos-02.jpg')}}" alt="promo-2">
+              <img src="{{asset('/imagenes/imagen_home/segundos-iconos-02.jpg')}}" alt="promo-2">
             </a>
           </figure>
           <figure class="user">
             <a href="" class="user-photo">
-              <img src="{{asset('/imagen_home/segundos-iconos-03.jpg')}}" alt="promo-3">
+              <img src="{{asset('/imagenes/imagen_home/segundos-iconos-03.jpg')}}" alt="promo-3">
             </a>
           </figure>
           <figure class="user">
             <a href="" class="user-photo">
-              <img src="{{asset('/imagen_home/segundos-iconos-04.jpg')}}" alt="promo-4">
+              <img src="{{asset('/imagenes/imagen_home/segundos-iconos-04.jpg')}}" alt="promo-4">
             </a>
           </figure>
           <figure class="user">
             <a href="" class="user-photo">
-              <img src="{{asset('/imagen_home/segundos-iconos-05.jpg')}}" alt="promo-5">
+              <img src="{{asset('/imagenes/imagen_home/segundos-iconos-05.jpg')}}" alt="promo-5">
             </a>
           </figure>
           <figure class="user">
             <a href="" class="user-photo">
-              <img src="{{asset('/imagen_home/segundos-iconos-06.jpg')}}" alt="promo-6">
+              <img src="{{asset('/imagenes/imagen_home/segundos-iconos-06.jpg')}}" alt="promo-6">
             </a>
           </figure>
 
@@ -172,7 +172,7 @@
 <!-- / user carousel -->
 
 
-    <!-- lessons -->
+    <!-- productos -->
     <section class="bg-dark">
       <div class="container">
         <div class="row text-white justify-content-between align-items-center">
@@ -192,25 +192,59 @@
           <div class="col">
             <div class="owl-carousel owl-carousel-library visible" data-loop="true" data-items="[3,2,1]" data-margin="30" data-nav="true">
               <article class="tile tile-long">
-                <div class="tile-image" style="background-image: url(../../assets/images/demo/learning/learning-4.jpg)"></div>
+                <div class="tile-image" style="background-image: url(/imagenes/moto.jpg)"></div>
                 <div>
                   <div class="tile-header on-hover text-right">
-                    <button class="btn btn-sm btn-outline-white">Watch Now</button>
+                    <button class="btn btn-sm btn-outline-info text-dark">Watch Now</button>
                   </div>
                   <div class="tile-footer">
-                    <span class="eyebrow">Development</span>
-                    <h3>Developing Wordpress Theme from Scratch</h3>
+                    <span class="eyebrow text-dark">Development</span>
+                    <h3 class="text-dark">Developing Wordpress Theme from Scratch</h3>
                   </div>
                 </div>
               </article>
-             
-             
+              <article class="tile tile-long">
+                <div class="tile-image" style="background-image: url(/imagenes/auto.jpg)"></div>
+                <div>
+                  <div class="tile-header on-hover text-right">
+                    <button class="btn btn-sm btn-outline-info text-dark">Watch Now</button>
+                  </div>
+                  <div class="tile-footer">
+                    <span class="eyebrow text-dark">Development</span>
+                    <h3 class="text-dark">Developing Wordpress Theme from Scratch</h3>
+                  </div>
+                </div>
+              </article>
+              <article class="tile tile-long">
+                <div class="tile-image" style="background-image: url(/imagenes/6000.jpg)"></div>
+                <div>
+                  <div class="tile-header on-hover text-right">
+                    <button class="btn btn-sm btn-outline-info text-dark">Watch Now</button>
+                  </div>
+                  <div class="tile-footer">
+                    <span class="eyebrow text-dark">Development</span>
+                    <h3 class="text-dark">Developing Wordpress Theme from Scratch</h3>
+                  </div>
+                </div>
+              </article>
+              <article class="tile tile-long">
+                <div class="tile-image" style="background-image: url(/imagenes/pillow.jpg)"></div>
+                <div>
+                  <div class="tile-header on-hover text-right">
+                    <button class="btn btn-sm btn-outline-info text-dark">Watch Now</button>
+                  </div>
+                  <div class="tile-footer">
+                    <span class="eyebrow text-dark">Development</span>
+                    <h3 class="text-dark">Developing Wordpress Theme from Scratch</h3>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- / lessons -->
+    <!-- / productos -->
 
 <!-- presentation -->
 <section>
@@ -218,8 +252,8 @@
     <div class="row align-items-center justify-content-center justify-content-lg-between">
       <div class="col-lg-7">
         <div class="owl-carousel owl-carousel-single pr-0" data-dots="true" data-autoheight="true">
-          <img src="{{asset('imagen_home/quienes-somos.jpg')}}" alt="Image">
-          <img src="{{asset('imagen_home/quienes-somos.jpg')}}" alt="Image">
+          <img src="{{asset('imagenes/imagen_home/quienes-somos.jpg')}}" alt="Image">
+          <img src="{{asset('imagenes/imagenes_pagina/high.jpg')}}" alt="Image">
         </div>
       </div>
       <div class="col-md-8 col-lg-5 pl-lg-4">
