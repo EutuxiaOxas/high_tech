@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Product;
+use App\Category;
 class ProductsPageController extends Controller
 {
     /**
@@ -11,9 +12,50 @@ class ProductsPageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('vitrina');
+        if(isset($request->search))
+        {   
+            $productos = Product::with(['categoria'])->where('titulo', 'LIKE', '%'.$request->search.'%')->paginate(15);
+        }else {
+            $productos = Product::paginate(15);
+        }
+
+        $all_products = Product::all();
+
+        $other_products = [];
+
+        $contador = 0;
+        
+        foreach ($all_products as $all_product) {
+            $verificador = true;
+
+            foreach ($productos as $producto) {
+
+                if($producto->id == $all_product->id)
+                {
+                    $verificador = false;
+                }
+             }
+
+             if($verificador)
+             {
+                $other_products[] = $all_product;
+             } 
+
+            $contador ++;
+
+            if($contador > 4)
+            {
+                break;
+            }
+
+        }
+
+        
+
+
+        return view('vitrina', compact('productos', 'other_products'));
     }
 
     /**
@@ -21,21 +63,7 @@ class ProductsPageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -44,42 +72,51 @@ class ProductsPageController extends Controller
      * @return \Illuminate\Http\Response
      */
     //public function show($id)
-    public function show()
+    public function show($id)
     {
-        return view('productDetail');
+        $producto = Product::findOrFail($id);
+        return view('productDetail', compact('producto'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function showByCategory($id)
     {
-        //
+        $categoria = Category::findOrFail($id);
+        $productos = $categoria->products()->paginate(15);
+
+        $all_products = Product::all();
+
+        $other_products = [];
+
+        $contador = 0;
+        
+        foreach ($all_products as $all_product) {
+            $verificador = true;
+
+            foreach ($productos as $producto) {
+
+                if($producto->id == $all_product->id)
+                {
+                    $verificador = false;
+                }
+             }
+
+             if($verificador)
+             {
+                $other_products[] = $all_product;
+             } 
+
+            $contador ++;
+
+            if($contador > 4)
+            {
+                break;
+            }
+
+        }
+
+        return view('vitrina', compact('productos', 'other_products'));
+
     }
 }

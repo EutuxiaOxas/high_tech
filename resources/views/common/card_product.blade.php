@@ -26,19 +26,19 @@
 
 <div class="row card_product align-items-center mb-0">
     <div class="col-2 img_product_card">
-        <a href="">
-            <img class="img_product" src="/imagenes_pagina/04.jpg" alt="">
+        <a href="{{route('product', $producto->id)}}">
+            <img class="img_product" src="/productos_imagen/{{$producto->imagen}}" alt="">
         </a>        
     </div>
     <div class="col-10">
         <div class="row mb-1">
-            <h5 class=""><a href="">Planning amazing weddings that you won’t forget.</a></h5>
+            <h5 class=""><a href="{{route('product', $producto->id)}}">{{$producto->titulo}}</a></h5>
         </div>
         <div class="row mb-1">
-            <span class="">Lorem ipsum dolor sit amet consectetur adipisicing elit..</span>
+            <span class="">{{$producto->descripcion}}</span>
         </div>
         <div class="row mb-1">
-            <span class=""><a href="">Categoria</a></span>
+            <span class=""><a href="/categorias/{{$producto->categoria->id}}">{{$producto->categoria->category}}</a></span>
         </div>
     </div>
 </div>
