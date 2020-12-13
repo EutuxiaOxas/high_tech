@@ -1,4 +1,9 @@
 @extends('layouts.app')
+@php 
+    $headerLinks="dark";
+    $logoNav1="light";
+    $logoNav2="dark";
+@endphp
 
 @section('title')
  High Tech Bearings - Contacto
@@ -11,8 +16,9 @@
           <div class="container">
             <div class="row vh-50 align-items-end">
               <div class="col-md-10">
-                <h1 class="mb-0">Valencia, Venezuela</h1>
-                <p class="text-white" style="font-size:1.25rem;"> <strong>Av. Este Oeste 4 Galpón 138 Urbanización Zona Industrial Municipal Norte</strong> </p>
+                <h1 class="mb-0">Valencia, Venezuela.</h1>
+                <br><br>
+                <!--p-- class="text-white" style="font-size:1.25rem;"> <strong>Av. Este Oeste 4 Galpón 138 Urbanización Zona Industrial Municipal Norte</strong> </!--p-->
               </div>
             </div>
           </div>

@@ -38,7 +38,7 @@
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
 <!-- IDENTIFICADOR SECCIÓN -->
-//<input type="hidden" id="seccion_name" value="">
+<input type="hidden" id="seccion_name" value="">
 
 <div class="wrapper">
   <!-- Navbar -->
@@ -88,7 +88,6 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
           <li class="nav-item">
             <a class="nav-link active" href="/cms">
               <i class="nav-icon fas fa-home"></i>
@@ -138,14 +137,11 @@
 
 
   <div class="content-wrapper">
-
     <section class="content">
       <div class="container-fluid">
-
         @yield('content')
       </div>
     </section>
-
   </div>
 
 
@@ -154,7 +150,6 @@
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-
 </div>
 
 

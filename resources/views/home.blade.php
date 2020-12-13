@@ -1,4 +1,9 @@
 @extends('layouts.app')
+@php 
+    $headerLinks="dark";
+    $logoNav1="light";
+    $logoNav2="dark";
+@endphp
 
 @section('title')
  High Tech Bearings
@@ -27,7 +32,7 @@
                     <div class="equal">
                       <div class="boxed">
                         <div class="equal-header">
-                          <h4>MIAMI, FL</h4>
+                          <h4>Valencia, VE</h4>
                         </div>
                         <div class="equal-footer">
                           <span class="text-muted">Ubicación</span>
@@ -73,7 +78,7 @@
 
 
     <!-- presentation -->
-    <section class="section-lg">
+    <!--section-- class="section-lg">
       <div class="container">
         <div class="row text-center text-lg-left">
           <div class="col-12 col-lg-9">
@@ -112,7 +117,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </!--section-->
     <!-- / presentation -->
 
 <!-- Categorias -->
@@ -364,43 +369,28 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-8 text-center">
-        <h2>From the <b>blog.</b></h2>
+        <h2>Artículos de <b>interés.</b></h2>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6 col-lg-4">
-        <div class="card card-minimal">
-          <a href="" class="card-img-container">
-            <img class="card-img" src="/go/app/assets/images/demo/image-2.jpg" alt="Card image cap">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title"><a href="">Planning amazing weddings that you won’t forget.</a></h5>
-            <span class="card-meta">Posted in Travel by <a href="">Mike Ross</a></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card card-minimal">
-          <a href="" class="card-img-container">
-            <img class="card-img" src="/go/app/assets/images/demo/image-square-1.jpg" alt="Card image cap">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title"><a href="">Planning amazing weddings that you won’t forget.</a></h5>
-            <span class="card-meta">Posted in Travel by <a href="">Mike Ross</a></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card card-minimal">
-          <a href="" class="card-img-container">
-            <img class="card-img" src="/go/app/assets/images/demo/image-5.jpg" alt="Card image cap">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title"><a href="">Planning amazing weddings that you won’t forget.</a></h5>
-            <span class="card-meta">Posted in Travel by <a href="">Mike Ross</a></span>
-          </div>
-        </div>
-      </div>
+          @foreach($posts as $post)
+            <div class="col-md-6 col-lg-4">
+              <article class="card card-minimal">
+                <a href="{{route('main.blog.show', $post->slug)}}" class="card-img-container">
+                  <img class="card-img" src="/blog_articulos_imagen/{{$post->picture}}" alt="Card image cap">
+                </a>
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-primary" href="">{{$post->title}}</a></h5> 
+                  <span class="card-meta">
+                    @php 
+                      $valueaux = substr("$post->content",0,150);
+                      echo $valueaux."[...]";
+                    @endphp
+                   </span>
+                </div>
+              </article>
+            </div>
+          @endforeach
     </div>
   </div>
 </section>

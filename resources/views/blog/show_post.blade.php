@@ -1,10 +1,13 @@
 @extends('layouts.app')
+@php 
+    $headerLinks="light";
+    $logoNav1="dark";
+    $logoNav2="dark";
+@endphp
 
 @section('title')
 	{{$post->title}}
 @endsection
-
-
 
 @section('content')
 
@@ -49,33 +52,18 @@
 
 <section>
   <div class="container">
-    <button id="boton_reproducir" style="display: none;" class="btn btn-outline-primary">Reproducir post</button>
-    <div id="reproductor_container" class="reproductor align-items-center">
-      <audio src=""  id="reproductor" controls="true" style="display: none;"></audio>
+    <div class="row justify-content-center">
+      <button id="boton_reproducir" style="display: none;" class="btn btn-outline-primary px-5">Reproducir post</button>
+      <div id="reproductor_container" class="reproductor">
+        <audio src=""  id="reproductor" controls="true" style="display: none;"></audio>
+      </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-md-10 col-lg-8">
+      <div class="col-md-10 col-lg-10">
         {!! $post->content !!}
       </div>
     </div>
-    
-    <div class="row justify-content-center">
-      <div class="col-md-12 col-lg-10">
-        <div class="owl-carousel owl-carousel-single" data-dots="true" data-nav="true" data-autoplay="true">
-          <figure class="photo">
-            <img src="/go/app/assets/images/demo/coworking/coworking-1.jpg" alt="Image">
-          </figure>
-          <figure class="photo">
-            <img src="/go/app/assets/images/demo/coworking/coworking-2.jpg" alt="Image">
-          </figure>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-md-10 col-lg-8">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae vero molestias odit voluptatem eum sit, laboriosam tempora officiis, ullam eaque modi beatae voluptate incidunt consequatur assumenda perferendis unde natus hic!</p>
-      </div>
-    </div>
+
     <div class="row justify-content-center">
       <div class="col-md-10 col-lg-8">
         <div class="tag-cloud">
@@ -85,24 +73,26 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="my-3">
-    <h3>Compartir en redes sociales</h3>
-    <div class="d-flex">
-      <a href="#" id="facebook">
-        <img src="/icons/facebook.svg" style="width: 50px;height: 50px; cursor: pointer;">
-      </a>
-      <a href="#" id="twitter">
-        <img src="/icons/twitter.svg" style="width: 50px;height: 50px; cursor: pointer;">
-      </a>
-      <a href="#" id="linkedin">
-        <img src="/icons/linkedin.svg" style="width: 50px;height: 50px; cursor: pointer;">
-      </a>
-      <a href="#" id="pinterest">
-        <img src="/icons/pinterest.svg" style="width: 50px;height: 50px; cursor: pointer;">
-      </a>
+
+    <div class="row my-3 justify-content-center">
+      <h3 class="col-10">Compartir en redes sociales</h3>
+      <div class="col-10">
+        <a href="#" id="facebook">
+          <img src="/icons/facebook.svg" style="width: 50px;height: 50px; cursor: pointer;">
+        </a>
+        <a href="#" id="twitter">
+          <img src="/icons/twitter.svg" style="width: 50px;height: 50px; cursor: pointer;">
+        </a>
+        <a href="#" id="linkedin">
+          <img src="/icons/linkedin.svg" style="width: 50px;height: 50px; cursor: pointer;">
+        </a>
+        <!--a-- href="#" id="pinterest">
+          <img src="/icons/pinterest.svg" style="width: 50px;height: 50px; cursor: pointer;">
+        </!--a-->
+      </div>
     </div>
   </div>
+
 </section>
 
 
@@ -112,7 +102,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <h2>Latest News</h2>
+        <h2>Últimos artículos</h2>
       </div>
     </div>
     <div class="row gutter-2">

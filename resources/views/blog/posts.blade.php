@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
+@php 
+    $headerLinks="light";
+    $logoNav1="dark";
+    $logoNav2="dark";
+@endphp
+
 @section('title')
  High Tech Blog
 @endsection
-
-
-
 
 @section('content')
 <!-- hero -->
@@ -13,12 +16,11 @@
   <div class="container">
     <div class="row justify-content-center">
     <div class="col text-center">
-        <h1>Latest Blog Posts</h1>
+        <h1>Blog de noticias y actualidad</h1>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb breadcrumb-custom">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/inner-pages.html">Inner Pages</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Default</li>
+            <li class="breadcrumb-item"><a href="{{route('home')}}">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Blog</li>
           </ol>
         </nav>
       </div>
