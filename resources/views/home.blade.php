@@ -381,6 +381,7 @@
                 </a>
                 <div class="card-body">
                   <h5 class="card-title"><a href="">{{$post->title}}</a></h5>
+                  <span class="card-meta">Posted in Travel by <a href="">Mike Ross</a></span>
                 </div>
               </article>
             </div>
