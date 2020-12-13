@@ -1,10 +1,10 @@
  <!-- header -->
  <header class="header-sticky header-dark">
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-dark">
+      <nav class="navbar navbar-expand-lg navbar-{{$headerLinks}}">
         <a class="navbar-brand" href="{{route('home')}}">
-          <img class="navbar-logo navbar-logo-light" src="{{asset('svg/logo-light.svg')}}" alt="Logo">
-          <img class="navbar-logo navbar-logo-dark" src="{{asset('svg/logo-dark.svg')}}" alt="Logo">
+          <img class="navbar-logo navbar-logo-light" src="{{asset('svg/logo-'. $logoNav1 .'.svg')}}" alt="Logo High Tech">
+          <img class="navbar-logo navbar-logo-dark" src="{{asset('svg/logo-'. $logoNav2 .'.svg')}}" alt="Logo High Tech">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="burger"><span></span></span></button>
 
@@ -65,11 +65,11 @@
            
           </ul>
 
-          <ul class="navbar-nav align-items-center mr-0">
+          <!--ul-- class="navbar-nav align-items-center mr-0">
             <li class="nav-item">
-                <a href="tel:1-561-713-40-17" class="phone bordered">+1 561 713 40 17</a>
+                <a href="tel:+584244036917" class="phone bordered">+58 424 403 69 17</a>
             </li>
-          </ul>
+          </!--ul-->
         </div>
       </nav>
     </div>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use  App\Blog\Article;
+use  App\Blog\Category;
+use  App\Blog\Keyword;
 
 class HomeController extends Controller
 {
@@ -13,7 +16,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $posts = Article::with(['categoria', 'autor'])->orderBy('id', 'DESC')->paginate(3);
+        return view('home', compact('posts'));
     }
 
     /**

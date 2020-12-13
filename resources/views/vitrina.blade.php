@@ -1,4 +1,9 @@
 @extends('layouts.app')
+@php 
+    $headerLinks="light";
+    $logoNav1="dark";
+    $logoNav2="dark";
+@endphp
 
 @section('title')
  Productos de High Tech Bearings
