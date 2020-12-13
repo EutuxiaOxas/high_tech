@@ -380,11 +380,13 @@
                   <img class="card-img" src="/blog_articulos_imagen/{{$post->picture}}" alt="Card image cap">
                 </a>
                 <div class="card-body">
-                  <h5 class="card-title"><a href="">{{$post->title}}</a></h5> 
-                  @php 
-                    $valueaux = substr("$post->content",0,150);
-                    echo $valueaux;
-                   @endphp
+                  <h5 class="card-title"><a class="text-primary" href="">{{$post->title}}</a></h5> 
+                  <span class="card-meta">
+                    @php 
+                      $valueaux = substr("$post->content",0,150);
+                      echo $valueaux;
+                    @endphp
+                   </span>
                 </div>
               </article>
             </div>
