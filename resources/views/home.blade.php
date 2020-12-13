@@ -384,7 +384,7 @@
                   <span class="card-meta">
                     @php 
                       $valueaux = substr("$post->content",0,150);
-                      echo $valueaux;
+                      echo $valueaux."[...]";
                     @endphp
                    </span>
                 </div>
