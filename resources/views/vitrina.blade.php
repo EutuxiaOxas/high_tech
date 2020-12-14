@@ -14,24 +14,34 @@
     <section class="container-fluid px-3">
         <div class="row">
             <!-- Otras Categorias -->
-            <div class="col-2">
+            <div class="col-md-2">
                 <div class="card card-minimal mb-2">
-                    <a href="" class="card-img-container">
-                        <img class="card-img" src="/imagenes_pagina/01.jpg" alt="Card image cap">
+                    <a href="/categorias/1" class="card-img-container">
+                        <img class="card-img" src="/imagenes/series_logos/automotriz.png" alt="Card image cap">
                     </a>
                 </div>
                 <div class="card card-minimal mb-2">
-                    <a href="" class="card-img-container">
-                      <img class="card-img" src="/imagenes_pagina/02.jpg" alt="Card image cap">
+                    <a href="/categorias/2" class="card-img-container">
+                        <img class="card-img" src="/imagenes/series_logos/6000.png" alt="Card image cap">
                     </a>
                 </div>
                 <div class="card card-minimal mb-2">
-                    <a href="" class="card-img-container">
-                        <img class="card-img" src="/imagenes_pagina/03.jpg" alt="Card image cap">
+                    <a href="/categorias/3" class="card-img-container">
+                        <img class="card-img" src="/imagenes/series_logos/moto.png" alt="Card image cap">
+                    </a>
+                </div>
+                <div class="card card-minimal mb-2">
+                    <a href="/categorias/4" class="card-img-container">
+                        <img class="card-img" src="/imagenes/series_logos/chumacera.png" alt="Card image cap">
+                    </a>
+                </div>
+                <div class="card card-minimal mb-2">
+                    <a href="/categorias/5" class="card-img-container">
+                        <img class="card-img" src="/imagenes/series_logos/cadenas.png" alt="Card image cap">                    
                     </a>
                 </div>
             </div>
-            <div class="col-7">
+            <div class="col-md-7">
                 <!-- Search Input -->
                 <form action="{{route('vitrina')}}">
                     <div class="row mb-1">
@@ -62,7 +72,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-md-3">
                 @include('common.navbar_rigth_product')   
             </div>
         </div>

@@ -44,7 +44,7 @@
         </ul>
     </div>
     <div class="col-lg-4 text-lg-right">
-        <a href="tel:1-561-713-40-17" class="phone bordered">+1 561 713 40 17</a>
+        <a href="tel:02418327147" class="phone bordered">(0241) 8327147</a>
     </div>
     </div>
 </div>
