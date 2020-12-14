@@ -51,7 +51,7 @@
                         </p>
                     </div>
                     <div class="row mb-1">
-                        <span class=""><a href="/categorias/{{$producto->categoria->id}}">{{$producto->categoria->category}}</a></span>
+                        <span class=""><a href="/categorias/{{$producto->categoria->slug}}">{{$producto->categoria->category}}</a></span>
                     </div>
                 </div>
             </div>

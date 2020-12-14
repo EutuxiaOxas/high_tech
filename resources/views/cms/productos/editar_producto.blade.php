@@ -17,10 +17,11 @@
       @endif
       <form action="/cms/actualizar/producto/{{$producto->id}}" method="POST" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" id="producto_slug" value="{{$producto->slug}}" name="slug">
         <div class="row">
           <div class="col-12 col-md-6 mb-4">
             <h5>Titulo</h5>
-            <input class="form-control" type="text" require name="titulo_producto" value="{{$producto->titulo}}" placeholder="Titulo">
+            <input class="form-control"  id="titulo_producto" type="text" require name="titulo_producto" value="{{$producto->titulo}}" placeholder="Titulo">
           </div>
           <div class="col-12 col-md-6 mb-4">
             <h5>Precio</h5>
@@ -355,6 +356,44 @@
       input.value = '';
     });
   }
+</script>
+
+<script type="text/javascript">
+  function string_to_slug (str) {
+      str = str.replace(/^\s+|\s+$/g, ''); // trim
+      str = str.toLowerCase();
+    
+      // remove accents, swap ñ for n, etc
+      var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
+      var to   = "aaaaaeeeeiiiioooouuuunc------";
+
+      for (var i=0, l=from.length ; i<l ; i++) {
+          str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+      }
+
+      str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+          .replace(/\s+/g, '-') // collapse whitespace and replace by -
+          .replace(/-+/g, '-'); // collapse dashes
+
+      return str;
+  }
+
+
+  
+
+  function init(){
+    const tituloBlog = document.getElementById('titulo_producto')
+
+    tituloBlog.addEventListener('keyup', () => {
+      let titulo = string_to_slug(tituloBlog.value),
+        slug = document.getElementById('producto_slug');
+
+      slug.value = titulo;
+    });
+  }
+
+  init();
+
 </script>
 
 @endsection

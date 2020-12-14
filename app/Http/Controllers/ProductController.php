@@ -63,10 +63,11 @@ class ProductController extends Controller
     public function guardarProducto(Request $request){
         $file = $request->file('imagen_producto');
     	$producto = new Product;
-    	$producto->titulo           = $request->titulo_producto;
+        $producto->titulo           = $request->titulo_producto;
+    	$producto->slug             = $request->slug;
         $producto->precio           = $request->precio_producto;
         $producto->codigo_universal = $request->codigo_producto;
-    	$producto->category_id     = $request->categoria_producto; 
+    	$producto->category_id      = $request->categoria_producto; 
     	$producto->descripcion      = $request->descripcion_producto;
 
          //verificamos que la imagen exista
@@ -190,7 +191,8 @@ class ProductController extends Controller
         $producto->titulo           = $request->titulo_producto;
         $producto->precio           = $request->precio_producto;
         $producto->codigo_universal = $request->codigo_producto;
-        $producto->category_id     = $request->categoria_producto; 
+        $producto->category_id      = $request->categoria_producto;
+        $producto->slug             = $request->slug;
         $producto->descripcion      = $request->descripcion_producto;
         
         if($file){

@@ -72,17 +72,17 @@ class ProductsPageController extends Controller
      * @return \Illuminate\Http\Response
      */
     //public function show($id)
-    public function show($id)
+    public function show($slug)
     {
-        $producto = Product::findOrFail($id);
+        $producto = Product::where('slug', $slug)->first();
         return view('productDetail', compact('producto'));
     }
 
 
 
-    public function showByCategory($id)
+    public function showByCategory($slug)
     {
-        $categoria = Category::findOrFail($id);
+        $categoria = Category::where('slug', $slug)->first();
         $productos = $categoria->products()->paginate(15);
 
         $all_products = Product::all();
