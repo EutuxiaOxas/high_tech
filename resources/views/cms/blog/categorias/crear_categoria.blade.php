@@ -14,18 +14,18 @@
 		@endif
 		<form action="/cms/blog/guardar/categoria" class="col-12" method="POST" enctype="multipart/form-data">
 			@csrf
-			<input type="hidden" id="blog_slug" value="" name="slug">
+			<input type="hidden" id="blog_slug"  value="" name="slug">
 			<div class="form-group">
 				<h5>Titulo</h5>
-				<input type="text" name="categoria_titulo" id="blog_cat_title" placeholder="Titulo..." class="form-control">
+				<input type="text" name="categoria_titulo" required id="blog_cat_title" placeholder="Titulo..." class="form-control">
 			</div>
 			<div class="form-group">
 				<h5>descripción</h5>
-				<textarea class="form-control" name="categoria_descripcion"></textarea>
+				<textarea class="form-control" required name="categoria_descripcion"></textarea>
 			</div>
 			<div class="form-group">
 				<h5>Imagen</h5>
-				<input type="file" name="categoria_imagen">
+				<input type="file" required name="categoria_imagen">
 			</div>
 			<input type="submit" class="btn btn-primary " value="Crear Categoria">
 		</form>
