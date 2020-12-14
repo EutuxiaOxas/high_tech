@@ -17,7 +17,7 @@
     data-top-bottom="transform: translateY(250px);">
     <div class="swiper-wrapper">
       <div class="swiper-slide vh-100">
-        <div class="image image-overlay image-zoom" style="background-image:url(/imagenes/imagenes_pagina/01.jpg)"></div>
+        <div class="image image-overlay image-zoom" style="background-image:url(/imagenes/banner.jpg)"></div>
         <div class="caption">
           <div class="container">
             <div class="row justify-content-between vh-100">
