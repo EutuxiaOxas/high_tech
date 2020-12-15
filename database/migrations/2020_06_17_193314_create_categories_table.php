@@ -20,6 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->string('imagen');
             $table->string('pdf');
             $table->string('category_color');
+            $table->string('slug');
             $table->timestamps();
         });
     }

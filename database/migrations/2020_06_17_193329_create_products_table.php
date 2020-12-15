@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('descripcion');
             $table->string('precio');
             $table->string('codigo_universal');
+            $table->string('slug');
             $table->timestamps();
 
 

@@ -20,8 +20,8 @@ Route::get('/contacto', 'HomeController@contacto')->name('contacto');
 
 
 Route::get('/vitrina', 'ProductsPageController@index')->name('vitrina');
-Route::get('/product/{id}', 'ProductsPageController@show')->name('product');
-Route::get('/categorias/{id}', 'ProductsPageController@showByCategory');
+Route::get('/product/{slug}', 'ProductsPageController@show')->name('product');
+Route::get('/categorias/{slug}', 'ProductsPageController@showByCategory');
 
 Route::get('/test', function(){
 	return view('page_new.src.service');

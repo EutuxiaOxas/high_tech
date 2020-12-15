@@ -64,6 +64,7 @@ class CategoriesController extends Controller
 
     	$categoria->name = $request->categoria_titulo;
     	$categoria->description = $request->categoria_descripcion;
+        $categoria->slug = $request->slug;
     	$categoria->parent_category_id = 1;
 
     	if($file){

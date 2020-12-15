@@ -26,19 +26,19 @@
 
 <div class="row card_product align-items-center mb-0">
     <div class="col-2 img_product_card">
-        <a href="{{route('product', $producto->id)}}">
+        <a href="{{route('product', $producto->slug)}}">
             <img class="img_product" src="/productos_imagen/{{$producto->imagen}}" alt="">
         </a>        
     </div>
     <div class="col-10">
         <div class="row mb-1">
-            <h5 class=""><a href="{{route('product', $producto->id)}}">{{$producto->titulo}}</a></h5>
+            <h5 class=""><a href="{{route('product', $producto->slug)}}">{{$producto->titulo}}</a></h5>
         </div>
         <div class="row mb-1">
             <span class="">{{$producto->descripcion}}</span>
         </div>
         <div class="row mb-1">
-            <span class=""><a href="/categorias/{{$producto->categoria->id}}">{{$producto->categoria->category}}</a></span>
+            <span class=""><a href="/categorias/{{$producto->categoria->slug}}">{{$producto->categoria->category}}</a></span>
         </div>
     </div>
 </div>
