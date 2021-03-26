@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@php 
+@php
     $headerLinks="dark";
     $logoNav1="light";
     $logoNav2="dark";
@@ -13,7 +13,7 @@
 <!-- cover -->
 <section class="p-0">
   <div class="swiper-container"
-    data-top-top="transform: translateY(0px);" 
+    data-top-top="transform: translateY(0px);"
     data-top-bottom="transform: translateY(250px);">
     <div class="swiper-wrapper">
       <div class="swiper-slide vh-100">
@@ -120,7 +120,7 @@
     </!--section-->
     <!-- / presentation -->
 
-<!-- Categorias -->
+<!-- Categorias d-->
 <section class="bg-light">
   <div class="container">
     <div class="row">
@@ -129,14 +129,14 @@
       </div>
       <div class="col-lg-6">
         <p>
-          Un producto de innovación y calidad, con el respaldo de una experiencia en el ramo de rodamientos con más de 20 años en el mercado nacional e internacional. 
+          Un producto de innovación y calidad, con el respaldo de una experiencia en el ramo de rodamientos con más de 20 años en el mercado nacional e internacional.
         </p>
       </div>
     </div>
     <div class="row" data-aos="fade-left">
       <div class="col">
         <div class="owl-carousel visible" data-items="[3]" data-nav="true" data-margin="10">
-         
+
           <figure class="user">
             <a href="" class="user-photo">
               <img src="{{asset('/imagenes/imagen_home/segundos-iconos-01.jpg')}}" alt="promo-1">
@@ -272,8 +272,8 @@
               Es una marca que viene a posicionarse en el mercado con la versatilidad y calidad que necesita un producto para satisfacer las demandas de un sector tan amplio y exigente como lo es el  INDUSTRIAL - AUTOMOTRIZ.
             </p>
           </div>
-         
-         
+
+
         </div>
       </div>
     </div>
@@ -380,9 +380,9 @@
                   <img class="card-img" src="/blog_articulos_imagen/{{$post->picture}}" alt="Card image cap">
                 </a>
                 <div class="card-body">
-                  <h5 class="card-title"><a class="text-primary" href="">{{$post->title}}</a></h5> 
+                  <h5 class="card-title"><a class="text-primary" href="">{{$post->title}}</a></h5>
                   <span class="card-meta">
-                    @php 
+                    @php
                       $valueaux = substr("$post->content",0,150);
                       echo $valueaux."[...]";
                     @endphp
