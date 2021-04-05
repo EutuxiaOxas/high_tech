@@ -41,7 +41,7 @@
             </div>
             <div class="col-12 mb-4">
               <h5>Categoría</h5>
-              <select name="categoria_producto" class="form-control form-control" id="categoria_select">
+              <select name="categoria_producto" class="form-control form-control" id="categoria_select" required>
                 <option>Selecciona una Categoría</option>
                 @foreach($categorias as $categoria)
                 <option value="{{$categoria->id}}">{{$categoria->category}}</option>
@@ -245,7 +245,7 @@
               <input type="submit" class="btn btn-primary" value="Crear">
             </div>
           </div>
-        
+
       </form>
   </div>
 </section>
@@ -253,7 +253,7 @@
 <script type="text/javascript">
   const catSelect = document.getElementById('categoria_select');
   let formularios = document.querySelectorAll('.params-forms');
-  
+
 
 
 //evento cambio select
@@ -269,7 +269,7 @@
     offForms()
 
     if (target.text === "Serie Automotriz") {
-      
+
       let form = document.querySelector('#auto')
       let inputHidden = document.querySelector('#auto_inputs');
       let formularios = document.querySelectorAll('.auto');
@@ -281,7 +281,7 @@
       })
 
     } else if(target.text === "Serie 6000") {
-      
+
       let form = document.querySelector('#serie6000')
       let inputHidden = document.querySelector('#serie6000_inputs');
       let formularios = document.querySelectorAll('.serie6000');
@@ -354,7 +354,7 @@
   function string_to_slug (str) {
       str = str.replace(/^\s+|\s+$/g, ''); // trim
       str = str.toLowerCase();
-    
+
       // remove accents, swap ñ for n, etc
       var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
       var to   = "aaaaaeeeeiiiioooouuuunc------";
@@ -371,7 +371,7 @@
   }
 
 
-  
+
 
   function init(){
     const tituloBlog = document.getElementById('titulo_producto')

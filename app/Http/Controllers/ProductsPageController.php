@@ -15,7 +15,7 @@ class ProductsPageController extends Controller
     public function index(Request $request)
     {
         if(isset($request->search))
-        {   
+        {
             $productos = Product::with(['categoria'])->where('titulo', 'LIKE', '%'.$request->search.'%')->paginate(15);
         }else {
             $productos = Product::paginate(15);
@@ -26,7 +26,7 @@ class ProductsPageController extends Controller
         $other_products = [];
 
         $contador = 0;
-        
+
         foreach ($all_products as $all_product) {
             $verificador = true;
 
@@ -41,7 +41,7 @@ class ProductsPageController extends Controller
              if($verificador)
              {
                 $other_products[] = $all_product;
-             } 
+             }
 
             $contador ++;
 
@@ -51,8 +51,6 @@ class ProductsPageController extends Controller
             }
 
         }
-
-        
 
 
         return view('vitrina', compact('productos', 'other_products'));
@@ -83,40 +81,48 @@ class ProductsPageController extends Controller
     public function showByCategory($slug)
     {
         $categoria = Category::where('slug', $slug)->first();
-        $productos = $categoria->products()->paginate(15);
 
-        $all_products = Product::all();
 
-        $other_products = [];
 
-        $contador = 0;
-        
-        foreach ($all_products as $all_product) {
-            $verificador = true;
+        if( $categoria->products ){
 
-            foreach ($productos as $producto) {
+            $productos = $categoria->products()->paginate(15);
 
-                if($producto->id == $all_product->id)
+            $all_products = Product::all();
+
+            $other_products = [];
+
+            $contador = 0;
+
+            foreach ($all_products as $all_product) {
+                $verificador = true;
+
+                foreach ($productos as $producto) {
+
+                    if($producto->id == $all_product->id)
+                    {
+                        $verificador = false;
+                    }
+                 }
+
+                 if($verificador)
+                 {
+                    $other_products[] = $all_product;
+                 }
+
+                $contador ++;
+
+                if($contador > 4)
                 {
-                    $verificador = false;
+                    break;
                 }
-             }
 
-             if($verificador)
-             {
-                $other_products[] = $all_product;
-             } 
-
-            $contador ++;
-
-            if($contador > 4)
-            {
-                break;
             }
-
+        }else{
+            $productos = [];
         }
 
-        return view('vitrina', compact('productos', 'other_products'));
+        return view('vitrina', compact('productos', 'other_products', 'slug'));
 
     }
 }
