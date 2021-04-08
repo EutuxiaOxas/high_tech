@@ -26,8 +26,104 @@ class ProductController extends Controller
 {
     public function index(){
         $productos = Product::all();
-    	return view('cms.productos.productos')->with(compact(
-            'productos'));
+    	return view('cms.productos.productos')->with(compact('productos'));
+    }
+
+    public function showCategorias(){
+        $categorias = Category::all();
+    	return view('cms.productos.categorias.index')->with(compact('categorias'));
+    }
+
+    public function editarCategory(Request $request, $id){
+        $category = Category::find($id);
+
+        return view('cms.productos.categorias.edit_category', compact('category'));
+    }
+
+    public function actualizarCategory(Request $request, $id){
+        $imagen = $request->file('imagen');
+        $pdf_catalogo = $request->file('catalogo_pdf');
+
+        $category = Category::find($id);
+
+        $category->description = $request->description;
+
+        // Verifico la imagen
+        if($imagen){
+
+            // Veridfico si hay imagen en BD, y la elimino
+            if($category->imagen){
+                if(substr($category->imagen, 0, 4)  === "http"){
+                    $deleted = true;
+                } else {
+                    $fullpath = public_path() . '/imagenes/series_logos/' . $category->imagen;
+                    $deleted = File::delete($fullpath);
+                }
+            }
+
+            //verificacion de que se haya eliminado la imagen o que no exista el en el campo
+            if(isset($deleted) || $category->imagen === null){
+
+                //verificamos que la imagen exista
+                if($imagen){
+                    $path = public_path() . '/imagenes/series_logos';
+                    $fileName = uniqid() . $imagen->getClientOriginalName();
+                    $moved = $imagen->move($path, $fileName);
+
+                    //verificamos que la imagen haya sido movida y guardamos la ruta
+                    if($moved){
+                        $category->imagen = $fileName;
+                        $category->save();
+                    }
+
+                    // return back();
+                } else {
+                    return back()->with('message','No se pudo actualizar la imagen con éxito');
+                }
+            }
+        } else {
+            $category->save();
+        }
+
+        // Verifico el pdf
+        if($pdf_catalogo){
+
+            // Veridfico si hay imagen en BD, y la elimino
+            if($category->pdf){
+                if(substr($category->pdf, 0, 4)  === "http"){
+                    $deleted = true;
+                } else {
+                    $fullpath = public_path() . '/pdfs/' . $category->pdf;
+                    $deleted = File::delete($fullpath);
+                }
+            }
+
+            //verificacion de que se haya eliminado la imagen o que no exista el en el campo
+            if(isset($deleted) || $category->pdf === null){
+
+                //verificamos que la imagen exista
+                if($pdf_catalogo){
+                    $path = public_path() . '/pdfs';
+                    $fileName = uniqid() . $pdf_catalogo->getClientOriginalName();
+                    $moved = $pdf_catalogo->move($path, $fileName);
+
+                    //verificamos que la imagen haya sido movida y guardamos la ruta
+                    if($moved){
+                        $category->pdf = $fileName;
+                        $category->save();
+                    }
+
+                    // return back();
+                } else {
+                    return back()->with('message','No se pudo actualizar la imagen con éxito');
+                }
+            }
+        } else {
+            $category->save();
+        }
+
+        $categorias = Category::all();
+    	return view('cms.productos.categorias.index')->with(compact('categorias'));
     }
 
     public function crearProducto(){
@@ -41,7 +137,7 @@ class ProductController extends Controller
         $tipos_empates = Tipo_Empates::all();
 
         //moto y serie600 parametros
-        $tipo_sellos = Tipo_Sello::all(); 
+        $tipo_sellos = Tipo_Sello::all();
 
         //auto parametro
         $posiciones = Posicion::all();
@@ -67,7 +163,7 @@ class ProductController extends Controller
     	$producto->slug             = $request->slug;
         $producto->precio           = $request->precio_producto;
         $producto->codigo_universal = $request->codigo_producto;
-    	$producto->category_id      = $request->categoria_producto; 
+    	$producto->category_id      = $request->categoria_producto;
     	$producto->descripcion      = $request->descripcion_producto;
 
          //verificamos que la imagen exista
@@ -99,7 +195,7 @@ class ProductController extends Controller
             ]);
 
         }elseif ($request->cadena_info === 'active') {
-            
+
             $cadena_parametro = new Cadena_Parameter;
             $cadena_parametro->create([
                 'product_id'        => $producto->id,
@@ -117,11 +213,11 @@ class ProductController extends Controller
                 'd_interno'         =>  $request['d_interno_moto'],
                 'espesor'           => $request['espesor_moto'],
                 'd_externo'         => $request['d_externo_moto'],
-                'tipo_sello_id'     =>$request['sello_moto'] 
+                'tipo_sello_id'     =>$request['sello_moto']
             ]);
 
         }elseif ($request->serie6000_info === 'active') {
-            
+
             $serie6000_parametro = new Serie6000_Parameter;
             $serie6000_parametro->create([
                     'product_id'        => $producto->id,
@@ -133,7 +229,7 @@ class ProductController extends Controller
                 ]);
 
         } elseif ($request->auto_info === 'active') {
-            
+
             $auto_parametro = new Auto_Parameter;
             $auto_parametro->create([
                 'product_id' => $producto->id,
@@ -165,14 +261,14 @@ class ProductController extends Controller
         $tipos_empates = Tipo_Empates::all();
 
         //moto y serie600 parametros
-        $tipo_sellos = Tipo_Sello::all(); 
+        $tipo_sellos = Tipo_Sello::all();
 
         //auto parametro
         $posiciones = Posicion::all();
 
         $categorias = Category::all();
         return view('cms.productos.editar_producto')->with(compact(
-            'producto', 
+            'producto',
             'categorias',
             'diametros_chum',
             'tipos_chum',
@@ -194,7 +290,7 @@ class ProductController extends Controller
         $producto->category_id      = $request->categoria_producto;
         $producto->slug             = $request->slug;
         $producto->descripcion      = $request->descripcion_producto;
-        
+
         if($file){
 
             if($producto->imagen){
@@ -205,7 +301,7 @@ class ProductController extends Controller
                     $deleted = File::delete($fullpath);
                 }
             }
-            
+
             //verificacion de que se haya eliminado la imagen o que no exista el en el campo
             if(isset($deleted) || $producto->imagen === null){
 
@@ -214,7 +310,7 @@ class ProductController extends Controller
                     $path = public_path() . '/productos_imagen';
                     $fileName = uniqid() . $file->getClientOriginalName();
                     $moved = $file->move($path, $fileName);
-            
+
                     //verificamos que la imagen haya sido movida y guardamos la ruta
                     if($moved){
                         $producto->imagen = $fileName;
@@ -242,7 +338,7 @@ class ProductController extends Controller
             ]);
 
         }elseif ($request->cadena_info === 'active') {
-            
+
             $cadena_parametro = Cadena_Parameter::find($request->cadena_info_id);
             $cadena_parametro->update([
                 'product_id'        => $producto->id,
@@ -260,11 +356,11 @@ class ProductController extends Controller
                 'd_interno'         =>  $request['d_interno_moto'],
                 'espesor'           => $request['espesor_moto'],
                 'd_externo'         => $request['d_externo_moto'],
-                'tipo_sello_id'     =>$request['sello_moto'] 
+                'tipo_sello_id'     =>$request['sello_moto']
             ]);
 
         }elseif ($request->serie6000_info === 'active') {
-            
+
             $serie6000_parametro = Serie6000_Parameter::find($request->serie6000_info_id);
             $serie6000_parametro->update([
                     'product_id'        => $producto->id,
@@ -288,9 +384,10 @@ class ProductController extends Controller
             ]);
         }
 
-        return back()->with('message', 'Producto y parametro actualizados');
+        $productos = Product::all();
+    	return view('cms.productos.productos')->with(compact('productos'));
 
-        
+
     }
 
 
@@ -313,6 +410,6 @@ class ProductController extends Controller
         } else {
             return back()->with('message','No se pudo eliminar el servicio');
         }
-        
+
     }
 }

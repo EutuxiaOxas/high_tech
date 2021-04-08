@@ -12,11 +12,11 @@ class TipoSelloSeeder extends Seeder
     public function run()
     {
         DB::table('tipo_sello')->insert([
-        	'tipo_sello' => 'sello1',
+        	'tipo_sello' => 'Sello de Goma',
         ]);
-    
+
         DB::table('tipo_sello')->insert([
-        	'tipo_sello' => 'sello2',
+        	'tipo_sello' => 'Sello Metalico',
         ]);
     }
 }

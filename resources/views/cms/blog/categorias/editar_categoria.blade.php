@@ -1,4 +1,7 @@
 @extends('cms')
+@php
+    $section = 'blog';
+@endphp
 
 
 @section('content')
@@ -36,7 +39,7 @@
 	function string_to_slug (str) {
 	    str = str.replace(/^\s+|\s+$/g, ''); // trim
 	    str = str.toLowerCase();
-	  
+
 	    // remove accents, swap ñ for n, etc
 	    var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
 	    var to   = "aaaaaeeeeiiiioooouuuunc------";
@@ -53,7 +56,7 @@
 	}
 
 
-	
+
 
 	function init(){
 		const tituloBlog = document.getElementById('blog_cat_title')

@@ -30,39 +30,22 @@
                   Blog
                 </a>
               </li>
-            
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Productos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/categorias/serie-automotriz">
-                  <span>Serie Automotriz</span>
-                  <p>Rodamientos  especializados en las aplicaciones automotrices.</p>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/categorias/serie-6000">
-                  <span>Serie 6000</span>
-                  <p>Rodamientos rígidos de bolas.</p>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/categorias/serie-moto">
-                  <span>Serie Moto</span>
-                  <p>Línea de productos especialmente para motocicletas.</p>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/categorias/chumaceras">
-                  <span>Chumaceras</span>
-                  <p>Chumaceras tipo puente y tipo brida</p>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/categorias/serie-cadenas">
-                  <span>Serie Cadenas</span>
-                  <p>Cadenas de excelente calidad.</p>
-                </a>
+                @foreach ($categories as $category)
+                    <a class="dropdown-item" href="/categorias/{{ $category->slug }}">
+                        <span>{{ $category->category }}</span>
+                        <p>{{ $category->description }}</p>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                @endforeach
               </div>
             </li>
-           
+
           </ul>
 
           <!--ul-- class="navbar-nav align-items-center mr-0">

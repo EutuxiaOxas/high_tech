@@ -20,6 +20,5 @@
     {{-- contenido --}}
     @yield('content')
 
-
   </body>
 </html>

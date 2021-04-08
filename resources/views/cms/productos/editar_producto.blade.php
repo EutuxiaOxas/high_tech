@@ -1,5 +1,22 @@
 @extends('cms')
+@php
+    $section = 'productos';
+@endphp
 
+<style>
+    .img_div_rounded{
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-position: center;
+        height: 100px;
+        width: auto;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+    .pointer{
+        cursor: pointer;
+    }
+</style>
 
 @section('content')
 <section>
@@ -32,9 +49,17 @@
             <input class="form-control" type="text" require name="codigo_producto" value="{{$producto->codigo_universal}}" placeholder="Código Universal">
           </div>
           <div class="col-12 col-md-6 mb-4">
-              <h5 style="display: block">Imagen</h5>
-              <input type="file" name="imagen_producto">
+            <div class="row">
+                <div class="col-12 col-md-4 mb-3">
+                    <div class="img_div_rounded" style="background-image: url('{{ asset('/productos_imagen/'. $producto->imagen) }}');"></div>
+                </div>
+                <div class="col-12 col-md-8">
+                    Selecciona la nueva imagen <label class="text-primary pointer" for="imagen"> Aquí</label>
+                    <input type="file" hidden name="imagen_producto" id="imagen">
+                    <div> <strong id="spanImagen"></strong> </div>
+                </div>
             </div>
+          </div>
             <div class="col-12 mb-4">
               <h5>Descripción</h5>
               <textarea class="form-control" require name="descripcion_producto">{{$producto->descripcion}}</textarea>
@@ -246,15 +271,25 @@
               <input type="submit" class="btn btn-primary" value="Actualizar">
             </div>
           </div>
-        
+
       </form>
   </div>
 </section>
 
+
+<script type="text/javascript">
+    const imagenFile = document.getElementById('imagen');
+    imagenFile.onchange = function() {
+        const spanImagen = document.getElementById('spanImagen');
+        const nameImagen = imagenFile.files[0].name;
+        spanImagen.innerHTML = nameImagen;
+    }
+</script>
+
 <script type="text/javascript">
   const catSelect = document.getElementById('categoria_select');
   let formularios = document.querySelectorAll('.params-forms');
-  
+
 
 
 //evento cambio select
@@ -276,7 +311,7 @@
     offForms()
 
     if (target.text === "Serie Automotriz") {
-      
+
       let form = document.querySelector('#auto')
       let inputHidden = document.querySelector('#auto_inputs');
       let formularios = document.querySelectorAll('.auto');
@@ -288,7 +323,7 @@
       })
 
     } else if(target.text === "Serie 6000") {
-      
+
       let form = document.querySelector('#serie6000')
       let inputHidden = document.querySelector('#serie6000_inputs');
       let formularios = document.querySelectorAll('.serie6000');
@@ -362,7 +397,7 @@
   function string_to_slug (str) {
       str = str.replace(/^\s+|\s+$/g, ''); // trim
       str = str.toLowerCase();
-    
+
       // remove accents, swap ñ for n, etc
       var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
       var to   = "aaaaaeeeeiiiioooouuuunc------";
@@ -379,7 +414,7 @@
   }
 
 
-  
+
 
   function init(){
     const tituloBlog = document.getElementById('titulo_producto')

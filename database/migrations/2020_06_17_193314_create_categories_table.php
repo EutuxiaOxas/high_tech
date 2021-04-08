@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('category');
             $table->string('description');
             $table->string('imagen');
-            $table->string('pdf');
+            $table->string('pdf')->nullable();
             $table->string('category_color');
             $table->string('slug');
             $table->timestamps();

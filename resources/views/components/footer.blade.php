@@ -28,11 +28,13 @@
     </div>
     <div class="col col-lg-2">
         <ul class="list-group list-group-minimal">
-        <li class="list-group-item"><a href="">Serie Automotriz</a></li>
-        <li class="list-group-item"><a href="">Serie 6000</a></li>
-        <li class="list-group-item"><a href="">Serie Moto</a></li>
-        <li class="list-group-item"><a href="">Chumaceras</a></li>
-        <li class="list-group-item"><a href="">Serie Cadenas</a></li>
+            @foreach ($categories as $category)
+                <li class="list-group-item">
+                    <a href="/categorias/{{ $category->slug }}">
+                        {{ $category->category }}
+                    </a>
+                </li>
+            @endforeach
         </ul>
     </div>
     <div class="col col-lg-2">
@@ -50,4 +52,3 @@
 </div>
 </footer>
 <!-- / footer 4 -->
-  

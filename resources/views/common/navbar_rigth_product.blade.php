@@ -1,17 +1,19 @@
-<!-- PDF download -->
-<div class="row">
-    <div class="card text-center bg-light">
-        <div class="card-header">
-            Ficha técnica de la serie
+@isset($categoria)
+    <!-- PDF download -->
+    <div class="row">
+        <div class="card text-center bg-light">
+            <div class="card-header">
+                Ficha técnica - <strong>{{ $categoria->category }}</strong>
+            </div>
+            <div class="card-body">
+            <a href="{{ asset('pdfs/'. $categoria->pdf) }}" target="_blank" class="btn btn-primary btn-sm">Descargar</a>
+            </div>
+            <div class="card-footer text-muted">
+            Pdf con todas las caracteristicas de nuestros productos
+            </div>
         </div>
-        <div class="card-body">
-          <a href="#" class="btn btn-primary btn-sm">Desacargar</a>
-        </div>
-        <div class="card-footer text-muted">
-          Pdf con todas las caracteristicas de nuestros productos
-        </div>
-      </div>
-</div>
+    </div>
+@endisset
 <!-- Formulario -->
 <div class="row">
     <div class="col-12 mb-2">
@@ -51,4 +53,4 @@
     <div class="form-group col-12">
         <button class="btn btn-primary btn-sm" style="width:100%;">Suscribirme</button>
     </div>
-</div> 
+</div>

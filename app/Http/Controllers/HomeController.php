@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 use  App\Blog\Article;
-use  App\Blog\Category;
 use  App\Blog\Keyword;
 
 class HomeController extends Controller
@@ -17,7 +17,8 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Article::with(['categoria', 'autor'])->orderBy('id', 'DESC')->paginate(3);
-        return view('home', compact('posts'));
+        $categories = Category::all();
+        return view('home', compact('posts','categories'));
     }
 
     /**
@@ -89,12 +90,14 @@ class HomeController extends Controller
     //Controlador vista Nosotros
     public function nosotros()
     {
-        return view('nosotros');
+        $categories = Category::all();
+        return view('nosotros',compact('categories'));
     }
 
     //Controlador vista Contacto
     public function contacto()
     {
-        return view('contacto');
+        $categories = Category::all();
+        return view('contacto',compact('categories'));
     }
 }

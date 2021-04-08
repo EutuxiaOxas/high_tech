@@ -19,7 +19,7 @@
         min-height: auto;
         max-height: 100%;
         min-width: auto;
-        max-width: 100%;        
+        max-width: 100%;
     }
 
 </style>
@@ -28,7 +28,7 @@
     <div class="col-2 img_product_card">
         <a href="{{route('product', $producto->slug)}}">
             <img class="img_product" src="/productos_imagen/{{$producto->imagen}}" alt="">
-        </a>        
+        </a>
     </div>
     <div class="col-10">
         <div class="row mb-1">
@@ -38,7 +38,8 @@
             <span class="">{{$producto->descripcion}}</span>
         </div>
         <div class="row mb-1">
-            <span class=""><a href="/categorias/{{$producto->categoria->slug}}">{{$producto->categoria->category}}</a></span>
+            <span class="">{{$producto->precio}}</span> $USD
+            {{-- <span class=""><a href="/categorias/{{$producto->categoria->slug}}">{{$producto->categoria->category}}</a></span> --}}
         </div>
     </div>
 </div>

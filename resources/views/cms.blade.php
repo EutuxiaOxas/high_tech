@@ -77,36 +77,50 @@
     <!-- Sidebar -->
     <div class="sidebar">
 
-      <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Usuario: {{auth()->user()->name}}</a>
-        </div>
-      </div> -->
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a class="nav-link active" href="/cms">
+            <a class="nav-link @if ($section == 'dashboard') active @endif" href="/cms">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Dashboard
               </p>
-
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/cms/productos">
-              <p>
+          {{-- <li class="nav-item">
+            <a class="nav-link @if ($section == 'productos') active @endif" href="/cms/productos">
                 <i class="nav-icon fas fa-store"></i>
+                <p>
+                    Productos
+                </p>
+            </a>
+          </li> --}}
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link secciones tienda @if ($section == 'productos') active @endif">
+              <i class="nav-icon fas fa-store"></i>
+              <p>
                 Productos
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/cms/productos/categorias" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Categorías Productos</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/cms/productos" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Productos</p>
+                  </a>
+                </li>
+            </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link secciones tienda">
+            <a href="#" class="nav-link secciones tienda @if ($section == 'blog') active @endif">
               <i class="nav-icon fas fa-pencil-alt"></i>
               <p>
                 Blog
@@ -127,7 +141,7 @@
                 </a>
               </li>
             </ul>
-          </li> 
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

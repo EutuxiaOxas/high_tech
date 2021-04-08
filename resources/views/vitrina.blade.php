@@ -12,10 +12,53 @@
 
 @section('content')
     <section class="container-fluid px-3">
+        {{-- Filtro --}}
         <div class="row mb-1">
             <div class="col-12">
+                <span>
+                    <a href="{{route('products')}}">
+                        Productos
+                    </a>
+                    @if (isset($slug))
+                    ->
+                        @switch($slug)
+                            @case('serie-automotriz')
+                            <a href="/categorias/serie-automotriz">
+                                Serie Automotriz
+                            </a>
+                                @break
+                            @case('serie-6000')
+                            <a href="/categorias/serie-6000">
+                                Serie 6000
+                            </a>
+                                @break
+                            @case('serie-moto')
+                            <a href="/categorias/serie-moto">
+                                Serie Moto
+                            </a>
+                                @break
+                            @case('chumaceras')
+                            <a href="/categorias/chumaceras">
+                                Chumaceras
+                            </a>
+                                @break
+                            @case('serie-cadenas')
+                                <a href="/categorias/serie-cadenas">
+                                    Serie Cadenas
+                                </a>
+                                @break
+                            @default
+
+                        @endswitch
+
+                    @else
+
+                    @endif
+                </span>
+            </div>
+            <div class="col-12 mt-3">
                 <!-- Search Input -->
-                <form action="{{route('vitrina')}}">
+                <form action="{{route('products.search')}}">
                     <div class="row mb-1">
 
                         <div class="col-7">
@@ -25,30 +68,57 @@
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                @if ($slug == 'serie-automotriz')
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>Rueda Delantera</option>
-                                        <option>Rueda Delantera Interna</option>
-                                        <option>Rueda Delantera Externa</option>
-                                        <option>Rueda Trasera</option>
-                                        <option>Rueda Trasera Interna</option>
-                                        <option>Rueda Trasera Externa</option>
-                                    </select>
-                                @elseif($slug == 'serie-6000')
-                                @elseif($slug == 'serie-moto')
-                                @elseif($slug == 'chumaceras')
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>Tipo Brida</option>
-                                        <option>Tipo Puente</option>
-                                        <option>Tipo Tensora</option>
-                                    </select>
-                                @elseif($slug == 'serie-cadenas')
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>Cadena Simple</option>
-                                        <option>Cadena Doble</option>
-                                        <option>Cadena Triple</option>
-                                    </select>
+                                @if(isset($slug))
+                                    @if ($slug == 'serie-automotriz')
+                                        <select class="form-control" name="rueda">
+                                            @foreach ($posicion_rueda as $posicion)
+                                                <option value="{{ $posicion->id }}">{{ $posicion->posicion }}</option>
+                                            @endforeach
+                                        </select>
+                                        <input type="hidden" name="auto" value="auto">
+                                        <input type="hidden" name="category_id" value="1">
+                                    @elseif($slug == 'serie-6000')
+                                        <select class="form-control" name="tipo_sello">
+                                            @foreach ($tipo_sello as $sello)
+                                                <option value="{{ $sello->id }}">{{ $sello->tipo_sello }} </option>
+                                            @endforeach
+                                        </select>
+                                        <input type="hidden" name="6000" value="6000">
+                                        <input type="hidden" name="category_id" value="2">
+                                    @elseif($slug == 'serie-moto')
+                                        <select class="form-control" name="tipo_sello">
+                                            @foreach ($tipo_sello as $sello)
+                                                <option value="{{ $sello->id }}">{{ $sello->tipo_sello }} </option>
+                                            @endforeach
+                                        </select>
+                                        <input type="hidden" name="moto" value="moto">
+                                        <input type="hidden" name="category_id" value="3">
+                                    @elseif($slug == 'chumaceras')
+                                        <select class="form-control" name="tipo_brida">
+                                            @foreach ($tipo_chum as $chum)
+                                                <option value="{{ $chum->id }}">{{ $chum->tipo_chum }}</option>
+                                            @endforeach
+                                        </select>
+                                        <input type="hidden" name="chumaceras" value="chumaceras">
+                                        <input type="hidden" name="category_id" value="4">
+                                    @elseif($slug == 'serie-cadenas')
+                                        <select class="form-control" name="tipo_cadena">
+                                            @foreach ($tipo_cadena as $tipo)
+                                                <option value="{{ $tipo->id }}">{{ $tipo->tipo_cadena_texto }}</option>
+                                            @endforeach
+                                        </select>
+                                        <input type="hidden" name="cadenas" value="cadenas">
+                                        <input type="hidden" name="category_id" value="5">
+                                    @endif
+                                @else
+                                <select class="form-control" name="category_id">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->category }}</option>
+                                    @endforeach
+                                </select>
+                                <input type="hidden" name="no_slug" value="1">
                                 @endif
+
                             </div>
                         </div>
                         <div class="col-2">
@@ -58,59 +128,46 @@
                 </form>
             </div>
         </div>
-        <div class="row">
+
+        {{-- Main --}}
+        <main class="row">
             <!-- Otras Categorias -->
             <div class="col-md-2">
-                <div class="card card-minimal mb-2">
-                    <a href="/categorias/serie-automotriz" class="card-img-container">
-                        <img class="card-img" src="/imagenes/series_logos/automotriz.png" alt="Card image cap">
-                    </a>
-                </div>
-                <div class="card card-minimal mb-2">
-                    <a href="/categorias/serie-6000" class="card-img-container">
-                        <img class="card-img" src="/imagenes/series_logos/6000.png" alt="Card image cap">
-                    </a>
-                </div>
-                <div class="card card-minimal mb-2">
-                    <a href="/categorias/serie-moto" class="card-img-container">
-                        <img class="card-img" src="/imagenes/series_logos/moto.png" alt="Card image cap">
-                    </a>
-                </div>
-                <div class="card card-minimal mb-2">
-                    <a href="/categorias/chumaceras" class="card-img-container">
-                        <img class="card-img" src="/imagenes/series_logos/chumacera.png" alt="Card image cap">
-                    </a>
-                </div>
-                <div class="card card-minimal mb-2">
-                    <a href="/categorias/serie-cadenas" class="card-img-container">
-                        <img class="card-img" src="/imagenes/series_logos/cadenas.png" alt="Card image cap">
-                    </a>
-                </div>
+                @foreach ($categories as $category)
+                    <div class="card card-minimal mb-2">
+                        <a href="/categorias/{{ $category->slug }}" class="card-img-container">
+                            <img class="card-img" src="/imagenes/series_logos/{{ $category->imagen }}" alt="{{ $category->category }}">
+                        </a>
+                    </div>
+                @endforeach
             </div>
             <div class="col-md-7">
                 {{-- Cantidad de productos encontrados --}}
                 <div class="row mb-1">
-                    <strong>( 34 )</strong> Productos encontrados
+                    <strong>( {{ $total_products }} )</strong> Productos encontrados
+                    @isset ($search)
+                        para la busqueda <span>{{ $search }}</span>
+                    @endisset
                 </div>
                 <!-- Listado de Productos -->
-                <div class="row">
+                <div class="row px-2">
                     @foreach($productos as $producto)
                         @include('common.card_product')
                     @endforeach
                 </div>
                 {{$productos->appends(request()->input())->links()}}
                 <!-- Productos relacionados -->
-                <div class="row">
+                {{-- <div class="row">
                     <h5>Productos Realcionados</h5>
                     @foreach($other_products as $producto)
                         @include('common.card_product')
                     @endforeach
-                </div>
+                </div> --}}
             </div>
             <div class="col-md-3">
                 @include('common.navbar_rigth_product')
             </div>
-        </div>
+        </main>
         <div class="row justify-content-center">
             <div class="col-10">
                 <!-- CTA -->

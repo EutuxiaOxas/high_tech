@@ -24,7 +24,7 @@
               <div class="col-lg-8 align-self-center text-white text-shadow" data-swiper-parallax="-100%">
                 <span class="eyebrow text-white mb-1">Rodamientos</span>
                 <h1 class="display-2"><b>HIGH TECH</b><br>BEARINGS</h1>
-                <a href="{{route('vitrina')}}" class="btn btn-white btn-rounded px-5">Ver Productos</a>
+                <a href="{{route('products')}}" class="btn btn-white btn-rounded px-5">Ver Productos</a>
               </div>
               <div class="col-lg-4 align-self-end">
                 <div class="row gutter-1">

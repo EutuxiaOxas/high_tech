@@ -1,11 +1,18 @@
 @extends('cms')
 
-
+@php
+    $section = 'productos';
+@endphp
+<style>
+    .pointer{
+        cursor: pointer;
+    }
+</style>
 @section('content')
 <section>
 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Crear Servicios</h1>
+    <h1 class="h2">Crear Producto</h1>
   </div>
 
 
@@ -24,7 +31,7 @@
             <input class="form-control" id="titulo_producto" type="text" maxlength="191" required name="titulo_producto" value="" placeholder="Titulo">
           </div>
           <div class="col-12 col-md-6 mb-4">
-            <h5>Precio</h5>
+            <h5>Precio - <b>$USD</b> </h5>
             <input class="form-control" type="number" required name="precio_producto" value="" placeholder="Precio">
           </div>
           <div class="col-12 col-md-6 mb-4">
@@ -32,8 +39,10 @@
             <input class="form-control" type="text" required name="codigo_producto" value="" placeholder="Código Universal">
           </div>
           <div class="col-12 col-md-6 mb-4">
-              <h5 style="display: block">Imagen</h5>
-              <input type="file" required name="imagen_producto">
+              <h5>Imagen del producto</h5>
+                Selecciona la nueva imagen <label class="text-primary pointer" for="imagen"> Aquí</label>
+                <input type="file" hidden name="imagen_producto" id="imagen">
+                <div> <strong id="spanImagen"></strong> </div>
             </div>
             <div class="col-12 mb-4">
               <h5>Descripción</h5>
@@ -44,12 +53,11 @@
               <select name="categoria_producto" class="form-control form-control" id="categoria_select" required>
                 <option>Selecciona una Categoría</option>
                 @foreach($categorias as $categoria)
-                <option value="{{$categoria->id}}">{{$categoria->category}}</option>
+                    <option value="{{$categoria->id}}">{{$categoria->category}}</option>
                 @endforeach
               </select>
             </div>
           </div>
-
 
           <!-- Chumacera formulario -->
           <div class="params-forms" id="chumacera" style="display: none;">
@@ -91,10 +99,7 @@
             </div>
           </div>
 
-
           <!-- Cadena formulario -->
-
-
           <div class="params-forms" id="cadena" style="display: none;">
             <input type="hidden" class="input-hidden" name="cadena_info" value="" id="cadena_inputs">
             <div class="row">
@@ -124,10 +129,7 @@
             </div>
           </div>
 
-
           <!-- Moto  formulario -->
-
-
           <div class="params-forms" id="moto" style="display: none;">
             <input type="hidden" class="input-hidden" name="moto_info" value="" id="moto_inputs">
             <div class="row">
@@ -158,9 +160,7 @@
             </div>
           </div>
 
-
           <!-- Serie6000  formulario -->
-
           <div class="params-forms" id="serie6000" style="display: none;">
             <input type="hidden" class="input-hidden" name="serie6000_info" value="" id="serie6000_inputs">
             <div class="row">
@@ -196,9 +196,7 @@
             </div>
           </div>
 
-
           <!-- Auto  formulario -->
-
           <div class="params-forms" id="auto" style="display: none;">
             <input type="hidden" class="input-hidden" name="auto_info" value="" id="auto_inputs">
             <div class="row">
@@ -239,16 +237,28 @@
             </div>
           </div>
 
-
           <div class="row">
             <div class="col-12 mb-5">
-              <input type="submit" class="btn btn-primary" value="Crear">
+              <input type="submit" class="btn btn-primary px-5" value="Crear">
+              <a class="btn btn-danger px-5" href="/cms/productos">Cancelar</a>
             </div>
           </div>
 
       </form>
   </div>
 </section>
+
+<script type="text/javascript">
+    // Imagen input
+    const imagenFile = document.getElementById('imagen');
+    imagenFile.onchange = function() {
+        const spanImagen = document.getElementById('spanImagen');
+        const nameImagen = imagenFile.files[0].name;
+        spanImagen.innerHTML = nameImagen;
+    }
+
+
+</script>
 
 <script type="text/javascript">
   const catSelect = document.getElementById('categoria_select');

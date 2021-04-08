@@ -1,4 +1,7 @@
 @extends('cms')
+@php
+    $section = 'blog';
+@endphp
 
 
 @section('content')
@@ -17,7 +20,7 @@
 			<input type="hidden" name="article_author" value="{{auth()->user()->id}}">
 			<!-- SLUG DEL ARTICULO -->
 			<input type="hidden" id="blog_slug" value="" name="slug">
-			
+
 			<div class="form-group">
 				<h5>Titulo</h5>
 				<input type="text" id="blog_title" name="articulo_title" maxlength="191" required placeholder="Titulo..." class="form-control">
@@ -48,7 +51,7 @@
 				<input type="file" name="article_picture">
 			</div>
 			<input type="submit" class="btn btn-primary mb-4" value="Crear Articulo">
-			
+
 		</form>
 	</div>
 </section>
@@ -59,7 +62,7 @@
 	function string_to_slug (str) {
 	    str = str.replace(/^\s+|\s+$/g, ''); // trim
 	    str = str.toLowerCase();
-	  
+
 	    // remove accents, swap ñ for n, etc
 	    var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
 	    var to   = "aaaaaeeeeiiiioooouuuunc------";
@@ -76,7 +79,7 @@
 	}
 
 
-	
+
 
 	function init(){
 		const tituloBlog = document.getElementById('blog_title')
