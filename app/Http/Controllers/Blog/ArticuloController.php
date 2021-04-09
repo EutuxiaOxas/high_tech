@@ -67,7 +67,7 @@ class ArticuloController extends Controller
                 if($moved){
                     $articulo->picture = $fileName;
                     $articulo->save();
-                    
+
 
 
                     $keywords = $request->articulo_keywords;
@@ -75,12 +75,12 @@ class ArticuloController extends Controller
 
                     $keywords = [];
 
-                    foreach ($tags as $tag) 
+                    foreach ($tags as $tag)
                     {
                         $verificar = Keyword::where('keyword', $tag)->first();
 
                         if(isset($verificar))
-                        {  
+                        {
                             $keywords[] = $verificar->id;
                         }else {
                             $keyword = Keyword::create([
@@ -92,8 +92,6 @@ class ArticuloController extends Controller
                     }
 
                     $articulo->keywords()->sync($keywords);
-
-                    return back()->with('message', 'Articulo creado con éxito');
                 }
             }
 
@@ -101,6 +99,8 @@ class ArticuloController extends Controller
         } else {
             return back()->with('message', 'no se pudo crear el articulo');
         }
+        $articulos = Article::all();
+        return redirect()->route('cms.blog.show', compact('articulos'))->with('info', 'Artículo creado exitosamente!');
     }
 
     /**
@@ -111,7 +111,7 @@ class ArticuloController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
@@ -142,7 +142,7 @@ class ArticuloController extends Controller
 
         $articulo->title = $request->articulo_title;
         $articulo->content = $request->articulo_content;
-        $articulo->keywords = $request->articulo_keywords;
+        // $articulo->keywords = $request->articulo_keywords;
         $articulo->date = $request->articulo_date;
         $articulo->category_id = $request->articulo_categoria;
 
@@ -156,7 +156,7 @@ class ArticuloController extends Controller
                     $deleted = File::delete($fullpath);
                 }
             }
-            
+
             //verificacion de que se haya eliminado la imagen o que no exista el en el campo
             if(isset($deleted) || $articulo->picture === null){
 
@@ -165,11 +165,34 @@ class ArticuloController extends Controller
                     $path = public_path() . '/blog_articulos_imagen';
                     $fileName = uniqid() . $file->getClientOriginalName();
                     $moved = $file->move($path, $fileName);
-            
+
                     //verificamos que la imagen haya sido movida y guardamos la ruta
                     if($moved){
                         $articulo->picture = $fileName;
                         $articulo->save();
+
+                        $keywords = $request->articulo_keywords;
+                        $tags = explode(",", $keywords);
+
+                        $keywords = [];
+
+                        foreach ($tags as $tag)
+                        {
+                            $verificar = Keyword::where('keyword', $tag)->first();
+
+                            if(isset($verificar))
+                            {
+                                $keywords[] = $verificar->id;
+                            }else {
+                                $keyword = Keyword::create([
+                                    'keyword' => $tag,
+                                ]);
+
+                                $keywords[] = $keyword->id;
+                            }
+                        }
+
+                        $articulo->keywords()->sync($keywords);
                     }
 
                 } else {
@@ -177,10 +200,11 @@ class ArticuloController extends Controller
                 }
             }
         } else {
-            $articulo->save();   
+            $articulo->save();
         }
 
-        return back()->with('message', 'Articulo actualizado con éxito');
+        $articulos = Article::all();
+        return redirect()->route('cms.blog.show', compact('articulos'))->with('info', 'Artículo actualizado exitosamente!');
     }
 
     /**
@@ -205,7 +229,9 @@ class ArticuloController extends Controller
         if(isset($deleted) || $articulo->picture === null)
         {
             $articulo->delete();
-            return back()->with('message', 'Articulo eliminado correctamente');
+            $articulos = Article::all();
+            return redirect()->route('cms.blog.show', compact('articulos'))->with('info', 'Artículo eliminado exitosamente!');
+
         }
     }
 }

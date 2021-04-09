@@ -30,7 +30,9 @@
 				<h5>Imagen</h5>
 				<input type="file" name="categoria_imagen">
 			</div>
+            @can('cms.blog.categories.update')
 			<input type="submit" class="btn btn-primary " value="Actualizar categoria">
+            @endcan
 		</form>
 	</div>
 </section>

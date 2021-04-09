@@ -6,38 +6,50 @@
 
 @section('content')
 <section class="seccion-crear-publicidad-cms">
+    <div class="py-1"></div>
+    @if(session('info'))
+    <div class="alert alert-success alert-dismissible my-3" role="alert">
+      <strong>{{session('info')}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+  @endif
+    @if(session('message'))
+    <div class="alert alert-danger alert-dismissible my-3" role="alert">
+        <strong>{{session('message')}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
 	<div class="container-fluid">
 		<h2 class="my-">
 			Crear Articulo
 		</h2>
-		@if(session('message'))
-		  <div class="alert alert-success" role="alert">
-		    {{session('message')}}
-		  </div>
-		@endif
-		<form action="/cms/blog/guardar/articulo" class="col-12" method="POST" enctype="multipart/form-data">
+		<form action="/cms/blog/guardar/articulo" class="row" method="POST" enctype="multipart/form-data">
 			@csrf
 			<input type="hidden" name="article_author" value="{{auth()->user()->id}}">
 			<!-- SLUG DEL ARTICULO -->
 			<input type="hidden" id="blog_slug" value="" name="slug">
 
-			<div class="form-group">
+			<div class="form-group col-12">
 				<h5>Titulo</h5>
 				<input type="text" id="blog_title" name="articulo_title" maxlength="191" required placeholder="Titulo..." class="form-control">
 			</div>
-			<div class="form-group">
+			<div class="form-group col-12">
 				<h5>Contenido</h5>
 				<textarea class="ckeditor" id="content" required name="articulo_content"></textarea>
 			</div>
-			<div class="form-group">
+			<div class="form-group col-12">
 				<h5>Keywords</h5>
 				<input type="text" name="articulo_keywords" id="keywords_article" required maxlength="191" placeholder="Keywords..." class="form-control">
 			</div>
-			<div class="form-group">
+			<div class="form-group col-12 col-md-6">
 				<h5>Fecha</h5>
 				<input type="date" name="articulo_date" required placeholder="Fecha..." class="form-control">
 			</div>
-			<div class="form-group">
+			<div class="form-group col-12 col-md-6">
 				<h5>Categoria</h5>
 				<select class="form-control" required name="articulo_categoria">
 					<option>Seleccion una categoria</option>
@@ -46,11 +58,14 @@
 					@endforeach
 				</select>
 			</div>
-			<div class="form-group">
+			<div class="form-group col-12">
 				<h5>Imagen</h5>
 				<input type="file" name="article_picture">
 			</div>
+
+            @can('cms.blog.store')
 			<input type="submit" class="btn btn-primary mb-4" value="Crear Articulo">
+            @endcan
 
 		</form>
 	</div>

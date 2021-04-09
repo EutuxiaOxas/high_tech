@@ -88,6 +88,18 @@
               </p>
             </a>
           </li>
+          @can('cms.users.show')
+
+          <li class="nav-item">
+            <a class="nav-link @if ($section == 'usuarios') active @endif" href="{{ route('cms.users.show') }}">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Usuarios
+              </p>
+            </a>
+          </li>
+
+          @endcan
           {{-- <li class="nav-item">
             <a class="nav-link @if ($section == 'productos') active @endif" href="/cms/productos">
                 <i class="nav-icon fas fa-store"></i>
@@ -96,6 +108,7 @@
                 </p>
             </a>
           </li> --}}
+          @can('cms.products.show')
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link secciones tienda @if ($section == 'productos') active @endif">
               <i class="nav-icon fas fa-store"></i>
@@ -105,20 +118,26 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+                @can('cms.products.categories.show')
                 <li class="nav-item">
                     <a href="/cms/productos/categorias" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Categorías Productos</p>
                     </a>
                 </li>
+                @endcan
+                @can('cms.products.show')
                 <li class="nav-item">
                   <a href="/cms/productos" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Productos</p>
                   </a>
                 </li>
+                @endcan
             </ul>
           </li>
+          @endcan
+          @can('cms.blog.show')
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link secciones tienda @if ($section == 'blog') active @endif">
               <i class="nav-icon fas fa-pencil-alt"></i>
@@ -128,20 +147,25 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/cms/blog/categorias" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Categorias Blog</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/cms/blog/articulos" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Articulos Blog</p>
-                </a>
-              </li>
+                @can('cms.blog.categories.show')
+                <li class="nav-item">
+                  <a href="/cms/blog/categorias" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Categorias Blog</p>
+                  </a>
+                </li>
+                @endcan
+                @can('cms.blog.show')
+                <li class="nav-item">
+                    <a href="/cms/blog/articulos" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Articulos Blog</p>
+                    </a>
+                </li>
+                @endcan
             </ul>
           </li>
+          @endcan
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

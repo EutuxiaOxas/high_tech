@@ -62,10 +62,11 @@
             </div>
         </div>
 
-
         <div class="row">
             <div class="col-12 mb-5">
+                @can('cms.products.categories.update')
                 <input type="submit" class="btn btn-primary" value="Actualizar">
+                @endcan
             </div>
         </div>
 

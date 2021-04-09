@@ -16,12 +16,24 @@
 
 @section('content')
 <section>
+    <div class="py-1"></div>
 
-  @if(session('message'))
-    <div class="alert alert-danger" role="alert">
-      {{session('message')}}
+    @if(session('info'))
+    <div class="alert alert-success alert-dismissible my-3" role="alert">
+      <strong>{{session('info')}}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
     </div>
   @endif
+@if(session('message'))
+  <div class="alert alert-danger alert-dismissible my-3" role="alert">
+    <strong>{{session('message')}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Categorías de productos</h1>
@@ -57,8 +69,9 @@
                 @endisset
             </td>
             <td class="d-flex">
-              <a href="/cms/editar/producto/category/{{$category->id}}"class="btn btn-sm btn-outline-primary mr-2 editar">Editar</a>
-
+                @can('cms.products.categories.edit')
+                <a href="/cms/editar/producto/category/{{$category->id}}"class="btn btn-sm btn-outline-primary mr-2 editar">Editar</a>
+                @endcan
             </td>
           </tr>
         @endforeach

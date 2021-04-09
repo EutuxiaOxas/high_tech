@@ -41,13 +41,14 @@ class CategoriesController extends Controller
     	        if($moved){
     	            $categoria->picture = $fileName;
     	            $categoria->save();
-
-    	            return back()->with('message', 'Categoria creada con éxito');
     	        }
 
     	    } else {
     	        return back()->with('message', 'no se pudo guardar imagen');
     	    }
+
+            $categorias = BlogCategory::all();
+            return redirect()->route('cms.blog.categories.show', compact('categorias'))->with('info', 'Categoría creada exitosamente!');
     }
 
     public function editarCategoria($id)
@@ -77,7 +78,7 @@ class CategoriesController extends Controller
                     $deleted = File::delete($fullpath);
                 }
             }
-            
+
             //verificacion de que se haya eliminado la imagen o que no exista el en el campo
             if(isset($deleted) || $categoria->picture === null){
 
@@ -86,7 +87,7 @@ class CategoriesController extends Controller
                     $path = public_path() . '/blog_categorias_imagen';
                     $fileName = uniqid() . $file->getClientOriginalName();
                     $moved = $file->move($path, $fileName);
-            
+
                     //verificamos que la imagen haya sido movida y guardamos la ruta
                     if($moved){
                         $categoria->picture = $fileName;
@@ -100,10 +101,10 @@ class CategoriesController extends Controller
             }
         } else {
             $categoria->save();
-            
-        }
 
-        return back()->with('message', 'Categoria actualizada correctamente');
+        }
+        $categorias = BlogCategory::all();
+        return redirect()->route('cms.blog.categories.show', compact('categorias'))->with('info', 'Categoría actualizada exitosamente!');
     }
 
     public function eliminarCategoria($id)
@@ -122,7 +123,8 @@ class CategoriesController extends Controller
     	if(isset($deleted) || $categoria->picture === null)
     	{
     		$categoria->delete();
-    		return back()->with('message', 'Categoria eliminada correctamente');
+            $categorias = BlogCategory::all();
+            return redirect()->route('cms.blog.categories.show', compact('categorias'))->with('info', 'Categoría eliminada exitosamente!');
     	}
     }
 }

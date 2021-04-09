@@ -123,7 +123,7 @@ class ProductController extends Controller
         }
 
         $categorias = Category::all();
-    	return view('cms.productos.categorias.index')->with(compact('categorias'));
+        return redirect()->route('cms.products.categories.show', compact('categorias'))->with('info', 'La categoría se actualizó exitosamente!');
     }
 
     public function crearProducto(){
@@ -242,8 +242,9 @@ class ProductController extends Controller
             ]);
         }
 
+        $productos = Product::all();
 
-        return back()->with('message', 'Producto y Parametro Guardado');
+        return redirect()->route('cms.products.show', compact('productos'))->with('info', 'Producto creado exitosamente!');
 
     }
 
@@ -385,13 +386,16 @@ class ProductController extends Controller
         }
 
         $productos = Product::all();
-    	return view('cms.productos.productos')->with(compact('productos'));
+        $productos = Product::all();
 
+        return redirect()->route('cms.products.show', compact('productos'))->with('info', 'Producto editado exitosamente!');
 
     }
 
 
     public function eliminarProducto(Request $request, $id){
+        $productos = Product::all();
+
         $producto = Product::find($id);
         $categoria = $producto->categoria->category;
 
@@ -406,7 +410,7 @@ class ProductController extends Controller
         }
         if($deleted || $producto->imagen === null){
             $producto->delete();
-            return back()->with('message','Eliminado con éxito');
+            return redirect()->route('cms.products.show', compact('productos'))->with('info', 'Producto eliminado exitosamente!');
         } else {
             return back()->with('message','No se pudo eliminar el servicio');
         }

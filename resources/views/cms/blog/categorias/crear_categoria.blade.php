@@ -30,7 +30,9 @@
 				<h5>Imagen</h5>
 				<input type="file" required name="categoria_imagen">
 			</div>
+            @can('cms.blog.categories.store')
 			<input type="submit" class="btn btn-primary " value="Crear Categoria">
+            @endcan
 		</form>
 	</div>
 </section>

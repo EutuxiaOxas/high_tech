@@ -1,7 +1,9 @@
 @extends('cms')
+
 @php
-    $section = 'productos';
+    $section = 'usuarios';
 @endphp
+
 <style>
     .img_div_rounded{
         background-repeat: no-repeat;
@@ -15,73 +17,62 @@
 </style>
 
 @section('content')
+<div class="pt-1"></div>
 <section>
-    <div class="py-1"></div>
 
     @if(session('info'))
-    <div class="alert alert-success alert-dismissible my-3" role="alert">
-      <strong>{{session('info')}}</strong>
+      <div class="alert alert-success alert-dismissible my-3" role="alert">
+        <strong>{{session('info')}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    @endif
+  @if(session('message'))
+    <div class="alert alert-danger alert-dismissible my-3" role="alert">
+      <strong>{{session('message')}}</strong>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   @endif
-    @if(session('message'))
-    <div class="alert alert-danger alert-dismissible my-3" role="alert">
-        <strong>{{session('message')}}</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    @endif
 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Productos</h1>
+    <h1 class="h2">Usuarios</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2">
-          @can('cms.products.create')
-          <a href="/cms/crear/productos" type="button" class="btn btn-sm btn-primary px-5">Agregar Producto</a>
-          @endcan
+        <a href="{{ route('cms.users.create') }}" type="button" class="btn btn-sm btn-primary px-5">Crear Usuario</a>
       </div>
     </div>
   </div>
+
 
   <div class="table-responsive">
     <table class="table table-striped table-sm">
       <thead>
         <tr>
           <th>#</th>
-          <th>Imagen</th>
-          <th>Titulo</th>
-          <th>Descripción</th>
-          <th>Categoría</th>
-          <th>Precio $</th>
-          <th>codigo universal</th>
-          <th>Acciones</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          {{-- <th>Fecha</th> --}}
+          <th>acciones</th>
         </tr>
       </thead>
       <tbody>
-        @foreach($productos as $producto)
+        @foreach($users as $user)
           <tr>
-            <td>{{$producto->id}}</td>
-            <td>
-                <div class="img_div_rounded" style="background-image: url('{{ asset('productos_imagen/'. $producto->imagen) }}');"></div>
-            </td>
-            <td> <a class="text-primary" target="_blank" href="{{route('product', $producto->slug)}}">{{$producto->titulo}}</a></td>
-            <td>{{$producto->descripcion}}</td>
-            <td>{{$producto->categoria->category}}</td>
-            <td>{{$producto->precio }}</td>
-            <td>{{$producto->codigo_universal }}</td>
+            <td>{{$user->id}}</td>
+            <td>{{$user->name}}</td>
+            <td>{{$user->email}}</td>
+            {{-- <td>{{$user->date}}</td> --}}
             <td class="d-flex">
-                @can('cms.products.edit')
-                <a href="/cms/editar/producto/{{$producto->id}}">
+                @if ($user->id != 1)
+                <a href="{{ route('cms.users.edit', $user->id ) }}">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13.75 7.0025L10 3.2525L0.15 13.1025C0.0500001 13.2025 0 13.3225 0 13.4625V16.5025C0 16.7825 0.22 17.0025 0.5 17.0025H3.54C3.67 17.0025 3.8 16.9525 3.89 16.8525L13.75 7.0025ZM16.71 4.0425C17.1 3.6525 17.1 3.0225 16.71 2.6325L14.37 0.2925C13.98 -0.0975 13.35 -0.0975 12.96 0.2925L11 2.2525L14.75 6.0025L16.71 4.0425Z" fill="#226F87"/>
                     </svg>
                 </a>
-                @endcan
-                @can('cms.products.destroy')
-                <form action="/cms/eliminar/producto/{{$producto->id}}" method="POST">
+                <form action="{{ route('cms.users.destroy', $user->id ) }}" method="POST">
                   @csrf
                   @method('DELETE')
                   <button class="btn p-0 ml-3" value="Eliminar" type="submit">
@@ -90,7 +81,7 @@
                       </svg>
                   </button>
                 </form>
-                @endcan
+                @endif
             </td>
           </tr>
         @endforeach

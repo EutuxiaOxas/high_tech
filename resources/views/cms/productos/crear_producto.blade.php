@@ -239,7 +239,9 @@
 
           <div class="row">
             <div class="col-12 mb-5">
-              <input type="submit" class="btn btn-primary px-5" value="Crear">
+                @can('cms.products.store')
+                <input type="submit" class="btn btn-primary px-5" value="Crear">
+                @endcan
               <a class="btn btn-danger px-5" href="/cms/productos">Cancelar</a>
             </div>
           </div>

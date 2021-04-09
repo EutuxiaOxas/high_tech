@@ -35,36 +35,44 @@ Route::get('/test', function(){
 
 Route::middleware('auth')->group(function () {
 
-	Route::get('/cms', 'CmsController@index');
+	Route::get('/cms', 'CmsController@index')->middleware('can:cms.index')->name('cms.index');
+
+    /* ----------  RUTA USUARIOS ---------*/
+	Route::get('/cms/users', 'Admin\UserController@index')->middleware('can:cms.users.show')->name('cms.users.show');
+	Route::get('/cms/users/user', 'Admin\UserController@create')->middleware('can:cms.users.create')->name('cms.users.create');
+	Route::post('/cms/users/user', 'Admin\UserController@store')->middleware('can:cms.users.store')->name('cms.users.store');
+	Route::get('/cms/users/user/{id}', 'Admin\UserController@edit')->middleware('can:cms.users.edit')->name('cms.users.edit');
+	Route::post('/cms/users/user/{id}', 'Admin\UserController@update')->middleware('can:cms.users.update')->name('cms.users.update');
+	Route::delete('/cms/users/user/{id}', 'Admin\UserController@destroy')->middleware('can:cms.users.destroy')->name('cms.users.destroy');
 
     /* ----------  RUTA CATEGORIAS PRODUCTOS CONTROLLADOR ---------*/
-    Route::get('/cms/productos/categorias', 'ProductController@showCategorias');
-    Route::get('/cms/editar/producto/category/{id}', 'ProductController@editarCategory');
-    Route::post('/cms/actualizar/product/category/{id}', 'ProductController@actualizarCategory');
+    Route::get('/cms/productos/categorias', 'ProductController@showCategorias')->middleware('can:cms.products.categories.show')->name('cms.products.categories.show');
+    Route::get('/cms/editar/producto/category/{id}', 'ProductController@editarCategory')->middleware('can:cms.products.categories.edit')->name('cms.products.categories.edit');
+    Route::post('/cms/actualizar/product/category/{id}', 'ProductController@actualizarCategory')->middleware('can:cms.products.categories.update')->name('cms.products.categories.update');
 
 	/* ----------  RUTA PRODUCTOS CONTROLLADOR ---------*/
-	Route::get('/cms/productos', 'ProductController@index');
-	Route::get('/cms/crear/productos', 'ProductController@crearProducto');
-	Route::post('/cms/guardar/producto', 'ProductController@guardarProducto');
-	Route::get('/cms/editar/producto/{id}', 'ProductController@editarProducto');
-	Route::post('/cms/actualizar/producto/{id}', 'ProductController@actualizarProducto');
-	Route::delete('/cms/eliminar/producto/{id}', 'ProductController@eliminarProducto');
+	Route::get('/cms/productos', 'ProductController@index')->middleware('can:cms.products.show')->name('cms.products.show');
+	Route::get('/cms/crear/productos', 'ProductController@crearProducto')->middleware('can:cms.products.create')->name('cms.products.create');
+	Route::post('/cms/guardar/producto', 'ProductController@guardarProducto')->middleware('can:cms.products.store')->name('cms.products.store');
+	Route::get('/cms/editar/producto/{id}', 'ProductController@editarProducto')->middleware('can:cms.products.edit')->name('cms.products.edit');
+	Route::post('/cms/actualizar/producto/{id}', 'ProductController@actualizarProducto')->middleware('can:cms.products.update')->name('cms.products.update');
+	Route::delete('/cms/eliminar/producto/{id}', 'ProductController@eliminarProducto')->middleware('can:cms.products.destroy')->name('cms.products.destroy');
 
 	/* ----------  RUTA CATEGROIAS BLOG CONTROLLADOR ---------*/
-	Route::get('/cms/blog/categorias', 'Blog\CategoriesController@index');
-	Route::get('/cms/blog/crear/categoria', 'Blog\CategoriesController@crearCategoria');
-	Route::post('/cms/blog/guardar/categoria', 'Blog\CategoriesController@guardarCategoria');
-	Route::get('/cms/blog/editar/categoria/{id}', 'Blog\CategoriesController@editarCategoria');
-	Route::post('/cms/blog/actualizar/categoria/{id}', 'Blog\CategoriesController@actualizarCategoria');
-	Route::delete('/cms/blog/eliminar/categoria/{id}', 'Blog\CategoriesController@eliminarCategoria');
+	Route::get('/cms/blog/categorias', 'Blog\CategoriesController@index')->middleware('can:cms.blog.categories.show')->name('cms.blog.categories.show');
+	Route::get('/cms/blog/crear/categoria', 'Blog\CategoriesController@crearCategoria')->middleware('can:cms.blog.categories.create')->name('cms.blog.categories.create');
+	Route::post('/cms/blog/guardar/categoria', 'Blog\CategoriesController@guardarCategoria')->middleware('can:cms.blog.categories.store')->name('cms.blog.categories.store');
+	Route::get('/cms/blog/editar/categoria/{id}', 'Blog\CategoriesController@editarCategoria')->middleware('can:cms.blog.categories.edit')->name('cms.blog.categories.edit');
+	Route::post('/cms/blog/actualizar/categoria/{id}', 'Blog\CategoriesController@actualizarCategoria')->middleware('can:cms.blog.categories.update')->name('cms.blog.categories.update');
+	Route::delete('/cms/blog/eliminar/categoria/{id}', 'Blog\CategoriesController@eliminarCategoria')->middleware('can:cms.blog.categories.destroy')->name('cms.blog.categories.destroy');
 
 	/* ----------  RUTA ARTICULOS BLOG CONTROLLADOR ---------*/
-	Route::get('/cms/blog/articulos', 'Blog\ArticuloController@index');
-	Route::get('/cms/blog/crear/articulos', 'Blog\ArticuloController@create');
-	Route::post('/cms/blog/guardar/articulo', 'Blog\ArticuloController@store');
-	Route::get('/cms/blog/editar/articulo/{id}', 'Blog\ArticuloController@edit');
-	Route::post('/cms/blog/actualizar/articulo/{id}', 'Blog\ArticuloController@update');
-	Route::delete('/cms/blog/eliminar/articulo/{id}', 'Blog\ArticuloController@destroy');
+	Route::get('/cms/blog/articulos', 'Blog\ArticuloController@index')->middleware('can:cms.blog.show')->name('cms.blog.show');
+	Route::get('/cms/blog/crear/articulos', 'Blog\ArticuloController@create')->middleware('can:cms.blog.create')->name('cms.blog.create');
+	Route::post('/cms/blog/guardar/articulo', 'Blog\ArticuloController@store')->middleware('can:cms.blog.store')->name('cms.blog.store');
+	Route::get('/cms/blog/editar/articulo/{id}', 'Blog\ArticuloController@edit')->middleware('can:cms.blog.edit')->name('cms.blog.edit');
+	Route::post('/cms/blog/actualizar/articulo/{id}', 'Blog\ArticuloController@update')->middleware('can:cms.blog.update')->name('cms.blog.update');
+	Route::delete('/cms/blog/eliminar/articulo/{id}', 'Blog\ArticuloController@destroy')->middleware('can:cms.blog.destroy')->name('cms.blog.destroy');
 });
 
 /*------------------------------------ END --------------------------*/

@@ -228,7 +228,8 @@ class ProductsPageController extends Controller
     //Detalles de producto
     public function show($slug)
     {
+        $categories = Category::all();
         $producto = Product::where('slug', $slug)->first();
-        return view('productDetail', compact('producto'));
+        return view('productDetail', compact('producto', 'categories'));
     }
 }
