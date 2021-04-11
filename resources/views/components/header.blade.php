@@ -1,5 +1,5 @@
  <!-- header -->
- <header class="header-sticky header-dark">
+ <header class="header-sticky header-dark {{ $bg_navbar }}">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-{{$headerLinks}}">
         <a class="navbar-brand" href="{{route('home')}}">

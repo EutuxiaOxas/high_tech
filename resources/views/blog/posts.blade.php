@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
-@php 
+@php
     $headerLinks="light";
     $logoNav1="dark";
     $logoNav2="dark";
+    $bg_navbar = '';
 @endphp
 
 @section('title')
@@ -25,7 +26,7 @@
         </nav>
       </div>
     </div>
-  </div>    
+  </div>
 </section>
 <!-- / hero -->
 
@@ -80,14 +81,14 @@
                 </a>
                 <div class="card-body">
                   <h5 class="card-title"><a href="">{{$post->title}}</a></h5>
-                  
+
                 </div>
               </article>
             </li>
           @endforeach
         </ul>
         {{$posts->links()}}
-      </div> 
+      </div>
     </div>
   </div>
 </section>

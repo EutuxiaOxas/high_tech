@@ -40,6 +40,28 @@ class ProductsPageController extends Controller
 
         return view('vitrina', compact('productos', 'categories', 'total_products', 'posicion_rueda', 'tipo_chum', 'tipo_cadena', 'tipo_sello'));
     }
+    // Busqueda sin filtro, solo con input search - Home
+    public function showSearch(Request $request){
+        $search = $request->search;
+
+        $productos = Product::where('titulo', 'LIKE', "%{$search}%")
+        ->orWhere('descripcion', 'LIKE', "%{$search}%")
+        ->paginate(15);
+
+        $total_productos =Product::where('titulo', 'LIKE', "%{$search}%")
+        ->orWhere('descripcion', 'LIKE', "%{$search}%")
+        ->get();
+        $total_products = count($total_productos);
+
+        $categories = Category::all();
+        $posicion_rueda = Posicion::all();
+        $tipo_chum = Tipo_Chum::all();
+        $tipo_cadena = Tipo_Cadena::all();
+        $tipo_sello = Tipo_Sello::all();
+
+        return view('vitrina', compact('productos', 'categories', 'total_products', 'posicion_rueda', 'tipo_chum', 'tipo_cadena', 'tipo_sello'));
+
+    }
 
     // Funcion que retorna la busqueda por categoria
     public function showByCategory($slug)
@@ -72,9 +94,10 @@ class ProductsPageController extends Controller
 
         $categoria = Category::where('id', $category_id)->first();
 
+        $search = $request->search;
+
         $slug = $categoria->slug;
 
-        $search = $request->search;
         if($request->no_slug){
 
             $productos = Product::where('category_id', $category_id)

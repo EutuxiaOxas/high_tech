@@ -3,6 +3,7 @@
     $headerLinks="dark";
     $logoNav1="light";
     $logoNav2="dark";
+    $bg_navbar = '';
 @endphp
 
 @section('title')
@@ -185,12 +186,15 @@
             <h2 class="text-muted"><span class="text-white">+200</span> productos</h2>
           </div>
           <div class="col-md-7">
-            <div class="input-group rounded">
-              <input type="text" class="form-control px-3" placeholder="Buscar producto ..." aria-label="Search lessons">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">Buscar</button>
-              </div>
-            </div>
+
+             <!-- Search Input -->
+             <form class="input-group rounded" action="{{route('products.search')}}">
+                <input type="search" class="form-control" name="search" placeholder="Buscar productos..." aria-label="Buscar productos">
+                    <div class="input-group-append">
+                    <input type="submit" class="btn btn-primary text-white" value="Buscar">
+                </div>
+            </form>
+
           </div>
         </div>
         <div class="row text-white" data-aos="fade-left">
@@ -200,7 +204,7 @@
                 <div class="tile-image" style="background-image: url(/imagenes/moto.jpg)"></div>
                 <div>
                   <div class="tile-header on-hover text-right">
-                    <button class="btn btn-sm btn-outline-info text-dark">Watch Now</button>
+                    <button class="btn btn-sm btn-outline-info text-dark">Ver más</button>
                   </div>
                   <div class="tile-footer">
                     <span class="eyebrow text-dark">Development</span>
@@ -212,7 +216,7 @@
                 <div class="tile-image" style="background-image: url(/imagenes/auto.jpg)"></div>
                 <div>
                   <div class="tile-header on-hover text-right">
-                    <button class="btn btn-sm btn-outline-info text-dark">Watch Now</button>
+                    <button class="btn btn-sm btn-outline-info text-dark">Ver más</button>
                   </div>
                   <div class="tile-footer">
                     <span class="eyebrow text-dark">Development</span>
@@ -224,7 +228,7 @@
                 <div class="tile-image" style="background-image: url(/imagenes/6000.jpg)"></div>
                 <div>
                   <div class="tile-header on-hover text-right">
-                    <button class="btn btn-sm btn-outline-info text-dark">Watch Now</button>
+                    <button class="btn btn-sm btn-outline-info text-dark">Ver más</button>
                   </div>
                   <div class="tile-footer">
                     <span class="eyebrow text-dark">Development</span>
@@ -236,7 +240,7 @@
                 <div class="tile-image" style="background-image: url(/imagenes/pillow.jpg)"></div>
                 <div>
                   <div class="tile-header on-hover text-right">
-                    <button class="btn btn-sm btn-outline-info text-dark">Watch Now</button>
+                    <button class="btn btn-sm btn-outline-info text-dark">Ver más</button>
                   </div>
                   <div class="tile-footer">
                     <span class="eyebrow text-dark">Development</span>

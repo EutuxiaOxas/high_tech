@@ -20,10 +20,12 @@ Route::get('/contacto', 'HomeController@contacto')->name('contacto');
 
 // Vitrina total
 Route::get('/products', 'ProductsPageController@index')->name('products');
+// Vitrina total
+Route::get('/products/search', 'ProductsPageController@showSearch')->name('products.search');
 // Vitrina por categoria
 Route::get('/categorias/{slug}', 'ProductsPageController@showByCategory');
 // Vitrina filtrada
-Route::get('/products/search', 'ProductsPageController@showByFilter')->name('products.search');
+Route::get('/products/search/filters', 'ProductsPageController@showByFilter')->name('products.search.filter');
 // Detalles del product
 Route::get('/product/{slug}', 'ProductsPageController@show')->name('product');
 

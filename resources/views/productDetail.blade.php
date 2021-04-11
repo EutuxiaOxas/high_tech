@@ -1,8 +1,9 @@
 @extends('layouts.app')
-@php 
+@php
     $headerLinks="light";
     $logoNav1="dark";
     $logoNav2="dark";
+    $bg_navbar = '';
 @endphp
 
 @section('title')
@@ -27,7 +28,7 @@
         min-height: auto;
         max-height: 100%;
         min-width: auto;
-        max-width: 100%;        
+        max-width: 100%;
     }
 
 </style>
@@ -57,7 +58,7 @@
             </div>
         </div>
         <div class="col-3">
-            @include('common.navbar_rigth_product')   
+            @include('common.navbar_rigth_product')
         </div>
     </div>
 
@@ -77,7 +78,7 @@
                 </div>
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
 </section>
 

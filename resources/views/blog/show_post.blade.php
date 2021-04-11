@@ -1,8 +1,9 @@
 @extends('layouts.app')
-@php 
+@php
     $headerLinks="light";
     $logoNav1="dark";
     $logoNav2="dark";
+    $bg_navbar = 'bg-white';
 @endphp
 
 @section('title')
@@ -18,7 +19,7 @@
 </div>
 <section class="p-0">
   <div class="swiper-container text-white"
-    data-top-top="transform: translateY(0px);" 
+    data-top-top="transform: translateY(0px);"
     data-top-bottom="transform: translateY(250px);">
     <div class="swiper-wrapper">
       <div class="swiper-slide vh-100">
@@ -133,7 +134,7 @@
   const reproductor = document.getElementById('reproductor')
 
   let botonReproducir
-    
+
 
   document.addEventListener('DOMContentLoaded', () => {
     let texto = document.getElementById('texto_blog')
@@ -147,7 +148,7 @@
 
       botonReproducir.style.display = 'none'
       reproductor.style.display = 'block'
-      
+
       reproductor.src = url
       reproductor.play()
 

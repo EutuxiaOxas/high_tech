@@ -3,6 +3,7 @@
     $headerLinks="light";
     $logoNav1="dark";
     $logoNav2="dark";
+    $bg_navbar = '';
 @endphp
 
 @section('title')
@@ -58,7 +59,7 @@
             </div>
             <div class="col-12 mt-3">
                 <!-- Search Input -->
-                <form action="{{route('products.search')}}">
+                <form action="{{route('products.search.filter')}}">
                     <div class="row mb-1">
 
                         <div class="col-7">

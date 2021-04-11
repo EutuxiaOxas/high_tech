@@ -1,8 +1,9 @@
 @extends('layouts.app')
-@php 
+@php
     $headerLinks="light";
     $logoNav1="dark";
     $logoNav2="dark";
+    $bg_navbar = '';
 @endphp
 
 @section('title')
@@ -11,7 +12,7 @@
 
 @section('content')
 
-  
+
       <!-- hero -->
       <section class="hero hero-with-header">
         <div class="container">
@@ -23,11 +24,11 @@
                 </p>
             </div>
           </div>
-        </div>    
+        </div>
       </section>
       <!-- / hero -->
-  
-  
+
+
       <!-- carousel -->
       <section class="pt-0">
         <div class="container">
@@ -37,7 +38,7 @@
                 <figure class="photo">
                   <img src="/imagenes/imagenes_pagina/high1.jpg" alt="Image">
                 </figure>
-                
+
                 <figure class="photo">
                   <img src="/imagenes/imagenes_pagina/high2.jpg" alt="Image">
                 </figure>
@@ -49,7 +50,7 @@
                 <figure class="photo">
                   <img src="/imagenes/imagenes_pagina/high3.jpg" alt="Image">
                 </figure>
-  
+
                 <figure class="photo">
                   <img src="/imagenes/imagenes_pagina/serie2.jpg" alt="Image">
                 </figure>
@@ -65,7 +66,7 @@
                 <figure class="photo">
                   <img src="/imagenes/imagenes_pagina/serie3.jpg" alt="Image">
                 </figure>
-  
+
                 <figure class="photo">
                   <img src="/imagenes/imagenes_pagina/high4.jpg" alt="Image">
                 </figure>
@@ -79,8 +80,8 @@
         </div>
       </section>
       <!-- / carousel -->
-  
-  
+
+
       <!-- features -->
       <section class="bg-light separator-top separator-bottom">
         <div class="container">
@@ -121,7 +122,7 @@
                   <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M32,63C14.879,63,1,49.121,1,32S14.879,1,32,1"/>
                   <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M32,63c17.121,0,31-13.879,31-31
                     c0-6.713-2.134-12.926-5.759-18l-5.62-5.621"/>
-                  <polyline fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="51,19 51,8 62,8 
+                  <polyline fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="51,19 51,8 62,8
                     "/>
                   </svg>
                 </i>
@@ -193,8 +194,8 @@
         </div>
       </section>
       <!-- / features -->
-  
-  
+
+
     <!-- gallery -->
     <section class="bg-light separator-top separator-bottom">
       <div>
@@ -261,9 +262,9 @@
       </div>
     </section>
     <!-- / gallery -->
-  
-  
-  
+
+
+
       <!-- cta -->
       <section class="bg-primary text-white">
         <div class="container">
@@ -274,7 +275,7 @@
             <div class="col-md-6 text-center text-md-right">
               <form class="row" action="">
                   <input type="email" class="form-control col-9" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">                  <button class="btn btn-dark btn-sm col-3" style="width:100%;">Suscribirme</button>
-              </form>              
+              </form>
             </div>
           </div>
         </div>
