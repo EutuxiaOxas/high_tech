@@ -40,7 +40,7 @@
         <div class="col-9">
             <div class="row card_product align-items-center mb-0">
                 <div class="col-12 img_product_card mb-3">
-                        <img class="img_product" src="/productos_imagen/{{$producto->imagen}}" alt="">
+                        <img class="img_product" src="{{ Storage::url($producto->imagen) }}" alt="">
                 </div>
                 <div class="col-12">
                     <h1 class="">{{$producto->titulo}}</h1>

@@ -23,32 +23,30 @@ class CategoriesController extends Controller
 
     public function guardarCategoria(Request $request)
     {
-    	    $file = $request->file('categoria_imagen');
-    		$categoria = new BlogCategory;
+        $image = $request->file('categoria_imagen');
+        $categoria = new BlogCategory;
 
-            $categoria->name = $request->categoria_titulo;
-    		$categoria->slug = $request->slug;
-    		$categoria->description = $request->categoria_descripcion;
-    		$categoria->parent_category_id = 1;
+        $categoria->name = $request->categoria_titulo;
+        $categoria->slug = $request->slug;
+        $categoria->description = $request->categoria_descripcion;
+        $categoria->parent_category_id = 1;
 
-    	     //verificamos que la imagen exista
-    	    if($file){
-    	        $path = public_path() . '/blog_categorias_imagen';
-    	        $fileName = uniqid() . $file->getClientOriginalName();
-    	        $moved = $file->move($path, $fileName);
+            //verificamos que la imagen exista
+        if($image){
+            $imagen = $image->store('public/blog_categorias_imagen');
 
-    	        //verificamos que la imagen haya sido movida y guardamos la ruta
-    	        if($moved){
-    	            $categoria->picture = $fileName;
-    	            $categoria->save();
-    	        }
+            //verificamos que la imagen haya sido movida y guardamos la ruta
+            if($imagen){
+                $categoria->picture = $imagen;
+                $categoria->save();
+            }
 
-    	    } else {
-    	        return back()->with('message', 'no se pudo guardar imagen');
-    	    }
+        } else {
+            return back()->with('message', 'no se pudo guardar imagen');
+        }
 
-            $categorias = BlogCategory::all();
-            return redirect()->route('cms.blog.categories.show', compact('categorias'))->with('info', 'Categoría creada exitosamente!');
+        $categorias = BlogCategory::all();
+        return redirect()->route('cms.blog.categories.show', compact('categorias'))->with('info', 'Categoría creada exitosamente!');
     }
 
     public function editarCategoria($id)
@@ -61,44 +59,22 @@ class CategoriesController extends Controller
     public function actualizarCategoria(Request $request, $id)
     {
     	$categoria = BlogCategory::find($id);
-    	$file = $request->file('categoria_imagen');
+    	$image = $request->file('categoria_imagen');
 
     	$categoria->name = $request->categoria_titulo;
     	$categoria->description = $request->categoria_descripcion;
         $categoria->slug = $request->slug;
     	$categoria->parent_category_id = 1;
 
-    	if($file){
+    	if($image){
 
-            if($categoria->picture){
-                if(substr($categoria->picture, 0, 4)  === "http"){
-                    $deleted = true;
-                } else {
-                    $fullpath = public_path() . '/blog_categorias_imagen/' . $categoria->picture;
-                    $deleted = File::delete($fullpath);
-                }
+            $imagen = $image->store('public/blog_categorias_imagen');
+            //verificamos que la imagen haya sido movida y guardamos la ruta
+            if($imagen){
+                $categoria->picture = $imagen;
+                $categoria->save();
             }
 
-            //verificacion de que se haya eliminado la imagen o que no exista el en el campo
-            if(isset($deleted) || $categoria->picture === null){
-
-                //verificamos que la imagen exista
-                if($file){
-                    $path = public_path() . '/blog_categorias_imagen';
-                    $fileName = uniqid() . $file->getClientOriginalName();
-                    $moved = $file->move($path, $fileName);
-
-                    //verificamos que la imagen haya sido movida y guardamos la ruta
-                    if($moved){
-                        $categoria->picture = $fileName;
-                        $categoria->save();
-                    }
-
-                    // return back();
-                } else {
-                    return back()->with('message','No se pudo actualizar la imagen con éxito');
-                }
-            }
         } else {
             $categoria->save();
 
@@ -111,20 +87,9 @@ class CategoriesController extends Controller
     {
     	$categoria = BlogCategory::find($id);
 
-    	if($categoria->picture){
-    	    if(substr($categoria->picture, 0, 4)  === "http"){
-    	        $deleted = true;
-    	    } else {
-    	        $fullpath = public_path() . '/blog_categorias_imagen/' . $categoria->picture;
-    	        $deleted = File::delete($fullpath);
-    	    }
-    	}
+        $categoria->delete();
+        $categorias = BlogCategory::all();
+        return redirect()->route('cms.blog.categories.show', compact('categorias'))->with('info', 'Categoría eliminada exitosamente!');
 
-    	if(isset($deleted) || $categoria->picture === null)
-    	{
-    		$categoria->delete();
-            $categorias = BlogCategory::all();
-            return redirect()->route('cms.blog.categories.show', compact('categorias'))->with('info', 'Categoría eliminada exitosamente!');
-    	}
     }
 }

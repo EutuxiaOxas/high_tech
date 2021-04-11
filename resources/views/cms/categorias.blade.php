@@ -41,12 +41,8 @@
             <td>{{$categoria->id}}</td>
             <td>{{$categoria->name}}</td>
             <td>{{$categoria->descripcion}}</td>
-            <td>
-              @if(substr($categoria->imagen, 0, 4) === 'http')
-                  <img src="{{ $categoria->imagen }}" class="publicidades_card-img" alt="" style="width: 60px; height: 60px;">
-              @elseif($categoria->imagen)
-                   <img src="{{ asset('categorias_imagen/'. $categoria->imagen) }}" alt="" style="width: 60px; height: 60px;">
-              @endif
+            <td>{{ $categoria->imagen }}
+              <img src="{{ asset('/storage/category_images/'. $categoria->imagen) }}" alt="" style="width: 60px; height: 60px;">
             </td>
             <td class="d-flex ">
               <button type="button" id="{{ $categoria->id }}" class="btn btn-sm btn-outline-secondary mr-2 editar"  data-toggle="modal" data-target="#modalCategoriaEditar">Editar</button>
@@ -147,7 +143,7 @@
       let categoriaNombre = document.getElementById('categoria_nombre');
       let categoriaDescripcion = document.getElementById('categoria_descripcion');
 
-      formEdit.action =  `/cms/categoria/edit/${e.target.id}` 
+      formEdit.action =  `/cms/categoria/edit/${e.target.id}`
 
       axios.get(`/cms/categoria/${e.target.id}`)
         .then(response => {

@@ -66,7 +66,7 @@
           <tr>
             <td>{{$articulo->id}}</td>
             <td>
-                <div class="img_div_rounded" style="background-image: url('{{ asset('blog_articulos_imagen/'. $articulo->picture) }}');"></div>
+                <div class="img_div_rounded" style="background-image: url('{{ Storage::url($articulo->picture) }}');"></div>
             </td>
             <td><a class="text-primary" target="_blank" href="{{route('main.blog.show', $articulo->slug)}}">{{$articulo->title}}</a></td>
             <td>{{$articulo->autor->name}}</td>

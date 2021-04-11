@@ -137,7 +137,7 @@
                 @foreach ($categories as $category)
                     <div class="card card-minimal mb-2">
                         <a href="/categorias/{{ $category->slug }}" class="card-img-container">
-                            <img class="card-img" src="/imagenes/series_logos/{{ $category->imagen }}" alt="{{ $category->category }}">
+                            <img class="card-img" src="{{ Storage::url($category->imagen) }}" alt="{{ $category->category }}">
                         </a>
                     </div>
                 @endforeach

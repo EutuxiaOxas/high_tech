@@ -53,7 +53,7 @@
             @foreach($latest_posts as $latest_post)
               <li>
                 <a href="{{route('main.blog.show', $latest_post->slug)}}" class="feed-item">
-                  <img src="/blog_articulos_imagen/{{$latest_post->picture}}" alt="Image">
+                  <img src="{{ Storage::url($latest_post->picture) }}" alt="Image">
                   <div class="feed-item-content">
                     <h3>{{$latest_post->title}}</h3>
                   </div>
@@ -77,7 +77,7 @@
             <li class="col-md-6">
               <article class="card card-minimal">
                 <a href="{{route('main.blog.show', $post->slug)}}" class="card-img-container">
-                  <img class="card-img" src="/blog_articulos_imagen/{{$post->picture}}" alt="Card image cap">
+                  <img class="card-img" src="{{ Storage::url($post->picture) }}" alt="Card image cap">
                 </a>
                 <div class="card-body">
                   <h5 class="card-title"><a href="">{{$post->title}}</a></h5>

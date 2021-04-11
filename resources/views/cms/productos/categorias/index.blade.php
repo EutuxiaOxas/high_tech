@@ -59,13 +59,13 @@
         @foreach($categorias as $category)
           <tr>
             <td>
-                <div class="img_div_rounded" style="background-image: url('{{ asset('imagenes/series_logos/'. $category->imagen) }}');"></div>
+                <div class="img_div_rounded" style="background-image: url('{{ Storage::url($category->imagen) }}');"></div>
             </td>
             <td>{{$category->category}}</td>
             <td>{{$category->description}}</td>
             <td>
                 @isset($category->pdf)
-                    <a class="text-primary" target="_blank" href="{{ asset('pdfs/'. $category->pdf) }}">{{$category->pdf}}</a>
+                    <a class="text-primary" target="_blank" href="{{ Storage::url($category->pdf) }}">{{$category->category}} - PDF</a>
                 @endisset
             </td>
             <td class="d-flex">
@@ -81,3 +81,7 @@
 </section>
 
 @endsection
+
+
+
+

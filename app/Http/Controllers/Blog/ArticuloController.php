@@ -44,7 +44,7 @@ class ArticuloController extends Controller
     public function store(Request $request)
     {
         $autor_id = $request->article_author;
-        $file = $request->file('article_picture');
+        $image = $request->file('article_picture');
 
         if(auth()->user()->id == $autor_id)
         {
@@ -58,14 +58,12 @@ class ArticuloController extends Controller
             $articulo->slug = $request->slug;
 
 
-            if($file){
-                $path = public_path() . '/blog_articulos_imagen';
-                $fileName = uniqid() . $file->getClientOriginalName();
-                $moved = $file->move($path, $fileName);
+            if($image){
+                $imagen = $image->store('public/blog_articulos_imagen');
 
                 //verificamos que la imagen haya sido movida y guardamos la ruta
-                if($moved){
-                    $articulo->picture = $fileName;
+                if($imagen){
+                    $articulo->picture = $imagen;
                     $articulo->save();
 
 
@@ -137,7 +135,7 @@ class ArticuloController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $file = $request->file('article_picture');
+        $image = $request->file('article_picture');
         $articulo = Article::find($id);
 
         $articulo->title = $request->articulo_title;
@@ -146,29 +144,15 @@ class ArticuloController extends Controller
         $articulo->date = $request->articulo_date;
         $articulo->category_id = $request->articulo_categoria;
 
-        if($file){
-
-            if($articulo->picture){
-                if(substr($articulo->picture, 0, 4)  === "http"){
-                    $deleted = true;
-                } else {
-                    $fullpath = public_path() . '/blog_articulos_imagen/' . $articulo->picture;
-                    $deleted = File::delete($fullpath);
-                }
-            }
-
-            //verificacion de que se haya eliminado la imagen o que no exista el en el campo
-            if(isset($deleted) || $articulo->picture === null){
+        if($image){
 
                 //verificamos que la imagen exista
-                if($file){
-                    $path = public_path() . '/blog_articulos_imagen';
-                    $fileName = uniqid() . $file->getClientOriginalName();
-                    $moved = $file->move($path, $fileName);
+                if($image){
+                    $imagen = $image->store('public/blog_articulos_imagen');
 
                     //verificamos que la imagen haya sido movida y guardamos la ruta
-                    if($moved){
-                        $articulo->picture = $fileName;
+                    if($imagen){
+                        $articulo->picture = $imagen;
                         $articulo->save();
 
                         $keywords = $request->articulo_keywords;
@@ -198,7 +182,7 @@ class ArticuloController extends Controller
                 } else {
                     return back()->with('message','No se pudo actualizar la imagen con éxito');
                 }
-            }
+
         } else {
             $articulo->save();
         }

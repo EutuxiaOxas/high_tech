@@ -50,73 +50,28 @@ class ProductController extends Controller
 
         // Verifico la imagen
         if($imagen){
+            // Almaceno la imagen en la carpeta category_image en la carpeta storage
+            $img = $imagen->store('public/category_images');
 
-            // Veridfico si hay imagen en BD, y la elimino
-            if($category->imagen){
-                if(substr($category->imagen, 0, 4)  === "http"){
-                    $deleted = true;
-                } else {
-                    $fullpath = public_path() . '/imagenes/series_logos/' . $category->imagen;
-                    $deleted = File::delete($fullpath);
-                }
+            //verificamos que la imagen haya sido movida y guardamos la ruta
+            if($img){
+                $category->imagen = $img;
+                $category->save();
             }
 
-            //verificacion de que se haya eliminado la imagen o que no exista el en el campo
-            if(isset($deleted) || $category->imagen === null){
-
-                //verificamos que la imagen exista
-                if($imagen){
-                    $path = public_path() . '/imagenes/series_logos';
-                    $fileName = uniqid() . $imagen->getClientOriginalName();
-                    $moved = $imagen->move($path, $fileName);
-
-                    //verificamos que la imagen haya sido movida y guardamos la ruta
-                    if($moved){
-                        $category->imagen = $fileName;
-                        $category->save();
-                    }
-
-                    // return back();
-                } else {
-                    return back()->with('message','No se pudo actualizar la imagen con éxito');
-                }
-            }
         } else {
             $category->save();
         }
 
         // Verifico el pdf
         if($pdf_catalogo){
+            // Almaceno el pdf en la carpeta 'pdfs' dentro de storage/public, se creara la carpeta, en caso de no existir
+            $pdf = $pdf_catalogo->store('public/pdfs');
 
-            // Veridfico si hay imagen en BD, y la elimino
-            if($category->pdf){
-                if(substr($category->pdf, 0, 4)  === "http"){
-                    $deleted = true;
-                } else {
-                    $fullpath = public_path() . '/pdfs/' . $category->pdf;
-                    $deleted = File::delete($fullpath);
-                }
-            }
-
-            //verificacion de que se haya eliminado la imagen o que no exista el en el campo
-            if(isset($deleted) || $category->pdf === null){
-
-                //verificamos que la imagen exista
-                if($pdf_catalogo){
-                    $path = public_path() . '/pdfs';
-                    $fileName = uniqid() . $pdf_catalogo->getClientOriginalName();
-                    $moved = $pdf_catalogo->move($path, $fileName);
-
-                    //verificamos que la imagen haya sido movida y guardamos la ruta
-                    if($moved){
-                        $category->pdf = $fileName;
-                        $category->save();
-                    }
-
-                    // return back();
-                } else {
-                    return back()->with('message','No se pudo actualizar la imagen con éxito');
-                }
+            //verificamos que la imagen haya sido movida y guardamos la ruta
+            if($pdf){
+                $category->pdf = $pdf;
+                $category->save();
             }
         } else {
             $category->save();
@@ -157,7 +112,7 @@ class ProductController extends Controller
 
 
     public function guardarProducto(Request $request){
-        $file = $request->file('imagen_producto');
+        $image = $request->file('imagen_producto');
     	$producto = new Product;
         $producto->titulo           = $request->titulo_producto;
     	$producto->slug             = $request->slug;
@@ -167,14 +122,12 @@ class ProductController extends Controller
     	$producto->descripcion      = $request->descripcion_producto;
 
          //verificamos que la imagen exista
-        if($file){
-            $path = public_path() . '/productos_imagen';
-            $fileName = uniqid() . $file->getClientOriginalName();
-            $moved = $file->move($path, $fileName);
+        if($image){
+            $imagen = $image->store('public/products_images');
 
             //verificamos que la imagen haya sido movida y guardamos la ruta
-            if($moved){
-                $producto->imagen = $fileName;
+            if($imagen){
+                $producto->imagen = $imagen;
                 $producto->save();
             }
 
@@ -282,7 +235,7 @@ class ProductController extends Controller
     }
 
     public function actualizarProducto(Request $request, $id){
-        $file = $request->file('imagen_producto');
+        $image = $request->file('imagen_producto');
         $producto = Product::find($id);
 
         $producto->titulo           = $request->titulo_producto;
@@ -292,37 +245,15 @@ class ProductController extends Controller
         $producto->slug             = $request->slug;
         $producto->descripcion      = $request->descripcion_producto;
 
-        if($file){
+        if($image){
+            $imagen = $image->store('public/products_images');
 
-            if($producto->imagen){
-                if(substr($producto->imagen, 0, 4)  === "http"){
-                    $deleted = true;
-                } else {
-                    $fullpath = public_path() . '/productos_imagen/' . $producto->imagen;
-                    $deleted = File::delete($fullpath);
-                }
+            //verificamos que la imagen haya sido movida y guardamos la ruta
+            if($imagen){
+                $producto->imagen = $imagen;
+                $producto->save();
             }
 
-            //verificacion de que se haya eliminado la imagen o que no exista el en el campo
-            if(isset($deleted) || $producto->imagen === null){
-
-                //verificamos que la imagen exista
-                if($file){
-                    $path = public_path() . '/productos_imagen';
-                    $fileName = uniqid() . $file->getClientOriginalName();
-                    $moved = $file->move($path, $fileName);
-
-                    //verificamos que la imagen haya sido movida y guardamos la ruta
-                    if($moved){
-                        $producto->imagen = $fileName;
-                        $producto->save();
-                    }
-
-                    // return back();
-                } else {
-                    return back()->with('message','No se pudo actualizar la imagen con éxito');
-                }
-            }
         } else {
             $producto->save();
         }
@@ -399,21 +330,7 @@ class ProductController extends Controller
         $producto = Product::find($id);
         $categoria = $producto->categoria->category;
 
-
-        if($producto->imagen){
-            if(substr($producto->imagen, 0, 4)  === "http"){
-                $deleted = true;
-            } else {
-                $fullpath = public_path() . '/productos_imagen/' . $producto->imagen;
-                $deleted = File::delete($fullpath);
-            }
-        }
-        if($deleted || $producto->imagen === null){
-            $producto->delete();
-            return redirect()->route('cms.products.show', compact('productos'))->with('info', 'Producto eliminado exitosamente!');
-        } else {
-            return back()->with('message','No se pudo eliminar el servicio');
-        }
-
+        $producto->delete();
+        return redirect()->route('cms.products.show', compact('productos'))->with('info', 'Producto eliminado exitosamente!');
     }
 }

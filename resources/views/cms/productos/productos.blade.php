@@ -65,7 +65,7 @@
           <tr>
             <td>{{$producto->id}}</td>
             <td>
-                <div class="img_div_rounded" style="background-image: url('{{ asset('productos_imagen/'. $producto->imagen) }}');"></div>
+                <div class="img_div_rounded" style="background-image: url('{{ Storage::url($producto->imagen) }}');"></div>
             </td>
             <td> <a class="text-primary" target="_blank" href="{{route('product', $producto->slug)}}">{{$producto->titulo}}</a></td>
             <td>{{$producto->descripcion}}</td>

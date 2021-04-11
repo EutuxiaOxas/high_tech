@@ -64,7 +64,7 @@
           <tr>
             <td>{{$categoria->id}}</td>
             <td>
-                <div class="img_div_rounded" style="background-image: url('{{ asset('blog_categorias_imagen/'. $categoria->picture) }}');"></div>
+                <div class="img_div_rounded" style="background-image: url('{{ Storage::url($categoria->picture) }}')"></div>
             </td>
             <td>{{$categoria->name}}</td>
             <td>{{$categoria->description}}</td>

@@ -23,7 +23,7 @@
     data-top-bottom="transform: translateY(250px);">
     <div class="swiper-wrapper">
       <div class="swiper-slide vh-100">
-        <div class="image image-overlay image-zoom" style="background-image:url(/blog_articulos_imagen/{{$post->picture}})"></div>
+        <div class="image image-overlay image-zoom" style="background-image:url({{ Storage::url($post->picture) }})"></div>
         <div class="caption">
           <div class="container">
             <div class="row align-items-center vh-100">
@@ -110,7 +110,7 @@
       @foreach($other_posts as $other_post)
         <div class="col-md-6 col-lg-4">
           <article class="tile">
-            <div class="tile-image" style="background-image: url(/blog_articulos_imagen/{{$other_post->picture}})"></div>
+            <div class="tile-image" style="background-image: url({{ Storage::url($other_post->picture) }})"></div>
             <a href="{{route('main.blog.show', $other_post->slug)}}" class="tile-content">
               <div class="tile-header">
                 <span class="eyebrow mb-1">{{$other_post->categoria->name}}</span>

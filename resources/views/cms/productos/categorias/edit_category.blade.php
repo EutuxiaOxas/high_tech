@@ -47,7 +47,7 @@
             <div class="col-12 mb-4">
                 <div class="row">
                     <div class="col-12 col-md-4 mb-3">
-                        <div class="img_div_rounded" style="background-image: url('{{ asset('imagenes/series_logos/'. $category->imagen) }}');"></div>
+                        <div class="img_div_rounded" style="background-image: url('{{ Storage::url($category->imagen) }}');"></div>
                     </div>
                     <div class="col-12 col-md-8">
                         Selecciona la nueva imagen <label class="text-primary pointer" for="imagen"> Aquí</label>

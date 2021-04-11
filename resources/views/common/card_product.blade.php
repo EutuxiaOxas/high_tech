@@ -27,7 +27,7 @@
 <div class="row card_product align-items-center mb-0">
     <div class="col-2 img_product_card">
         <a href="{{route('product', $producto->slug)}}">
-            <img class="img_product" src="/productos_imagen/{{$producto->imagen}}" alt="">
+            <img class="img_product" src="{{ Storage::url($producto->imagen) }}" alt="">
         </a>
     </div>
     <div class="col-10">

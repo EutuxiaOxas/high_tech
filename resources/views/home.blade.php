@@ -381,7 +381,7 @@
             <div class="col-md-6 col-lg-4">
               <article class="card card-minimal">
                 <a href="{{route('main.blog.show', $post->slug)}}" class="card-img-container">
-                  <img class="card-img" src="/blog_articulos_imagen/{{$post->picture}}" alt="Card image cap">
+                  <img class="card-img" src="{{ Storage::url($post->picture) }}" alt="Card image cap">
                 </a>
                 <div class="card-body">
                   <h5 class="card-title"><a class="text-primary" href="">{{$post->title}}</a></h5>

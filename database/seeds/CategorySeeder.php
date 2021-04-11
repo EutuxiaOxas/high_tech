@@ -15,7 +15,6 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
         	'category' => 'Serie Automotriz',
         	'description' => 'Rodamientos  especializados en las aplicaciones automotrices.',
-        	'imagen' => 'automotriz.png',
             'slug' => 'serie-automotriz',
         	'category_color' => 'blue'
         ]);
@@ -23,7 +22,6 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
         	'category' => 'Serie 6000',
         	'description' => 'Rodamientos rígidos de bolas.',
-        	'imagen' => '6000.png',
             'slug' => 'serie-6000',
         	'category_color' => 'red'
         ]);
@@ -31,7 +29,6 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             'category' => 'Serie Moto',
             'description' => 'Línea de productos especialmente para motocicletas.',
-            'imagen' => 'moto.png',
             'slug' => 'serie-moto',
             'category_color' => 'red'
         ]);
@@ -40,7 +37,6 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             'category' => 'Chumaceras',
             'description' => 'Chumaceras tipo puente y tipo brida.',
-            'imagen' => 'chumacera.png',
             'slug' => 'chumaceras',
             'category_color' => 'red'
         ]);
@@ -48,7 +44,6 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             'category' => 'Serie cadenas',
             'description' => 'Cadenas de excelente calidad.',
-            'imagen' => 'cadenas.png',
             'slug' => 'serie-cadenas',
             'category_color' => 'red'
         ]);
