@@ -269,7 +269,7 @@
           <div class="row">
             <div class="col-12 mb-5">
                 @can('cms.products.update')
-                <input type="submit" class="btn btn-primary px-5" value="Actualizar">
+                <input type="submit" class="btn btn-primary px-5" value="Actualizar producto">
                 @endcan
                 <a class="btn btn-danger px-5" href="{{ route('cms.products.show') }}">Cancelar</a>
             </div>

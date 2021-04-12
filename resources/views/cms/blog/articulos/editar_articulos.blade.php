@@ -61,9 +61,12 @@
 				<h5>Imagen</h5>
 				<input type="file" name="article_picture">
 			</div>
-            @can('cms.blog.update')
-			<input type="submit" class="btn btn-primary mb-4" value="Actualizar Articulo">
-            @endcan
+            <div class="col-12">
+                @can('cms.blog.update')
+                <input type="submit" class="btn btn-primary px-5 mr-3" value="Actualizar Articulo">
+                @endcan
+                <a class="btn btn-danger px-5" href="{{ route('cms.blog.show') }}">Cancelar</a>
+            </div>
 		</form>
 	</div>
 </section>

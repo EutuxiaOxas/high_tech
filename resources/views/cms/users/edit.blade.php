@@ -57,7 +57,8 @@
                     <label>Editar password</label>
                 </div>
             </div>
-			<input type="submit" class="btn btn-primary my-4" value="Actualizar Usurario">
+			<input type="submit" class="btn btn-primary my-4 px-5" value="Actualizar Usurario">
+            <a class="btn btn-danger px-5" href="{{ route('cms.users.show') }}">Cancelar</a>
 		</form>
 	</div>
 </section>

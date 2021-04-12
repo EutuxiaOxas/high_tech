@@ -45,7 +45,8 @@
                     <input type="password" class="form-control" required>
                 </div>
             </div>
-			<input type="submit" class="btn btn-primary my-4 " value="Crear Usurario">
+			<input type="submit" class="btn btn-primary my-4 px-5" value="Crear Usurario">
+            <a class="btn btn-danger px-5" href="{{ route('cms.users.show') }}">Cancelar</a>
 		</form>
 	</div>
 </section>

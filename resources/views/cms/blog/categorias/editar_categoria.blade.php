@@ -31,8 +31,9 @@
 				<input type="file" name="categoria_imagen">
 			</div>
             @can('cms.blog.categories.update')
-			<input type="submit" class="btn btn-primary " value="Actualizar categoria">
+			<input type="submit" class="btn btn-primary px-5" value="Actualizar categoria">
             @endcan
+            <a class="btn btn-danger px-5" href="{{ route('cms.blog.categories.show') }}">Cancelar</a>
 		</form>
 	</div>
 </section>
