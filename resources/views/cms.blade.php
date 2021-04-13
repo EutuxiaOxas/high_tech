@@ -29,10 +29,21 @@
 
   <script src="/AdminLTE/plugins/jquery/jquery.min.js"></script>
   <style>
-  .label_img{
-    cursor: pointer;
-    color: #007bff;
-  }
+  .loader {
+    border: 6px solid #f3f3f3; /* Light grey */
+    border-top: 6px solid rgb(69, 124, 158);
+    border-bottom: 6px solid rgb(69, 124, 158);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    animation: spin 2s linear infinite;
+    display: none;
+    }
+
+    @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -227,6 +238,19 @@
             }
         });
     }
+</script>
+
+<script>
+    const load = document.getElementById('load');
+    const formSubmit = document.getElementById('formSubmit');
+    const buttonAction = document.getElementById('buttonAction');
+
+    formSubmit.addEventListener("submit", function(){
+        buttonAction.disabled = true;
+        load.style.display = 'inline-block';
+    });
+
+
 </script>
 
 </body>

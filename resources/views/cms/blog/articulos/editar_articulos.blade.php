@@ -27,7 +27,7 @@
 		<h2 class="my-3">
 			Editar Articulo
 		</h2>
-		<form action="/cms/blog/actualizar/articulo/{{$articulo->id}}" class="row" method="POST" enctype="multipart/form-data">
+		<form action="/cms/blog/actualizar/articulo/{{$articulo->id}}" class="row" method="POST" enctype="multipart/form-data" id="formSubmit">
 			@csrf
 			<input class="col-12" type="hidden" name="article_author" value="{{auth()->user()->id}}">
 			<!-- SLUG DEL ARTICULO -->
@@ -62,8 +62,9 @@
 				<input type="file" name="article_picture">
 			</div>
             <div class="col-12">
+                <span class="loader align-middle" id="load"></span>
                 @can('cms.blog.update')
-                <input type="submit" class="btn btn-primary px-5 mr-3" value="Actualizar Articulo">
+                    <input type="submit" class="btn btn-primary px-5 mr-3" value="Actualizar Articulo" id="buttonAction">
                 @endcan
                 <a class="btn btn-danger px-5" href="{{ route('cms.blog.show') }}">Cancelar</a>
             </div>

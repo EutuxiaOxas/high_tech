@@ -15,7 +15,7 @@
 		    {{session('message')}}
 		  </div>
 		@endif
-		<form action="/cms/blog/actualizar/categoria/{{$categoria->id}}" class="col-12" method="POST" enctype="multipart/form-data">
+		<form action="/cms/blog/actualizar/categoria/{{$categoria->id}}" class="col-12" method="POST" enctype="multipart/form-data" id="formSubmit">
 			@csrf
 			<input type="hidden" id="blog_slug"  value="{{$categoria->slug}}" name="slug">
 			<div class="form-group">
@@ -30,8 +30,9 @@
 				<h5>Imagen</h5>
 				<input type="file" name="categoria_imagen">
 			</div>
+            <span class="loader align-middle" id="load"></span>
             @can('cms.blog.categories.update')
-			<input type="submit" class="btn btn-primary px-5" value="Actualizar categoria">
+			<input type="submit" class="btn btn-primary px-5" value="Actualizar categoria" id="buttonAction">
             @endcan
             <a class="btn btn-danger px-5" href="{{ route('cms.blog.categories.show') }}">Cancelar</a>
 		</form>

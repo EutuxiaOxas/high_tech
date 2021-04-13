@@ -32,7 +32,7 @@
           {{session('message')}}
         </div>
       @endif
-      <form action="/cms/actualizar/producto/{{$producto->id}}" method="POST" enctype="multipart/form-data">
+      <form action="/cms/actualizar/producto/{{$producto->id}}" method="POST" enctype="multipart/form-data" id="formSubmit">
         @csrf
         <input type="hidden" id="producto_slug" value="{{$producto->slug}}" name="slug">
         <div class="row">
@@ -268,8 +268,9 @@
 
           <div class="row">
             <div class="col-12 mb-5">
+                <span class="loader align-middle" id="load"></span>
                 @can('cms.products.update')
-                <input type="submit" class="btn btn-primary px-5" value="Actualizar producto">
+                <input type="submit" class="btn btn-primary px-5" value="Actualizar producto" id="buttonAction">
                 @endcan
                 <a class="btn btn-danger px-5" href="{{ route('cms.products.show') }}">Cancelar</a>
             </div>

@@ -31,7 +31,7 @@
           {{session('message')}}
         </div>
       @endif
-      <form action="/cms/actualizar/product/category/{{$category->id}}" method="POST" enctype="multipart/form-data">
+      <form action="/cms/actualizar/product/category/{{$category->id}}" method="POST" enctype="multipart/form-data" id="formSubmit">
         @csrf
         <div class="row">
             <div class="col-12 col-md-6 mb-4">
@@ -64,8 +64,9 @@
 
         <div class="row">
             <div class="col-12 mb-5">
+                <span class="loader align-middle" id="load"></span>
                 @can('cms.products.categories.update')
-                <input type="submit" class="btn btn-primary px-5" value="Actualizar">
+                <input type="submit" class="btn btn-primary px-5" value="Actualizar" id="buttonAction">
                 @endcan
                 <a class="btn btn-danger px-5" href="{{ route('cms.products.categories.show') }}">Cancelar</a>
             </div>
