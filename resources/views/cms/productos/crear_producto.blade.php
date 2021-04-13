@@ -28,15 +28,15 @@
         <div class="row">
           <div class="col-12 col-md-6 mb-4">
             <h5>Titulo</h5>
-            <input class="form-control" id="titulo_producto" type="text" maxlength="191" required name="titulo_producto" value="" placeholder="Titulo">
+            <input class="form-control" id="titulo_producto" type="text" maxlength="191" required name="titulo_producto" placeholder="Titulo">
           </div>
           <div class="col-12 col-md-6 mb-4">
             <h5>Precio - <b>$USD</b> </h5>
-            <input class="form-control" type="number" required name="precio_producto" value="" placeholder="Precio">
+            <input class="form-control" type="number" required name="precio_producto" placeholder="Precio" maxlength="191">
           </div>
           <div class="col-12 col-md-6 mb-4">
             <h5>Código Universal</h5>
-            <input class="form-control" type="text" required name="codigo_producto" value="" placeholder="Código Universal">
+            <input class="form-control" type="text" required name="codigo_producto" placeholder="Código Universal" maxlength="191">
           </div>
           <div class="col-12 col-md-6 mb-4">
               <h5>Imagen del producto</h5>

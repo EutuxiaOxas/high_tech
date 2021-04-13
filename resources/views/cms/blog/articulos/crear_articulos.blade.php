@@ -43,7 +43,7 @@
 			</div>
 			<div class="form-group col-12">
 				<h5>Keywords</h5>
-				<input type="text" name="articulo_keywords" id="keywords_article" required maxlength="191" placeholder="Keywords..." class="form-control">
+				<input type="text" name="articulo_keywords" id="keywords_article" required placeholder="Keywords..." class="form-control">
 			</div>
 			<div class="form-group col-12 col-md-6">
 				<h5>Fecha</h5>

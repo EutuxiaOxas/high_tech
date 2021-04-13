@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->foreignId('category_id');
             $table->string('titulo');
             $table->string('imagen');
-            $table->string('descripcion');
+            $table->longText('descripcion');
             $table->string('precio');
             $table->string('codigo_universal');
             $table->string('slug');
@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
 
 
             $table->foreign('category_id')->references('id')->on('categories');
-            
+
         });
     }
 

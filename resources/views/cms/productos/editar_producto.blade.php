@@ -38,15 +38,15 @@
         <div class="row">
           <div class="col-12 col-md-6 mb-4">
             <h5>Titulo</h5>
-            <input class="form-control"  id="titulo_producto" type="text" require name="titulo_producto" value="{{$producto->titulo}}" placeholder="Titulo">
+            <input class="form-control"  id="titulo_producto" type="text" require name="titulo_producto" value="{{$producto->titulo}}" placeholder="Titulo" maxlength="191">
           </div>
           <div class="col-12 col-md-6 mb-4">
             <h5>Precio</h5>
-            <input class="form-control" type="number" require name="precio_producto" value="{{$producto->precio}}" placeholder="Precio">
+            <input class="form-control" type="number" require name="precio_producto" value="{{$producto->precio}}" placeholder="Precio" maxlength="191">
           </div>
           <div class="col-12 col-md-6 mb-4">
             <h5>Código Universal</h5>
-            <input class="form-control" type="text" require name="codigo_producto" value="{{$producto->codigo_universal}}" placeholder="Código Universal">
+            <input class="form-control" type="text" require name="codigo_producto" value="{{$producto->codigo_universal}}" placeholder="Código Universal" maxlength="191">
           </div>
           <div class="col-12 col-md-6 mb-4">
             <div class="row">

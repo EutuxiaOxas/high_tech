@@ -20,11 +20,11 @@
 			<input type="hidden" id="blog_slug"  value="{{$categoria->slug}}" name="slug">
 			<div class="form-group">
 				<h5>Titulo</h5>
-				<input type="text" name="categoria_titulo" value="{{$categoria->name}}" required id="blog_cat_title" placeholder="Titulo..." class="form-control">
+				<input type="text" name="categoria_titulo" value="{{$categoria->name}}" required id="blog_cat_title" placeholder="Titulo..." class="form-control" maxlength="191">
 			</div>
 			<div class="form-group">
 				<h5>descripción</h5>
-				<textarea class="form-control" required name="categoria_descripcion">{{$categoria->description}}</textarea>
+				<textarea class="form-control" required name="categoria_descripcion" maxlength="191">{{$categoria->description}}</textarea>
 			</div>
 			<div class="form-group">
 				<h5>Imagen</h5>

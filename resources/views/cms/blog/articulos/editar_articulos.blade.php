@@ -34,7 +34,7 @@
 			<input type="hidden" id="blog_slug" value="" name="slug">
 			<div class="form-group col-12">
 				<h5>Titulo</h5>
-				<input type="text" name="articulo_title" value="{{$articulo->title}}" placeholder="Titulo..." class="form-control">
+				<input type="text" name="articulo_title" value="{{$articulo->title}}" placeholder="Titulo..." class="form-control" maxlength="191">
 			</div>
 			<div class="form-group col-12">
 				<h5>Contenido</h5>
