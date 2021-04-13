@@ -106,7 +106,7 @@
               <h3 class="col-12 mb-4">Parametros Cadena</h3>
               <div class="col-12 mb-4">
                 <h5>pitch</h5>
-                <input class="form-control cadena element-required" type="number" name="pitch_cadena">
+                <input class="form-control cadena element-required" type="text" name="pitch_cadena">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
@@ -136,17 +136,17 @@
               <h3 class="col-12 mb-4">Parametros Moto</h3>
               <div class="col-12 col-md-6 mb-4">
                 <h5>Diametro interno</h5>
-                <input class="form-control moto element-required" type="number" name="d_interno_moto">
+                <input class="form-control moto element-required" type="number" name="d_interno_moto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Diametro externo</h5>
-                <input class="form-control moto element-required" type="number" name="d_externo_moto">
+                <input class="form-control moto element-required" type="number" name="d_externo_moto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Espesor</h5>
-                <input class="form-control moto element-required" type="number" name="espesor_moto">
+                <input class="form-control moto element-required" type="number" name="espesor_moto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
@@ -181,17 +181,17 @@
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Diametro interno</h5>
-                <input class="form-control serie6000 element-required" type="number" name="d_interno_serie6000">
+                <input class="form-control serie6000 element-required" type="number" name="d_interno_serie6000" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Diametro externo</h5>
-                <input class="form-control serie6000 element-required" type="number" name="d_externo_serie6000">
+                <input class="form-control serie6000 element-required" type="number" name="d_externo_serie6000" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Espesor</h5>
-                <input class="form-control serie6000 element-required" type="number" name="espesor_serie6000">
+                <input class="form-control serie6000 element-required" type="number" name="espesor_serie6000" step="0.001">
               </div>
             </div>
           </div>
@@ -222,17 +222,17 @@
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Diametro interno</h5>
-                <input class="form-control auto element-required" type="number" name="d_interno_auto">
+                <input class="form-control auto element-required" type="number" name="d_interno_auto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Diametro externo</h5>
-                <input class="form-control auto element-required" type="number" name="d_externo_auto">
+                <input class="form-control auto element-required" type="number" name="d_externo_auto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Espesor</h5>
-                <input class="form-control auto element-required" type="number" name="espesor_auto">
+                <input class="form-control auto element-required" type="number" name="espesor_auto" step="0.001">
               </div>
             </div>
           </div>

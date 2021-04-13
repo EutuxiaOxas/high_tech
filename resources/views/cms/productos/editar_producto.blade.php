@@ -125,7 +125,7 @@
               <h3 class="col-12 mb-4">Parametros Cadena</h3>
               <div class="col-12 mb-4">
                 <h5>pitch</h5>
-                <input class="form-control cadena element-required" type="number" <?php if(isset($producto->cadena->id)) echo "value=" . '"' . $producto->cadena->pitch . '"'?> name="pitch_cadena">
+                <input class="form-control cadena element-required" type="text" <?php if(isset($producto->cadena->id)) echo "value=" . '"' . $producto->cadena->pitch . '"'?> name="pitch_cadena">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
@@ -158,17 +158,17 @@
               <h3 class="col-12 mb-4">Parametros Moto</h3>
               <div class="col-12 col-md-6 mb-4">
                 <h5>Diametro interno</h5>
-                <input class="form-control moto element-required" type="number" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->d_interno . '"'?> name="d_interno_moto">
+                <input class="form-control moto element-required" type="number" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->d_interno . '"'?> name="d_interno_moto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Diametro externo</h5>
-                <input class="form-control moto element-required" type="number" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->d_externo . '"'?> name="d_externo_moto">
+                <input class="form-control moto element-required" type="number" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->d_externo . '"'?> name="d_externo_moto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Espesor</h5>
-                <input class="form-control moto element-required" type="number" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->espesor . '"'?> name="espesor_moto">
+                <input class="form-control moto element-required" type="number" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->espesor . '"'?> name="espesor_moto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
@@ -206,17 +206,17 @@
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Diametro interno</h5>
-                <input class="form-control serie6000 element-required" <?php if(isset($producto->serie6000->id)) echo "value=" . '"' . $producto->serie6000->d_interno . '"'?> type="number" name="d_interno_serie6000">
+                <input class="form-control serie6000 element-required" <?php if(isset($producto->serie6000->id)) echo "value=" . '"' . $producto->serie6000->d_interno . '"'?> type="number" name="d_interno_serie6000" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Diametro externo</h5>
-                <input class="form-control serie6000 element-required" <?php if(isset($producto->serie6000->id)) echo "value=" . '"' . $producto->serie6000->d_externo . '"'?> type="number" name="d_externo_serie6000">
+                <input class="form-control serie6000 element-required" <?php if(isset($producto->serie6000->id)) echo "value=" . '"' . $producto->serie6000->d_externo . '"'?> type="number" name="d_externo_serie6000" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Espesor</h5>
-                <input class="form-control serie6000 element-required" type="number" <?php if(isset($producto->serie6000->id)) echo "value=" . '"' . $producto->serie6000->espesor . '"'?> name="espesor_serie6000">
+                <input class="form-control serie6000 element-required" type="number" <?php if(isset($producto->serie6000->id)) echo "value=" . '"' . $producto->serie6000->espesor . '"'?> name="espesor_serie6000" step="0.001">
               </div>
             </div>
           </div>
@@ -250,17 +250,17 @@
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Diametro interno</h5>
-                <input class="form-contro auto element-required" type="number" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->d_interno . '"'?> name="d_interno_auto">
+                <input class="form-contro auto element-required" type="number" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->d_interno . '"'?> name="d_interno_auto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Diametro externo</h5>
-                <input class="form-control auto element-required" type="number" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->d_externo . '"'?> name="d_externo_auto">
+                <input class="form-control auto element-required" type="number" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->d_externo . '"'?> name="d_externo_auto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
                 <h5>Espesor</h5>
-                <input class="form-control auto element-required" type="number" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->espesor . '"'?> name="espesor_auto">
+                <input class="form-control auto element-required" type="number" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->espesor . '"'?> name="espesor_auto" step="0.001">
               </div>
             </div>
           </div>

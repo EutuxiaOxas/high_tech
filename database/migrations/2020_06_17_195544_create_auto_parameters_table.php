@@ -19,9 +19,9 @@ class CreateAutoParametersTable extends Migration
             $table->string('articulo');
             $table->text('aplicacion');
             $table->foreignId('posicion_id');
-            $table->integer('d_interno');
-            $table->integer('d_externo');
-            $table->integer('espesor');
+            $table->float('d_interno');
+            $table->float('d_externo');
+            $table->float('espesor');
             $table->timestamps();
 
 

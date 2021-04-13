@@ -18,9 +18,9 @@ class CreateSerie6000ParametersTable extends Migration
             $table->foreignId('product_id');
             $table->integer('rodamiento');
             $table->foreignId('tipo_sello_id');
-            $table->integer('d_interno');
-            $table->integer('d_externo');
-            $table->string('espesor');
+            $table->float('d_interno');
+            $table->float('d_externo');
+            $table->float('espesor');
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')
