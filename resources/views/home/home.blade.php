@@ -13,7 +13,7 @@
 @section('content')
 
 
-{{-- Banner Principal --}}
+{{-- Banner Principal s--}}
 @include('home.sections.banner_principal')
 {{-- End Banner Principal --}}
 
