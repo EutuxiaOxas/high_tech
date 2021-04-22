@@ -14,6 +14,31 @@
     {{-- global css  --}}
     <link rel="stylesheet" href="/go/app/assets/css/vendor.css" />
     <link rel="stylesheet" href="/go/app/assets/css/style.css" />
+    <link rel="stylesheet" href="/css/fuentes.css">
+
+    <style>
+        .navbar-logo{
+            max-height: 140%!important;
+        }
+        .font-lg{
+            font-size: 1.5rem;
+        }
+        .font-xl{
+            font-size: 2rem;
+        }
+        /* .font_myriad{
+            font-family: Myriadpro;
+        } */
+        .text_float{
+            position: absolute;
+            left:50%;
+            text-align: center;
+            top:50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            z-index: 10;
+        }
+    </style>
   </head>
   <body>
 
@@ -21,6 +46,8 @@
     @include('components.header')
     {{-- contenido --}}
     @yield('content')
+    {{-- Whatasapp --}}
+    @include('components.whatsapp')
     {{-- footer --}}
     @include('components.footer')
 

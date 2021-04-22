@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $posts = Article::with(['categoria', 'autor'])->orderBy('id', 'DESC')->paginate(3);
         $categories = Category::all();
-        return view('home', compact('posts','categories'));
+        return view('home.home', compact('posts','categories'));
     }
 
     /**

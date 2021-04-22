@@ -80,7 +80,7 @@
                   <img class="card-img" src="{{ Storage::url($post->picture) }}" alt="Card image cap">
                 </a>
                 <div class="card-body">
-                  <h5 class="card-title"><a href="">{{$post->title}}</a></h5>
+                  <h5 class="card-title"><a href="{{route('main.blog.show', $post->slug)}}">{{$post->title}}</a></h5>
 
                 </div>
               </article>
