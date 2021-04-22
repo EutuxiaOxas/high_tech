@@ -38,6 +38,19 @@
             width: 100%;
             z-index: 10;
         }
+        .button_whatsapp{
+            position: fixed;
+            bottom: 2.5rem;
+            right: 1.5rem;
+            width: 6vw;
+            z-index: 50;
+
+        }
+        .shadow_svg_whatsapp{
+            box-shadow: 0px 2px 5px 0px rgba(0,0,0,1);
+            -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,1);
+            -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,1);
+        }
     </style>
   </head>
   <body>
