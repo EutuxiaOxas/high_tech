@@ -42,7 +42,7 @@
             position: fixed;
             bottom: 2.5rem;
             right: 1.5rem;
-            width: 6vw;
+            width: 80px;
             z-index: 50;
 
         }
