@@ -10,7 +10,7 @@
             <div class="container-fluid px-5">
               <div class="row justify-content-between vh-100">
                 <div class="col-lg-8 align-self-end text-white text-shadow" data-swiper-parallax="-100%">
-                  <img src="/imagenes/logo/logo_white.png" alt="Imagen Logo de High Tech Bearings" width="60%">
+                  <img src="/svg/logo-light.svg" alt="Imagen Logo de High Tech Bearings" width="50%">
                   {{-- <a href="{{route('products')}}" class="btn btn-white btn-rounded px-5">Ver Productos</a> --}}
                 </div>
                 <div class="col-12 align-self-end">

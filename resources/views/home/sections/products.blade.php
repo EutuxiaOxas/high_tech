@@ -10,7 +10,7 @@
             <form class="input-group rounded" action="{{route('products.search')}}">
             <input type="search" class="form-control" name="search" placeholder="Buscar productos..." aria-label="Buscar productos">
                 <div class="input-group-append">
-                <input type="submit" class="btn btn-primary text-white" value="Buscar">
+                <input type="submit" class="btn btn-secondary text-dark" value="Buscar">
             </div>
         </form>
 
