@@ -44,7 +44,11 @@
             right: 1.5rem;
             width: 80px;
             z-index: 50;
-
+        }
+        @media (max-width: 600px) {
+            .button_whatsapp {
+                width: 70px;
+            }
         }
         .shadow_svg_whatsapp{
             box-shadow: 0px 2px 5px 0px rgba(0,0,0,1);
