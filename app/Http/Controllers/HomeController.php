@@ -91,13 +91,13 @@ class HomeController extends Controller
     public function nosotros()
     {
         $categories = Category::all();
-        return view('nosotros',compact('categories'));
+        return view('nosotros.nosotros',compact('categories'));
     }
 
     //Controlador vista Contacto
     public function contacto()
     {
         $categories = Category::all();
-        return view('contacto',compact('categories'));
+        return view('contacto.contacto',compact('categories'));
     }
 }

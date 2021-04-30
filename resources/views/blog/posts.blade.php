@@ -40,7 +40,7 @@
           <span class="widget-title">Categoria</span>
           <div class="list-group list-group-categories">
             @foreach($categorias as $categoria)
-	            <a href="{{route('main.blog.categorie', $categoria->slug)}}" class="list-group-item d-flex justify-content-between align-items-center">
+	            <a href="{{route('main.blog.categorie', $categoria->slug)}}" class="list-group-item d-flex justify-content-between align-items-center text-dark">
 	              {{$categoria->name}}
 	              <span class="badge">{{$categoria->articles->count()}}</span>
 	            </a>
@@ -55,7 +55,7 @@
                 <a href="{{route('main.blog.show', $latest_post->slug)}}" class="feed-item">
                   <img src="{{ Storage::url($latest_post->picture) }}" alt="Image">
                   <div class="feed-item-content">
-                    <h3>{{$latest_post->title}}</h3>
+                    <h3 class="text-dark">{{$latest_post->title}}</h3>
                   </div>
                 </a>
               </li>
@@ -80,8 +80,7 @@
                   <img class="card-img" src="{{ Storage::url($post->picture) }}" alt="Card image cap">
                 </a>
                 <div class="card-body">
-                  <h5 class="card-title"><a href="{{route('main.blog.show', $post->slug)}}">{{$post->title}}</a></h5>
-
+                  <h5 class="card-title text-dark"><a href="{{route('main.blog.show', $post->slug)}}">{{$post->title}}</a></h5>
                 </div>
               </article>
             </li>

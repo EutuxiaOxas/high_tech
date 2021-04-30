@@ -12,7 +12,6 @@
 
 @section('content')
 
-
 {{-- Banner Principal--}}
 @include('home.sections.banner_principal')
 {{-- End Banner Principal --}}
@@ -36,6 +35,5 @@
 {{-- Blog --}}
 @include('home.sections.blog')
 {{-- End Blog --}}
-
 
 @endsection
