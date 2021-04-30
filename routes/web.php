@@ -18,10 +18,6 @@ Route::get('/products/search/filters', 'ProductsPageController@showByFilter')->n
 // Detalles del product
 Route::get('/product/{slug}', 'ProductsPageController@show')->name('product');
 
-Route::get('/test', function(){
-	return view('page_new.src.service');
-});
-
 /* ----------------------------  RUTAS DE PRUEBA PARA EL CMS -----------------------*/
 
 Route::middleware('auth')->group(function () {

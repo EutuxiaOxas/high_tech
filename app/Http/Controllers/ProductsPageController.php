@@ -38,7 +38,7 @@ class ProductsPageController extends Controller
         $tipo_cadena = Tipo_Cadena::all();
         $tipo_sello = Tipo_Sello::all();
 
-        return view('vitrina', compact('productos', 'categories', 'total_products', 'posicion_rueda', 'tipo_chum', 'tipo_cadena', 'tipo_sello'));
+        return view('productos.vitrina', compact('productos', 'categories', 'total_products', 'posicion_rueda', 'tipo_chum', 'tipo_cadena', 'tipo_sello'));
     }
     // Busqueda sin filtro, solo con input search - Home
     public function showSearch(Request $request){
@@ -59,7 +59,7 @@ class ProductsPageController extends Controller
         $tipo_cadena = Tipo_Cadena::all();
         $tipo_sello = Tipo_Sello::all();
 
-        return view('vitrina', compact('productos', 'categories', 'total_products', 'posicion_rueda', 'tipo_chum', 'tipo_cadena', 'tipo_sello'));
+        return view('productos.vitrina', compact('productos', 'categories', 'total_products', 'posicion_rueda', 'tipo_chum', 'tipo_cadena', 'tipo_sello'));
 
     }
 
@@ -83,7 +83,7 @@ class ProductsPageController extends Controller
         $tipo_cadena = Tipo_Cadena::all();
         $tipo_sello = Tipo_Sello::all();
 
-        return view('vitrina', compact('productos', 'categories', 'total_products', 'categoria', 'slug', 'posicion_rueda', 'tipo_chum', 'tipo_cadena', 'tipo_sello'));
+        return view('productos.vitrina', compact('productos', 'categories', 'total_products', 'categoria', 'slug', 'posicion_rueda', 'tipo_chum', 'tipo_cadena', 'tipo_sello'));
 
     }
 
@@ -244,7 +244,7 @@ class ProductsPageController extends Controller
         $tipo_cadena = Tipo_Cadena::all();
         $tipo_sello = Tipo_Sello::all();
 
-        return view('vitrina', compact('productos', 'categories', 'total_products', 'categoria', 'slug', 'posicion_rueda', 'tipo_chum', 'tipo_cadena', 'tipo_sello'));
+        return view('productos.vitrina', compact('productos', 'categories', 'total_products', 'categoria', 'slug', 'posicion_rueda', 'tipo_chum', 'tipo_cadena', 'tipo_sello'));
 
     }
 
