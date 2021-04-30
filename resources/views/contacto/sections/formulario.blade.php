@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
         <div class="col-md-6">
-            <span class="eyebrow mb-1 text-primary">Ponte en contacto con nosotros</span>
+            <span class="eyebrow mb-1 text-dark">Ponte en contacto con nosotros</span>
             <h2>Estamos atentos a responderte cualquier duda que tengas.</h2>
         </div>
         </div>
@@ -27,7 +27,7 @@
             </div>
             <div class="form-row mt-3">
                 <div class="col">
-                <button class="btn btn-primary px-5">Enviar</button>
+                <button class="btn btn-info px-5">Enviar</button>
                 </div>
             </div>
             <div>

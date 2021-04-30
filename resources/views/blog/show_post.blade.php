@@ -10,6 +10,13 @@
 	{{$post->title}}
 @endsection
 
+<style>
+    .tag-cloud a:hover {
+        background: #17a2b8!important;
+        color: #fff;
+    }
+</style>
+
 @section('content')
 
 <!-- cover -->
@@ -54,7 +61,7 @@
 <section>
   <div class="container">
     <div class="row justify-content-center">
-      <button id="boton_reproducir" style="display: none;" class="btn btn-outline-primary px-5">Reproducir post</button>
+      <button id="boton_reproducir" style="display: none;" class="btn btn-outline-info px-5">Reproducir post</button>
       <div id="reproductor_container" class="reproductor">
         <audio src=""  id="reproductor" controls="true" style="display: none;"></audio>
       </div>

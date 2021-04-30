@@ -11,6 +11,13 @@
  High Tech Blog
 @endsection
 
+<style>
+    .tag-cloud a:hover {
+        background: #17a2b8!important;
+        color: #fff;
+    }
+</style>
+
 @section('content')
 <!-- hero -->
 <section class="hero hero-with-header bg-light separator-bottom">

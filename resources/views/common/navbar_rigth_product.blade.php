@@ -1,14 +1,14 @@
 @isset($categoria)
     <!-- PDF download -->
     <div class="row">
-        <div class="card text-center bg-light">
-            <div class="card-header">
+        <div class="card text-center bg-light mx-1">
+            <div class="card-header px-1">
                 Ficha técnica - <strong>{{ $categoria->category }}</strong>
             </div>
             <div class="card-body">
-            <a href="{{ asset('pdfs/'. $categoria->pdf) }}" target="_blank" class="btn btn-primary btn-sm">Descargar</a>
+            <a href="{{ asset('pdfs/'. $categoria->pdf) }}" target="_blank" class="btn btn-info btn-sm">Descargar</a>
             </div>
-            <div class="card-footer text-muted">
+            <div class="card-footer text-muted px-1">
             Pdf con todas las caracteristicas de nuestros productos
             </div>
         </div>
@@ -39,7 +39,7 @@
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary btn-sm px-4">Enviar</button>
+            <button class="btn btn-info btn-sm px-4">Enviar</button>
         </div>
     </form>
 </div>
@@ -51,6 +51,6 @@
         <input type="email" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="Tú correo electrónico">
     </div>
     <div class="form-group col-12">
-        <button class="btn btn-primary btn-sm" style="width:100%;">Suscribirme</button>
+        <button class="btn btn-info btn-sm" style="width:100%;">Suscribirme</button>
     </div>
 </div>

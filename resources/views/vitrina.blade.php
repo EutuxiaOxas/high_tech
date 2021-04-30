@@ -123,7 +123,7 @@
                             </div>
                         </div>
                         <div class="col-2">
-                            <input type="submit" class="input-group-text bg-primary text-white px-5" id="basic-addon2" value="Buscar">
+                            <input type="submit" class="input-group-text bg-info text-white px-5" id="basic-addon2" value="Buscar">
                         </div>
                     </div>
                 </form>
@@ -170,9 +170,9 @@
             </div>
         </main>
         <div class="row justify-content-center">
-            <div class="col-10">
+            <div class="col-12 col-md-10">
                 <!-- CTA -->
-                <div class="boxed bg-primary p-5">
+                <div class="boxed bg-info p-2 p-lg-5">
                     <div class="row justify-content-between align-items-center text-center text-md-left">
                     <div class="col-md-3">
                         <h3 class="text-white">CTA.</h3>
