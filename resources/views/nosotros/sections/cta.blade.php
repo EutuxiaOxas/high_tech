@@ -1,5 +1,5 @@
 <!-- cta -->
-<section class="bg-info text-white">
+<section class="text-white" style="background-color: #76bd22;">
     <div class="container">
       <div class="row justify-content-between align-items-center">
         <div class="col-md-6 text-center text-md-left">
