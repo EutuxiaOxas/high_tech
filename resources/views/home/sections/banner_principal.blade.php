@@ -19,35 +19,35 @@
                         <a href="/categorias/serie-automotriz">
                             <img class="mb-1" src="/imagenes/banner_principal/01.jpg" alt="" width="100%">
                             <div class="text-white font-lg ">SERIE <strong class="font_myriad">AUTOMOTRIZ</strong> </div>
-                            <small class="text-white"> <strong class="font_myriad">LINEA NARANJA</strong> (AUTOMOTRIZ)</small>
+                            <small class="text-white"> <strong class="font_myriad">LINEA NARANJA - AUTOMOTRIZ</strong></small>
                         </a>
                       </div>
                       <div class="col text-center">
                         <a href="/categorias/serie-6000">
                             <img class="mb-1" src="/imagenes/banner_principal/02.jpg" alt="" width="100%">
                             <div class="text-white font-lg">SERIE <strong class="font_myriad">6000</strong> </div>
-                            <small class="text-white"> <strong class="font_myriad">LINEA VERDE</strong> (6000)</small>
+                            <small class="text-white"> <strong class="font_myriad">LINEA VERDE - 6000</strong></small>
                         </a>
                       </div>
                       <div class="col text-center">
                         <a href="/categorias/serie-cadenas">
                             <img class="mb-1" src="/imagenes/banner_principal/03.jpg" alt="" width="100%">
                             <div class="text-white font-lg">SERIE <strong class="font_myriad">CADENAS</strong> </div>
-                            <small class="text-white"> <strong class="font_myriad">LINEA AMARILLA</strong> (CADENAS)</small>
+                            <small class="text-white"> <strong class="font_myriad">LINEA AMARILLA - CADENAS</strong></small>
                         </a>
                       </div>
                       <div class="col text-center">
                         <a href="/categorias/chumaceras">
                             <img class="mb-1" src="/imagenes/banner_principal/04.jpg" alt="" width="100%">
                             <div class="text-white font-lg">SERIE <strong class="font_myriad">CHUMACERA</strong> </div>
-                            <small class="text-white"> <strong class="font_myriad">LINEA AZUL</strong> (RODAMIENTOS Y CHUMACERAS)</small>
+                            <small class="text-white"> <strong class="font_myriad">LINEA AZUL - CHUMACERAS</strong> </small>
                         </a>
                       </div>
                       <div class="col text-center">
                         <a href="/categorias/serie-moto">
                             <img class="mb-1" src="/imagenes/banner_principal/05.jpg" alt="" width="100%">
                             <div class="text-white font-lg">SERIE <strong class="font_myriad">MOTO</strong> </div>
-                            <small class="text-white"> <strong class="font_myriad">LINEA ROJA</strong> (MOTOCICLETAS)</small>
+                            <small class="text-white"> <strong class="font_myriad">LINEA ROJA - MOTOCICLETAS</strong></small>
                         </a>
                       </div>
                   </div>
