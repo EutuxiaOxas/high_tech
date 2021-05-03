@@ -39,7 +39,7 @@
               </a>
             </figure>
             <figure class="user">
-              <a href="/categorias/serie-chumacera" class="user-photo">
+              <a href="/categorias/chumaceras" class="user-photo">
                 <img src="{{asset('/imagenes/productos_home/serie_chumacera.jpg')}}" alt="promo-3">
                 <span class="text_float text-white font-xl">SERIE <strong>CHUMACERA</strong></span>
               </a>
