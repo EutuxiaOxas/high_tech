@@ -6,7 +6,7 @@
                 Ficha técnica - <strong>{{ $categoria->category }}</strong>
             </div>
             <div class="card-body">
-            <a href="{{ asset('pdfs/'. $categoria->pdf) }}" target="_blank" class="btn btn-info btn-sm">Descargar</a>
+            <a href="{{ Storage::url($category->pdf) }}" target="_blank" class="btn btn-info btn-sm">Descargar</a>
             </div>
             <div class="card-footer text-muted px-1">
             Pdf con todas las caracteristicas de nuestros productos
