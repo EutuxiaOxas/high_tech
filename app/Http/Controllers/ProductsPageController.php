@@ -253,6 +253,6 @@ class ProductsPageController extends Controller
     {
         $categories = Category::all();
         $producto = Product::where('slug', $slug)->first();
-        return view('productDetail', compact('producto', 'categories'));
+        return view('productos.productDetail', compact('producto', 'categories'));
     }
 }
