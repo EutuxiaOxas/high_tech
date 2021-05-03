@@ -1,7 +1,7 @@
 <article class="row justify-content-center">
     <div class="col-12">
         <!-- CTA -->
-        <div class="boxed bg-info p-2 p-lg-5">
+        <div class="boxed p-2 p-lg-5" style="background-color: #76bd22;">
             <div class="row justify-content-between align-items-center text-center text-md-left">
             <div class="col-md-3">
                 <h3 class="text-white">CTA.</h3>
