@@ -45,6 +45,14 @@ Route::middleware('auth')->group(function () {
 	Route::post('/cms/actualizar/producto/{id}', 'ProductController@actualizarProducto')->middleware('can:cms.products.update')->name('cms.products.update');
 	Route::delete('/cms/eliminar/producto/{id}', 'ProductController@eliminarProducto')->middleware('can:cms.products.destroy')->name('cms.products.destroy');
 
+    /* ----------  RUTA PARAMETROS DE FILTRO ---------*/
+	Route::get('/cms/parameters', 'ProductController@parameters')->middleware('can:cms.products.parameters.show')->name('cms.products.parameters.show');
+	Route::get('/cms/parameters/crear/{serie}', 'ProductController@crearParameter')->middleware('can:cms.products.parameters.create')->name('cms.products.parameters.create');
+	Route::post('/cms/parameters/guardar', 'ProductController@guardarParameter')->middleware('can:cms.products.parameters.store')->name('cms.products.parameters.store');
+	Route::get('/cms/parameters/editar/{id}/{serie}', 'ProductController@editarParameter')->middleware('can:cms.products.parameters.edit')->name('cms.products.parameters.edit');
+	Route::post('/cms/parameters/actualizar/{id}', 'ProductController@actualizarParameter')->middleware('can:cms.products.parameters.update')->name('cms.products.parameters.update');
+	Route::delete('/cms/parameters/eliminar/{id}', 'ProductController@eliminarParameter')->middleware('can:cms.products.parameters.destroy')->name('cms.products.parameters.destroy');
+
 	/* ----------  RUTA CATEGROIAS BLOG CONTROLLADOR ---------*/
 	Route::get('/cms/blog/categorias', 'Blog\CategoriesController@index')->middleware('can:cms.blog.categories.show')->name('cms.blog.categories.show');
 	Route::get('/cms/blog/crear/categoria', 'Blog\CategoriesController@crearCategoria')->middleware('can:cms.blog.categories.create')->name('cms.blog.categories.create');

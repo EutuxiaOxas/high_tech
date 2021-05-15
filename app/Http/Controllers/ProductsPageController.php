@@ -24,7 +24,7 @@ class ProductsPageController extends Controller
         if(isset($request->search))
         {
             $productos = Product::with(['categoria'])->where('titulo', 'LIKE', '%'.$request->search.'%')->paginate(15);
-            $all_products = Product::with(['categoria'])->where('titulo', 'LIKE', '%'.$request->search.'%')->get();
+            $all_products = Product::with(['categoria'])->where('titulo', 'LIKE', '%'.$request->search.'%')->orWhere('codigo_universal', 'LIKE', '%'.$request->search.'%')->get();
         }else {
             $productos = Product::paginate(15);
             $all_products = Product::all();
@@ -46,10 +46,12 @@ class ProductsPageController extends Controller
 
         $productos = Product::where('titulo', 'LIKE', "%{$search}%")
         ->orWhere('descripcion', 'LIKE', "%{$search}%")
+        ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
         ->paginate(15);
 
         $total_productos =Product::where('titulo', 'LIKE', "%{$search}%")
         ->orWhere('descripcion', 'LIKE', "%{$search}%")
+        ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
         ->get();
         $total_products = count($total_productos);
 
@@ -103,11 +105,13 @@ class ProductsPageController extends Controller
             $productos = Product::where('category_id', $category_id)
             ->where('titulo', 'LIKE', "%{$search}%")
             ->orWhere('descripcion', 'LIKE', "%{$search}%")
+            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
             ->paginate(15);
 
             $total_productos = Product::where('category_id', $category_id)
             ->where('titulo', 'LIKE', "%{$search}%")
             ->orWhere('descripcion', 'LIKE', "%{$search}%")
+            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
             ->get();
 
         }else{
@@ -120,6 +124,7 @@ class ProductsPageController extends Controller
                     ->where('category_id', $category_id)
                     ->where('titulo', 'LIKE', "%{$search}%")
                     ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
                     ->join('auto_parameters', function ($join) use ($id_posicion_rueda,$search){
                         $join->on('products.id', '=', 'auto_parameters.product_id')
                             ->where('auto_parameters.posicion_id', '=', $id_posicion_rueda)
@@ -131,6 +136,7 @@ class ProductsPageController extends Controller
                     ->where('category_id', $category_id)
                     ->where('titulo', 'LIKE', "%{$search}%")
                     ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
                     ->join('auto_parameters', function ($join) use ($id_posicion_rueda,$search){
                         $join->on('products.id', '=', 'auto_parameters.product_id')
                             ->where('auto_parameters.posicion_id', '=', $id_posicion_rueda)
@@ -147,6 +153,7 @@ class ProductsPageController extends Controller
                     ->where('category_id', $category_id)
                     ->where('titulo', 'LIKE', "%{$search}%")
                     ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
                     ->join('serie6000_parameters', function ($join) use ($id_tipo_sello){
                         $join->on('products.id', '=', 'serie6000_parameters.product_id')
                             ->where('serie6000_parameters.tipo_sello_id', '=', $id_tipo_sello);
@@ -157,6 +164,7 @@ class ProductsPageController extends Controller
                     ->where('category_id', $category_id)
                     ->where('titulo', 'LIKE', "%{$search}%")
                     ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
                     ->join('serie6000_parameters', function ($join) use ($id_tipo_sello){
                         $join->on('products.id', '=', 'serie6000_parameters.product_id')
                             ->where('serie6000_parameters.tipo_sello_id', '=', $id_tipo_sello);
@@ -171,6 +179,7 @@ class ProductsPageController extends Controller
                     ->where('category_id', $category_id)
                     ->where('titulo', 'LIKE', "%{$search}%")
                     ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
                     ->join('moto_parameters', function ($join) use ($id_tipo_sello){
                         $join->on('products.id', '=', 'moto_parameters.product_id')
                             ->where('moto_parameters.tipo_sello_id', '=', $id_tipo_sello);
@@ -181,6 +190,7 @@ class ProductsPageController extends Controller
                     ->where('category_id', $category_id)
                     ->where('titulo', 'LIKE', "%{$search}%")
                     ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
                     ->join('moto_parameters', function ($join) use ($id_tipo_sello){
                         $join->on('products.id', '=', 'moto_parameters.product_id')
                             ->where('moto_parameters.tipo_sello_id', '=', $id_tipo_sello);
@@ -194,6 +204,7 @@ class ProductsPageController extends Controller
                     ->where('category_id', $category_id)
                     ->where('titulo', 'LIKE', "%{$search}%")
                     ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
                     ->join('chumacera_parameters', function ($join) use ($id_tipo_brida){
                         $join->on('products.id', '=', 'chumacera_parameters.product_id')
                             ->where('chumacera_parameters.tipo_chum_id', '=', $id_tipo_brida);
@@ -204,6 +215,7 @@ class ProductsPageController extends Controller
                     ->where('category_id', $category_id)
                     ->where('titulo', 'LIKE', "%{$search}%")
                     ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
                     ->join('chumacera_parameters', function ($join) use ($id_tipo_brida){
                         $join->on('products.id', '=', 'chumacera_parameters.product_id')
                             ->where('chumacera_parameters.tipo_chum_id', '=', $id_tipo_brida);
@@ -217,6 +229,7 @@ class ProductsPageController extends Controller
                     ->where('category_id', $category_id)
                     ->where('titulo', 'LIKE', "%{$search}%")
                     ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
                     ->join('cadena_parameters', function ($join) use ($id_tipo_cadena){
                         $join->on('products.id', '=', 'cadena_parameters.product_id')
                             ->where('cadena_parameters.tipo_cadena_id', '=', $id_tipo_cadena);
@@ -227,6 +240,7 @@ class ProductsPageController extends Controller
                     ->where('category_id', $category_id)
                     ->where('titulo', 'LIKE', "%{$search}%")
                     ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
                     ->join('cadena_parameters', function ($join) use ($id_tipo_cadena){
                         $join->on('products.id', '=', 'cadena_parameters.product_id')
                             ->where('cadena_parameters.tipo_cadena_id', '=', $id_tipo_cadena);

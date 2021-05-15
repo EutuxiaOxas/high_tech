@@ -53,7 +53,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary px-5">
+                                <button type="submit" class="btn btn-info px-5">
                                     {{ __('Acceder') }}
                                 </button>
 {{--

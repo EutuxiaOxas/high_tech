@@ -41,7 +41,7 @@
           <div class="col-12 col-md-6 mb-4">
               <h5>Imagen del producto</h5>
                 Selecciona la nueva imagen <label class="text-primary pointer" for="imagen"> Aquí</label>
-                <input type="file" hidden name="imagen_producto" id="imagen">
+                <input type="file" hidden name="imagen_producto" id="imagen" required>
                 <div> <strong id="spanImagen"></strong> </div>
             </div>
             <div class="col-12 mb-4">
@@ -135,17 +135,17 @@
             <div class="row">
               <h3 class="col-12 mb-4">Parametros Moto</h3>
               <div class="col-12 col-md-6 mb-4">
-                <h5>Diametro interno</h5>
+                <h5>Diametro interno (mm)</h5>
                 <input class="form-control moto element-required" type="number" name="d_interno_moto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
-                <h5>Diametro externo</h5>
+                <h5>Diametro externo (mm)</h5>
                 <input class="form-control moto element-required" type="number" name="d_externo_moto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
-                <h5>Espesor</h5>
+                <h5>Espesor (mm)</h5>
                 <input class="form-control moto element-required" type="number" name="espesor_moto" step="0.001">
               </div>
 
@@ -180,17 +180,17 @@
               </div>
 
               <div class="col-12 col-md-6 mb-4">
-                <h5>Diametro interno</h5>
+                <h5>Diametro interno (mm)</h5>
                 <input class="form-control serie6000 element-required" type="number" name="d_interno_serie6000" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
-                <h5>Diametro externo</h5>
+                <h5>Diametro externo (mm)</h5>
                 <input class="form-control serie6000 element-required" type="number" name="d_externo_serie6000" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
-                <h5>Espesor</h5>
+                <h5>Espesor (mm)</h5>
                 <input class="form-control serie6000 element-required" type="number" name="espesor_serie6000" step="0.001">
               </div>
             </div>
@@ -221,17 +221,17 @@
               </div>
 
               <div class="col-12 col-md-6 mb-4">
-                <h5>Diametro interno</h5>
+                <h5>Diametro interno (mm)</h5>
                 <input class="form-control auto element-required" type="number" name="d_interno_auto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
-                <h5>Diametro externo</h5>
+                <h5>Diametro externo (mm)</h5>
                 <input class="form-control auto element-required" type="number" name="d_externo_auto" step="0.001">
               </div>
 
               <div class="col-12 col-md-6 mb-4">
-                <h5>Espesor</h5>
+                <h5>Espesor (mm)</h5>
                 <input class="form-control auto element-required" type="number" name="espesor_auto" step="0.001">
               </div>
             </div>

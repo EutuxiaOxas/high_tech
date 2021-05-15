@@ -39,6 +39,14 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'cms.products.update'])->syncRoles([ $role_admin, $role_invent ]);
         Permission::create(['name' => 'cms.products.destroy'])->syncRoles([ $role_admin, $role_invent ]);
 
+        // Rutas de Parametros
+        Permission::create(['name' => 'cms.products.parameters.show'])->syncRoles([ $role_admin, $role_invent ]);
+        Permission::create(['name' => 'cms.products.parameters.create'])->syncRoles([ $role_admin, $role_invent ]);
+        Permission::create(['name' => 'cms.products.parameters.store'])->syncRoles([ $role_admin, $role_invent ]);
+        Permission::create(['name' => 'cms.products.parameters.edit'])->syncRoles([ $role_admin, $role_invent ]);
+        Permission::create(['name' => 'cms.products.parameters.update'])->syncRoles([ $role_admin, $role_invent ]);
+        Permission::create(['name' => 'cms.products.parameters.destroy'])->syncRoles([ $role_admin, $role_invent ]);
+
         // Rutas de categorias de Blog
         Permission::create(['name' => 'cms.blog.categories.show'])->syncRoles([ $role_admin, $role_blog]);
         Permission::create(['name' => 'cms.blog.categories.create'])->syncRoles([ $role_admin]);

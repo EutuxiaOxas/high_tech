@@ -333,4 +333,148 @@ class ProductController extends Controller
         $producto->delete();
         return redirect()->route('cms.products.show', compact('productos'))->with('info', 'Producto eliminado exitosamente!');
     }
+
+
+    // Parametros de las series, usadas en el filtro
+    public function parameters(){
+        $posiciones = Posicion::all();
+        $sellos = Tipo_Sello::all();
+        $bridas = Tipo_Chum::all();
+        $cadenas = Tipo_Cadena::all();
+
+        return view('cms.productos.parameters.index')->with( compact('posiciones', 'sellos', 'bridas', 'cadenas') );
+    }
+
+    //
+    public function crearParameter($serie){
+        return view('cms.productos.parameters.create')->with( compact('serie') );
+    }
+
+    // Guardar parametro
+    public function guardarParameter(Request $request){
+        $serie = $request->serie;
+        if( $serie == 'auto' ){
+
+            $posicion_rueda = new Posicion;
+            $posicion_rueda->create([
+                'posicion' => $request['parameter']
+            ]);
+
+        }else if( $serie == 'chumacera' ){
+
+            $tipo_chum = new Tipo_Chum;
+            $tipo_chum->create([
+                'tipo_chum' => $request['parameter']
+            ]);
+
+        }else if( $serie == 'cadena' ){
+
+            $tipo_cadena = new Tipo_Cadena;
+            $tipo_cadena->create([
+                'tipo_cadena_texto' => $request['parameter'],
+                'tipo_cadena_num' => 0
+            ]);
+
+        }else{
+
+            $tipo_sello = new Tipo_Sello;
+            $tipo_sello->create([
+                'tipo_sello' => $request['parameter']
+            ]);
+
+        }
+
+        return redirect()->route("cms.products.parameters.show")->with('info', 'Parametro guardado exitosamente!');
+
+    }
+
+    // Editar parametro
+    public function editarParameter(Request $request){
+        $serie = $request->serie;
+        if( $serie == 'auto' ){
+
+            $parametro = Posicion::find($request->id);
+
+        }else if( $serie == 'chumacera' ){
+
+            $parametro = Tipo_Chum::find($request->id);
+
+        }else if( $serie == 'cadena' ){
+
+            $parametro = Tipo_Cadena::find($request->id);
+
+        }else{
+
+            $parametro = Tipo_Sello::find($request->id);
+
+        }
+
+        return view('cms.productos.parameters.edit')->with( compact('serie', 'parametro') );
+
+    }
+
+    // update parametro
+    public function actualizarParameter(Request $request){
+        $serie = $request->serie;
+        if( $serie == 'auto' ){
+
+            $parametro = Posicion::find($request->id);
+            $parametro->update([
+                'posicion' => $request->parameter
+            ]);
+
+        }else if( $serie == 'chumacera' ){
+
+            $parametro = Tipo_Chum::find($request->id);
+            $parametro->update([
+                'tipo_chum' => $request->parameter
+            ]);
+
+        }else if( $serie == 'cadena' ){
+
+            $parametro = Tipo_Cadena::find($request->id);
+            $parametro->update([
+                'tipo_cadena_texto' => $request->parameter,
+                'tipo_cadena_num' => 0
+            ]);
+
+        }else{
+
+            $parametro = Tipo_Sello::find($request->id);
+            $parametro->update([
+                'tipo_sello' => $request->parameter
+            ]);
+
+        }
+
+        return redirect()->route("cms.products.parameters.show")->with('info', 'Parametro actualizado exitosamente!');
+
+    }
+
+    // Eliminar parametro
+    public function eliminarParameter(Request $request){
+        $serie = $request->serie;
+        if( $serie == 'auto' ){
+
+            $parametro = Posicion::find($request->id);
+
+        }else if( $serie == 'chumacera' ){
+
+            $parametro = Tipo_Chum::find($request->id);
+
+        }else if( $serie == 'cadena' ){
+
+            $parametro = Tipo_Cadena::find($request->id);
+
+        }else{
+
+            $parametro = Tipo_Sello::find($request->id);
+
+        }
+        $parametro->delete();
+
+        return redirect()->route("cms.products.parameters.show")->with('info', 'Parametro eliminado exitosamente!');
+
+    }
 }
+

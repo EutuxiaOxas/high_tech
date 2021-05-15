@@ -16,21 +16,21 @@ class CategorySeeder extends Seeder
         	'category' => 'Serie Automotriz',
         	'description' => 'Rodamientos  especializados en las aplicaciones automotrices.',
             'slug' => 'serie-automotriz',
-        	'category_color' => 'blue'
+        	'category_color' => 'f68220'
         ]);
 
         DB::table('categories')->insert([
         	'category' => 'Serie 6000',
         	'description' => 'Rodamientos rígidos de bolas.',
             'slug' => 'serie-6000',
-        	'category_color' => 'red'
+        	'category_color' => 'a2bd30'
         ]);
 
         DB::table('categories')->insert([
             'category' => 'Serie Moto',
             'description' => 'Línea de productos especialmente para motocicletas.',
             'slug' => 'serie-moto',
-            'category_color' => 'red'
+            'category_color' => 'ed1b24'
         ]);
 
 
@@ -38,14 +38,14 @@ class CategorySeeder extends Seeder
             'category' => 'Serie Chumacera',
             'description' => 'Chumaceras tipo puente y tipo brida.',
             'slug' => 'chumaceras',
-            'category_color' => 'red'
+            'category_color' => '0273b7'
         ]);
 
         DB::table('categories')->insert([
             'category' => 'Serie cadenas',
             'description' => 'Cadenas de excelente calidad.',
             'slug' => 'serie-cadenas',
-            'category_color' => 'red'
+            'category_color' => 'ffca08'
         ]);
 
         // DB::table('categories')->insert([

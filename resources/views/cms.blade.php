@@ -137,6 +137,14 @@
                     </a>
                 </li>
                 @endcan
+                @can('cms.products.parameters.show')
+                <li class="nav-item">
+                  <a href=" {{ route('cms.products.parameters.show') }} " class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Parametros Generales</p>
+                  </a>
+                </li>
+                @endcan
                 @can('cms.products.show')
                 <li class="nav-item">
                   <a href="/cms/productos" class="nav-link">
@@ -145,6 +153,7 @@
                   </a>
                 </li>
                 @endcan
+
             </ul>
           </li>
           @endcan
