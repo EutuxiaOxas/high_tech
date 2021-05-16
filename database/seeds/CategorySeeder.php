@@ -42,7 +42,7 @@ class CategorySeeder extends Seeder
         ]);
 
         DB::table('categories')->insert([
-            'category' => 'Serie cadenas',
+            'category' => 'Serie Cadenas',
             'description' => 'Cadenas de excelente calidad.',
             'slug' => 'serie-cadenas',
             'category_color' => 'ffca08'

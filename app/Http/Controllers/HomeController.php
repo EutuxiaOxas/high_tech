@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use  App\Blog\Article;
 use  App\Blog\Keyword;
+use App\Product;
 
 class HomeController extends Controller
 {
@@ -18,7 +19,8 @@ class HomeController extends Controller
     {
         $posts = Article::with(['categoria', 'autor'])->orderBy('id', 'DESC')->paginate(3);
         $categories = Category::all();
-        return view('home.home', compact('posts','categories'));
+        $products = Product::inRandomOrder()->take(10)->get();
+        return view('home.home', compact('posts','categories', 'products'));
     }
 
     /**

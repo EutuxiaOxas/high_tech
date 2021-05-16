@@ -19,54 +19,9 @@
     <div class="row text-white" data-aos="fade-left">
         <div class="col">
         <div class="owl-carousel owl-carousel-library visible" data-loop="true" data-items="[3,2,1]" data-margin="30" data-nav="true">
-            <article class="tile tile-long">
-            <div class="tile-image" style="background-image: url(/imagenes/moto.jpg)"></div>
-            <div>
-                <div class="tile-header on-hover text-right">
-                <button class="btn btn-sm btn-outline-info text-dark">Ver más</button>
-                </div>
-                <div class="tile-footer">
-                <span class="eyebrow text-dark">Development</span>
-                <h3 class="text-dark">Developing Wordpress Theme from Scratch</h3>
-                </div>
-            </div>
-            </article>
-            <article class="tile tile-long">
-            <div class="tile-image" style="background-image: url(/imagenes/auto.jpg)"></div>
-            <div>
-                <div class="tile-header on-hover text-right">
-                <button class="btn btn-sm btn-outline-info text-dark">Ver más</button>
-                </div>
-                <div class="tile-footer">
-                <span class="eyebrow text-dark">Development</span>
-                <h3 class="text-dark">Developing Wordpress Theme from Scratch</h3>
-                </div>
-            </div>
-            </article>
-            <article class="tile tile-long">
-            <div class="tile-image" style="background-image: url(/imagenes/6000.jpg)"></div>
-            <div>
-                <div class="tile-header on-hover text-right">
-                <button class="btn btn-sm btn-outline-info text-dark">Ver más</button>
-                </div>
-                <div class="tile-footer">
-                <span class="eyebrow text-dark">Development</span>
-                <h3 class="text-dark">Developing Wordpress Theme from Scratch</h3>
-                </div>
-            </div>
-            </article>
-            <article class="tile tile-long">
-            <div class="tile-image" style="background-image: url(/imagenes/pillow.jpg)"></div>
-            <div>
-                <div class="tile-header on-hover text-right">
-                <button class="btn btn-sm btn-outline-info text-dark">Ver más</button>
-                </div>
-                <div class="tile-footer">
-                <span class="eyebrow text-dark">Development</span>
-                <h3 class="text-dark">Developing Wordpress Theme from Scratch</h3>
-                </div>
-            </div>
-            </article>
+            @foreach ( $products as $product )
+                @include('components.card_product')
+            @endforeach
         </div>
         </div>
     </div>

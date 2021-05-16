@@ -12,12 +12,11 @@
 
 <style>
     .img_product_card{
-        display: flex;
+        /* display: flex;
         flex-direction:row;
 	    justify-content: center;
-	    align-items: center;
+	    align-items: center; */
         max-height: 65vh;
-        min-height: 65vh;
         max-width:100%;
 
         border-radius: 5px 5px 0 0;
@@ -72,41 +71,66 @@ line-height: 2.5rem;
 <section class="container-fluid px-3">
     <div class="row mb-0">
         <!-- Product Detail -->
-        <div class="col-6">
-            <div class="row card_product align-items-center mb-0">
-                <div class="col-12 img_product_card mb-3">
-                    <img class="img_product" src="{{ Storage::url($producto->imagen) }}" alt="">
-                </div>
-
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="row">
+        <div class="col-12 mt-5 pt-3 d-md-none">
+            <div class="row align-items-center">
                 <div class="col-12">
                     <h1 class="font-light">{{$producto->titulo}}</h1>
                 </div>
-                <div class="col-6 mt-1">
-                    Código Universal:
-                    <strong>
-                         {{ $producto->codigo_universal }}
-                    </strong>
-                </div>
-                <div class="col-6 text-right px-4 mt-1">
-                    <small class="rounded-full shadow-md py-1 px-3" style="background-color: #{{$producto->categoria->category_color}};">
-                        <a class="text-white" href="/categorias/{{$producto->categoria->slug}}">{{$producto->categoria->category}}</a>
-                    </small>
+                <div class="col-12 mt-1">
+                    <div class="row justify-content-between align-items-center">
+                        <span class="col-auto">
+                            Código Universal:
+                            <strong>
+                                 {{ $producto->codigo_universal }}
+                            </strong>
+                        </span>
+                        <a class="col-auto rounded-full shadow-md py-1 px-3 text-white" href="/categorias/{{$producto->categoria->slug}}" style="background-color: #{{$producto->categoria->category_color}};">
+                            {{$producto->categoria->category}}
+                        </a>
+                    </div>
                 </div>
                 <div class="col-12">
                     <span class="text-4xl font-light">
                         {{ $producto->precio }} $USD
                     </span>
                 </div>
-
-                <div class="col-12"></div>
-
             </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="row card_product align-items-center mb-0 justify-content-center">
+                <div class="col-12 img_product_card mb-md-3 ">
+                    <img class="img_product" src="{{ Storage::url($producto->imagen) }}" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+
+            <div class="row d-none d-md-block">
+                <div class="col-12">
+                    <h1 class="font-light">{{$producto->titulo}}</h1>
+                </div>
+                <div class="col-12 mt-1">
+                    <div class="row justify-content-between align-items-center">
+                        <span class="col-auto">
+                            Código Universal:
+                            <strong>
+                                 {{ $producto->codigo_universal }}
+                            </strong>
+                        </span>
+                        <a class="col-auto rounded-full shadow-md py-1 px-3 text-white" href="/categorias/{{$producto->categoria->slug}}" style="background-color: #{{$producto->categoria->category_color}};">
+                            {{$producto->categoria->category}}
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <span class="text-4xl font-light">
+                        {{ $producto->precio }} $USD
+                    </span>
+                </div>
+            </div>
+
             <div class="row">
-                <div class="col-12 text-2xl">
+                <div class="col-12 text-2xl mb-1">
                     Parámetros:
                 </div>
                 <div class="col-12">
@@ -125,7 +149,6 @@ line-height: 2.5rem;
                                 <span class="text-muted">{{ $producto->auto->aplicacion }}</span>
                             </div>
                             <div class="col-12">
-
                                 <hr>
                             </div>
                             <div class="col-12">
@@ -147,16 +170,105 @@ line-height: 2.5rem;
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6"></div>
 
                         @elseif( $producto->categoria->category == 'Serie Chumacera' )
-                        {{ $producto->chumacera() }}
+
+                        <div class="col-6 mb-1">
+                            <span class="font-semibold text-lg">Diametro: </span> <br>
+                            <span class="text-muted">{{ $producto->chumacera->diametroChum->valor }}</span>
+                        </div>
+                        <div class="col-6 mb-1">
+                            <span class="font-semibold text-lg">Tipo: </span> <br>
+                            <span class="text-muted">{{ $producto->chumacera->tipoChum->tipo_chum }}</span>
+                        </div>
+                        <div class="col-6 mb-1">
+                            <span class="font-semibold text-lg">Forma: </span> <br>
+                            <span class="text-muted">{{ $producto->chumacera->formaChum->forma_chum }}</span>
+                        </div>
+                        <div class="col-6 mb-1">
+                            <span class="font-semibold text-lg">Cantidad de huecos: </span> <br>
+                            <span class="text-muted">{{ $producto->chumacera->No_huecos }}</span>
+                        </div>
+
+
+
                         @elseif( $producto->categoria->category == 'Serie cadenas' )
-                        {{ $producto->cadena() }}
+
+                            <div class="col-6 mb-1">
+                                <span class="font-semibold text-lg">Pitch: </span> <br>
+                                <span class="text-muted">{{ $producto->cadena->pitch }}</span>
+                            </div>
+                            <div class="col-6 mb-1">
+                                <span class="font-semibold text-lg">Tipo de cadena: </span> <br>
+                                <span class="text-muted">{{ $producto->cadena->tipoCadena->tipo_cadena_texto }}</span>
+                            </div>
+                            <div class="col-6 mb-1">
+                                <span class="font-semibold text-lg">Empate de cadena: </span> <br>
+                                <span class="text-muted">{{ $producto->cadena->tipoEmpate->tipo_empate }}</span>
+                            </div>
+
                         @elseif( $producto->categoria->category == 'Serie 6000' )
-                        {{ $producto->serie6000() }}
+                            <div class="col-6 mb-1">
+                                <span class="font-semibold text-lg">Rodamiento: </span> <br>
+                                <span class="text-muted">{{ $producto->serie6000->rodamiento }}</span>
+                            </div>
+                            <div class="col-6 mb-1">
+                                <span class="font-semibold text-lg">Tipo de sello: </span> <br>
+                                <span class="text-muted">{{ $producto->serie6000->tipoSello->tipo_sello }}</span>
+                            </div>
+
+                            <div class="col-12">
+                                <hr>
+                            </div>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12 font-semibold text-xl">
+                                        Medidas: {{ $producto->serie6000->d_interno }}x{{ $producto->serie6000->d_externo }}x{{ $producto->serie6000->espesor }}mm
+                                    </div>
+                                    <div class="col-4">
+                                        <span class="font-semibold text-lg">Diametro interno: </span> <br>
+                                        <span class="text-muted">{{ $producto->serie6000->d_interno }} mm</span>
+                                    </div>
+                                    <div class="col-4">
+                                        <span class="font-semibold text-lg">Diametro externo: </span> <br>
+                                        <span class="text-muted">{{ $producto->serie6000->d_externo }} mm</span>
+                                    </div>
+                                    <div class="col-4">
+                                        <span class="font-semibold text-lg">Espesor: </span> <br>
+                                        <span class="text-muted">{{ $producto->serie6000->espesor }} mm</span>
+                                    </div>
+                                </div>
+                            </div>
                         @else
-                        {{ $producto->moto() }}
+
+                            <div class="col-6 mb-1">
+                                <span class="font-semibold text-lg">Tipo de sello: </span> <br>
+                                <span class="text-muted">{{ $producto->moto->tipoSello->tipo_sello }}</span>
+                            </div>
+
+                            <div class="col-12">
+                                <hr>
+                            </div>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12 font-semibold text-xl">
+                                        Medidas: {{ $producto->moto->d_interno }}x{{ $producto->moto->d_externo }}x{{ $producto->moto->espesor }}mm
+                                    </div>
+                                    <div class="col-4">
+                                        <span class="font-semibold text-lg">Diametro interno: </span> <br>
+                                        <span class="text-muted">{{ $producto->moto->d_interno }} mm</span>
+                                    </div>
+                                    <div class="col-4">
+                                        <span class="font-semibold text-lg">Diametro externo: </span> <br>
+                                        <span class="text-muted">{{ $producto->moto->d_externo }} mm</span>
+                                    </div>
+                                    <div class="col-4">
+                                        <span class="font-semibold text-lg">Espesor: </span> <br>
+                                        <span class="text-muted">{{ $producto->moto->espesor }} mm</span>
+                                    </div>
+                                </div>
+                            </div>
+
                         @endif
                     </div>
                 </div>
@@ -165,7 +277,7 @@ line-height: 2.5rem;
         </div>
     </div>
 
-    <div class="row mb-1">
+    <div class="row mb-1 mt-md-3">
         <div class="col-12">
             <h4 class="text-dark mb-2">Descripcion del producto</h4>
         </div>
@@ -176,13 +288,9 @@ line-height: 2.5rem;
         </div>
     </div>
 
-    <div class="row justify-content-center">
-        <div class="col-10">
-
-        </div>
-    </div>
 </section>
 
+@include('components.other_products')
 
 
 

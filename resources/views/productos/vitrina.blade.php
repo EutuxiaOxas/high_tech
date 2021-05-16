@@ -65,7 +65,7 @@
                     @endisset
                 </div>
                 <!-- Listado de Productos -->
-                <div class="row px-2">
+                <div class="container-fluid">
                     @foreach($productos as $producto)
                         @include('common.card_product')
                     @endforeach

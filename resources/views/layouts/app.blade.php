@@ -60,13 +60,13 @@
   <body>
 
     {{-- header --}}
-    @include('components.header')
+    @include('common.header')
     {{-- contenido --}}
     @yield('content')
     {{-- Whatasapp --}}
-    @include('components.whatsapp')
+    @include('common.whatsapp')
     {{-- footer --}}
-    @include('components.footer')
+    @include('common.footer')
 
     {{-- global Js  --}}
     <script src="/go/app/assets/js/vendor.js"></script>

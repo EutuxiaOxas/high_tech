@@ -362,7 +362,7 @@
         formulario.setAttribute('required', true)
       })
 
-    } else if(target.text === "Chumaceras") {
+    } else if(target.text === "Serie Chumacera") {
       let form = document.querySelector('#chumacera')
       let inputHidden = document.querySelector('#chumacera_inputs');
       let formularios = document.querySelectorAll('.chumacera')
