@@ -55,7 +55,7 @@
           </div>
         </div>
         <div class="widget">
-          <span class="widget-title">Latest News</span>
+          <span class="widget-title">Últimas noticias</span>
           <ul class="feed">
             @foreach($latest_posts as $latest_post)
               <li>

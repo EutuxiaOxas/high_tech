@@ -56,18 +56,16 @@
 </section>
 <!-- / cover -->
 
-
-
 <section>
   <div class="container">
-    <div class="row justify-content-center">
+    {{-- <div class="row justify-content-center">
       <button id="boton_reproducir" style="display: none;" class="btn btn-outline-info px-5">Reproducir post</button>
       <div id="reproductor_container" class="reproductor">
         <audio src=""  id="reproductor" controls="true" style="display: none;"></audio>
       </div>
-    </div>
+    </div> --}}
     <div class="row justify-content-center">
-      <div class="col-md-10 col-lg-10">
+      <div class="col-md-10 col-lg-10 text-lg">
         {!! $post->content !!}
       </div>
     </div>
@@ -102,8 +100,6 @@
   </div>
 
 </section>
-
-
 
 <!-- news -->
 <section class="bg-light separator-top">
@@ -195,5 +191,13 @@
 
 
 </script>
+
+{{-- CallToAction --}}
+@include('components.cta')
+{{-- End CallToAction --}}
+
+{{-- Social lateral --}}
+@include('components.social_lateral')
+{{-- End Social lateral --}}
 
 @endsection

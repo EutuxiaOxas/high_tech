@@ -25,7 +25,7 @@
 {{-- End galeria --}}
 
 {{-- CallToAction --}}
-@include('nosotros.sections.cta')
+@include('components.cta')
 {{-- End CallToAction --}}
 
 @endsection

@@ -76,7 +76,7 @@ Auth::routes();
 
 Route::get('/blog', 'BlogController@index')->name('main.blog.home');
 Route::get('/blog/{slug}', 'BlogController@post')->name('main.blog.show');
-Route::get('/blog-categorie/{slug}', 'BlogController@postsWithCategorie')->name('main.blog.categorie');
+Route::get('/blog-categories/{slug}', 'BlogController@postsWithCategorie')->name('main.blog.categorie');
 Route::get('/blog-tags/{keyword}', 'BlogController@postByTag')->name('main.blog.tag');
 
 

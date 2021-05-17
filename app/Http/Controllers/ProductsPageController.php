@@ -105,22 +105,16 @@ class ProductsPageController extends Controller
 
         if($request->no_slug && $category_id == 0){
 
-            $productos = Product::where('category_id', $category_id)
-            ->where(function($query) use ($search) {
-                $query->where('titulo', 'LIKE', "%{$search}%")
-                ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
-                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
-            })
+            $productos = Product::where('titulo', 'LIKE', "%{$search}%")
+            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+            ->orWhere('aplicacion', 'LIKE', "%{$search}%")
             ->paginate($this->perPage);
 
-            $total_products = Product::where('category_id', $category_id)
-            ->where(function($query) use ($search) {
-                $query->where('titulo', 'LIKE', "%{$search}%")
-                ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
-                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
-            })
+            $total_products = Product::where('titulo', 'LIKE', "%{$search}%")
+            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+            ->orWhere('aplicacion', 'LIKE', "%{$search}%")
             ->count();
 
         }else{

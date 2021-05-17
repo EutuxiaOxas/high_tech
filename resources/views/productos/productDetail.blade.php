@@ -293,15 +293,20 @@ line-height: 2.5rem;
         </div>
         <div class="col-12">
             <p class="text-muted">
-                {{$producto->descripcion}}
+                {!! $producto->descripcion !!}
             </p>
         </div>
     </div>
 
 </section>
 
+{{-- Otor productos --}}
 @include('components.other_products')
+{{-- End Otros productos --}}
 
+{{-- Social lateral --}}
+@include('components.social_lateral')
+{{-- End Social lateral --}}
 
 
 @endsection

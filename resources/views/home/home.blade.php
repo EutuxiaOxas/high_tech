@@ -36,4 +36,8 @@
 @include('home.sections.blog')
 {{-- End Blog --}}
 
+{{-- Social lateral --}}
+{{-- @include('components.social_lateral') --}}
+{{-- End Social lateral --}}
+
 @endsection
