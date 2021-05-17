@@ -49,6 +49,10 @@
               <textarea class="form-control" required name="descripcion_producto"></textarea>
             </div>
             <div class="col-12 mb-4">
+                <h5>Vehiculo / Aplicación</h5>
+                <textarea class="form-control auto element-required" name="aplicacion"></textarea>
+              </div>
+            <div class="col-12 mb-4">
               <h5>Categoría</h5>
               <select name="categoria_producto" class="form-control form-control" id="categoria_select" required>
                 <option>Selecciona una Categoría</option>
@@ -206,11 +210,6 @@
                 <input class="form-control auto element-required" type="text" name="articulo_auto">
               </div>
 
-              <div class="col-12  mb-4">
-                <h5>Aplicacion</h5>
-                <textarea class="form-control auto element-required" name="aplicacion_auto"></textarea>
-              </div>
-
               <div class="col-12 col-md-6 mb-4">
                 <h5>Posicion</h5>
                 <select class="form-control auto element-required" name="posicion_auto">
@@ -317,7 +316,7 @@
         formulario.setAttribute('required', true)
       })
 
-    } else if(target.text === "Serie cadenas") {
+    } else if(target.text === "Serie Cadenas") {
 
       let form = document.querySelector('#cadena')
       let inputHidden = document.querySelector('#cadena_inputs');

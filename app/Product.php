@@ -13,6 +13,22 @@ class Product extends Model
     	return $this->belongsTo('App\Category', 'category_id');
     }
 
+    public function auto()
+    {
+        return $this->hasOne('App\Auto_Parameter');
+    }
+
+    public function getAutosBySearch( $search ){
+
+        $products = Product::where('titulo', $search)
+        ->where('descripcion', $search)
+        ->where('codigo_universal', $search)
+        ->get();
+
+        return $products;
+
+    }
+
     public function chumacera()
     {
     	return $this->hasOne('App\Chumacera_Parameter');
@@ -23,10 +39,6 @@ class Product extends Model
     	return $this->hasOne('App\Cadena_Parameter');
     }
 
-    public function auto()
-    {
-    	return $this->hasOne('App\Auto_Parameter');
-    }
 
     public function moto()
     {
@@ -38,3 +50,4 @@ class Product extends Model
     	return $this->hasOne('App\Serie6000_Parameter');
     }
 }
+

@@ -61,23 +61,25 @@
                 <div class="row mb-1">
                     <strong>( {{ $total_products }} )</strong> Productos encontrados
                     @isset ($search)
-                        para la busqueda <span>{{ $search }}</span>
+                        para la busqueda &nbsp
+                        <span class="text-muted"> {{ $search }} </span>
                     @endisset
                 </div>
                 <!-- Listado de Productos -->
                 <div class="container-fluid">
-                    @foreach($productos as $producto)
-                        @include('common.card_product')
-                    @endforeach
+                    @if ( $total_products > 0)
+                        @foreach($productos as $producto)
+                            @include('common.card_product')
+                        @endforeach
+                    @else
+                        <div class="text-center text-danger mt-4">
+                            No hay productos para esta busqueda.
+                        </div>
+                    @endif
                 </div>
-                {{$productos->appends(request()->input())->links()}}
-                <!-- Productos relacionados -->
-                {{-- <div class="row">
-                    <h5>Productos Realcionados</h5>
-                    @foreach($other_products as $producto)
-                        @include('common.card_product')
-                    @endforeach
-                </div> --}}
+                <div class="row justify-content-center">
+                    {{$productos->appends(request()->input())->links()}}
+                </div>
             </div>
             <div class="col-md-4 col-lg-3">
                 @include('common.navbar_rigth_product')

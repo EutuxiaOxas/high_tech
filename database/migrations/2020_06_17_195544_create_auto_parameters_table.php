@@ -17,7 +17,6 @@ class CreateAutoParametersTable extends Migration
             $table->id();
             $table->foreignId('product_id');
             $table->string('articulo');
-            $table->text('aplicacion');
             $table->foreignId('posicion_id');
             $table->float('d_interno');
             $table->float('d_externo');

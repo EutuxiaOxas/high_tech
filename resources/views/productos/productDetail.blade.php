@@ -146,7 +146,7 @@ line-height: 2.5rem;
                             </div>
                             <div class="col-12">
                                 <span class="font-semibold text-lg">Aplicación: </span> <br>
-                                <span class="text-muted">{{ $producto->auto->aplicacion }}</span>
+                                <span class="text-muted">{{ $producto->aplicacion }}</span>
                             </div>
                             <div class="col-12">
                                 <hr>
@@ -190,13 +190,15 @@ line-height: 2.5rem;
                             <span class="text-muted">{{ $producto->chumacera->No_huecos }}</span>
                         </div>
 
-
-
                         @elseif( $producto->categoria->category == 'Serie cadenas' )
 
                             <div class="col-6 mb-1">
                                 <span class="font-semibold text-lg">Pitch: </span> <br>
                                 <span class="text-muted">{{ $producto->cadena->pitch }}</span>
+                            </div>
+                            <div class="col-6 mb-1">
+                                <span class="font-semibold text-lg">Aplicación: </span> <br>
+                                <span class="text-muted">{{ $producto->aplicacion }}</span>
                             </div>
                             <div class="col-6 mb-1">
                                 <span class="font-semibold text-lg">Tipo de cadena: </span> <br>
@@ -215,6 +217,10 @@ line-height: 2.5rem;
                             <div class="col-6 mb-1">
                                 <span class="font-semibold text-lg">Tipo de sello: </span> <br>
                                 <span class="text-muted">{{ $producto->serie6000->tipoSello->tipo_sello }}</span>
+                            </div>
+                            <div class="col-12 mb-1">
+                                <span class="font-semibold text-lg">Aplicación: </span> <br>
+                                <span class="text-muted">{{ $producto->aplicacion }}</span>
                             </div>
 
                             <div class="col-12">
@@ -244,6 +250,10 @@ line-height: 2.5rem;
                             <div class="col-6 mb-1">
                                 <span class="font-semibold text-lg">Tipo de sello: </span> <br>
                                 <span class="text-muted">{{ $producto->moto->tipoSello->tipo_sello }}</span>
+                            </div>
+                            <div class="col-12 mb-1">
+                                <span class="font-semibold text-lg">Aplicación: </span> <br>
+                                <span class="text-muted">{{ $producto->aplicacion }}</span>
                             </div>
 
                             <div class="col-12">

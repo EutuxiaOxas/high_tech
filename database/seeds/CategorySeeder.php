@@ -37,7 +37,7 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             'category' => 'Serie Chumacera',
             'description' => 'Chumaceras tipo puente y tipo brida.',
-            'slug' => 'chumaceras',
+            'slug' => 'serie-chumacera',
             'category_color' => '0273b7'
         ]);
 

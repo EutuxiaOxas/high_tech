@@ -65,6 +65,10 @@
               <textarea class="form-control" require name="descripcion_producto">{{$producto->descripcion}}</textarea>
             </div>
             <div class="col-12 mb-4">
+                <h5>Vehiculo / Aplicación</h5>
+                <textarea class="form-control auto element-required" name="aplicacion"></textarea>
+            </div>
+            <div class="col-12 mb-4">
               <h5>Categoría</h5>
               <select name="categoria_producto" require class="form-control form-control" id="categoria_select">
                 @foreach($categorias as $categoria)
@@ -234,11 +238,6 @@
                 <input class="form-control auto element-required" type="text" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->articulo . '"'?> name="articulo_auto">
               </div>
 
-              <div class="col-12  mb-4">
-                <h5>Aplicacion</h5>
-                <textarea class="form-control auto element-required" name="aplicacion_auto"><?php if(isset($producto->auto->id)) echo $producto->auto->aplicacion?></textarea>
-              </div>
-
               <div class="col-12 col-md-6 mb-4">
                 <h5>Posicion</h5>
                 <select class="form-control auto element-required" name="posicion_auto">
@@ -350,7 +349,7 @@
         formulario.setAttribute('required', true)
       })
 
-    } else if(target.text === "Serie cadenas") {
+    } else if(target.text === "Serie Cadenas") {
 
       let form = document.querySelector('#cadena')
       let inputHidden = document.querySelector('#cadena_inputs');

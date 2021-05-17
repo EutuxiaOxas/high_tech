@@ -2,16 +2,21 @@
 <form action="{{route('products.search.filter')}}">
     <div class="row mb-1">
 
-        <div class="col-6 col-sm-8 col-md-6 col-lg-7 px-1 px-lg-2">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-7 px-1 px-lg-2">
             <div class="input-group">
                 <input type="search" class="form-control" name="search" placeholder="Buscar productos" aria-label="Buscar productos" aria-describedby="basic-addon2">
             </div>
-            <span class="text-info" style="cursor:pointer;" id="filtrarDimesiones">
-                Filtrar por dimensiones del rodamiento
-            </span>
+            @if(isset($slug))
+                @if ( $slug != 'serie-cadenas' && $slug != 'serie-chumacera')
+                    <span class="text-info" style="cursor:pointer;" id="filtrarDimesiones">
+                        Filtrar por dimensiones del rodamiento
+                    </span>
+                @endif
+            @endif
         </div>
-        <div class="col-6 col-sm-4 col-lg-3 px-1 px-md-2">
+        <div class="col-12 col-sm-4 col-lg-3 px-1 px-md-2">
             <div class="form-group">
+
                 @if(isset($slug))
                     @if ($slug == 'serie-automotriz')
                         <select class="form-control" name="rueda">
@@ -37,7 +42,7 @@
                             @endforeach
                         </select>
                         <input type="hidden" name="category_id" value="3">
-                    @elseif($slug == 'chumaceras')
+                    @elseif($slug == 'serie-chumacera')
                         <select class="form-control" name="tipo_brida">
                             <option value="0">Tipo de brida</option>
                             @foreach ($tipo_chum as $chum)
@@ -55,13 +60,13 @@
                         <input type="hidden" name="category_id" value="5">
                     @endif
                 @else
-                <select class="form-control" name="category_id">
-                    <option value="0">Seleccionar Serie</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->category }}</option>
-                    @endforeach
-                </select>
-                <input type="hidden" name="no_slug" value="1">
+                    <select class="form-control" name="category_id">
+                        <option value="0">Seleccionar Serie</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->category }}</option>
+                        @endforeach
+                    </select>
+                    <input type="hidden" name="no_slug" value="1">
                 @endif
 
             </div>
@@ -71,34 +76,47 @@
                 Buscar
             </button>
         </div>
-        <div class="col-12 px-1 px-md-2 hidden"  id="containerDimensiones">
-            <div class="row">
-                <div class="col-4">
-                    <label for="diametro_interno">Diametro Interno</label>
-                    <input type="text" class="form-control" name="diametro_interno" placeholder="En mm" id="diametro_interno">
-                </div>
-                <div class="col-4">
-                    <label for="diametro_externo">Diametro Externo</label>
-                    <input type="text" class="form-control" name="diametro_externo" placeholder="En mm" id="diametro_externo">
-                </div>
-                <div class="col-4">
-                    <label for="espesor">Espesor</label>
-                    <input type="text" class="form-control" name="espesor" placeholder="En mm" id="espesor">
-                </div>
-            </div>
+
+        <div class="col-12 px-1 px-md-2 hidden" id="containerDimensiones">
         </div>
     </div>
 </form>
+
+<div class="hidden" id="dimensionesInputsContainer">
+    <div class="row">
+        <div class="col-4">
+            <label for="d_interno">Diametro Interno</label>
+            <input type="text" class="form-control" name="d_interno" placeholder="En mm" id="d_interno" required>
+        </div>
+        <div class="col-4">
+            <label for="d_externo">Diametro Externo</label>
+            <input type="text" class="form-control" name="d_externo" placeholder="En mm" id="d_externo" required>
+        </div>
+        <div class="col-4">
+            <label for="espesor">Espesor</label>
+            <input type="text" class="form-control" name="espesor" placeholder="En mm" id="espesor" required>
+        </div>
+    </div>
+</div>
+
 <script>
     const filtrarDimesiones = document.getElementById('filtrarDimesiones');
     const containerDimensiones = document.getElementById('containerDimensiones');
+    const dimensionesInputsContainer = document.getElementById('dimensionesInputsContainer');
 
     filtrarDimesiones.addEventListener('click', event => {
 
         if( containerDimensiones.classList.contains('hidden') ){
+            // Clono los inputs
+            inputsDimiensiones = dimensionesInputsContainer.firstElementChild.cloneNode(true);
+            // agrego los inputs
+            containerDimensiones.appendChild(inputsDimiensiones);
+            // Muestro los inputs
             containerDimensiones.classList.add('block');
+            // Elimino la clase hidden
             containerDimensiones.classList.remove("hidden");
         }else{
+            containerDimensiones.innerHTML = '';
             containerDimensiones.classList.add('hidden');
             containerDimensiones.classList.remove("block");
         }

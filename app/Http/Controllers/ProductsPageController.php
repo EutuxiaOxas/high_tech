@@ -14,6 +14,7 @@ use App\Tipo_Sello;
 
 class ProductsPageController extends Controller
 {
+    private $perPage = 15;
     /**
      * Display a listing of the resource.
      *
@@ -23,10 +24,10 @@ class ProductsPageController extends Controller
     {
         if(isset($request->search))
         {
-            $productos = Product::with(['categoria'])->where('titulo', 'LIKE', '%'.$request->search.'%')->paginate(15);
+            $productos = Product::with(['categoria'])->where('titulo', 'LIKE', '%'.$request->search.'%')->paginate($this->perPage);
             $all_products = Product::with(['categoria'])->where('titulo', 'LIKE', '%'.$request->search.'%')->orWhere('codigo_universal', 'LIKE', '%'.$request->search.'%')->get();
         }else {
-            $productos = Product::paginate(15);
+            $productos = Product::paginate($this->perPage);
             $all_products = Product::all();
         }
 
@@ -47,7 +48,7 @@ class ProductsPageController extends Controller
         $productos = Product::where('titulo', 'LIKE', "%{$search}%")
         ->orWhere('descripcion', 'LIKE', "%{$search}%")
         ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
-        ->paginate(15);
+        ->paginate($this->perPage);
 
         $total_productos =Product::where('titulo', 'LIKE', "%{$search}%")
         ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -72,7 +73,7 @@ class ProductsPageController extends Controller
 
         if( $categoria->products ){
 
-            $productos = $categoria->products()->paginate(15);
+            $productos = $categoria->products()->paginate($this->perPage);
 
             $total_products = count($categoria->products()->get());
         }else{
@@ -92,10 +93,8 @@ class ProductsPageController extends Controller
     // Funcion que retorna la busqueda por el filtro
     public function showByFilter(Request $request)
     {
-
+        $search = $request->search;
         $category_id = $request->category_id;
-
-        // return $request;
         $categoria = Category::where('id', $category_id)->first();
 
         if ( $categoria ){
@@ -104,204 +103,421 @@ class ProductsPageController extends Controller
             $slug = null;
         }
 
-        // dimensiones
-        if( $request->diametro_interno ){
-            $d_interno = $request->diametro_interno;
-        }else{
-            $d_interno = '';
-        }
-
-        if( $request->diametro_externo ){
-            $d_externo = $request->diametro_externo;
-        }else{
-            $d_externo = '';
-        }
-
-        if( $request->espesor ){
-            $espesor = $request->espesor;
-        }else{
-            $espesor = '';
-        }
-
-        $search = $request->search;
-
         if($request->no_slug && $category_id == 0){
 
-            $productos = Product::where('titulo', 'LIKE', "%{$search}%")
-            ->orWhere('descripcion', 'LIKE', "%{$search}%")
-            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
-            ->paginate(15);
+            $productos = Product::where('category_id', $category_id)
+            ->where(function($query) use ($search) {
+                $query->where('titulo', 'LIKE', "%{$search}%")
+                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+            })
+            ->paginate($this->perPage);
 
-            $total_productos = Product::where('titulo', 'LIKE', "%{$search}%")
-            ->orWhere('descripcion', 'LIKE', "%{$search}%")
-            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
-            ->get();
+            $total_products = Product::where('category_id', $category_id)
+            ->where(function($query) use ($search) {
+                $query->where('titulo', 'LIKE', "%{$search}%")
+                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+            })
+            ->count();
 
         }else{
 
             switch ($category_id) {
                 case 1: //Serie Auto
 
+                    // Variables
                     $id_posicion_rueda = $request->rueda;
 
+                    if( $id_posicion_rueda != 0){
 
+                        if( $request->d_interno ){
+                            $d_interno = $request->d_interno;
+                            $d_externo = $request->d_externo;
+                            $espesor = $request->espesor;
 
-                    if( $id_posicion_rueda == 0 ){
+                            $productos = Product::where('category_id', $category_id)
+                            ->where(function($query) use ($search) {
+                                $query->where('titulo', 'LIKE', "%{$search}%")
+                                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                            })
+                            ->join('auto_parameters', function ($join) use ( $id_posicion_rueda, $d_interno, $d_externo, $espesor ){
+                                $join->on('products.id', '=', 'auto_parameters.product_id')
+                                ->where('auto_parameters.posicion_id', '=', $id_posicion_rueda)
+                                ->where('auto_parameters.d_interno', '=', $d_interno)
+                                ->where('auto_parameters.d_externo', '=', $d_externo)
+                                ->where('auto_parameters.espesor', '=', $espesor);
+                            })
+                            ->paginate($this->perPage);
+
+                            $total_products = Product::where('category_id', $category_id)
+                            ->where(function($query) use ($search) {
+                                $query->where('titulo', 'LIKE', "%{$search}%")
+                                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                            })
+                            ->join('auto_parameters', function ($join) use ( $id_posicion_rueda, $d_interno, $d_externo, $espesor ){
+                                $join->on('products.id', '=', 'auto_parameters.product_id')
+                                ->where('auto_parameters.posicion_id', '=', $id_posicion_rueda)
+                                ->where('auto_parameters.d_interno', '=', $d_interno)
+                                ->where('auto_parameters.d_externo', '=', $d_externo)
+                                ->where('auto_parameters.espesor', '=', $espesor);
+                            })
+                            ->count();
+
+                        }else{
+
+                            $productos = Product::where('category_id', $category_id)
+                            ->where(function($query) use ($search) {
+                                $query->where('titulo', 'LIKE', "%{$search}%")
+                                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                            })
+                            ->join('auto_parameters', function ($join) use ( $id_posicion_rueda ){
+                                $join->on('products.id', '=', 'auto_parameters.product_id')
+                                ->where('auto_parameters.posicion_id', '=', $id_posicion_rueda);
+                            })
+                            ->paginate($this->perPage);
+
+                            $total_products = Product::where('category_id', $category_id)
+                            ->where(function($query) use ($search) {
+                                $query->where('titulo', 'LIKE', "%{$search}%")
+                                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                            })
+                            ->join('auto_parameters', function ($join) use ( $id_posicion_rueda ){
+                                $join->on('products.id', '=', 'auto_parameters.product_id')
+                                ->where('auto_parameters.posicion_id', '=', $id_posicion_rueda);
+                            })
+                            ->count();
+
+                        }
+
+                    }elseif( $request->d_interno ){
+
+                        $d_interno = $request->d_interno;
+                        $d_externo = $request->d_externo;
+                        $espesor = $request->espesor;
 
                         $productos = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
-                                  ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                                  ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion', 'LIKE', "%{$search}%");
                         })
-                        ->paginate(15);
+                        ->join('auto_parameters', function ($join) use ( $id_posicion_rueda, $d_interno, $d_externo, $espesor ){
+                            $join->on('products.id', '=', 'auto_parameters.product_id')
+                            ->where('auto_parameters.d_interno', '=', $d_interno)
+                            ->where('auto_parameters.d_externo', '=', $d_externo)
+                            ->where('auto_parameters.espesor', '=', $espesor);
+                        })
+                        ->paginate($this->perPage);
 
-                        $total_productos = Product::where('category_id', $category_id)
+                        $total_products = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
-                                  ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                                  ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
-                        })->get();
+                            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                        })
+                        ->join('auto_parameters', function ($join) use ( $id_posicion_rueda, $d_interno, $d_externo, $espesor ){
+                            $join->on('products.id', '=', 'auto_parameters.product_id')
+                            ->where('auto_parameters.d_interno', '=', $d_interno)
+                            ->where('auto_parameters.d_externo', '=', $d_externo)
+                            ->where('auto_parameters.espesor', '=', $espesor);
+                        })
+                        ->count();
 
                     }else{
 
-                        $productos = DB::table('products')
-                        ->where('category_id', $category_id)
+                        $productos = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion', 'LIKE', "%{$search}%");
                         })
-                        ->join('auto_parameters', function ($join) use ($id_posicion_rueda,$search){
-                            $join->on('products.id', '=', 'auto_parameters.product_id')
-                                ->where('auto_parameters.posicion_id', '=', $id_posicion_rueda)
-                                ->orWhere('auto_parameters.aplicacion','=', $search);
-                        })
-                        ->paginate(15);
+                        ->paginate($this->perPage);
 
-                        $total_productos = DB::table('products')
-                        ->where('category_id', $category_id)
+                        $total_products = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion', 'LIKE', "%{$search}%");
                         })
-                        ->where(function($query) use ( $d_interno, $d_externo, $espesor ) {
-                            $query->where('d_interno', $d_interno)
-                            ->where('d_externo', $d_externo)
-                            ->where('espesor', $espesor);
-                        })
-                        ->join('auto_parameters', function ($join) use ($id_posicion_rueda,$search){
-                            $join->on('products.id', '=', 'auto_parameters.product_id')
-                                ->where('auto_parameters.posicion_id', '=', $id_posicion_rueda)
-                                ->orWhere('auto_parameters.aplicacion','=', $search);
-                        })
-                        ->get();
+                        ->count();
 
                     }
-
 
                     break;
                 case 2: //Serie 6000
 
                     $id_tipo_sello = $request->tipo_sello;
 
-                    if( $id_tipo_sello == 0 ){
+                    if( $id_tipo_sello != 0){
+
+                        if( $request->d_interno ){
+                            $d_interno = $request->d_interno;
+                            $d_externo = $request->d_externo;
+                            $espesor = $request->espesor;
+
+                            $productos = Product::where('category_id', $category_id)
+                            ->where(function($query) use ($search) {
+                                $query->where('titulo', 'LIKE', "%{$search}%")
+                                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                            })
+                            ->join('serie6000_parameters', function ($join) use ( $id_tipo_sello, $d_interno, $d_externo, $espesor ){
+                                $join->on('products.id', '=', 'serie6000_parameters.product_id')
+                                ->where('serie6000_parameters.tipo_sello_id', '=', $id_tipo_sello)
+                                ->where('serie6000_parameters.d_interno', '=', $d_interno)
+                                ->where('serie6000_parameters.d_externo', '=', $d_externo)
+                                ->where('serie6000_parameters.espesor', '=', $espesor);
+                            })
+                            ->paginate($this->perPage);
+
+                            $total_products = Product::where('category_id', $category_id)
+                            ->where(function($query) use ($search) {
+                                $query->where('titulo', 'LIKE', "%{$search}%")
+                                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                            })
+                            ->join('serie6000_parameters', function ($join) use ( $id_tipo_sello, $d_interno, $d_externo, $espesor ){
+                                $join->on('products.id', '=', 'serie6000_parameters.product_id')
+                                ->where('serie6000_parameters.tipo_sello_id', '=', $id_tipo_sello)
+                                ->where('serie6000_parameters.d_interno', '=', $d_interno)
+                                ->where('serie6000_parameters.d_externo', '=', $d_externo)
+                                ->where('serie6000_parameters.espesor', '=', $espesor);
+                            })
+                            ->count();
+
+                        }else{
+
+                            $productos = Product::where('category_id', $category_id)
+                            ->where(function($query) use ($search) {
+                                $query->where('titulo', 'LIKE', "%{$search}%")
+                                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                            })
+                            ->join('serie6000_parameters', function ($join) use ( $id_tipo_sello ){
+                                $join->on('products.id', '=', 'serie6000_parameters.product_id')
+                                ->where('serie6000_parameters.tipo_sello_id', '=', $id_tipo_sello);
+                            })
+                            ->paginate($this->perPage);
+
+                            $total_products = Product::where('category_id', $category_id)
+                            ->where(function($query) use ($search) {
+                                $query->where('titulo', 'LIKE', "%{$search}%")
+                                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                            })
+                            ->join('serie6000_parameters', function ($join) use ( $id_tipo_sello ){
+                                $join->on('products.id', '=', 'serie6000_parameters.product_id')
+                                ->where('serie6000_parameters.tipo_sello_id', '=', $id_tipo_sello);
+                            })
+                            ->count();
+
+                        }
+
+                    }elseif( $request->d_interno ){
+
+                        $d_interno = $request->d_interno;
+                        $d_externo = $request->d_externo;
+                        $espesor = $request->espesor;
 
                         $productos = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
-                                    ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion', 'LIKE', "%{$search}%");
                         })
-                        ->paginate(15);
+                        ->join('serie6000_parameters', function ($join) use ( $d_interno, $d_externo, $espesor ){
+                            $join->on('products.id', '=', 'serie6000_parameters.product_id')
+                            ->where('serie6000_parameters.d_interno', '=', $d_interno)
+                            ->where('serie6000_parameters.d_externo', '=', $d_externo)
+                            ->where('serie6000_parameters.espesor', '=', $espesor);
+                        })
+                        ->paginate($this->perPage);
 
-                        $total_productos = Product::where('category_id', $category_id)
+                        $total_products = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
-                                    ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
-                        })->get();
+                            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                        })
+                        ->join('serie6000_parameters', function ($join) use ( $d_interno, $d_externo, $espesor ){
+                            $join->on('products.id', '=', 'serie6000_parameters.product_id')
+                            ->where('serie6000_parameters.d_interno', '=', $d_interno)
+                            ->where('serie6000_parameters.d_externo', '=', $d_externo)
+                            ->where('serie6000_parameters.espesor', '=', $espesor);
+                        })
+                        ->count();
 
                     }else{
 
-                        $productos = DB::table('products')
-                        ->where('category_id', $category_id)
+                        $productos = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion', 'LIKE', "%{$search}%");
                         })
-                        ->join('serie6000_parameters', function ($join) use ($id_tipo_sello){
-                            $join->on('products.id', '=', 'serie6000_parameters.product_id')
-                                ->where('serie6000_parameters.tipo_sello_id', '=', $id_tipo_sello);
-                        })
-                        ->paginate(15);
+                        ->paginate($this->perPage);
 
-                        $total_productos = DB::table('products')
-                        ->where('category_id', $category_id)
+                        $total_products = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion', 'LIKE', "%{$search}%");
                         })
-                        ->join('serie6000_parameters', function ($join) use ($id_tipo_sello){
-                            $join->on('products.id', '=', 'serie6000_parameters.product_id')
-                                ->where('serie6000_parameters.tipo_sello_id', '=', $id_tipo_sello);
-                        })
-                        ->get();
+                        ->count();
 
                     }
-
 
                     break;
                 case 3: //Serie Moto
                     $id_tipo_sello = $request->tipo_sello;
 
-                    if( $id_tipo_sello == 0 ){
+                    if( $id_tipo_sello != 0){
+
+                        if( $request->d_interno ){
+                            $d_interno = $request->d_interno;
+                            $d_externo = $request->d_externo;
+                            $espesor = $request->espesor;
+
+                            $productos = Product::where('category_id', $category_id)
+                            ->where(function($query) use ($search) {
+                                $query->where('titulo', 'LIKE', "%{$search}%")
+                                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                            })
+                            ->join('moto_parameters', function ($join) use ( $id_tipo_sello, $d_interno, $d_externo, $espesor ){
+                                $join->on('products.id', '=', 'moto_parameters.product_id')
+                                ->where('moto_parameters.tipo_sello_id', '=', $id_tipo_sello)
+                                ->where('moto_parameters.d_interno', '=', $d_interno)
+                                ->where('moto_parameters.d_externo', '=', $d_externo)
+                                ->where('moto_parameters.espesor', '=', $espesor);
+                            })
+                            ->paginate($this->perPage);
+
+                            $total_products = Product::where('category_id', $category_id)
+                            ->where(function($query) use ($search) {
+                                $query->where('titulo', 'LIKE', "%{$search}%")
+                                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                            })
+                            ->join('moto_parameters', function ($join) use ( $id_tipo_sello, $d_interno, $d_externo, $espesor ){
+                                $join->on('products.id', '=', 'moto_parameters.product_id')
+                                ->where('moto_parameters.tipo_sello_id', '=', $id_tipo_sello)
+                                ->where('moto_parameters.d_interno', '=', $d_interno)
+                                ->where('moto_parameters.d_externo', '=', $d_externo)
+                                ->where('moto_parameters.espesor', '=', $espesor);
+                            })
+                            ->count();
+
+                        }else{
+
+                            $productos = Product::where('category_id', $category_id)
+                            ->where(function($query) use ($search) {
+                                $query->where('titulo', 'LIKE', "%{$search}%")
+                                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                            })
+                            ->join('moto_parameters', function ($join) use ( $id_tipo_sello ){
+                                $join->on('products.id', '=', 'moto_parameters.product_id')
+                                ->where('moto_parameters.tipo_sello_id', '=', $id_tipo_sello);
+                            })
+                            ->paginate($this->perPage);
+
+                            $total_products = Product::where('category_id', $category_id)
+                            ->where(function($query) use ($search) {
+                                $query->where('titulo', 'LIKE', "%{$search}%")
+                                ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                                ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                                ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                            })
+                            ->join('moto_parameters', function ($join) use ( $id_tipo_sello ){
+                                $join->on('products.id', '=', 'moto_parameters.product_id')
+                                ->where('moto_parameters.tipo_sello_id', '=', $id_tipo_sello);
+                            })
+                            ->count();
+
+                        }
+
+                    }elseif( $request->d_interno ){
+
+                        $d_interno = $request->d_interno;
+                        $d_externo = $request->d_externo;
+                        $espesor = $request->espesor;
 
                         $productos = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
-                                    ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion', 'LIKE', "%{$search}%");
                         })
-                        ->paginate(15);
+                        ->join('moto_parameters', function ($join) use ( $d_interno, $d_externo, $espesor ){
+                            $join->on('products.id', '=', 'moto_parameters.product_id')
+                            ->where('moto_parameters.d_interno', '=', $d_interno)
+                            ->where('moto_parameters.d_externo', '=', $d_externo)
+                            ->where('moto_parameters.espesor', '=', $espesor);
+                        })
+                        ->paginate($this->perPage);
 
-                        $total_productos = Product::where('category_id', $category_id)
+                        $total_products = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
-                                    ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
-                        })->get();
+                            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion', 'LIKE', "%{$search}%");
+                        })
+                        ->join('moto_parameters', function ($join) use ( $d_interno, $d_externo, $espesor ){
+                            $join->on('products.id', '=', 'moto_parameters.product_id')
+                            ->where('moto_parameters.d_interno', '=', $d_interno)
+                            ->where('moto_parameters.d_externo', '=', $d_externo)
+                            ->where('moto_parameters.espesor', '=', $espesor);
+                        })
+                        ->count();
 
                     }else{
 
-                        $productos = DB::table('products')
-                        ->where('category_id', $category_id)
+                        $productos = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion', 'LIKE', "%{$search}%");
                         })
-                        ->join('moto_parameters', function ($join) use ($id_tipo_sello){
-                            $join->on('products.id', '=', 'moto_parameters.product_id')
-                                ->where('moto_parameters.tipo_sello_id', '=', $id_tipo_sello);
-                        })
-                        ->paginate(15);
+                        ->paginate($this->perPage);
 
-                        $total_productos = DB::table('products')
-                        ->where('category_id', $category_id)
+                        $total_products = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion', 'LIKE', "%{$search}%");
                         })
-                        ->join('moto_parameters', function ($join) use ($id_tipo_sello){
-                            $join->on('products.id', '=', 'moto_parameters.product_id')
-                                ->where('moto_parameters.tipo_sello_id', '=', $id_tipo_sello);
-                        })
-                        ->get();
+                        ->count();
 
                     }
 
@@ -314,45 +530,48 @@ class ProductsPageController extends Controller
                         $productos = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
-                                    ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion','LIKE', "%{$search}%");
                         })
-                        ->paginate(15);
+                        ->paginate($this->perPage);
 
-                        $total_productos = Product::where('category_id', $category_id)
+                        $total_products = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
-                                    ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
-                        })->get();
+                            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion','LIKE', "%{$search}%");
+                        })
+                        ->count();
 
                     }else{
 
-                        $productos = DB::table('products')
-                        ->where('category_id', $category_id)
+                        $productos = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion','LIKE', "%{$search}%");
                         })
                         ->join('chumacera_parameters', function ($join) use ($id_tipo_brida){
                             $join->on('products.id', '=', 'chumacera_parameters.product_id')
                                 ->where('chumacera_parameters.tipo_chum_id', '=', $id_tipo_brida);
                         })
-                        ->paginate(15);
+                        ->paginate($this->perPage);
 
-                        $total_productos = DB::table('products')
-                        ->where('category_id', $category_id)
+                        $total_products = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion','LIKE', "%{$search}%");
                         })
                         ->join('chumacera_parameters', function ($join) use ($id_tipo_brida){
                             $join->on('products.id', '=', 'chumacera_parameters.product_id')
                                 ->where('chumacera_parameters.tipo_chum_id', '=', $id_tipo_brida);
                         })
-                        ->get();
+                        ->count();
 
                     }
 
@@ -365,45 +584,48 @@ class ProductsPageController extends Controller
                         $productos = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
-                                    ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion','LIKE', "%{$search}%");
                         })
-                        ->paginate(15);
+                        ->paginate($this->perPage);
 
-                        $total_productos = Product::where('category_id', $category_id)
+                        $total_products = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
-                                    ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                                    ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
-                        })->get();
+                            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion','LIKE', "%{$search}%");
+                        })
+                        ->count();
 
                     }else{
 
-                        $productos = DB::table('products')
-                        ->where('category_id', $category_id)
+                        $productos = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion','LIKE', "%{$search}%");
                         })
                         ->join('cadena_parameters', function ($join) use ($id_tipo_cadena){
                             $join->on('products.id', '=', 'cadena_parameters.product_id')
-                                ->where('cadena_parameters.tipo_cadena_id', '=', $id_tipo_cadena);
+                            ->where('cadena_parameters.tipo_cadena_id', '=', $id_tipo_cadena);
                         })
-                        ->paginate(15);
+                        ->paginate($this->perPage);
 
-                        $total_productos = DB::table('products')
-                        ->where('category_id', $category_id)
+                        $total_products = Product::where('category_id', $category_id)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
-                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%");
+                            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+                            ->orWhere('aplicacion','LIKE', "%{$search}%");
                         })
                         ->join('cadena_parameters', function ($join) use ($id_tipo_cadena){
                             $join->on('products.id', '=', 'cadena_parameters.product_id')
-                                ->where('cadena_parameters.tipo_cadena_id', '=', $id_tipo_cadena);
+                            ->where('cadena_parameters.tipo_cadena_id', '=', $id_tipo_cadena);
                         })
-                        ->get();
+                        ->count();
 
                     }
 
@@ -426,15 +648,13 @@ class ProductsPageController extends Controller
 
         }
 
-        $total_products = count($total_productos);
-
         $categories = Category::all();
         $posicion_rueda = Posicion::all();
         $tipo_chum = Tipo_Chum::all();
         $tipo_cadena = Tipo_Cadena::all();
         $tipo_sello = Tipo_Sello::all();
 
-        return view('productos.vitrina', compact('productos', 'categories', 'total_products', 'categoria', 'slug', 'posicion_rueda', 'tipo_chum', 'tipo_cadena', 'tipo_sello'));
+        return view('productos.vitrina', compact('productos', 'categories', 'search', 'total_products', 'categoria', 'slug', 'posicion_rueda', 'tipo_chum', 'tipo_cadena', 'tipo_sello'));
 
     }
 

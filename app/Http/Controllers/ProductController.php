@@ -120,6 +120,7 @@ class ProductController extends Controller
         $producto->codigo_universal = $request->codigo_producto;
     	$producto->category_id      = $request->categoria_producto;
     	$producto->descripcion      = $request->descripcion_producto;
+        $producto->aplicacion       = $request->aplicacion;
 
          //verificamos que la imagen exista
         if($image){
@@ -187,7 +188,6 @@ class ProductController extends Controller
             $auto_parametro->create([
                 'product_id' => $producto->id,
                 'articulo' => $request['articulo_auto'],
-                'aplicacion' => $request['aplicacion_auto'],
                 'posicion_id' => $request['posicion_auto'],
                 'd_interno' => $request['d_interno_auto'],
                 'd_externo' => $request['d_externo_auto'],
@@ -244,6 +244,7 @@ class ProductController extends Controller
         $producto->category_id      = $request->categoria_producto;
         $producto->slug             = $request->slug;
         $producto->descripcion      = $request->descripcion_producto;
+        $producto->aplicacion       = $request->aplicacion;
 
         if($image){
             $imagen = $image->store('public/products_images');
@@ -308,7 +309,6 @@ class ProductController extends Controller
             $auto_parametro->update([
                 'product_id' => $producto->id,
                 'articulo' => $request['articulo_auto'],
-                'aplicacion' => $request['aplicacion_auto'],
                 'posicion_id' => $request['posicion_auto'],
                 'd_interno' => $request['d_interno_auto'],
                 'd_externo' => $request['d_externo_auto'],

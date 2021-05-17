@@ -53,7 +53,6 @@
           <th>#</th>
           <th>Imagen</th>
           <th>Titulo</th>
-          <th>Descripción</th>
           <th>Categoría</th>
           <th>Precio $</th>
           <th>codigo universal</th>
@@ -68,7 +67,6 @@
                 <div class="img_div_rounded" style="background-image: url('{{ Storage::url($producto->imagen) }}');"></div>
             </td>
             <td> <a class="text-primary" target="_blank" href="{{route('product', $producto->slug)}}">{{$producto->titulo}}</a></td>
-            <td>{{$producto->descripcion}}</td>
             <td>{{$producto->categoria->category}}</td>
             <td>{{$producto->precio }}</td>
             <td>{{$producto->codigo_universal }}</td>
