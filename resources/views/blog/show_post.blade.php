@@ -79,24 +79,6 @@
         </div>
       </div>
     </div>
-
-    <div class="row my-3 justify-content-center">
-      <h3 class="col-10">Compartir en redes sociales</h3>
-      <div class="col-10">
-        <a href="#" id="facebook">
-          <img src="/icons/facebook.svg" style="width: 50px;height: 50px; cursor: pointer;">
-        </a>
-        <a href="#" id="twitter">
-          <img src="/icons/twitter.svg" style="width: 50px;height: 50px; cursor: pointer;">
-        </a>
-        <a href="#" id="linkedin">
-          <img src="/icons/linkedin.svg" style="width: 50px;height: 50px; cursor: pointer;">
-        </a>
-        <!--a-- href="#" id="pinterest">
-          <img src="/icons/pinterest.svg" style="width: 50px;height: 50px; cursor: pointer;">
-        </!--a-->
-      </div>
-    </div>
   </div>
 
 </section>
