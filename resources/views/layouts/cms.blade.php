@@ -14,6 +14,7 @@
     {{-- global css  --}}
     <link rel="stylesheet" href="/go/app/assets/css/vendor.css" />
     <link rel="stylesheet" href="/go/app/assets/css/style.css" />
+    <link rel="stylesheet" href="/css/estilos.css">
   </head>
   <body>
 

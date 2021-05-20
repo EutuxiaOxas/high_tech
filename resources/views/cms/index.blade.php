@@ -4,5 +4,7 @@
 @endphp
 
 @section('content')
-	<h2>Página principal CMS</h2>
+	<span class="font-light text-xl">
+        Administrador del sitio web
+    </span>
 @endsection

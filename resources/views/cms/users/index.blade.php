@@ -20,31 +20,59 @@
 <div class="pt-1"></div>
 <section>
 
-    @if(session('info'))
-      <div class="alert alert-success alert-dismissible my-3" role="alert">
-        <strong>{{session('info')}}</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    @if (session('message'))
+      <div class="card card-success">
+        <div class="card-header">
+          <h3 class="card-title">Éxito!</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+            {{ session('message') }}
+        </div>
       </div>
     @endif
-  @if(session('message'))
-    <div class="alert alert-danger alert-dismissible my-3" role="alert">
-      <strong>{{session('message')}}</strong>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  @endif
 
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Usuarios</h1>
-    <div class="btn-toolbar mb-2 mb-md-0">
-      <div class="btn-group mr-2">
-        <a href="{{ route('cms.users.create') }}" type="button" class="btn btn-sm btn-primary px-5">Crear Usuario</a>
-      </div>
-    </div>
-  </div>
+    @if (session('info'))
+        <div class="card card-info">
+            <div class="card-header">
+            <h3 class="card-title">Ops!</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                </button>
+            </div>
+            </div>
+            <div class="card-body">
+                {{ session('info') }}
+            </div>
+        </div>
+    @endif
+
+    {{-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <span class="font-light text-xl">Usuarios</span>
+        <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+            <a href="{{ route('cms.users.create') }}" type="button" class="btn btn-sm btn-primary px-5">Crear Usuario</a>
+        </div>
+        </div>
+    </div> --}}
+    <section class="content-header px-0">
+        <div class="container-fluid px-0">
+          <div class="row mb-2 px-0">
+            <div class="col-sm-6">
+              <span class="font-light text-lg">Usuarios de la administración</span>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href=" ">Home</a></li>
+                <li class="breadcrumb-item active">Usuarios</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+    </section>
 
 
   <div class="table-responsive">
@@ -89,6 +117,8 @@
     </table>
   </div>
 </section>
+
+
 
 @endsection
 
