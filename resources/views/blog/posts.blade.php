@@ -42,9 +42,9 @@
 <section>
   <div class="container-fluid">
     <div class="row">
-      <aside class="col-md-4 pl-lg-5">
+      <aside class="col-md-4 order-last order-md-first pl-lg-5">
         <div class="widget">
-          <span class="widget-title">Categoria</span>
+          <span class="widget-title">Categorías</span>
           <div class="list-group list-group-categories">
             @foreach($categorias as $categoria)
 	            <a href="{{route('main.blog.categorie', $categoria->slug)}}" class="list-group-item d-flex justify-content-between align-items-center text-dark">
@@ -78,7 +78,7 @@
           </div>
         </div>
       </aside>
-      <div class="col-md-8">
+      <div class="col-md-8 order-first order-md-last">
         <ul class="masonry row gutter-3">
           @foreach($posts as $post)
             <li class="col-md-6">

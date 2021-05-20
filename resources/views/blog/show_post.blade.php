@@ -79,6 +79,16 @@
         </div>
       </div>
     </div>
+
+    <style>
+        .social_div {
+            height: 50px!important;
+            width: 50px;
+            position: relative;
+        }
+    </style>
+
+    @include('components.social_mobile')
   </div>
 
 </section>

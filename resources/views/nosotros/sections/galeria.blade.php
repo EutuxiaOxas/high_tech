@@ -54,7 +54,20 @@
                     </a>
                   </figure>
                 </li>
-
+                <li class="col-6">
+                    <figure class="photo">
+                      <a href="/imagenes/imagen_home/segundos-iconos-05.jpg">
+                        <img src="/imagenes/imagen_home/segundos-iconos-05.jpg" alt="Image">
+                      </a>
+                    </figure>
+                  </li>
+                  <li class="col-6">
+                    <figure class="photo">
+                      <a href="/imagenes/imagen_home/segundos-iconos-03.jpg">
+                        <img src="/imagenes/imagen_home/segundos-iconos-03.jpg" alt="Image">
+                      </a>
+                    </figure>
+                  </li>
               </ul>
             </div>
 

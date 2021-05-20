@@ -35,9 +35,13 @@
     .shadow-md{
         box-shadow:0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
+    .text-xs{
+        font-size: 0.75rem;
+        line-height: 1rem;
+    }
     .text-sm{
         font-size: 0.875rem;
-line-height: 1.25rem;
+        line-height: 1.25rem;
     }
     .text-lg{
         font-size: 1.125rem;
@@ -68,32 +72,30 @@ line-height: 2.5rem;
 </style>
 @section('content')
 
-<section class="container-fluid px-3">
+<section class="container-fluid px-1 px-md-3">
     <div class="row mb-0">
         <!-- Product Detail -->
-        <div class="col-12 mt-5 pt-3 d-md-none">
+        <div class="col-12 mt-5 pt-3 mb-2 d-md-none">
             <div class="row align-items-center">
-                <div class="col-12">
-                    <h1 class="font-light">{{$producto->titulo}}</h1>
+                <div class="col-12" style="margin-bottom: 0.15rem;">
+                    <a class="text-xs" href="/categorias/{{$producto->categoria->slug}}" style="color: #{{$producto->categoria->category_color}};">
+                        {{$producto->categoria->category}}
+                    </a>
                 </div>
-                <div class="col-12 mt-1">
-                    <div class="row justify-content-between align-items-center">
-                        <span class="col-auto">
+                <div class="col-12">
+                    <h1 class="font-semibold text-lg">{{ ucwords($producto->titulo) }}</h1>
+                </div>
+                <div class="col-12">
+                    <div class="text-sm">
+                        <span class="text-muted">
                             Código Universal:
-                            <strong>
-                                 {{ $producto->codigo_universal }}
-                            </strong>
                         </span>
-                        <a class="col-auto rounded-full shadow-md py-1 px-3 text-white" href="/categorias/{{$producto->categoria->slug}}" style="background-color: #{{$producto->categoria->category_color}};">
-                            {{$producto->categoria->category}}
-                        </a>
+                        <strong>
+                                {{ $producto->codigo_universal }}
+                        </strong>
                     </div>
                 </div>
-                <div class="col-12">
-                    <span class="text-4xl font-light">
-                        {{ $producto->precio }} $USD
-                    </span>
-                </div>
+
             </div>
         </div>
         <div class="col-12 col-md-6">
@@ -102,6 +104,13 @@ line-height: 2.5rem;
                     <img class="img_product" src="{{ Storage::url($producto->imagen) }}" alt="">
                 </div>
             </div>
+        </div>
+
+        <div class="col-12 d-md-none">
+            <span class="text-4xl font-light">
+                @php $price = number_format($producto->precio, 2, '.', ','); @endphp
+                {{ $price }} $USD
+            </span>
         </div>
         <div class="col-12 col-md-6">
 
@@ -124,7 +133,8 @@ line-height: 2.5rem;
                 </div>
                 <div class="col-12">
                     <span class="text-4xl font-light">
-                        {{ $producto->precio }} $USD
+                        @php $price = number_format($producto->precio, 2, '.', ','); @endphp
+                        {{ $price }} $USD
                     </span>
                 </div>
             </div>
@@ -173,22 +183,22 @@ line-height: 2.5rem;
 
                         @elseif( $producto->categoria->category == 'Serie Chumacera' )
 
-                        <div class="col-6 mb-1">
-                            <span class="font-semibold text-lg">Diametro: </span> <br>
-                            <span class="text-muted">{{ $producto->chumacera->diametroChum->valor }}</span>
-                        </div>
-                        <div class="col-6 mb-1">
-                            <span class="font-semibold text-lg">Tipo: </span> <br>
-                            <span class="text-muted">{{ $producto->chumacera->tipoChum->tipo_chum }}</span>
-                        </div>
-                        <div class="col-6 mb-1">
-                            <span class="font-semibold text-lg">Forma: </span> <br>
-                            <span class="text-muted">{{ $producto->chumacera->formaChum->forma_chum }}</span>
-                        </div>
-                        <div class="col-6 mb-1">
-                            <span class="font-semibold text-lg">Cantidad de huecos: </span> <br>
-                            <span class="text-muted">{{ $producto->chumacera->No_huecos }}</span>
-                        </div>
+                            <div class="col-6 mb-1">
+                                <span class="font-semibold text-lg">Diametro: </span> <br>
+                                <span class="text-muted">{{ $producto->chumacera->diametroChum->valor }}</span>
+                            </div>
+                            <div class="col-6 mb-1">
+                                <span class="font-semibold text-lg">Tipo: </span> <br>
+                                <span class="text-muted">{{ $producto->chumacera->tipoChum->tipo_chum }}</span>
+                            </div>
+                            <div class="col-6 mb-1">
+                                <span class="font-semibold text-lg">Forma: </span> <br>
+                                <span class="text-muted">{{ $producto->chumacera->formaChum->forma_chum }}</span>
+                            </div>
+                            <div class="col-6 mb-1">
+                                <span class="font-semibold text-lg">Cantidad de huecos: </span> <br>
+                                <span class="text-muted">{{ $producto->chumacera->No_huecos }}</span>
+                            </div>
 
                         @elseif( $producto->categoria->category == 'Serie cadenas' )
 
@@ -287,9 +297,11 @@ line-height: 2.5rem;
         </div>
     </div>
 
+
+
     <div class="row mb-1 mt-md-3">
-        <div class="col-12">
-            <h4 class="text-dark mb-2">Descripcion del producto</h4>
+        <div class="col-12 mb-1 mb-md-2">
+            <h4 class="text-dark ">Descripcion del producto</h4>
         </div>
         <div class="col-12">
             <p class="text-muted">
@@ -297,6 +309,8 @@ line-height: 2.5rem;
             </p>
         </div>
     </div>
+
+    @include('components.social_mobile')
 
 </section>
 

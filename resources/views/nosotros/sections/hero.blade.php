@@ -1,5 +1,5 @@
-<section class="hero hero-with-header">
-    <div class="container">
+<section class="hero hero-with-header pt-10">
+    <div class="container mt-3">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h1 class="text-decorated">High Tech  <b>Bearings</b></h1>

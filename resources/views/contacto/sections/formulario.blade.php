@@ -10,13 +10,13 @@
         <div class="col">
             <form>
             <div class="form-row mb-1">
-                <div class="col">
+                <div class="col-12 col-md">
                 <input type="text" class="form-control form-control-minimal" placeholder="Nombre*" required>
                 </div>
-                <div class="col">
+                <div class="col-12 col-md">
                 <input type="text" class="form-control form-control-minimal" placeholder="Correo*" required>
                 </div>
-                <div class="col">
+                <div class="col-12 col-md">
                 <input type="text" class="form-control form-control-minimal" placeholder="Teléfono de Contacto*" required>
                 </div>
             </div>

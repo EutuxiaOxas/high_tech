@@ -1,4 +1,16 @@
 <!-- cover -->
+<style>
+    .img_banner{
+        width: 50%;
+    }
+
+
+  @media (max-width: 768px) {
+    .img_banner{
+      width: 100%;
+    }
+  }
+</style>
 <section class="p-0">
     <div class="swiper-container"
       data-top-top="transform: translateY(0px);"
@@ -8,12 +20,12 @@
           <div class="image image-overlay image-zoom" style="background-image:url(/imagenes/banner_principal/banner.jpg)"></div>
           <div class="caption">
             <div class="container-fluid px-5">
-              <div class="row justify-content-between vh-100">
-                <div class="col-lg-8 align-self-end text-white text-shadow" data-swiper-parallax="-100%">
-                  <img src="/svg/logo-light.svg" alt="Imagen Logo de High Tech Bearings" width="50%">
-                  {{-- <a href="{{route('products')}}" class="btn btn-white btn-rounded px-5">Ver Productos</a> --}}
+              <div class="row justify-content-between vh-100 align-items-center">
+                <div class="col-lg-8 align-md-self-end text-white text-shadow text-center text-md-left" data-swiper-parallax="-100%">
+                  <img class="img_banner" src="/svg/logo-light.svg" alt="Imagen Logo de High Tech Bearings" width="50%">
+                  <a class="btn btn-white btn-rounded px-5 d-md-none mt-4" href="{{ route('products') }}" >Ver Productos</a>
                 </div>
-                <div class="col-12 align-self-end">
+                <div class="col-12 align-self-end d-none d-md-block">
                   <div class="row gutter-1">
                       <div class="col text-center">
                         <a href="/categorias/serie-automotriz">
