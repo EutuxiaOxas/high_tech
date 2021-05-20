@@ -1,0 +1,126 @@
+.rounded-full{
+    border-radius: 50%;
+}
+.shadow-md{
+    box-shadow:0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.shadow-lg{
+    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.text-xs{
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
+.text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+.text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+.text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+.text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+.text-3xl{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+.text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
+.font-light{
+    font-weight: 300;
+}
+.font-semibold{
+    font-weight: 500;
+}
+.navbar-logo{
+    max-height: 140%!important;
+}
+.font-lg{
+    font-size: 1.5rem;
+}
+.font-xl{
+    font-size: 2rem;
+}
+/* .font_myriad{
+    font-family: Myriadpro;
+} */
+.text_float{
+    position: absolute;
+    left:50%;
+    text-align: center;
+    top:50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 10;
+}
+.button_whatsapp{
+    position: fixed;
+    bottom: 2.5rem;
+    right: 1.5rem;
+    width: 80px;
+    z-index: 50;
+}
+@media (max-width: 600px) {
+    .button_whatsapp {
+        width: 70px;
+    }
+}
+.shadow_svg_whatsapp{
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,1);
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,1);
+}
+
+
+/* Footer */
+.phone_footer{
+    border-color: rgba(255, 255, 255, 0.2);
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    transition-delay: 0s;
+    position: relative;
+    display: inline-block;
+    padding: 1rem 1rem 1rem 5rem;
+    color: #000;
+    letter-spacing: 0.05em;
+}
+.phone_footer::before {
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    transition-delay: 0s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 3.625rem;
+    content: "\ec73";
+    text-align: center;
+    line-height: 3.625rem;
+    font-family: "icomoon";
+    font-size: 20px;
+    background: rgba(255, 255, 255, 0.2);
+}
+.phone_footer:hover::before {
+    background: #17a2b8;
+}
+.phone_footer:hover{
+    border-color: #17a2b8 !important;
+    border-radius: 0.25rem;
+
+}

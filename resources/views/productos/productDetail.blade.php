@@ -12,10 +12,6 @@
 
 <style>
     .img_product_card{
-        /* display: flex;
-        flex-direction:row;
-	    justify-content: center;
-	    align-items: center; */
         max-height: 65vh;
         max-width:100%;
 
@@ -29,53 +25,14 @@
         min-width: auto;
         max-width: 100%;
     }
-    .rounded-full{
-        border-radius: 50%;
-    }
-    .shadow-md{
-        box-shadow:0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    }
-    .text-xs{
-        font-size: 0.75rem;
-        line-height: 1rem;
-    }
-    .text-sm{
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-    }
-    .text-lg{
-        font-size: 1.125rem;
-line-height: 1.75rem;
-    }
-    .text-xl{
-        font-size: 1.25rem;
-line-height: 1.75rem;
-    }
-    .text-2xl{
-        font-size: 1.5rem;
-line-height: 2rem;
-    }
-    .text-3xl{
-        font-size: 1.875rem;
-line-height: 2.25rem;
-    }
-    .text-4xl{
-        font-size: 2.25rem;
-line-height: 2.5rem;
-    }
-    .font-light{
-        font-weight: 300;
-    }
-    .font-semibold{
-        font-weight: 500;
-    }
+
 </style>
 @section('content')
 
 <section class="container-fluid px-1 px-md-3">
     <div class="row mb-0">
         <!-- Product Detail -->
-        <div class="col-12 mt-5 pt-3 mb-2 d-md-none">
+        <div class="col-12 mt-5 pt-1 pt-md-3 mb-2 d-md-none">
             <div class="row align-items-center">
                 <div class="col-12" style="margin-bottom: 0.15rem;">
                     <a class="text-xs" href="/categorias/{{$producto->categoria->slug}}" style="color: #{{$producto->categoria->category_color}};">
@@ -146,11 +103,11 @@ line-height: 2.5rem;
                 <div class="col-12">
                     <div class="row">
                         @if ( $producto->categoria->category == 'Serie Automotriz' )
-                            <div class="col-6 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Articulo: </span> <br>
                                 <span class="text-muted">{{ $producto->auto->articulo }}</span>
                             </div>
-                            <div class="col-6 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Posición de la rueda: </span> <br>
                                 <span class="text-muted">{{ $producto->auto->posicion->posicion }}</span>
                             </div>
@@ -166,15 +123,15 @@ line-height: 2.5rem;
                                     <div class="col-12 font-semibold text-xl">
                                         Medidas: {{ $producto->auto->d_interno }}x{{ $producto->auto->d_externo }}x{{ $producto->auto->espesor }}mm
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4">
                                         <span class="font-semibold text-lg">Diametro interno: </span> <br>
                                         <span class="text-muted">{{ $producto->auto->d_interno }} mm</span>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4">
                                         <span class="font-semibold text-lg">Diametro externo: </span> <br>
                                         <span class="text-muted">{{ $producto->auto->d_externo }} mm</span>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4">
                                         <span class="font-semibold text-lg">Espesor: </span> <br>
                                         <span class="text-muted">{{ $producto->auto->espesor }} mm</span>
                                     </div>
@@ -183,52 +140,52 @@ line-height: 2.5rem;
 
                         @elseif( $producto->categoria->category == 'Serie Chumacera' )
 
-                            <div class="col-6 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Diametro: </span> <br>
                                 <span class="text-muted">{{ $producto->chumacera->diametroChum->valor }}</span>
                             </div>
-                            <div class="col-6 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Tipo: </span> <br>
                                 <span class="text-muted">{{ $producto->chumacera->tipoChum->tipo_chum }}</span>
                             </div>
-                            <div class="col-6 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Forma: </span> <br>
                                 <span class="text-muted">{{ $producto->chumacera->formaChum->forma_chum }}</span>
                             </div>
-                            <div class="col-6 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Cantidad de huecos: </span> <br>
                                 <span class="text-muted">{{ $producto->chumacera->No_huecos }}</span>
                             </div>
 
                         @elseif( $producto->categoria->category == 'Serie cadenas' )
 
-                            <div class="col-6 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Pitch: </span> <br>
                                 <span class="text-muted">{{ $producto->cadena->pitch }}</span>
                             </div>
-                            <div class="col-6 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Aplicación: </span> <br>
                                 <span class="text-muted">{{ $producto->aplicacion }}</span>
                             </div>
-                            <div class="col-6 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Tipo de cadena: </span> <br>
                                 <span class="text-muted">{{ $producto->cadena->tipoCadena->tipo_cadena_texto }}</span>
                             </div>
-                            <div class="col-6 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Empate de cadena: </span> <br>
                                 <span class="text-muted">{{ $producto->cadena->tipoEmpate->tipo_empate }}</span>
                             </div>
 
                         @elseif( $producto->categoria->category == 'Serie 6000' )
-                            <div class="col-6 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Rodamiento: </span> <br>
                                 <span class="text-muted">{{ $producto->serie6000->rodamiento }}</span>
                             </div>
-                            <div class="col-6 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Tipo de sello: </span> <br>
                                 <span class="text-muted">{{ $producto->serie6000->tipoSello->tipo_sello }}</span>
                             </div>
-                            <div class="col-12 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Aplicación: </span> <br>
                                 <span class="text-muted">{{ $producto->aplicacion }}</span>
                             </div>
@@ -241,15 +198,15 @@ line-height: 2.5rem;
                                     <div class="col-12 font-semibold text-xl">
                                         Medidas: {{ $producto->serie6000->d_interno }}x{{ $producto->serie6000->d_externo }}x{{ $producto->serie6000->espesor }}mm
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4">
                                         <span class="font-semibold text-lg">Diametro interno: </span> <br>
                                         <span class="text-muted">{{ $producto->serie6000->d_interno }} mm</span>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4">
                                         <span class="font-semibold text-lg">Diametro externo: </span> <br>
                                         <span class="text-muted">{{ $producto->serie6000->d_externo }} mm</span>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4">
                                         <span class="font-semibold text-lg">Espesor: </span> <br>
                                         <span class="text-muted">{{ $producto->serie6000->espesor }} mm</span>
                                     </div>
@@ -257,7 +214,7 @@ line-height: 2.5rem;
                             </div>
                         @else
 
-                            <div class="col-6 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Tipo de sello: </span> <br>
                                 <span class="text-muted">{{ $producto->moto->tipoSello->tipo_sello }}</span>
                             </div>
@@ -274,15 +231,15 @@ line-height: 2.5rem;
                                     <div class="col-12 font-semibold text-xl">
                                         Medidas: {{ $producto->moto->d_interno }}x{{ $producto->moto->d_externo }}x{{ $producto->moto->espesor }}mm
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4">
                                         <span class="font-semibold text-lg">Diametro interno: </span> <br>
                                         <span class="text-muted">{{ $producto->moto->d_interno }} mm</span>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4">
                                         <span class="font-semibold text-lg">Diametro externo: </span> <br>
                                         <span class="text-muted">{{ $producto->moto->d_externo }} mm</span>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4">
                                         <span class="font-semibold text-lg">Espesor: </span> <br>
                                         <span class="text-muted">{{ $producto->moto->espesor }} mm</span>
                                     </div>
@@ -297,9 +254,7 @@ line-height: 2.5rem;
         </div>
     </div>
 
-
-
-    <div class="row mb-1 mt-md-3">
+    <div class="row mb-1 mt-3">
         <div class="col-12 mb-1 mb-md-2">
             <h4 class="text-dark ">Descripcion del producto</h4>
         </div>

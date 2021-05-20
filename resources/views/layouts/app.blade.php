@@ -15,47 +15,8 @@
     <link rel="stylesheet" href="/go/app/assets/css/vendor.css" />
     <link rel="stylesheet" href="/go/app/assets/css/style.css" />
     <link rel="stylesheet" href="/css/fuentes.css">
+    <link rel="stylesheet" href="/css/estilos.css">
 
-    <style>
-        .navbar-logo{
-            max-height: 140%!important;
-        }
-        .font-lg{
-            font-size: 1.5rem;
-        }
-        .font-xl{
-            font-size: 2rem;
-        }
-        /* .font_myriad{
-            font-family: Myriadpro;
-        } */
-        .text_float{
-            position: absolute;
-            left:50%;
-            text-align: center;
-            top:50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            z-index: 10;
-        }
-        .button_whatsapp{
-            position: fixed;
-            bottom: 2.5rem;
-            right: 1.5rem;
-            width: 80px;
-            z-index: 50;
-        }
-        @media (max-width: 600px) {
-            .button_whatsapp {
-                width: 70px;
-            }
-        }
-        .shadow_svg_whatsapp{
-            box-shadow: 0px 2px 5px 0px rgba(0,0,0,1);
-            -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,1);
-            -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,1);
-        }
-    </style>
   </head>
   <body>
 
