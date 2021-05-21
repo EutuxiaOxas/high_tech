@@ -27,10 +27,6 @@ Route::middleware('auth')->group(function () {
     /* ----------  RUTA USUARIOS ---------*/
 	Route::get('/cms/users', 'Admin\UserController@index')->middleware('can:cms.users.show')->name('cms.users.show');
 	Route::get('/cms/users/user', 'Admin\UserController@create')->middleware('can:cms.users.create')->name('cms.users.create');
-	Route::post('/cms/users/user', 'Admin\UserController@store')->middleware('can:cms.users.store')->name('cms.users.store');
-	Route::get('/cms/users/user/{id}', 'Admin\UserController@edit')->middleware('can:cms.users.edit')->name('cms.users.edit');
-	Route::post('/cms/users/user/{id}', 'Admin\UserController@update')->middleware('can:cms.users.update')->name('cms.users.update');
-	Route::delete('/cms/users/user/{id}', 'Admin\UserController@destroy')->middleware('can:cms.users.destroy')->name('cms.users.destroy');
 
     /* ----------  RUTA CATEGORIAS PRODUCTOS CONTROLLADOR ---------*/
     Route::get('/cms/productos/categorias', 'ProductController@showCategorias')->middleware('can:cms.products.categories.show')->name('cms.products.categories.show');
@@ -68,6 +64,13 @@ Route::middleware('auth')->group(function () {
 	Route::get('/cms/blog/editar/articulo/{id}', 'Blog\ArticuloController@edit')->middleware('can:cms.blog.edit')->name('cms.blog.edit');
 	Route::post('/cms/blog/actualizar/articulo/{id}', 'Blog\ArticuloController@update')->middleware('can:cms.blog.update')->name('cms.blog.update');
 	Route::delete('/cms/blog/eliminar/articulo/{id}', 'Blog\ArticuloController@destroy')->middleware('can:cms.blog.destroy')->name('cms.blog.destroy');
+
+
+    // Apis
+    Route::get('/cms/get/user/{id}', 'Admin\UserController@getUserById')->middleware('can:cms.users.show');
+    Route::post('/cms/password/user/{id}', 'Admin\UserController@updatePassword')->middleware('can:cms.users.update');
+    Route::post('/cms/update/user/{id}', 'Admin\UserController@update')->middleware('can:cms.users.update');
+    Route::post('/cms/eliminar/user/{id}', 'Admin\UserController@destroy')->middleware('can:cms.users.destroy');
 });
 
 /*------------------------------------ END --------------------------*/
@@ -78,6 +81,11 @@ Route::get('/blog', 'BlogController@index')->name('main.blog.home');
 Route::get('/blog/{slug}', 'BlogController@post')->name('main.blog.show');
 Route::get('/blog-categories/{slug}', 'BlogController@postsWithCategorie')->name('main.blog.categorie');
 Route::get('/blog-tags/{keyword}', 'BlogController@postByTag')->name('main.blog.tag');
+
+
+
+
+
 
 
 

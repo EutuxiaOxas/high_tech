@@ -17,8 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('cms.users.index', compact('users'));
+        $users = User::paginate(15);
+        $roles = Role::all();
+        return view('cms.users.index', compact('users', 'roles'));
     }
 
     /**
@@ -54,7 +55,7 @@ class UserController extends Controller
 
         $users = User::all();
 
-        return redirect()->route('cms.users.show', compact('users'))->with('info', 'El usuario se creó exitosamente!');
+        return redirect()->route('cms.users.show', compact('users'))->with('message', 'El usuario se creó exitosamente!');
     }
 
     /**
@@ -91,25 +92,14 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $user->roles()->sync($request->roles);
+        // $user->roles()->sync($request->roles);
 
-        $checkPassword = $request->passwordCheck;
-        if($checkPassword == 'on'){
-            $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-            ]);
-        }else{
-            $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-            ]);
-        }
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
 
-        $users = User::all();
-
-        return redirect()->route('cms.users.show', compact('user'))->with('info', 'El usuario se actualizó correctamente!');
+        return back()->with('message','Usuario actualizado exitosamente!');
     }
 
     /**
@@ -123,5 +113,31 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         return back()->with('message','Usuario eliminado exitosamente!');
+    }
+
+    public function getUserById($id){
+        return User::find($id);
+    }
+
+    public function updatePassword(Request $request, $id){
+
+        $user = User::find($id);
+
+        $password = $request->password;
+        $confirm_password = $request->corfirm_password;
+
+        if( $password == $confirm_password ){
+
+            $user->update([
+                'password' => Hash::make($password),
+            ]);
+
+            $message = 'Password actualizado exitosamente!';
+
+        }else{
+            $message = 'No coinciden los passwords!';
+        }
+
+        return back()->with('message',$message);
     }
 }

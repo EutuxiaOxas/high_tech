@@ -8,12 +8,12 @@
         <p class="lead">Gran trayectoria en el sector Industrial-Empresarial <br>desde <b>1976</b></p>
         </div>
         <div class="col-md-6 text-md-right">
-        <ul class="socials">
-            <li><a href="" class="icon-facebook fs-20"></a></li>
-            <li><a href="" class="icon-instagram fs-20"></a></li>
-            <li><a href="" class="icon-twitter fs-20"></a></li>
-            <li><a href="" class="icon-linkedin fs-20"></a></li>
-        </ul>
+            <ul class="socials">
+                <li><a href="" class="icon-facebook fs-20"></a></li>
+                <li><a href="" class="icon-instagram fs-20"></a></li>
+                <li><a href="" class="icon-twitter fs-20"></a></li>
+                <li><a href="" class="icon-linkedin fs-20"></a></li>
+            </ul>
         </div>
     </div>
     </div>

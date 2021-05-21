@@ -19,18 +19,55 @@
 
 @section('content')
 <section>
+    <div class="py-1"></div>
 
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Editar Categoría</h1>
-  </div>
+    <section class="content-header px-0">
+        <div class="container-fluid px-0">
+          <div class="row mb-2 px-0">
+            <div class="col-sm-6">
+              <span class="font-light text-lg">Editar categoría de productos</span>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href=" {{ route('cms.index') }} ">Home</a></li>
+                <li class="breadcrumb-item active">Productos</li>
+                <li class="breadcrumb-item active">Categorías</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+    </section>
+    @if (session('message'))
+      <div class="card card-success">
+        <div class="card-header row align-items-center justify-content-between mx-0">
+          <h3 class="card-title">Éxito!</h3>
+          <div class="card-tools ml-auto">
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+            {{ session('message') }}
+        </div>
+      </div>
+    @endif
 
+    @if (session('info'))
+        <div class="card card-info">
+            <div class="card-header row align-items-center justify-content-between mx-0">
+            <h3 class="card-title">Ops!</h3>
+            <div class="card-tools ml-auto">
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                </button>
+            </div>
+            </div>
+            <div class="card-body">
+                {{ session('info') }}
+            </div>
+        </div>
+    @endif
 
   <div class="">
-      @if(session('message'))
-        <div class="alert alert-success" role="alert">
-          {{session('message')}}
-        </div>
-      @endif
       <form action="/cms/actualizar/product/category/{{$category->id}}" method="POST" enctype="multipart/form-data" id="formSubmit">
         @csrf
         <div class="row">
