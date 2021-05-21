@@ -69,9 +69,9 @@
     <div class="row">
         <div class="col px-0">
             <div class="card">
-                <div class="card-header row justify-content-between align-items-center mx-0">
+                <div class="card-header row justify-content-between align-items-center mx-0 bg-orange">
                     <h3 class="card-title col col-md-2">Serie Automoriz</h3>
-                    <a class="btn btn-primary btn-sm ml-2" href="/cms/parameters/crear/auto">Agregar parametro</a>
+                    <a class="btn btn-primary btn-sm ml-2 text-white" href="/cms/parameters/crear/auto">Agregar parametro</a>
                     <div class="card-tools ml-auto">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fas fa-minus"></i></button>
@@ -118,9 +118,9 @@
     <div class="row">
         <div class="col px-0">
             <div class="card">
-                <div class="card-header row justify-content-between align-items-center mx-0">
+                <div class="card-header row justify-content-between align-items-center mx-0 bg-info">
                     <h3 class="card-title col col-md-2">Serie Chumacera</h3>
-                    <a class="btn btn-primary btn-sm ml-2" href="/cms/parameters/crear/chumacera">Agregar parametro</a>
+                    <a class="btn btn-primary btn-sm ml-2 text-white" href="/cms/parameters/crear/chumacera">Agregar parametro</a>
                     <div class="card-tools ml-auto">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fas fa-minus"></i></button>
@@ -168,9 +168,9 @@
     <div class="row">
         <div class="col px-0">
             <div class="card">
-                <div class="card-header row justify-content-between align-items-center mx-0">
+                <div class="card-header row justify-content-between align-items-center mx-0 bg-warning">
                     <h3 class="card-title col col-md-2">Serie Cadenas</h3>
-                    <a class="btn btn-primary btn-sm ml-2" href="/cms/parameters/crear/cadena">Agregar parametro</a>
+                    <a class="btn btn-primary btn-sm ml-2 text-white" href="/cms/parameters/crear/cadena">Agregar parametro</a>
                     <div class="card-tools ml-auto">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fas fa-minus"></i></button>
@@ -218,7 +218,7 @@
     <div class="row">
         <div class="col px-0">
             <div class="card">
-                <div class="card-header row justify-content-between align-items-center mx-0">
+                <div class="card-header row justify-content-between align-items-center mx-0 bg-success">
                     <h3 class="card-title col col-md-2">Serie 6000 y Serie Moto</h3>
                     <a class="btn btn-primary btn-sm ml-2" href="/cms/parameters/crear/6000">Agregar parametro</a>
                     <div class="card-tools ml-auto">

@@ -28097,7 +28097,7 @@ blockquote.quote-gray-dark h6 {
 
 .bg-warning,
 .bg-warning > a {
-  color: #1F2D3D !important;
+  color: #1F2D3D;
 }
 
 .bg-warning.btn:hover {
@@ -28397,7 +28397,7 @@ blockquote.quote-gray-dark h6 {
 
 .bg-orange,
 .bg-orange > a {
-  color: #1F2D3D !important;
+  color: #1F2D3D;
 }
 
 .bg-orange.btn:hover {
