@@ -14,7 +14,11 @@
                   <img class="card-img" src="{{ Storage::url($post->picture) }}" alt="Card image cap">
                 </a>
                 <div class="card-body">
-                  <h5 class="card-title"><a class="text-dark" href="{{route('main.blog.show', $post->slug)}}">{{$post->title}}</a></h5>
+                  <h5 class="card-title">
+                      <a class="text-dark" href="{{route('main.blog.show', $post->slug)}}">
+                        {{ ucwords(strtolower($post->title)) }}
+                    </a>
+                </h5>
                   <span class="card-meta">
                     @php
                       $valueaux = substr("$post->content",0,150);
