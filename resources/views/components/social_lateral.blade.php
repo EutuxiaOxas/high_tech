@@ -11,7 +11,7 @@
     </div>
     <div class="social_div" style="background-color: #FF5700;">
       <a href="http://reddit.com/submit?url={{ Request::url() }}" target="_blank">
-        <img class="social_icon" src="{{ asset('icons/social/reddit.svg') }}" alt="">
+        <img class="social_icon" src="{{ asset('reddit.svg') }}" alt="">
       </a>
     </div>
     <div class="social_div" style="background-color: #1DA1F2;">
