@@ -46,7 +46,7 @@
           </div>
           <div class="col-12 col-md-6 mb-4">
             <h5>Precio - <b>$USD</b> </h5>
-            <input class="form-control" type="number" required name="precio_producto" placeholder="Precio" maxlength="191">
+            <input class="form-control" type="number" required name="precio_producto" placeholder="Precio" maxlength="191" min="0.01" step="0.01">
           </div>
           <div class="col-12 col-md-6 mb-4">
             <h5>Código Universal</h5>
