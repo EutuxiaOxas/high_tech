@@ -10,10 +10,24 @@
 </style>
 @section('content')
 <section>
+    <div class="py-1"></div>
 
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Crear Producto</h1>
-  </div>
+    <section class="content-header px-0">
+        <div class="container-fluid px-0">
+          <div class="row mb-2 px-0">
+            <div class="col-sm-6">
+              <span class="font-light text-lg">Crear Producto</span>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href=" {{ route('cms.index') }} ">Home</a></li>
+                <li class="breadcrumb-item active"><a href=" {{ route('cms.products.show') }} ">Productos</a></li>
+                <li class="breadcrumb-item active">Crear Producto</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+    </section>
 
 
   <div class="">
@@ -49,7 +63,7 @@
               <textarea class="form-control" required name="descripcion_producto"></textarea>
             </div>
             <div class="col-12 mb-4">
-                <h5>Vehiculo / Aplicación</h5>
+                <h5>Aplicación</h5>
                 <textarea class="form-control auto element-required" name="aplicacion"></textarea>
               </div>
             <div class="col-12 mb-4">

@@ -70,7 +70,7 @@
         <div class="col px-0">
             <div class="card">
                 <div class="card-header row justify-content-between align-items-center mx-0 bg-orange">
-                    <h3 class="card-title col col-md-2">Serie Automoriz</h3>
+                    <h3 class="card-title col col-md-2 text-white">Serie Automoriz</h3>
                     <a class="btn btn-primary btn-sm ml-2 text-white" href="/cms/parameters/crear/auto">Agregar parametro</a>
                     <div class="card-tools ml-auto">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -169,7 +169,7 @@
         <div class="col px-0">
             <div class="card">
                 <div class="card-header row justify-content-between align-items-center mx-0 bg-warning">
-                    <h3 class="card-title col col-md-2">Serie Cadenas</h3>
+                    <h3 class="card-title col col-md-2 text-white">Serie Cadenas</h3>
                     <a class="btn btn-primary btn-sm ml-2 text-white" href="/cms/parameters/crear/cadena">Agregar parametro</a>
                     <div class="card-tools ml-auto">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">

@@ -147,7 +147,7 @@
                 @endcan
                 @can('cms.products.show')
                 <li class="nav-item">
-                  <a href="/cms/productos" class="nav-link">
+                  <a href="{{ route('cms.products.show') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Productos</p>
                   </a>
