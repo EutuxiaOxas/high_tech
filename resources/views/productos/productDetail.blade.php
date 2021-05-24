@@ -73,7 +73,7 @@
 
             <div class="row d-none d-md-block">
                 <div class="col-12">
-                    <h1 class="font-light">{{$producto->titulo}}</h1>
+                    <h1 class="font-light text-3xl">{{$producto->titulo}}</h1>
                 </div>
                 <div class="col-12 mt-1">
                     <div class="row justify-content-between align-items-center">
