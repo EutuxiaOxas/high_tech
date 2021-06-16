@@ -72,10 +72,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/cms/update/user/{id}', 'Admin\UserController@update')->middleware('can:cms.users.update');
     Route::post('/cms/eliminar/user/{id}', 'Admin\UserController@destroy')->middleware('can:cms.users.destroy');
 
-
-    Route::get('/cms/test', function(){
-        return view('cms.test');
-    });
 });
 
 /*------------------------------------ END --------------------------*/

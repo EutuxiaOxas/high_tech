@@ -1,3 +1,0 @@
-@php
-    PHPInfo();
-@endphp
