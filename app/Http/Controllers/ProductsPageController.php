@@ -70,6 +70,7 @@ class ProductsPageController extends Controller
     public function showByCategory($slug)
     {
         $categoria = Category::where('slug', $slug)->first();
+        // return $categoria;
 
         if( $categoria->products ){
 

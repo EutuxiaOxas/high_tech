@@ -21,31 +21,31 @@
           <div class="owl-carousel visible" data-items="[3]" data-nav="true" data-margin="10">
 
             <figure class="user">
-              <a href="/categorias/serie-automotriz" class="user-photo">
+              <a href="{{ route('products.category', 'serie-automotriz') }}" class="user-photo">
                 <img src="{{asset('/imagenes/productos_home/serie_auto.jpg')}}" alt="promo-1">
                 <span class="text_float text-white font-xl">SERIE <strong>AUTOMOTRIZ</strong></span>
               </a>
             </figure>
             <figure class="user">
-              <a href="/categorias/serie-cadenas" class="user-photo">
+              <a href="{{ route('products.category', 'serie-cadenas') }}" class="user-photo">
                 <img src="{{asset('/imagenes/productos_home/serie_cadenas.jpg')}}" alt="promo-2">
                 <span class="text_float text-white font-xl">SERIE <strong>CADENAS</strong></span>
               </a>
             </figure>
             <figure class="user">
-              <a href="/categorias/serie-6000" class="user-photo">
+              <a href="{{ route('products.category', 'serie-6000') }}" class="user-photo">
                 <img src="{{asset('/imagenes/productos_home/serie_6000.jpg')}}" alt="promo-5">
                 <span class="text_float text-white font-xl">SERIE <strong>6000</strong></span>
               </a>
             </figure>
             <figure class="user">
-              <a href="/categorias/chumaceras" class="user-photo">
+              <a href="{{ route('products.category', 'serie-chumacera') }}" class="user-photo">
                 <img src="{{asset('/imagenes/productos_home/serie_chumacera.jpg')}}" alt="promo-3">
                 <span class="text_float text-white font-xl">SERIE <strong>CHUMACERA</strong></span>
               </a>
             </figure>
             <figure class="user">
-              <a href="/categorias/serie-moto" class="user-photo">
+              <a href="{{ route('products.category', 'serie-moto') }}" class="user-photo">
                 <img src="{{asset('/imagenes/productos_home/serie_moto.jpg')}}" alt="promo-4">
                 <span class="text_float text-white font-xl">SERIE <strong>MOTO</strong></span>
               </a>

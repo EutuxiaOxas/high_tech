@@ -21,9 +21,9 @@
                     Serie Moto
                 </a>
                     @break
-                @case('chumaceras')
+                @case('serie-chumacera')
                 <a class="text-dark" href="/categorias/chumaceras">
-                    Chumaceras
+                    Serie Chumaceras
                 </a>
                     @break
                 @case('serie-cadenas')

@@ -30,35 +30,35 @@
                 <div class="col-12 align-self-end d-none d-md-block">
                   <div class="row gutter-1">
                       <div class="col text-center">
-                        <a href="/categorias/serie-automotriz">
+                        <a href="{{ route('products.category', 'serie-automotriz') }}">
                             <img class="mb-1" src="/imagenes/banner_principal/01.jpg" alt="" width="100%">
                             <div class="text-white font-lg ">SERIE <strong class="font_myriad">AUTOMOTRIZ</strong> </div>
                             <small class="text-white"> <strong class="font_myriad">LINEA NARANJA - AUTOMOTRIZ</strong></small>
                         </a>
                       </div>
                       <div class="col text-center">
-                        <a href="/categorias/serie-6000">
+                        <a href="{{ route('products.category', 'serie-6000') }}">
                             <img class="mb-1" src="/imagenes/banner_principal/02.jpg" alt="" width="100%">
                             <div class="text-white font-lg">SERIE <strong class="font_myriad">6000</strong> </div>
                             <small class="text-white"> <strong class="font_myriad">LINEA VERDE - 6000</strong></small>
                         </a>
                       </div>
                       <div class="col text-center">
-                        <a href="/categorias/serie-cadenas">
+                        <a href="{{ route('products.category', 'serie-cadenas') }}">
                             <img class="mb-1" src="/imagenes/banner_principal/03.jpg" alt="" width="100%">
                             <div class="text-white font-lg">SERIE <strong class="font_myriad">CADENAS</strong> </div>
                             <small class="text-white"> <strong class="font_myriad">LINEA AMARILLA - CADENAS</strong></small>
                         </a>
                       </div>
                       <div class="col text-center">
-                        <a href="/categorias/chumaceras">
+                        <a href="{{ route('products.category', 'serie-chumacera') }}">
                             <img class="mb-1" src="/imagenes/banner_principal/04.jpg" alt="" width="100%">
                             <div class="text-white font-lg">SERIE <strong class="font_myriad">CHUMACERA</strong> </div>
                             <small class="text-white"> <strong class="font_myriad">LINEA AZUL - CHUMACERAS</strong> </small>
                         </a>
                       </div>
                       <div class="col text-center">
-                        <a href="/categorias/serie-moto">
+                        <a href="{{ route('products.category', 'serie-moto') }}">
                             <img class="mb-1" src="/imagenes/banner_principal/05.jpg" alt="" width="100%">
                             <div class="text-white font-lg">SERIE <strong class="font_myriad">MOTO</strong> </div>
                             <small class="text-white"> <strong class="font_myriad">LINEA ROJA - MOTOCICLETAS</strong></small>
