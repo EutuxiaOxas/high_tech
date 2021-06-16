@@ -2,12 +2,14 @@
 <style>
     .img_banner{
         width: 50%;
+        max-width: 100%;
     }
 
 
   @media (max-width: 768px) {
     .img_banner{
       width: 100%;
+      max-width: 100%;
     }
   }
 </style>
@@ -81,3 +83,4 @@
     </div>
   </section>
   <!-- / cover -->
+
