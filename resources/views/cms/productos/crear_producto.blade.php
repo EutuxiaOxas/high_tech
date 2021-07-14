@@ -44,9 +44,13 @@
             <h5>Titulo</h5>
             <input class="form-control" id="titulo_producto" type="text" maxlength="191" required name="titulo_producto" placeholder="Titulo">
           </div>
-          <div class="col-12 col-md-6 mb-4">
+          <div class="col-12 col-md-3 mb-4">
             <h5>Precio - <b>$USD</b> </h5>
             <input class="form-control" type="number" required name="precio_producto" placeholder="Precio" maxlength="191" min="0.01" step="0.01">
+          </div>
+          <div class="col-12 col-md-3 mb-4">
+            <h5>Cantidad </h5>
+            <input class="form-control" type="number" required name="cantidad_producto" placeholder="Existencia" min="1" step="1">
           </div>
           <div class="col-12 col-md-6 mb-4">
             <h5>Código Universal</h5>
@@ -64,8 +68,8 @@
             </div>
             <div class="col-12 mb-4">
                 <h5>Aplicación - Solo para serie automotriz</h5>
-                <textarea class="form-control auto element-required" name="aplicacion">-</textarea>
-              </div>
+                <textarea class="form-control auto" name="aplicacion">-</textarea>
+            </div>
             <div class="col-12 mb-4">
               <h5>Categoría</h5>
               <select name="categoria_producto" class="form-control form-control" id="categoria_select" required>

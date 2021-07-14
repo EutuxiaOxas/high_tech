@@ -119,7 +119,8 @@ class ProductController extends Controller
         $producto->precio           = $request->precio_producto;
         $producto->codigo_universal = $request->codigo_producto;
     	$producto->category_id      = $request->categoria_producto;
-    	$producto->descripcion      = $request->descripcion_producto;
+        $producto->quantity         = $request->cantidad_producto;
+        $producto->descripcion      = $request->descripcion_producto;
         $producto->aplicacion       = $request->aplicacion;
 
          //verificamos que la imagen exista

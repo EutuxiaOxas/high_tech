@@ -157,7 +157,7 @@
                                 <span class="text-muted">{{ $producto->chumacera->No_huecos }}</span>
                             </div>
 
-                        @elseif( $producto->categoria->category == 'Serie cadenas' )
+                        @elseif( $producto->categoria->category == 'Serie Cadenas' )
 
                             <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Pitch: </span> <br>
@@ -218,7 +218,7 @@
                                 <span class="font-semibold text-lg">Tipo de sello: </span> <br>
                                 <span class="text-muted">{{ $producto->moto->tipoSello->tipo_sello }}</span>
                             </div>
-                            <div class="col-12 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Aplicación: </span> <br>
                                 <span class="text-muted">{{ $producto->aplicacion }}</span>
                             </div>
