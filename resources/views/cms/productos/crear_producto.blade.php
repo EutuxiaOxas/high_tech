@@ -63,8 +63,8 @@
               <textarea class="form-control" required name="descripcion_producto"></textarea>
             </div>
             <div class="col-12 mb-4">
-                <h5>Aplicación</h5>
-                <textarea class="form-control auto element-required" name="aplicacion"></textarea>
+                <h5>Aplicación - Solo para serie automotriz</h5>
+                <textarea class="form-control auto element-required" name="aplicacion">-</textarea>
               </div>
             <div class="col-12 mb-4">
               <h5>Categoría</h5>
