@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.cms')
+@section('content')
+<meta name="robots" content="noindex,nofollow" />
+@endsection
 
 @section('content')
 <div class="container">

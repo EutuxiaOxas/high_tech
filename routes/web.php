@@ -18,11 +18,22 @@ Route::get('/products/search/filters', 'ProductsPageController@showByFilter')->n
 // Detalles del product
 Route::get('/product/{slug}', 'ProductsPageController@show')->name('product');
 
+// Carrito de compras
+Route::get('/carrito', 'HomeController@cart')->name('cart');
+
 /* ----------------------------  RUTAS DE PRUEBA PARA EL CMS -----------------------*/
 
 Route::middleware('auth')->group(function () {
 
-	Route::get('/cms', 'CmsController@index')->middleware('can:cms.index')->name('cms.index');
+	// Route::get('/cms', 'CmsController@index')->name('cms.index');
+
+    // Roles
+    Route::get('/cms/get/roles', 'Admin\RoleController@index')->middleware('can:cms.users.show')->name('cms.role.index');
+    Route::get('/cms/create/role', 'Admin\RoleController@create')->middleware('can:cms.users.show')->name('cms.role.create');
+    Route::post('/cms/store/role', 'Admin\RoleController@store')->middleware('can:cms.users.show')->name('cms.role.store');
+    Route::get('/cms/edit/role/{id}', 'Admin\RoleController@edit')->middleware('can:cms.users.show')->name('cms.role.edit');
+    Route::post('/cms/update/role/{id}', 'Admin\RoleController@update')->middleware('can:cms.users.show')->name('cms.role.update');
+    Route::post('/cms/destroy/role/{id}', 'Admin\RoleController@destroy')->middleware('can:cms.users.show')->name('cms.role.destroy');
 
     /* ----------  RUTA USUARIOS ---------*/
 	Route::get('/cms/users', 'Admin\UserController@index')->middleware('can:cms.users.show')->name('cms.users.show');
@@ -64,7 +75,6 @@ Route::middleware('auth')->group(function () {
 	Route::get('/cms/blog/editar/articulo/{id}', 'Blog\ArticuloController@edit')->middleware('can:cms.blog.edit')->name('cms.blog.edit');
 	Route::post('/cms/blog/actualizar/articulo/{id}', 'Blog\ArticuloController@update')->middleware('can:cms.blog.update')->name('cms.blog.update');
 	Route::delete('/cms/blog/eliminar/articulo/{id}', 'Blog\ArticuloController@destroy')->middleware('can:cms.blog.destroy')->name('cms.blog.destroy');
-
 
     // Apis
     Route::get('/cms/get/user/{id}', 'Admin\UserController@getUserById')->middleware('can:cms.users.show');

@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
-use  App\Blog\Article;
-use  App\Blog\Keyword;
-use App\Product;
+use Spatie\Permission\Models\Role;
 
-class HomeController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +15,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Article::with(['categoria', 'autor'])->orderBy('id', 'DESC')->paginate(3);
-        $categories = Category::all();
-        $products = Product::inRandomOrder()->take(10)->get();
-        return view('home.home', compact('posts','categories', 'products'));
+        $roles = Role::all();
+        return view('cms.roles.index', compact('roles'));
     }
 
     /**
@@ -30,7 +26,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('cms.roles.create');
     }
 
     /**
@@ -41,7 +37,17 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $rol = new Role;
+        $rol->name  = $request->name;
+        $rol->save();
+
+        $roles = Role::all();
+
+        return redirect()->route('cms.role.index', compact('roles'));
     }
 
     /**
@@ -50,9 +56,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Role $role)
     {
-        //
+        return view('cms.roles.show', compact('role'));
     }
 
     /**
@@ -61,9 +67,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        return view('cms.roles.edit', compact('role'));
     }
 
     /**
@@ -73,7 +79,7 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
         //
     }
@@ -84,28 +90,8 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
         //
-    }
-
-    //Controlador vista Nosotros
-    public function nosotros()
-    {
-        $categories = Category::all();
-        return view('nosotros.nosotros',compact('categories'));
-    }
-
-    //Controlador vista Contacto
-    public function contacto()
-    {
-        $categories = Category::all();
-        return view('contacto.contacto',compact('categories'));
-    }
-
-    public function cart(){
-        $categories = Category::all();
-        $products = Product::inRandomOrder()->take(10)->get();
-        return view('cart', compact('categories', 'products'));
     }
 }

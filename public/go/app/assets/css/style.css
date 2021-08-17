@@ -15151,7 +15151,7 @@ label {
   background-color: #fff; }
 
 select {
-  opacity: 0 !important; }
+  opacity: 0; }
 
 .selectric-wrapper {
   position: relative;
@@ -15159,6 +15159,9 @@ select {
 
 .selectric-responsive {
   width: 100%; }
+.selectric-d-inline-block{
+    display: inline-block !important;
+}
 
 .selectric {
   -webkit-transition: all 0.2s;
@@ -21357,7 +21360,7 @@ pre[class*="language-"] {
 
   }
   .social_icon{
-    height: 30px!important;      
+    height: 30px!important;
     position: absolute;
     left: 50%;
     top: 50%;

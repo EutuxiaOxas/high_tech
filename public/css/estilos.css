@@ -16,6 +16,10 @@
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
+.text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
 .text-lg{
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -39,8 +43,14 @@
 .font-light{
     font-weight: 300;
 }
+.font-regular{
+    font-weight: 500;
+}
 .font-semibold{
     font-weight: 500;
+}
+.font-bold{
+    font-weight: 600;
 }
 .navbar-logo{
     max-height: 140%!important;
@@ -51,6 +61,8 @@
 .font-xl{
     font-size: 2rem;
 }
+
+
 /* .font_myriad{
     font-family: Myriadpro;
 } */
@@ -72,7 +84,9 @@
 }
 @media (max-width: 600px) {
     .button_whatsapp {
-        width: 70px;
+        width: 66px;
+        bottom: 2rem;
+        right: 1.25rem;
     }
 }
 .shadow_svg_whatsapp{

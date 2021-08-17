@@ -13,7 +13,6 @@ class CmsController extends Controller
     	return view('cms.index');
     }
 
-
     public function subscribersView(){
     	$subscriptores = Subscriber::all();
     	return view('cms.subscriptores')->with(compact('subscriptores'));

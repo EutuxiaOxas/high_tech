@@ -1,4 +1,7 @@
 @extends('layouts.cms')
+@section('content')
+    <meta name="robots" content="noindex,nofollow" />
+@endsection
 
 @section('content')
 <div class="container mt-5">
@@ -56,12 +59,12 @@
                                 <button type="submit" class="btn btn-info px-5">
                                     {{ __('Acceder') }}
                                 </button>
-{{--
+
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif --}}
+                                @endif
                             </div>
                         </div>
                     </form>

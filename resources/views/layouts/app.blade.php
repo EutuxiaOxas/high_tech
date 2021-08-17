@@ -28,10 +28,37 @@
     @include('common.whatsapp')
     {{-- footer --}}
     @include('common.footer')
+    {{-- footer --}}
+    @include('common.modal_shopping_car')
 
     {{-- global Js  --}}
     <script src="/go/app/assets/js/vendor.js"></script>
     <script src="/go/app/assets/js/app.js"></script>
+
+    <script src="{{ asset('js/shoppingCar.js') }}"></script>
+
+    <style>
+        .badge{
+            position: absolute;
+            bottom: 5px;
+            right: -10px;
+            background-color: rgb(18, 35, 101);
+            color: #fff;
+            padding: 3px 6.5px;
+            border-radius: 25%;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+        }
+        .selecselect_modal{
+            width: 75px;
+            border-radius: 2px;
+            border: solid 1px #555;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+    </style>
 
   </body>
 </html>

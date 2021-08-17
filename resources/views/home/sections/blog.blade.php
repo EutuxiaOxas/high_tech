@@ -7,28 +7,28 @@
       </div>
     </div>
     <div class="row">
-          @foreach($posts as $post)
-            <div class="col-md-6 col-lg-4">
-              <article class="card card-minimal">
-                <a href="{{route('main.blog.show', $post->slug)}}" class="card-img-container">
-                  <img class="card-img" src="{{ Storage::url($post->picture) }}" alt="Card image cap">
+        @foreach($posts as $post)
+        <div class="col-md-6 col-lg-4">
+            <article class="card card-minimal">
+            <a href="{{route('main.blog.show', $post->slug)}}" class="card-img-container" aria-label="ver el articulo">
+                <img class="card-img" src="{{ Storage::url($post->picture) }}" alt="{{ ucfirst(strtolower($post->title)) }} | High Tech" loading="lazy">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">
+                <a class="text-dark" href="{{route('main.blog.show', $post->slug)}}" aria-label="ver el articulo">
+                    {{ ucfirst(strtolower($post->title)) }}
                 </a>
-                <div class="card-body">
-                  <h5 class="card-title">
-                      <a class="text-dark" href="{{route('main.blog.show', $post->slug)}}">
-                        {{ ucfirst(strtolower($post->title)) }}
-                    </a>
-                </h5>
-                  <span class="card-meta">
-                    @php
-                      $valueaux = substr("$post->content",0,150);
-                      echo $valueaux."[...]";
-                    @endphp
-                   </span>
-                </div>
-              </article>
+            </h5>
+                <span class="card-meta">
+                @php
+                    $valueaux = substr("$post->content",0,150);
+                    echo $valueaux."[...]";
+                @endphp
+                </span>
             </div>
-          @endforeach
+            </article>
+        </div>
+        @endforeach
     </div>
   </div>
 </section>

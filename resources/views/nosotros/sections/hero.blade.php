@@ -18,43 +18,43 @@
         <div class="col-md-10">
             <div class="owl-carousel visible gallery" data-items="[2]" data-autoplay="true" data-loop="true" data-dots="true" data-margin="20">
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/high1.jpg" alt="Image">
+                <img src="/imagenes/imagenes_pagina/high1.jpg" alt="Image" loading="lazy">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/high2.jpg" alt="Image">
+                <img src="/imagenes/imagenes_pagina/high2.jpg" alt="Image" loading="lazy">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/serie1.jpg" alt="Image">
+                <img src="/imagenes/imagenes_pagina/serie1.jpg" alt="Image" loading="lazy">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/high3.jpg" alt="Image">
+                <img src="/imagenes/imagenes_pagina/high3.jpg" alt="Image" loading="lazy">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/serie2.jpg" alt="Image">
+                <img src="/imagenes/imagenes_pagina/serie2.jpg" alt="Image" loading="lazy">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/serie4.jpg" alt="Image">
+                <img src="/imagenes/imagenes_pagina/serie4.jpg" alt="Image" loading="lazy">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/high3.jpg" alt="Image">
+                <img src="/imagenes/imagenes_pagina/high3.jpg" alt="Image" loading="lazy">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/serie3.jpg" alt="Image">
+                <img src="/imagenes/imagenes_pagina/serie3.jpg" alt="Image" loading="lazy">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/high4.jpg" alt="Image">
+                <img src="/imagenes/imagenes_pagina/high4.jpg" alt="Image" loading="lazy">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/serie5.jpg" alt="Image">
+                <img src="/imagenes/imagenes_pagina/serie5.jpg" alt="Image" loading="lazy">
             </figure>
             </div>
         </div>

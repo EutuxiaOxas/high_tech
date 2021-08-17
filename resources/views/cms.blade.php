@@ -46,6 +46,7 @@
     }
   </style>
 </head>
+
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
 <!-- IDENTIFICADOR SECCIÓN -->
@@ -111,6 +112,19 @@
           </li>
 
           @endcan
+
+          {{-- @can('cms.users.show') --}}
+
+          <li class="nav-item">
+            <a class="nav-link @if ($section == 'roles') active @endif" href="{{ route('cms.role.index') }}">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Roles
+              </p>
+            </a>
+          </li>
+
+          {{-- @endcan --}}
           {{-- <li class="nav-item">
             <a class="nav-link @if ($section == 'productos') active @endif" href="/cms/productos">
                 <i class="nav-icon fas fa-store"></i>

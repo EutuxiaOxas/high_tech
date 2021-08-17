@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\OrderProduct;
 use Illuminate\Http\Request;
-use App\Category;
-use  App\Blog\Article;
-use  App\Blog\Keyword;
-use App\Product;
 
-class HomeController extends Controller
+class OrderProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Article::with(['categoria', 'autor'])->orderBy('id', 'DESC')->paginate(3);
-        $categories = Category::all();
-        $products = Product::inRandomOrder()->take(10)->get();
-        return view('home.home', compact('posts','categories', 'products'));
+        //
     }
 
     /**
@@ -47,10 +41,10 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\OrderProduct  $orderProduct
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(OrderProduct $orderProduct)
     {
         //
     }
@@ -58,10 +52,10 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\OrderProduct  $orderProduct
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(OrderProduct $orderProduct)
     {
         //
     }
@@ -70,10 +64,10 @@ class HomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\OrderProduct  $orderProduct
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, OrderProduct $orderProduct)
     {
         //
     }
@@ -81,31 +75,11 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\OrderProduct  $orderProduct
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(OrderProduct $orderProduct)
     {
         //
-    }
-
-    //Controlador vista Nosotros
-    public function nosotros()
-    {
-        $categories = Category::all();
-        return view('nosotros.nosotros',compact('categories'));
-    }
-
-    //Controlador vista Contacto
-    public function contacto()
-    {
-        $categories = Category::all();
-        return view('contacto.contacto',compact('categories'));
-    }
-
-    public function cart(){
-        $categories = Category::all();
-        $products = Product::inRandomOrder()->take(10)->get();
-        return view('cart', compact('categories', 'products'));
     }
 }

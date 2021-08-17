@@ -14,57 +14,57 @@
               <ul class="masonry gallery gutter-1 gutter-md-2">
                 <li class="col-6">
                   <figure class="photo">
-                    <a href="/imagenes/imagen_home/segundos-iconos-03.jpg">
-                      <img src="/imagenes/imagen_home/segundos-iconos-03.jpg" alt="Image">
+                    <a href="/imagenes/imagen_home/segundos-iconos-03.jpg" aria-label="imagen de High Tech Bearings">
+                      <img src="/imagenes/imagen_home/segundos-iconos-03.jpg" alt="Image" loading="lazy">
                     </a>
                   </figure>
                 </li>
                 <li class="col-6 mt-10">
                   <figure class="photo">
-                    <a href="/imagenes/imagen_home/segundos-iconos-06.jpg">
-                      <img src="/imagenes/imagen_home/segundos-iconos-06.jpg" alt="Image">
+                    <a href="/imagenes/imagen_home/segundos-iconos-06.jpg" aria-label="imagen de High Tech Bearings">
+                      <img src="/imagenes/imagen_home/segundos-iconos-06.jpg" alt="Image" loading="lazy">
                     </a>
                   </figure>
                 </li>
                 <li class="col-6">
                   <figure class="photo">
-                    <a href="/imagenes/imagen_home/segundos-iconos-05.jpg">
-                      <img src="/imagenes/imagen_home/segundos-iconos-05.jpg" alt="Image">
+                    <a href="/imagenes/imagen_home/segundos-iconos-05.jpg" aria-label="imagen de High Tech Bearings">
+                      <img src="/imagenes/imagen_home/segundos-iconos-05.jpg" alt="Image" loading="lazy">
                     </a>
                   </figure>
                 </li>
                 <li class="col-6">
                   <figure class="photo">
-                    <a href="/imagenes/imagen_home/segundos-iconos-04.jpg">
-                      <img src="/imagenes/imagen_home/segundos-iconos-04.jpg" alt="Image">
+                    <a href="/imagenes/imagen_home/segundos-iconos-04.jpg" aria-label="imagen de High Tech Bearings">
+                      <img src="/imagenes/imagen_home/segundos-iconos-04.jpg" alt="Image" loading="lazy">
                     </a>
                   </figure>
                 </li>
                 <li class="col-6">
                   <figure class="photo">
-                    <a href="/imagenes/imagen_home/segundos-iconos-01.jpg">
-                      <img src="/imagenes/imagen_home/segundos-iconos-01.jpg" alt="Image">
+                    <a href="/imagenes/imagen_home/segundos-iconos-01.jpg" aria-label="imagen de High Tech Bearings">
+                      <img src="/imagenes/imagen_home/segundos-iconos-01.jpg" alt="Image" loading="lazy">
                     </a>
                   </figure>
                 </li>
                 <li class="col-6">
                   <figure class="photo">
-                    <a href="/imagenes/imagen_home/segundos-iconos-02.jpg">
-                      <img src="/imagenes/imagen_home/segundos-iconos-02.jpg" alt="Image">
+                    <a href="/imagenes/imagen_home/segundos-iconos-02.jpg" aria-label="imagen de High Tech Bearings">
+                      <img src="/imagenes/imagen_home/segundos-iconos-02.jpg" alt="Image" loading="lazy">
                     </a>
                   </figure>
                 </li>
                 <li class="col-6">
                     <figure class="photo">
-                      <a href="/imagenes/imagen_home/segundos-iconos-05.jpg">
-                        <img src="/imagenes/imagen_home/segundos-iconos-05.jpg" alt="Image">
+                      <a href="/imagenes/imagen_home/segundos-iconos-05.jpg" aria-label="imagen de High Tech Bearings">
+                        <img src="/imagenes/imagen_home/segundos-iconos-05.jpg" alt="Image" loading="lazy">
                       </a>
                     </figure>
                   </li>
                   <li class="col-6">
                     <figure class="photo">
-                      <a href="/imagenes/imagen_home/segundos-iconos-03.jpg">
-                        <img src="/imagenes/imagen_home/segundos-iconos-03.jpg" alt="Image">
+                      <a href="/imagenes/imagen_home/segundos-iconos-03.jpg" aria-label="imagen de High Tech Bearings">
+                        <img src="/imagenes/imagen_home/segundos-iconos-03.jpg" alt="Image" loading="lazy">
                       </a>
                     </figure>
                   </li>
