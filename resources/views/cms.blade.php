@@ -115,14 +115,14 @@
 
           {{-- @can('cms.users.show') --}}
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link @if ($section == 'roles') active @endif" href="{{ route('cms.role.index') }}">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Roles
               </p>
             </a>
-          </li>
+          </li> -->
 
           {{-- @endcan --}}
           {{-- <li class="nav-item">

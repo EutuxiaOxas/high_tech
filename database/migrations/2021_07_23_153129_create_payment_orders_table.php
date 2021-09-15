@@ -18,7 +18,7 @@ class CreatePaymentOrdersTable extends Migration
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->foreignId('payment_methods_id')->nullable()->constrained()->onDelete('set Null');
             $table->float('amount');
-            $table->stirng('referencia')->nullable();
+            $table->string('referencia')->nullable();
             $table->text('capture')->nullable();
             $table->text('observation')->nullable();
             $table->timestamps();

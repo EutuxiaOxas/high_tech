@@ -26,6 +26,7 @@ Route::get('/carrito', 'HomeController@cart')->name('cart');
 Route::middleware('auth')->group(function () {
 
 	// Route::get('/cms', 'CmsController@index')->name('cms.index');
+	Route::get('/cms', 'CmsController@index')->middleware('can:cms.index')->name('cms.index');
 
     // Roles
     Route::get('/cms/get/roles', 'Admin\RoleController@index')->middleware('can:cms.users.show')->name('cms.role.index');

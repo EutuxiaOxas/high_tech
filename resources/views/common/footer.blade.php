@@ -47,7 +47,14 @@
             </ul>
         </div>
         <div class="col-12 col-md-5 col-lg-4 text-center text-lg-right">
-            <a href="tel:02418327147" class="phone_footer bordered" aria-label="llamar a numero de telefono (0241) 8327147">(0241) 8327147</a>
+            <h5 class="font-bold">Atenci&oacute;n personalizada</h5>
+            <h6 class="mb-0">M&oacute;vil & Whatsapp</h6>
+            <a href="https://api.whatsapp.com/send/?phone=584244174759?texto=Buen%20dia,%20escribo%20del%20sitio%20web" class="" aria-label="ir al chat de whatsapp">+58 424 417 47 59</a> |
+            <a href="https://api.whatsapp.com/send/?phone=584244064772?texto=Buen%20dia,%20escribo%20del%20sitio%20web" class="" aria-label="ir al chat de whatsapp">+58 424 406 47 72</a> 
+            <br><br>
+            <h6 class="mb-0">M&oacute;vil</h6> 
+            <a href="#" class="" aria-label="ir al chat de whatsapp">+58 412 098 44 69</a> |
+            <a href="#" class="" aria-label="ir al chat de whatsapp">+58 412 098 29 19</a> <br>
         </div>
     </div>
 </div>

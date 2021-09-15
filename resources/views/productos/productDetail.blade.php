@@ -76,7 +76,7 @@
             </span>
             <span class="text-muted text-sm">{{$producto->quantity}} disponibles.</span>
         </div>
-        <div class="col-12 d-md-none">
+        <!-- <div class="col-12 d-md-none">
             <div class="row px-1">
                 <div class="col-5 px-0">
                     <select class="d-inline text-sm form-control-sm quantityProduct" name="quantity">
@@ -87,7 +87,7 @@
                 </div>
                 <button class="col-7 btn btn-primary btn-sm d-inline text-sm addProduct">Agregar al carrito</button>
             </div>
-        </div>
+        </div> -->
 
         <div class="col-12 col-md-6">
 
@@ -115,7 +115,7 @@
                     </span>
                     <small class="text-muted">{{$producto->quantity}} disponibles.</small>
                 </div>
-                <div class="col-12">
+                <!-- <div class="col-12">
                     <div class="row">
                         <div class="col-4">
                             <select class="d-inline quantityProduct" name="quantity">
@@ -126,7 +126,7 @@
                         </div>
                         <button class="col-8 btn btn-primary d-inline addProduct">Agregar al carrito</button>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="row">
