@@ -37,10 +37,10 @@
                         </a>
                       </div>
                       <div class="col text-center">
-                        <a href="{{ route('products.category', 'serie-6000') }}" aria-label="ver los productos de la categoria 6000">
-                            <img class="mb-1" src="/imagenes/banner_principal/02.jpg" alt="imagen de la categoria 6000 | High Tech Bearings" width="100%" loading="lazy">
-                            <div class="text-white font-lg">SERIE <strong class="font_myriad">6000</strong> </div>
-                            <small class="text-white"> <strong class="font_myriad">LINEA VERDE - 6000</strong></small>
+                        <a href="{{ route('products.category', 'serie-industrial') }}" aria-label="ver los productos de la categoria industrial">
+                            <img class="mb-1" src="/imagenes/banner_principal/02.jpg" alt="imagen de la categoria industrial | High Tech Bearings" width="100%" loading="lazy">
+                            <div class="text-white font-lg">SERIE <strong class="font_myriad">INDUSTRIAL</strong> </div>
+                            <small class="text-white"> <strong class="font_myriad">LINEA VERDE - INDUSTRIAL</strong></small>
                         </a>
                       </div>
                       <div class="col text-center">

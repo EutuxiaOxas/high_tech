@@ -70,15 +70,15 @@ class ProductsPageController extends Controller
     public function showByCategory($slug)
     {
         $categoria = Category::where('slug', $slug)->first();
-        // return $categoria;
 
-        if( $categoria->products ){
+        if( isset($categoria) && $categoria->products ){
 
             $productos = $categoria->products()->paginate($this->perPage);
 
             $total_products = count($categoria->products()->get());
         }else{
             $productos = [];
+            $total_products = 0;
         }
 
         $categories = Category::all();

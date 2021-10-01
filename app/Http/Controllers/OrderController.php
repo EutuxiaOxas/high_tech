@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\OrderProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -24,7 +26,49 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return Auth::user()->hasRole('buyer');
+
+        if(session()->has('shoppingCar')){
+
+            $shoppingCar = session('shoppingCar');
+            $productsInShoppingCar = json_decode($shoppingCar);
+    
+            $user_id = Auth::id();
+            $amount=0;
+
+            foreach ($productsInShoppingCar as $product) {
+                $amount += ($product->quantity * $product->price);
+            }
+    
+            $order = new Order;
+            $order->create([
+                'user_id' => $user_id,
+                'amount' => $amount,
+                'status' => 'active',
+            ]);
+    
+            $order_id = Order::latest('id')->first()->id;
+    
+            foreach ($productsInShoppingCar as $product) {
+                $product_order = new OrderProduct;
+    
+                $product_order->create([
+                    'order_id' => $order_id,
+                    'product_id' => $product->id,
+                    'price' => floatval($product->price),
+                    'quantity' => intval($product->quantity)
+                ]);
+            }
+    
+    
+            // eliminar la variable de sesion de 'shoppingCar'
+            session()->forget('shoppingCar');
+    
+            return route('order.transaction');
+        }else{
+            return 'false';
+        }
+
     }
 
     /**
@@ -81,5 +125,16 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function createTransaction()
+    {
+        return view('transactions.index');
     }
 }

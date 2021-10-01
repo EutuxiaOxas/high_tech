@@ -20,9 +20,9 @@ class CategorySeeder extends Seeder
         ]);
 
         DB::table('categories')->insert([
-        	'category' => 'Serie 6000',
+        	'category' => 'Serie Industrial',
         	'description' => 'Rodamientos rígidos de bolas.',
-            'slug' => 'serie-6000',
+            'slug' => 'serie-industrial',
         	'category_color' => 'a2bd30'
         ]);
 

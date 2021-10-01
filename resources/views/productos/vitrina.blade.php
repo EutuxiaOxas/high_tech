@@ -89,7 +89,9 @@
 
                 </div>
                 <div class="row justify-content-center">
-                    {{ $productos->appends(request()->input())->links() }}
+                    @if( $total_products > 0 )
+                        {{ $productos->appends(request()->input())->links() }}
+                    @endif
                 </div>
             </div>
             <div class="col-md-4 col-lg-3">

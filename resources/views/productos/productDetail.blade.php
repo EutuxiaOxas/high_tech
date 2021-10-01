@@ -76,7 +76,7 @@
             </span>
             <span class="text-muted text-sm">{{$producto->quantity}} disponibles.</span>
         </div>
-        <!-- <div class="col-12 d-md-none">
+        <div class="col-12 d-md-none">
             <div class="row px-1">
                 <div class="col-5 px-0">
                     <select class="d-inline text-sm form-control-sm quantityProduct" name="quantity">
@@ -87,7 +87,7 @@
                 </div>
                 <button class="col-7 btn btn-primary btn-sm d-inline text-sm addProduct">Agregar al carrito</button>
             </div>
-        </div> -->
+        </div>
 
         <div class="col-12 col-md-6">
 
@@ -115,7 +115,7 @@
                     </span>
                     <small class="text-muted">{{$producto->quantity}} disponibles.</small>
                 </div>
-                <!-- <div class="col-12">
+                <div class="col-12 mt-2">
                     <div class="row">
                         <div class="col-4">
                             <select class="d-inline quantityProduct" name="quantity">
@@ -126,7 +126,7 @@
                         </div>
                         <button class="col-8 btn btn-primary d-inline addProduct">Agregar al carrito</button>
                     </div>
-                </div> -->
+                </div>
             </div>
 
             <div class="row">
@@ -137,14 +137,10 @@
                     <div class="row">
                         @if ( $producto->categoria->category == 'Serie Automotriz' )
                             <div class="col-6 mb-1">
-                                <span class="font-semibold text-lg">Articulo: </span> <br>
-                                <span class="text-muted">{{ $producto->auto->articulo }}</span>
+                                <span class="font-semibold text-base">Posición de la rueda: </span> <br>
+                                <span class="text-muted">{{ $producto->auto->posicion_rueda }}</span>
                             </div>
                             <div class="col-6 mb-1">
-                                <span class="font-semibold text-base">Posición de la rueda: </span> <br>
-                                <span class="text-muted">{{ $producto->auto->posicion->posicion }}</span>
-                            </div>
-                            <div class="col-12">
                                 <span class="font-semibold text-base">Aplicación: </span> <br>
                                 <span class="text-muted">{{ $producto->aplicacion }}</span>
                             </div>
@@ -175,48 +171,24 @@
 
                             <div class="col-6 mb-1">
                                 <span class="font-semibold text-lg">Diametro: </span> <br>
-                                <span class="text-muted">{{ $producto->chumacera->diametroChum->valor }}</span>
-                            </div>
-                            <div class="col-6 mb-1">
-                                <span class="font-semibold text-lg">Tipo: </span> <br>
-                                <span class="text-muted">{{ $producto->chumacera->tipoChum->tipo_chum }}</span>
-                            </div>
-                            <div class="col-6 mb-1">
-                                <span class="font-semibold text-lg">Forma: </span> <br>
-                                <span class="text-muted">{{ $producto->chumacera->formaChum->forma_chum }}</span>
-                            </div>
-                            <div class="col-6 mb-1">
-                                <span class="font-semibold text-lg">Cantidad de huecos: </span> <br>
-                                <span class="text-muted">{{ $producto->chumacera->No_huecos }}</span>
-                            </div>
+                                <span class="text-muted">{{ $producto->chumacera->diametro_chumacera }}</span>
+                            </div>                            
 
                         @elseif( $producto->categoria->category == 'Serie Cadenas' )
 
-                            <div class="col-6 mb-1">
-                                <span class="font-semibold text-lg">Pitch: </span> <br>
-                                <span class="text-muted">{{ $producto->cadena->pitch }}</span>
-                            </div>
-                            <div class="col-6 mb-1">
-                                <span class="font-semibold text-lg">Tipo de cadena: </span> <br>
-                                <span class="text-muted">{{ $producto->cadena->tipoCadena->tipo_cadena_texto }}</span>
-                            </div>
-                            <div class="col-12 col-md-6 mb-1">
-                                <span class="font-semibold text-lg">Empate de cadena: </span> <br>
-                                <span class="text-muted">{{ $producto->cadena->tipoEmpate->tipo_empate }}</span>
-                            </div>
                             <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Aplicación: </span> <br>
                                 <span class="text-muted">{{ $producto->aplicacion }}</span>
                             </div>
-
-                        @elseif( $producto->categoria->category == 'Serie 6000' )
                             <div class="col-6 mb-1">
-                                <span class="font-semibold text-lg">Rodamiento: </span> <br>
-                                <span class="text-muted">{{ $producto->serie6000->rodamiento }}</span>
+                                <span class="font-semibold text-lg">Pitch: </span> <br>
+                                <span class="text-muted">{{ $producto->cadena->pitch }}</span>
                             </div>
+
+                        @elseif( $producto->categoria->category == 'Serie Industrial' ) 
                             <div class="col-6 mb-1">
                                 <span class="font-semibold text-lg">Tipo de sello: </span> <br>
-                                <span class="text-muted">{{ $producto->serie6000->tipoSello->tipo_sello }}</span>
+                                <span class="text-muted">{{ $producto->industrial->tipo_sello }}</span>
                             </div>
                             <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Aplicación: </span> <br>
@@ -226,32 +198,13 @@
                             <div class="col-12">
                                 <hr>
                             </div>
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-12 font-semibold text-xl">
-                                        Medidas: {{ $producto->serie6000->d_interno }}x{{ $producto->serie6000->d_externo }}x{{ $producto->serie6000->espesor }}mm
-                                    </div>
-                                    <div class="col-4">
-                                        <span class="font-semibold text-lg">Diametro interno: </span> <br>
-                                        <span class="text-muted">{{ $producto->serie6000->d_interno }} mm</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <span class="font-semibold text-lg">Diametro externo: </span> <br>
-                                        <span class="text-muted">{{ $producto->serie6000->d_externo }} mm</span>
-                                    </div>
-                                    <div class="col-4">
-                                        <span class="font-semibold text-lg">Espesor: </span> <br>
-                                        <span class="text-muted">{{ $producto->serie6000->espesor }} mm</span>
-                                    </div>
-                                </div>
-                            </div>
                         @else
 
                             <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Tipo de sello: </span> <br>
-                                <span class="text-muted">{{ $producto->moto->tipoSello->tipo_sello }}</span>
+                                <span class="text-muted">{{ $producto->moto->tipo_sello }}</span>
                             </div>
-                            <div class="col-12 mb-1">
+                            <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Aplicación: </span> <br>
                                 <span class="text-muted">{{ $producto->aplicacion }}</span>
                             </div>

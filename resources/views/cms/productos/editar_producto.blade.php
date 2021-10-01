@@ -40,9 +40,13 @@
             <h5>Titulo</h5>
             <input class="form-control"  id="titulo_producto" type="text" require name="titulo_producto" value="{{$producto->titulo}}" placeholder="Titulo" maxlength="191">
           </div>
-          <div class="col-12 col-md-6 mb-4">
-            <h5>Precio</h5>
+          <div class="col-12 col-md-3 mb-4">
+            <h5>Precio - <b>$USD</b> </h5>
             <input class="form-control" type="number" require name="precio_producto" value="{{$producto->precio}}" placeholder="Precio" maxlength="191" min="0.01" step="0.01">
+          </div>
+          <div class="col-12 col-md-3 mb-4">
+            <h5>Cantidad </h5>
+            <input class="form-control" type="number" required name="cantidad_producto" placeholder="Existencia" min="1" step="1" value="{{$producto->quantity}}">
           </div>
           <div class="col-12 col-md-6 mb-4">
             <h5>Código Universal</h5>
@@ -60,220 +64,146 @@
                 </div>
             </div>
           </div>
-            <div class="col-12 mb-4">
-              <h5>Descripción</h5>
-              <textarea class="form-control" require name="descripcion_producto">{{$producto->descripcion}}</textarea>
-            </div>
-            <div class="col-12 mb-4">
-                <h5>Vehiculo / Aplicación</h5>
-                <textarea class="form-control auto element-required" name="aplicacion"></textarea>
-            </div>
-            <div class="col-12 mb-4">
-              <h5>Categoría</h5>
-              <select name="categoria_producto" require class="form-control form-control" id="categoria_select">
-                @foreach($categorias as $categoria)
-                <option value="{{$categoria->id}}" <?php if($categoria->id === $producto->categoria->id) echo 'selected' ?> >{{$categoria->category}}</option>
-                @endforeach
-              </select>
-            </div>
+          <div class="col-12 mb-4">
+            <h5>Descripción</h5>
+            <textarea class="form-control" require name="descripcion_producto">{{$producto->descripcion}}</textarea>
           </div>
-
-
-          <!-- Chumacera formulario -->
-          <div class="params-forms" id="chumacera" style="display: none;">
-            <input type="hidden" class="input-hidden" name="chumacera_info" value="" id="chumacera_inputs">
-            <input type="hidden" name="chumacera_info_id" <?php if(isset($producto->chumacera->id)) echo "value=" . '"' . $producto->chumacera->id . '"'?> >
-            <div class="row">
-              <h3 class="col-12 mb-4">Parametros Chumacera</h3>
-              <div class="col-12 col-md-6">
-
-                <h5>Diametro chumacera</h5>
-                <select class="form-control mb-4 chumacera element-required" name="diametro_chumacera">
-                  @foreach($diametros_chum as $diametro)
-                    <option value="{{$diametro->id}}" <?php if(isset($producto->chumacera->id)) if($diametro->id === $producto->chumacera->diametro_chum_id) echo 'selected' ?> >{{$diametro->valor}}</option>
-                  @endforeach
-                </select>
-              </div>
-
-              <div class="col-12 col-md-6">
-                <h5>Tipo chumacera</h5>
-                <select class="form-control mb-4 chumacera element-required" name="tipo_chumacera">
-                  @foreach($tipos_chum as $tipo)
-                    <option value="{{$tipo->id}}" <?php if(isset($producto->chumacera->id)) if($tipo->id === $producto->chumacera->tipo_chum_id) echo 'selected' ?>>{{$tipo->tipo_chum}}</option>
-                  @endforeach
-                </select>
-              </div>
-
-              <div class="col-12 col-md-6">
-                <h5>Forma chumacera</h5>
-                <select class="form-control mb-4 chumacera element-required" name="forma_chumacera">
-                  @foreach($formas_chum as $forma)
-                    <option value="{{$forma->id}}" <?php if(isset($producto->chumacera->id)) if($forma->id === $producto->chumacera->forma_chum_id) echo 'selected' ?>>{{$forma->forma_chum}}</option>
-                  @endforeach
-                </select>
-              </div>
-
-              <div class="col-12 col-md-6">
-                <h5>No Huecos</h5>
-                <input class="form-control chumacera element-required" type="number" <?php if(isset($producto->chumacera->id)) echo "value=" . '"' . $producto->chumacera->No_huecos . '"'?> name="huecos_chumacera">
-              </div>
-            </div>
+          <div class="col-12 mb-4">
+            <h5>Aplicación</h5>
+            <textarea class="form-control auto element-required" name="aplicacion">{{$producto->aplicacion}}</textarea>
           </div>
-
-
-          <!-- Cadena formulario -->
-          <div class="params-forms" id="cadena" style="display: none;">
-            <input type="hidden" name="cadena_info_id" <?php if(isset($producto->cadena->id)) echo "value=" . '"' . $producto->cadena->id . '"'?> >
-            <input type="hidden" class="input-hidden" name="cadena_info" value="" id="cadena_inputs">
-            <div class="row">
-              <h3 class="col-12 mb-4">Parametros Cadena</h3>
-              <div class="col-12 mb-4">
-                <h5>pitch</h5>
-                <input class="form-control cadena element-required" type="text" <?php if(isset($producto->cadena->id)) echo "value=" . '"' . $producto->cadena->pitch . '"'?> name="pitch_cadena">
-              </div>
-
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Tipo Cadena</h5>
-                <select class="form-control mb-4 cadena element-required" name="tipo_cadena">
-                  @foreach($tipos_cadenas as $tipo_cadena)
-                    <option value="{{$tipo_cadena->id}}" <?php if(isset($producto->cadena->id)) if($tipo_cadena->id === $producto->cadena->tipo_cadena_id) echo 'selected'  ?>>{{$tipo_cadena->tipo_cadena_texto}}</option>
-                  @endforeach
-                </select>
-              </div>
-
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Empate Cadena</h5>
-                <select class="form-control cadena element-required" name="empate_cadena">
-                  @foreach($tipos_empates as $tipo_empate)
-                    <option value="{{$tipo_empate->id}}" <?php if(isset($producto->cadena->id)) if($tipo_empate->id === $producto->cadena->empate_id) echo 'selected' ?> >{{$tipo_empate->tipo_empate}}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
+          <div class="col-12 mb-4">
+            <h5>Categoría</h5>
+            <select name="categoria_producto" require class="form-control form-control" id="categoria_select">
+              @foreach($categorias as $categoria)
+              <option value="{{$categoria->id}}" <?php if($categoria->id === $producto->categoria->id) echo 'selected' ?> >{{$categoria->category}}</option>
+              @endforeach
+            </select>
           </div>
+        </div>
 
-
-          <!-- Moto  formulario -->
-
-          <div class="params-forms" id="moto" style="display: none;">
-            <input type="hidden" name="moto_info_id" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->id . '"'?> >
-            <input type="hidden" class="input-hidden" name="moto_info" value="" id="moto_inputs">
-            <div class="row">
-              <h3 class="col-12 mb-4">Parametros Moto</h3>
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Diametro interno</h5>
-                <input class="form-control moto element-required" type="number" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->d_interno . '"'?> name="d_interno_moto" step="0.001">
-              </div>
-
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Diametro externo</h5>
-                <input class="form-control moto element-required" type="number" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->d_externo . '"'?> name="d_externo_moto" step="0.001">
-              </div>
-
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Espesor</h5>
-                <input class="form-control moto element-required" type="number" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->espesor . '"'?> name="espesor_moto" step="0.001">
-              </div>
-
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Tipo de Sello</h5>
-                <select class="form-control moto element-required" name="sello_moto">
-                  @foreach($tipo_sellos as $tipo_sello)
-                    <option value="{{$tipo_sello->id}}" <?php if(isset($producto->moto->id)) if($tipo_sello->id === $producto->moto->tipo_sello_id) echo 'selected'  ?>>{{$tipo_sello->tipo_sello}}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- Serie6000  formulario -->
-
-          <div class="params-forms" id="serie6000" style="display: none;">
-            <input type="hidden" name="serie6000_info_id" <?php if(isset($producto->serie6000->id)) echo "value=" . '"' . $producto->serie6000->id . '"'?> >
-            <input type="hidden" class="input-hidden" name="serie6000_info" value="" id="serie6000_inputs">
-            <div class="row">
-              <h3 class="col-12 mb-4">Serie6000 Parametros</h3>
-              <div class="col-12 mb-4">
-                <h5>Rodamiento</h5>
-                <input class="form-control serie6000 element-required" type="number" <?php if(isset($producto->serie6000->id)) echo "value=" . '"' . $producto->serie6000->rodamiento . '"'?> name="rodamiento_serie6000">
-              </div>
-
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Tipo de Sello</h5>
-                <select class="form-control serie6000 element-required" name="sello_serie6000">
-                  @foreach($tipo_sellos as $tipo_sello)
-                    <option value="{{$tipo_sello->id}}" <?php if(isset($producto->serie6000->id)) if($tipo_sello->id === $producto->serie6000->tipo_sello_id) echo 'selected'  ?>>{{$tipo_sello->tipo_sello}}</option>
-                  @endforeach
-                </select>
-              </div>
-
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Diametro interno</h5>
-                <input class="form-control serie6000 element-required" <?php if(isset($producto->serie6000->id)) echo "value=" . '"' . $producto->serie6000->d_interno . '"'?> type="number" name="d_interno_serie6000" step="0.001">
-              </div>
-
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Diametro externo</h5>
-                <input class="form-control serie6000 element-required" <?php if(isset($producto->serie6000->id)) echo "value=" . '"' . $producto->serie6000->d_externo . '"'?> type="number" name="d_externo_serie6000" step="0.001">
-              </div>
-
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Espesor</h5>
-                <input class="form-control serie6000 element-required" type="number" <?php if(isset($producto->serie6000->id)) echo "value=" . '"' . $producto->serie6000->espesor . '"'?> name="espesor_serie6000" step="0.001">
-              </div>
-            </div>
-          </div>
-
-
-          <!-- Auto  formulario -->
-
-          <div class="params-forms" id="auto" style="display: none;">
-            <input type="hidden" name="auto_info_id" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->id . '"'?>>
-            <input type="hidden" class="input-hidden" name="auto_info" value="" id="auto_inputs">
-            <div class="row">
-              <h3 class="col-12 mb-4">Auto Parametros</h3>
-              <div class="col-12  mb-4">
-                <h5>Articulo</h5>
-                <input class="form-control auto element-required" type="text" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->articulo . '"'?> name="articulo_auto">
-              </div>
-
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Posicion</h5>
-                <select class="form-control auto element-required" name="posicion_auto">
-                  @foreach($posiciones as $posicion)
-                    <option value="{{$posicion->id}}" <?php if(isset($producto->auto->id)) if($posicion->id === $producto->auto->posicion_id) echo 'selected'  ?>>{{$posicion->posicion}}</option>
-                  @endforeach
-                </select>
-              </div>
-
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Diametro interno</h5>
-                <input class="form-contro auto element-required" type="number" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->d_interno . '"'?> name="d_interno_auto" step="0.001">
-              </div>
-
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Diametro externo</h5>
-                <input class="form-control auto element-required" type="number" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->d_externo . '"'?> name="d_externo_auto" step="0.001">
-              </div>
-
-              <div class="col-12 col-md-6 mb-4">
-                <h5>Espesor</h5>
-                <input class="form-control auto element-required" type="number" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->espesor . '"'?> name="espesor_auto" step="0.001">
-              </div>
-            </div>
-          </div>
-
-
+        <!-- Auto formulario -->
+        <div class="params-forms" id="auto" style="display: none;">
+          <input type="hidden" name="auto_info_id" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->id . '"'?>>
+          <input type="hidden" class="input-hidden" name="auto_info" value="" id="auto_inputs">
           <div class="row">
-            <div class="col-12 mb-5">
-                <span class="loader align-middle" id="load"></span>
-                @can('cms.products.update')
-                <input type="submit" class="btn btn-primary px-5" value="Actualizar producto" id="buttonAction">
-                @endcan
-                <a class="btn btn-danger px-5" href="{{ route('cms.products.show') }}">Cancelar</a>
+            <h3 class="col-12 mb-4">Serie Automotriz - Parametros</h3>
+            
+            <div class="col-12 col-md-6 mb-4">
+              <h5>Posicion de la rueda</h5>
+              <input class="form-control auto element-required" type="text" maxlength="191" name="posicion_rueda" placeholder="Posición de la rueda" <?php if(isset($producto->auto->posicion_rueda)) echo "value=" . '"' . $producto->auto->posicion_rueda . '"'?>>
+            </div>
+
+            <div class="col-12 col-md-6 mb-4">
+              <h5>Diametro interno (mm)</h5>
+              <input class="form-control auto element-required" type="number" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->d_interno . '"'?> name="d_interno_auto" step="0.001">
+            </div>
+
+            <div class="col-12 col-md-6 mb-4">
+              <h5>Diametro externo (mm)</h5>
+              <input class="form-control auto element-required" type="number" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->d_externo . '"'?> name="d_externo_auto" step="0.001">
+            </div>
+
+            <div class="col-12 col-md-6 mb-4">
+              <h5>Espesor (mm)</h5>
+              <input class="form-control auto element-required" type="number" <?php if(isset($producto->auto->id)) echo "value=" . '"' . $producto->auto->espesor . '"'?> name="espesor_auto" step="0.001">
             </div>
           </div>
+        </div>
+
+        <!-- Serie6000-Industrial Formulario -->
+        <div class="params-forms" id="serie6000" style="display: none;">
+          <input type="hidden" name="serie6000_info_id" <?php if(isset($producto->industrial->id)) echo "value=" . '"' . $producto->industrial->id . '"'?> >
+          <input type="hidden" class="input-hidden" name="serie6000_info" value="" id="serie6000_inputs">
+          <div class="row">
+            <h3 class="col-12 mb-4">Serie Industrial - Parametros</h3>
+
+            <div class="col-12 col-md-6 mb-4">
+              <h5>Tipo de Sello</h5>
+              <input class="form-control serie6000 element-required" type="text" name="tipo_sello_6000" maxlength="191"  placeholder="Tipo de sello" <?php if(isset($producto->industrial->tipo_sello)) echo "value=" . '"' . $producto->industrial->tipo_sello . '"'?> >
+            </div>
+
+            <div class="col-12 col-md-6 mb-4">
+              <h5>Diametro interno (mm)</h5>
+              <input class="form-control serie6000 element-required" <?php if(isset($producto->industrial->id)) echo "value=" . '"' . $producto->industrial->d_interno . '"'?> type="number" name="d_interno_serie6000" step="0.001">
+            </div>
+
+            <div class="col-12 col-md-6 mb-4">
+              <h5>Diametro externo (mm)</h5>
+              <input class="form-control serie6000 element-required" <?php if(isset($producto->industrial->id)) echo "value=" . '"' . $producto->industrial->d_externo . '"'?> type="number" name="d_externo_serie6000" step="0.001">
+            </div>
+
+            <div class="col-12 col-md-6 mb-4">
+              <h5>Espesor (mm)</h5>
+              <input class="form-control serie6000 element-required" type="number" <?php if(isset($producto->industrial->id)) echo "value=" . '"' . $producto->industrial->espesor . '"'?> name="espesor_serie6000" step="0.001">
+            </div>
+          </div>
+        </div>
+
+        <!-- Moto  formulario -->
+        <div class="params-forms" id="moto" style="display: none;">
+          <input type="hidden" name="moto_info_id" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->id . '"'?> >
+          <input type="hidden" class="input-hidden" name="moto_info" value="" id="moto_inputs">
+          <div class="row">
+            <h3 class="col-12 mb-4">Parametros Moto</h3>
+            <div class="col-12 col-md-6 mb-4">
+              <h5>Tipo de Sello</h5>
+              <input class="form-control moto element-required" type="text" name="tipo_sello_moto" maxlength="191" placeholder="Tipo de sello" <?php if(isset($producto->moto->tipo_sello)) echo "value=" . '"' . $producto->moto->tipo_sello . '"'?> >
+            </div>
+
+            <div class="col-12 col-md-6 mb-4">
+              <h5>Diametro interno</h5>
+              <input class="form-control moto element-required" type="number" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->d_interno . '"'?> name="d_interno_moto" step="0.001">
+            </div>
+
+            <div class="col-12 col-md-6 mb-4">
+              <h5>Diametro externo</h5>
+              <input class="form-control moto element-required" type="number" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->d_externo . '"'?> name="d_externo_moto" step="0.001">
+            </div>
+
+            <div class="col-12 col-md-6 mb-4">
+              <h5>Espesor</h5>
+              <input class="form-control moto element-required" type="number" <?php if(isset($producto->moto->id)) echo "value=" . '"' . $producto->moto->espesor . '"'?> name="espesor_moto" step="0.001">
+            </div>
+          </div>
+        </div>
+
+        <!-- Chumacera formulario -->
+        <div class="params-forms" id="chumacera" style="display: none;">
+          <input type="hidden" class="input-hidden" name="chumacera_info" value="" id="chumacera_inputs">
+          <input type="hidden" name="chumacera_info_id" <?php if(isset($producto->chumacera->id)) echo "value=" . '"' . $producto->chumacera->id . '"'?> >
+          <div class="row">
+            <h3 class="col-12 mb-4">Parametros Chumacera</h3>
+            <div class="col-12 col-md-6">
+              <h5>Diametro chumacera</h5>
+              <input class="form-control chumacera element-required" type="text" name="diametro_chumacera" maxlength="191" placeholder="Diametro" <?php if(isset($producto->chumacera->diametro_chumacera)) echo "value=" . '"' . $producto->chumacera->diametro_chumacera . '"'?> >
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Cadena formulario -->
+        <div class="params-forms" id="cadena" style="display: none;">
+          <input type="hidden" name="cadena_info_id" <?php if(isset($producto->cadena->id)) echo "value=" . '"' . $producto->cadena->id . '"'?> >
+          <input type="hidden" class="input-hidden" name="cadena_info" value="" id="cadena_inputs">
+          <div class="row">
+            <h3 class="col-12 mb-4">Parametros Cadena</h3>
+            <div class="col-12 mb-4">
+              <h5>Pitch</h5>
+              <input class="form-control cadena element-required" type="text" <?php if(isset($producto->cadena->id)) echo "value=" . '"' . $producto->cadena->pitch . '"'?> name="pitch_cadena">
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-12 mb-5">
+              <span class="loader align-middle" id="load"></span>
+              @can('cms.products.update')
+              <input type="submit" class="btn btn-primary px-5" value="Actualizar producto" id="buttonAction">
+              @endcan
+              <a class="btn btn-danger px-5" href="{{ route('cms.products.show') }}">Cancelar</a>
+          </div>
+        </div>
 
       </form>
   </div>
@@ -325,7 +255,7 @@
         formulario.setAttribute('required', true)
       })
 
-    } else if(target.text === "Serie 6000") {
+    } else if(target.text === "Serie Industrial") {
 
       let form = document.querySelector('#serie6000')
       let inputHidden = document.querySelector('#serie6000_inputs');

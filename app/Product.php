@@ -45,7 +45,7 @@ class Product extends Model
     	return $this->hasOne('App\Moto_Parameter');
     }
 
-    public function serie6000()
+    public function industrial()
     {
     	return $this->hasOne('App\Serie6000_Parameter');
     }

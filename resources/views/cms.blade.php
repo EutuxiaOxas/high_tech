@@ -152,12 +152,12 @@
                 </li>
                 @endcan
                 @can('cms.products.parameters.show')
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a href=" {{ route('cms.products.parameters.show') }} " class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Parametros Generales</p>
                   </a>
-                </li>
+                </li> -->
                 @endcan
                 @can('cms.products.show')
                 <li class="nav-item">

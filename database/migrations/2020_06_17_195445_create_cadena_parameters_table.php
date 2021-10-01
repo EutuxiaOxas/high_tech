@@ -17,18 +17,16 @@ class CreateCadenaParametersTable extends Migration
             $table->id();
             $table->foreignId('product_id');
             $table->string('pitch');
-            $table->foreignId('tipo_cadena_id');
-            $table->foreignId('empate_id');
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')
                 ->onDelete('cascade');
 
-            $table->foreign('tipo_cadena_id')->references('id')->on('tipo_cadena')
-                ->onDelete('cascade');
+            // $table->foreign('tipo_cadena_id')->references('id')->on('tipo_cadena')
+            //     ->onDelete('cascade');
 
-            $table->foreign('empate_id')->references('id')->on('tipo_empates')
-                ->onDelete('cascade');
+            // $table->foreign('empate_id')->references('id')->on('tipo_empates')
+            //     ->onDelete('cascade');
 
         });
     }

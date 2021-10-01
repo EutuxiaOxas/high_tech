@@ -8,7 +8,7 @@ class Auto_Parameter extends Model
 {
 
 	protected $fillable = [
-        'product_id', 'articulo', 'aplicacion', 'posicion_id' , 'd_interno', 'd_externo', 'espesor'
+        'product_id', 'posicion_rueda', 'aplicacion', 'd_interno', 'd_externo', 'espesor'
     ];
 
     protected $table = 'auto_parameters';
@@ -19,8 +19,8 @@ class Auto_Parameter extends Model
     }
 
 
-    public function posicion()
-    {
-    	return $this->belongsTo('App\Posicion', 'posicion_id');
-    }
+    // public function posicion()
+    // {
+    // 	return $this->belongsTo('App\Posicion', 'posicion_id');
+    // }
 }

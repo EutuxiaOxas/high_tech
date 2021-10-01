@@ -8,7 +8,7 @@ class Cadena_Parameter extends Model
 {
 
     protected $fillable = [
-        'product_id', 'pitch', 'tipo_cadena_id', 'empate_id'
+        'product_id', 'pitch',
     ];
 
     protected $table = 'cadena_parameters';

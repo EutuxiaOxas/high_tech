@@ -112,16 +112,19 @@ class ProductController extends Controller
 
 
     public function guardarProducto(Request $request){
-        $image = $request->file('imagen_producto');
+        // var_dump($request['posicion_rueda']);
+        // dd($request);
     	$producto = new Product;
+        $image    = $request->file('imagen_producto');
+
         $producto->titulo           = $request->titulo_producto;
     	$producto->slug             = $request->slug;
         $producto->precio           = $request->precio_producto;
+        $producto->quantity         = $request->cantidad_producto;
+        $producto->aplicacion       = $request->aplicacion;
         $producto->codigo_universal = $request->codigo_producto;
     	$producto->category_id      = $request->categoria_producto;
-        $producto->quantity         = $request->cantidad_producto;
         $producto->descripcion      = $request->descripcion_producto;
-        $producto->aplicacion       = $request->aplicacion;
 
          //verificamos que la imagen exista
         if($image){
@@ -137,67 +140,54 @@ class ProductController extends Controller
             return back()->with('message', 'no se pudo guardar imagen');
         }
 
-
-        if($request->chumacera_info === 'active'){
-
+        if($request->chumacera_info       === 'active'){
             $chumacera_parametro = new Chumacera_Parameter;
             $chumacera_parametro->create([
-                'product_id' => $producto->id,
-                'diametro_chum_id' => $request['diametro_chumacera'],
-                'tipo_chum_id' => $request['tipo_chumacera'],
-                'forma_chum_id' => $request['forma_chumacera'],
-                'No_huecos' => $request['huecos_chumacera'],
+                'product_id'         => $producto->id,
+                'diametro_chumacera' => $request['diametro_chumacera']
             ]);
 
-        }elseif ($request->cadena_info === 'active') {
+        }elseif ($request->cadena_info    === 'active') {
 
             $cadena_parametro = new Cadena_Parameter;
             $cadena_parametro->create([
                 'product_id'        => $producto->id,
-                'pitch'             => $request['pitch_cadena'],
-                'tipo_cadena_id'    => $request['tipo_cadena'],
-                'empate_id'         => $request['empate_cadena']
+                'pitch'             => $request['pitch_cadena']
             ]);
 
-        }elseif ($request->moto_info === 'active') {
-
+        }elseif ($request->moto_info      === 'active') {
 
             $moto_parametro = new Moto_Parameter;
             $moto_parametro->create([
                 'product_id'        => $producto->id,
-                'd_interno'         =>  $request['d_interno_moto'],
+                'd_interno'         => $request['d_interno_moto'],
                 'espesor'           => $request['espesor_moto'],
                 'd_externo'         => $request['d_externo_moto'],
-                'tipo_sello_id'     =>$request['sello_moto']
+                'tipo_sello'        => $request['tipo_sello_moto']
             ]);
 
         }elseif ($request->serie6000_info === 'active') {
-
             $serie6000_parametro = new Serie6000_Parameter;
             $serie6000_parametro->create([
-                    'product_id'        => $producto->id,
-                    'rodamiento'        => $request['rodamiento_serie6000'],
-                    'tipo_sello_id'     => $request['sello_serie6000'],
-                    'd_interno'         => $request['d_interno_serie6000'],
-                    'd_externo'         => $request['d_externo_serie6000'],
-                    'espesor'           => $request['espesor_serie6000']
-                ]);
+                'product_id'        => $producto->id,
+                'tipo_sello'        => $request['tipo_sello_6000'],
+                'd_interno'         => $request['d_interno_serie6000'],
+                'd_externo'         => $request['d_externo_serie6000'],
+                'espesor'           => $request['espesor_serie6000']
+            ]);
 
-        } elseif ($request->auto_info === 'active') {
-
+        }elseif ($request->auto_info      === 'active') {
             $auto_parametro = new Auto_Parameter;
             $auto_parametro->create([
-                'product_id' => $producto->id,
-                'articulo' => $request['articulo_auto'],
-                'posicion_id' => $request['posicion_auto'],
-                'd_interno' => $request['d_interno_auto'],
-                'd_externo' => $request['d_externo_auto'],
-                'espesor' => $request['espesor_auto']
+                'product_id'     => $producto->id,
+                'posicion_rueda' => $request['posicion_rueda'],
+                'd_interno'      => $request['d_interno_auto'],
+                'd_externo'      => $request['d_externo_auto'],
+                'espesor'        => $request['espesor_auto']
             ]);
         }
 
         $productos = Product::all();
-
         return redirect()->route('cms.products.show', compact('productos'))->with('info', 'Producto creado exitosamente!');
 
     }
@@ -240,12 +230,14 @@ class ProductController extends Controller
         $producto = Product::find($id);
 
         $producto->titulo           = $request->titulo_producto;
+    	$producto->slug             = $request->slug;
         $producto->precio           = $request->precio_producto;
-        $producto->codigo_universal = $request->codigo_producto;
-        $producto->category_id      = $request->categoria_producto;
-        $producto->slug             = $request->slug;
-        $producto->descripcion      = $request->descripcion_producto;
+        $producto->quantity         = $request->cantidad_producto;
         $producto->aplicacion       = $request->aplicacion;
+        $producto->codigo_universal = $request->codigo_producto;
+    	$producto->category_id      = $request->categoria_producto;
+        $producto->descripcion      = $request->descripcion_producto;
+        
 
         if($image){
             $imagen = $image->store('public/products_images');
@@ -264,11 +256,8 @@ class ProductController extends Controller
 
             $chumacera_parametro = Chumacera_Parameter::find($request->chumacera_info_id);
             $chumacera_parametro->update([
-                'product_id' => $producto->id,
-                'diametro_chum_id' => $request['diametro_chumacera'],
-                'tipo_chum_id' => $request['tipo_chumacera'],
-                'forma_chum_id' => $request['forma_chumacera'],
-                'No_huecos' => $request['huecos_chumacera'],
+                'product_id'         => $producto->id,
+                'diametro_chumacera' => $request['diametro_chumacera']
             ]);
 
         }elseif ($request->cadena_info === 'active') {
@@ -276,48 +265,42 @@ class ProductController extends Controller
             $cadena_parametro = Cadena_Parameter::find($request->cadena_info_id);
             $cadena_parametro->update([
                 'product_id'        => $producto->id,
-                'pitch'             => $request['pitch_cadena'],
-                'tipo_cadena_id'    => $request['tipo_cadena'],
-                'empate_id'         => $request['empate_cadena']
+                'pitch'             => $request['pitch_cadena']
             ]);
 
         }elseif ($request->moto_info === 'active') {
 
-
             $moto_parametro = Moto_Parameter::find($request->moto_info_id);
             $moto_parametro->update([
                 'product_id'        => $producto->id,
-                'd_interno'         =>  $request['d_interno_moto'],
+                'd_interno'         => $request['d_interno_moto'],
                 'espesor'           => $request['espesor_moto'],
                 'd_externo'         => $request['d_externo_moto'],
-                'tipo_sello_id'     =>$request['sello_moto']
+                'tipo_sello'        => $request['tipo_sello_moto']
             ]);
 
         }elseif ($request->serie6000_info === 'active') {
 
             $serie6000_parametro = Serie6000_Parameter::find($request->serie6000_info_id);
             $serie6000_parametro->update([
-                    'product_id'        => $producto->id,
-                    'rodamiento'        => $request['rodamiento_serie6000'],
-                    'tipo_sello_id'     => $request['sello_serie6000'],
-                    'd_interno'         => $request['d_interno_serie6000'],
-                    'd_externo'         => $request['d_externo_serie6000'],
-                    'espesor'           => $request['espesor_serie6000']
-                ]);
+                'product_id'        => $producto->id,
+                'tipo_sello'        => $request['tipo_sello_6000'],
+                'd_interno'         => $request['d_interno_serie6000'],
+                'd_externo'         => $request['d_externo_serie6000'],
+                'espesor'           => $request['espesor_serie6000']
+            ]);
 
         } elseif ($request->auto_info === 'active') {
             $auto_parametro = Auto_Parameter::find($request->auto_info_id);
             $auto_parametro->update([
-                'product_id' => $producto->id,
-                'articulo' => $request['articulo_auto'],
-                'posicion_id' => $request['posicion_auto'],
-                'd_interno' => $request['d_interno_auto'],
-                'd_externo' => $request['d_externo_auto'],
-                'espesor' => $request['espesor_auto']
+                'product_id'     => $producto->id,
+                'posicion_rueda' => $request['posicion_rueda'],
+                'd_interno'      => $request['d_interno_auto'],
+                'd_externo'      => $request['d_externo_auto'],
+                'espesor'        => $request['espesor_auto']
             ]);
         }
 
-        $productos = Product::all();
         $productos = Product::all();
 
         return redirect()->route('cms.products.show', compact('productos'))->with('info', 'Producto editado exitosamente!');

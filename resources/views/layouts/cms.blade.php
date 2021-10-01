@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{{-- <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> --}}
+<!-- {{-- <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> --}} -->
 <html lang="es">
   <head>
 
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/css/estilos.css">
     @yield('header')
   </head>
-  <body>
+  <body class="bg-light">
 
     {{-- contenido --}}
     @yield('content')

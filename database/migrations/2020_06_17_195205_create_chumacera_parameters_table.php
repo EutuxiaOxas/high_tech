@@ -16,25 +16,22 @@ class CreateChumaceraParametersTable extends Migration
         Schema::create('chumacera_parameters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
-            $table->foreignId('diametro_chum_id');
-            $table->foreignId('tipo_chum_id');
-            $table->foreignId('forma_chum_id');
-            $table->integer('No_huecos');
+            $table->string('diametro_chumacera');
+            // $table->foreignId('tipo_chum_id');
+            // $table->foreignId('forma_chum_id');
+            // $table->integer('No_huecos');
             $table->timestamps();
 
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 
-            $table->foreign('product_id')->references('id')->on('products')
-                ->onDelete('cascade');
+            // $table->foreign('diametro_chum_id')->references('id')->on('diametro_chum')
+            //     ->onDelete('cascade');
 
-            $table->foreign('diametro_chum_id')->references('id')->on('diametro_chum')
-                ->onDelete('cascade');
+            // $table->foreign('tipo_chum_id')->references('id')->on('tipo_chum')
+            //     ->onDelete('cascade');
 
-            $table->foreign('tipo_chum_id')->references('id')->on('tipo_chum')
-                ->onDelete('cascade');
-
-            $table->foreign('forma_chum_id')->references('id')->on('forma_chum')
-                ->onDelete('cascade');
-
+            // $table->foreign('forma_chum_id')->references('id')->on('forma_chum')
+            //     ->onDelete('cascade');
 
         });
     }

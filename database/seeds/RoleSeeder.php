@@ -16,6 +16,7 @@ class RoleSeeder extends Seeder
         $role_admin = Role::create(['name' => 'administrador']);
         $role_invent = Role::create(['name' => 'inventario']);
         $role_blog = Role::create(['name' => 'blogger']);
+        $role_buyer = Role::create(['name' => 'buyer']);
 
         // Rutas de Dashboard Cms
         Permission::create(['name' => 'cms.index'])->syncRoles([ $role_admin, $role_invent, $role_blog]);
@@ -61,5 +62,15 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'cms.blog.edit'])->syncRoles([ $role_admin, $role_blog]);
         Permission::create(['name' => 'cms.blog.update'])->syncRoles([ $role_admin, $role_blog]);
         Permission::create(['name' => 'cms.blog.destroy'])->syncRoles([ $role_admin, $role_blog]);
+
+
+        // Rutas de compras
+        Permission::create(['name' => 'cms.orders.show'])->syncRoles([ $role_buyer ]);
+        Permission::create(['name' => 'cms.orders.order'])->syncRoles([ $role_buyer ]);
+        Permission::create(['name' => 'cms.orders.update'])->syncRoles([ $role_buyer ]);
+        // Ruta de configuracion
+        Permission::create(['name' => 'cms.user.config'])->syncRoles([ $role_buyer ]);
+        // Home de perfil de comprador
+        Permission::create(['name' => 'cms.user.profile'])->syncRoles([ $role_buyer ]);
     }
 }

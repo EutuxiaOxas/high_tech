@@ -7,6 +7,7 @@ use App\Category;
 use  App\Blog\Article;
 use  App\Blog\Keyword;
 use App\Product;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -107,5 +108,30 @@ class HomeController extends Controller
         $categories = Category::all();
         $products = Product::inRandomOrder()->take(10)->get();
         return view('cart', compact('categories', 'products'));
+    }
+
+    public function sesionShoppingCar( $data ){
+        session();
+        session(['shoppingCar' => $data]);
+        return 'success';
+    }
+
+    public function userIsLogin(){
+        if(Auth::check()){
+            return 'true';
+        }else{
+            return 'false';
+        }
+    }
+
+    public function loginToCreateOrder(){
+        if( session()->has('shoppingCar') ){
+            
+            $categories = Category::all();
+            return view('info', compact('categories'));
+
+        }else{
+            return route('home');
+        }
     }
 }

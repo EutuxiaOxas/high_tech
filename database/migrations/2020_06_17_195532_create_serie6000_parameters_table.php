@@ -16,8 +16,7 @@ class CreateSerie6000ParametersTable extends Migration
         Schema::create('serie6000_parameters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
-            $table->integer('rodamiento');
-            $table->foreignId('tipo_sello_id');
+            $table->string('tipo_sello');
             $table->float('d_interno');
             $table->float('d_externo');
             $table->float('espesor');
@@ -26,8 +25,8 @@ class CreateSerie6000ParametersTable extends Migration
             $table->foreign('product_id')->references('id')->on('products')
                 ->onDelete('cascade');
 
-            $table->foreign('tipo_sello_id')->references('id')->on('tipo_sello')
-                ->onDelete('cascade');
+            // $table->foreign('tipo_sello_id')->references('id')->on('tipo_sello')
+            //     ->onDelete('cascade');
         });
     }
 

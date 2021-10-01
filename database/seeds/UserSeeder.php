@@ -19,17 +19,17 @@ class UserSeeder extends Seeder
             'password' => Hash::make('admin')
         ])->assignRole('administrador');
 
-        User::create([
-            'name' => 'inventario',
-            'email' => 'inventario@inventario.com',
-            'password' => Hash::make('inventario')
-        ])->assignRole('inventario');
+        // User::create([
+        //     'name' => 'inventario',
+        //     'email' => 'inventario@inventario.com',
+        //     'password' => Hash::make('inventario')
+        // ])->assignRole('inventario');
 
-        User::create([
-            'name' => 'blogger',
-            'email' => 'blogger@blogger.com',
-            'password' => Hash::make('blogger')
-        ])->assignRole('blogger');
+        // User::create([
+        //     'name' => 'blogger',
+        //     'email' => 'blogger@blogger.com',
+        //     'password' => Hash::make('blogger')
+        // ])->assignRole('blogger');
 
     }
 }

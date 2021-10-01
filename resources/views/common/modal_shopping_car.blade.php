@@ -1,5 +1,5 @@
 <div class="modal fade" id="modal_shopping_car" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 425px;">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 525px;">
         <div class="modal-content">
           <div class="modal-header px-1 pt-1 pb-1">
             <div class="col-11 px-0">
@@ -59,7 +59,7 @@
           </div>
 
           <div class="modal-footer px-1 pb-1 pt-0">
-            <button type="button" class="btn btn-primary btn-sm col-12">Finalizar compra</button>
+            <button type="button" class="btn btn-primary btn-sm col-12" id="finalizarCompraButton">Finalizar compra</button>
           </div>
         </div>
       </div>
@@ -151,6 +151,48 @@
 
         updateBadgeProducts();
 
+        const finalizarCompraButton = document.getElementById('finalizarCompraButton')
+        finalizarCompraButton.addEventListener('click', event => {
+            let productsInShoppingCar = localStorage.getItem('productsInShoppingCar');
+            let products = JSON.parse(productsInShoppingCar);
+
+            products.forEach(element => {
+                element.image = '';                
+            });
+            let data = JSON.stringify(products);
+
+            // creo la variable de sesion para guardar los datos del carrito de compras en backend
+            axios({
+                        method  : 'GET',
+                        url     : '/sesion-shopping-car/'+data,
+                        headers : {
+                            'content-type': 'application/json'
+                            }
+                    }).then((res)=>{}).catch((err) => {console.log(err)});
+
+            // creo la variable de sesion para guardar los datos del carrito de compras en backend
+            axios({
+                        method  : 'GET',
+                        url     : '/islogin/',
+                        headers : {
+                            'content-type': 'application/json'
+                            }
+                    })
+                    .then((res)=>{
+                        // Usuario logeado
+                        if(res.data == true){
+                            // En caso de estarlo, lo direcciono a la ruta q crea la orden, y luego direcciono a la vista del formulario de pago
+                            window.location.href = "/create-order";
+                        }else{
+                            // Usuario no logeado
+                            window.location.href = "/login-order";
+                            // al iniciar sesion, verifico si el usuario tiene productos en el carrito, en caso de si, creo la orden y lo envio a la vista del formulario de pago.
+                        }
+                    })
+                    .catch((err) => {console.log(err)});
+
+        });
+
       })
 
     //   Funcion para eliminar un producto desde el modal de carrito de compras
@@ -215,4 +257,15 @@
         }
 
     }
+
+    
+
+
+    // Al dar click en el boton de 'Finalizar Compra'
+    // Creo en sesion, via api, una variable que guardara los datos del carrito de compras
+    // consulto, via api, si el usuario esta logeado
+    // En caso de estarlo, lo direcciono a la ruta q crea la orden, y luego direcciono a la vista del formulario de pago
+    // Si no esta logeado, lo direcciono a la vista donde le informo que 'debe iniciar sesion para concretar la compra'
+    // al iniciar sesion, verifico si el usuario tiene productos en el carrito, en caso de si, creo la orden y lo envio a la vista del formulario de pago.
+
   </script>

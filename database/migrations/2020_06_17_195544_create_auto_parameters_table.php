@@ -16,8 +16,8 @@ class CreateAutoParametersTable extends Migration
         Schema::create('auto_parameters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
-            $table->string('articulo');
-            $table->foreignId('posicion_id');
+            // $table->foreignId('posicion_id');
+            $table->string('posicion_rueda')->nullable();
             $table->float('d_interno');
             $table->float('d_externo');
             $table->float('espesor');
@@ -27,8 +27,8 @@ class CreateAutoParametersTable extends Migration
             $table->foreign('product_id')->references('id')->on('products')
                 ->onDelete('cascade');
 
-            $table->foreign('posicion_id')->references('id')->on('posiciones')
-                ->onDelete('cascade');
+            // $table->foreign('posicion_id')->references('id')->on('posiciones')
+            //     ->onDelete('cascade');
         });
     }
 

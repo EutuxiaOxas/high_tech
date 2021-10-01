@@ -77,6 +77,11 @@ Route::middleware('auth')->group(function () {
 	Route::post('/cms/blog/actualizar/articulo/{id}', 'Blog\ArticuloController@update')->middleware('can:cms.blog.update')->name('cms.blog.update');
 	Route::delete('/cms/blog/eliminar/articulo/{id}', 'Blog\ArticuloController@destroy')->middleware('can:cms.blog.destroy')->name('cms.blog.destroy');
 
+
+	/* ----------  RUTA BUYERS ---------*/
+	// Route::get('/cms/users', 'Admin\UserController@index')->middleware('can:cms.users.show')->name('cms.users.show');
+	// Route::get('/cms/users/user', 'Admin\UserController@create')->middleware('can:cms.users.create')->name('cms.users.create');
+
     // Apis
     Route::get('/cms/get/user/{id}', 'Admin\UserController@getUserById')->middleware('can:cms.users.show');
     Route::post('/cms/password/user/{id}', 'Admin\UserController@updatePassword')->middleware('can:cms.users.update');
@@ -94,6 +99,14 @@ Route::get('/blog/{slug}', 'BlogController@post')->name('main.blog.show');
 Route::get('/blog-categories/{slug}', 'BlogController@postsWithCategorie')->name('main.blog.categorie');
 Route::get('/blog-tags/{keyword}', 'BlogController@postByTag')->name('main.blog.tag');
 
+// create sesion shopping car
+Route::get('/sesion-shopping-car/{data}', 'HomeController@sesionShoppingCar')->name('shopping.car');
+Route::get('/islogin', 'HomeController@userIsLogin')->name('user.login');
+Route::get('/create-order', 'OrderController@create')->name('order.create');
+
+Route::get('/order-transaction', 'OrderController@createTransaction')->name('order.transaction');
+
+Route::get('/login-order', 'HomeController@loginToCreateOrder')->name('home.info');
 
 
 

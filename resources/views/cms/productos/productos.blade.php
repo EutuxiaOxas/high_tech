@@ -107,18 +107,37 @@
                                     </a>
                                     @endcan
                                     @can('cms.products.destroy')
-                                    <form class="mb-0 d-inline" action="/cms/eliminar/producto/{{$producto->id}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn p-0 ml-3" value="Eliminar" type="submit">
+                                    <button class="btn p-0 ml-3" value="Eliminar" data-toggle="modal" data-target='#modalDelete{{$producto->id}}'>
                                         <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V6C13 4.9 12.1 4 11 4H3C1.9 4 1 4.9 1 6V16ZM13 1H10.5L9.79 0.29C9.61 0.11 9.35 0 9.09 0H4.91C4.65 0 4.39 0.11 4.21 0.29L3.5 1H1C0.45 1 0 1.45 0 2C0 2.55 0.45 3 1 3H13C13.55 3 14 2.55 14 2C14 1.45 13.55 1 13 1Z" fill="#CE3F3D"/>
                                         </svg>
                                     </button>
-                                    </form>
+                                    
                                     @endcan
                                 </td>
                             </tr>
+                            <!-- Modal -->
+                            <div class="modal fade" id='modalDelete{{$producto->id}}' data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Eliminar <strong>{{$producto->titulo}}</strong></h5>
+                                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">x</button>
+                                    </div>
+                                    <form action="/cms/eliminar/producto/{{$producto->id}}" method="POST">
+                                        <div class="modal-body">
+                                            @csrf
+                                            @method('DELETE')
+                                            <span>¿Esta seguro que desea elimnar este producto?</span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-sm btn-danger px-5">Eliminar</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                             @endforeach
                         </tbody>
                     </table>
@@ -126,6 +145,11 @@
             </div>
         </div>
     </div>
+
+    <!-- Button trigger modal -->
+
+
+
 
 @endsection
 

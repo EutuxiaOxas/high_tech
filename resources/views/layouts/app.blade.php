@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="/css/fuentes.css">
     <link rel="stylesheet" href="/css/estilos.css">
 
+    <!-- Styles -->
+    <!-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> -->
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
+
   </head>
   <body>
 
@@ -57,6 +62,11 @@
             border: solid 1px #555;
             font-size: 1rem;
             font-weight: 500;
+        }
+        .shadow-md{
+          box-shadow: 0px 2px 7px 0px rgba(135,135,135,0.75);
+          -webkit-box-shadow: 0px 2px 7px 0px rgba(135,135,135,0.75);
+          -moz-box-shadow: 0px 2px 7px 0px rgba(135,135,135,0.75);
         }
     </style>
 

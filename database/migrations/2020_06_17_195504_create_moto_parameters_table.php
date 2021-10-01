@@ -19,14 +19,14 @@ class CreateMotoParametersTable extends Migration
             $table->float('d_interno');
             $table->float('d_externo');
             $table->float('espesor');
-            $table->foreignId('tipo_sello_id');
+            $table->string('tipo_sello');
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')
                 ->onDelete('cascade');
 
-            $table->foreign('tipo_sello_id')->references('id')->on('tipo_sello')
-                ->onDelete('cascade');
+            // $table->foreign('tipo_sello_id')->references('id')->on('tipo_sello')
+            //     ->onDelete('cascade');
         });
     }
 

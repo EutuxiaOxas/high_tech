@@ -8,7 +8,7 @@ class Moto_Parameter extends Model
 {
 
 	protected $fillable = [
-        'product_id', 'd_interno', 'espesor' , 'd_externo', 'tipo_sello_id'
+        'product_id', 'd_interno', 'espesor' , 'd_externo', 'tipo_sello'
     ];
 
     protected $table = 'moto_parameters';
