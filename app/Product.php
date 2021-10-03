@@ -3,10 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Product extends Model
 {
+    use Sluggable;
     protected $table = 'products';
+    protected $fillable = [
+        'category_id', 'codigo_universal', 'titulo', 'imagen', 'descripcion', 'aplicacion', 'precio', 'quantity', 'slug', 
+    ];
 
     public function categoria()
     {
@@ -48,6 +53,22 @@ class Product extends Model
     public function industrial()
     {
     	return $this->hasOne('App\Serie6000_Parameter');
+    }
+
+    
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'titulo'
+            ]
+        ];
     }
 }
 

@@ -19,6 +19,10 @@ use App\Cadena_Parameter;
 use App\Auto_Parameter;
 use App\Moto_Parameter;
 use App\Serie6000_Parameter;
+use App\Exports\ProductsExport;
+use App\Imports\ProductsImport;
+
+use Maatwebsite\Excel\Facades\Excel;
 
 use File;
 
@@ -26,7 +30,8 @@ class ProductController extends Controller
 {
     public function index(){
         $productos = Product::all();
-    	return view('cms.productos.productos')->with(compact('productos'));
+        $categories = Category::all();
+    	return view('cms.productos.productos')->with(compact('productos', 'categories'));
     }
 
     public function showCategorias(){
@@ -112,8 +117,6 @@ class ProductController extends Controller
 
 
     public function guardarProducto(Request $request){
-        // var_dump($request['posicion_rueda']);
-        // dd($request);
     	$producto = new Product;
         $image    = $request->file('imagen_producto');
 
@@ -459,6 +462,71 @@ class ProductController extends Controller
 
         return redirect()->route("cms.products.parameters.show")->with('info', 'Parametro eliminado exitosamente!');
 
+    }
+
+    // Exportar productos en Excel
+    public function exportProducts(){
+
+        return Excel::download(new ProductsExport, 'products.xlsx');
+
+    }
+
+    // Importar productos en Excel
+    public function importProducts(Request $request){
+
+        $file = $request->file('file');
+        Excel::import( new ProductsImport, $file );
+        // $product_id = Product::latest('id')->first()->id;
+                
+        //         switch ($category) {
+        //             case 'automotriz':
+        //                 $auto_parametro = new Auto_Parameter;
+        //                 $auto_parametro->create([
+        //                     'product_id'     => $product_id,
+        //                     'posicion_rueda' => $row[7],
+        //                     'd_interno'      => $row[8],
+        //                     'd_externo'      => $row[9],
+        //                     'espesor'        => $row[10],
+        //                 ]);
+        //                 break;
+        //             case 'industrial':
+        //                 $moto_parametro = new Moto_Parameter;
+        //                 $moto_parametro->create([
+        //                     'product_id' => $product_id,
+        //                     'tipo_sello' => $row[7],
+        //                     'd_interno'  => $row[8],
+        //                     'd_externo'  => $row[9],
+        //                     'espesor'    => $row[10],
+        //                 ]);
+        //                 break;
+        //             case 'moto':
+        //                 $moto_parametro = new Moto_Parameter;
+        //                 $moto_parametro->create([
+        //                     'product_id' => $product_id,
+        //                     'tipo_sello' => $row[7],
+        //                     'd_interno'  => $row[8],
+        //                     'd_externo'  => $row[9],
+        //                     'espesor'    => $row[10],
+        //                 ]);
+        //                 break;
+        //             case 'chumacera':
+        //                 $chumacera_parametro = new Chumacera_Parameter;
+        //                 $chumacera_parametro->create([
+        //                     'product_id'         => $product_id,
+        //                     'diametro_chumacera' => $row[7],
+        //                 ]);
+        //                 break;
+        //             default:
+        //                 $cadena_parametro = new Cadena_Parameter;
+        //                 $cadena_parametro->create([
+        //                     'product_id' => $product_id,
+        //                     'pitch'      => $row[7],
+        //                 ]);
+        //                 break;
+        //         }
+
+        return back()->with('Productos Importados Exitosamente!');
+        
     }
 }
 

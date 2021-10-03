@@ -19,10 +19,10 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return view('transactions.index');
+            return redirect(RouteServiceProvider::HOME);
+            // return view('transactions.index');
             // if(Auth::user()->hasRole('buyer')){
             // }else{
-            //     return redirect(RouteServiceProvider::HOME);
             // }
         }
 

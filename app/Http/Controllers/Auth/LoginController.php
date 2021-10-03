@@ -26,10 +26,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // if(Auth::user()->hasRole('buyer')){
-    // protected $redirectTo = RouteServiceProvider::HOME;
-    // }else{
-    // }
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**

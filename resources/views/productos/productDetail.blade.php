@@ -59,7 +59,7 @@
         {{-- Imagen del producto --}}
         <div class="col-12 col-md-6">
             <div class="row card_product align-items-center mb-0 justify-content-center">
-                <div class="col-12 img_product_card mb-md-3 ">
+                <div class="col-12 img_product_card mb-md-3 text-center">
                     <img class="img_product" src="{{ Storage::url($producto->imagen) }}" alt="{{ ucwords($producto->titulo) }} | High Tech Bearings" loading="lazy" id="image_product">
                 </div>
             </div>
@@ -135,7 +135,7 @@
                 </div>
                 <div class="col-12">
                     <div class="row">
-                        @if ( $producto->categoria->category == 'Serie Automotriz' )
+                        @if ( $producto->categoria->slug    == 'automotriz' )
                             <div class="col-6 mb-1">
                                 <span class="font-semibold text-base">Posición de la rueda: </span> <br>
                                 <span class="text-muted">{{ $producto->auto->posicion_rueda }}</span>
@@ -167,14 +167,14 @@
                                 </div>
                             </div>
 
-                        @elseif( $producto->categoria->category == 'Serie Chumacera' )
+                        @elseif( $producto->categoria->slug == 'chumacera' )
 
                             <div class="col-6 mb-1">
                                 <span class="font-semibold text-lg">Diametro: </span> <br>
                                 <span class="text-muted">{{ $producto->chumacera->diametro_chumacera }}</span>
                             </div>                            
 
-                        @elseif( $producto->categoria->category == 'Serie Cadenas' )
+                        @elseif( $producto->categoria->slug == 'cadenas' )
 
                             <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Aplicación: </span> <br>
@@ -185,7 +185,7 @@
                                 <span class="text-muted">{{ $producto->cadena->pitch }}</span>
                             </div>
 
-                        @elseif( $producto->categoria->category == 'Serie Industrial' ) 
+                        @elseif( $producto->categoria->slug == 'industrial' ) 
                             <div class="col-6 mb-1">
                                 <span class="font-semibold text-lg">Tipo de sello: </span> <br>
                                 <span class="text-muted">{{ $producto->industrial->tipo_sello }}</span>
@@ -198,7 +198,7 @@
                             <div class="col-12">
                                 <hr>
                             </div>
-                        @else
+                        @elseif( $producto->categoria->slug == 'moto' )
 
                             <div class="col-12 col-md-6 mb-1">
                                 <span class="font-semibold text-lg">Tipo de sello: </span> <br>

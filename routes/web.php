@@ -108,6 +108,9 @@ Route::get('/order-transaction', 'OrderController@createTransaction')->name('ord
 
 Route::get('/login-order', 'HomeController@loginToCreateOrder')->name('home.info');
 
+// Importar Exportar EXCEL Products
+Route::get('/cms/products/export', 'ProductController@exportProducts')->name('products.excel.export');
+Route::post('/cms/products/import', 'ProductController@importProducts')->name('products.excel.import');
 
 
 

@@ -12,6 +12,68 @@
         overflow: hidden;
         border-radius: 10px;
     }
+/* The container */
+.container_radio {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide container_radio browser's default radio button */
+.container_radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container_radio:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container_radio input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container_radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container_radio .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
 </style>
 
 @section('content')
@@ -47,6 +109,8 @@
           <div class="row mb-2 px-0">
             <div class="col-sm-6">
               <span class="font-light text-lg">Productos</span>
+              <a class="btn btn-success px-3 ml-3" href="{{ route('products.excel.export') }}">Exportar Productos</a>
+              <button class="btn btn-success px-3 ml-3" data-toggle="modal" data-target="#modalProdcutsImport">Cargar Productos</button>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -74,7 +138,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Imagen</th>
+                                <!-- <th>Imagen</th> -->
                                 <th>Titulo</th>
                                 <th>Categoría</th>
                                 <th>Precio $</th>
@@ -86,9 +150,9 @@
                             @foreach ($productos as $producto)
                             <tr>
                                 <td>{{$producto->id}}</td>
-                                <td>
+                                <!-- <td>
                                     <div class="img_div_rounded" style="background-image: url('{{ Storage::url($producto->imagen) }}');"></div>
-                                </td>
+                                </td> -->
                                 <td> <a class="text-primary" target="_blank" href="{{route('product', $producto->slug)}}">{{$producto->titulo}}</a></td>
                                 <td>{{$producto->categoria->category}}</td>
                                 <td class="text-center">
@@ -146,7 +210,43 @@
         </div>
     </div>
 
-    <!-- Button trigger modal -->
+    <!-- Modal Cargar Excel Productos-->
+    <div class="modal fade" id="modalProdcutsImport" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cargar productos via Excel</h5>
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">x</button>
+            </div>
+            <form action="{{ route('products.excel.import') }}" method="POST" enctype='multipart/form-data'>
+                <div class="modal-body">
+                    @csrf
+                    <input type="file" name="file" required>
+
+                    <div class="row mt-4">
+                        @foreach ($categories as $category)
+                            <div class="col-6">
+                                <!-- <input class="checkbox" type="checkbox" name="category[]" id="{{$category->slug}}" value="{{$category->id}}">
+                                <label class="" for="{{$category->slug}}">{{$category->category}}</label> -->
+                                <label class="container_radio">{{$category->category}}
+                                    <input class="checkbox" type="radio" name="category" id="{{$category->slug}}" value="{{$category->id}}">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        @endforeach
+                        <div class="px-3">
+                            Selecciona la categoria en la cual vas a cargar los productos.
+                        </div>    
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-success px-5" type="submit" href="{{ route('products.excel.export') }}">Cargar excel</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
 

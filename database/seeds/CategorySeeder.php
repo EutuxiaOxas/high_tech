@@ -13,38 +13,38 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-        	'category' => 'Serie Automotriz',
+        	'category' => 'Automotriz',
         	'description' => 'Rodamientos  especializados en las aplicaciones automotrices.',
-            'slug' => 'serie-automotriz',
+            'slug' => 'automotriz',
         	'category_color' => 'f68220'
         ]);
 
         DB::table('categories')->insert([
-        	'category' => 'Serie Industrial',
+        	'category' => 'Industrial',
         	'description' => 'Rodamientos rígidos de bolas.',
-            'slug' => 'serie-industrial',
+            'slug' => 'industrial',
         	'category_color' => 'a2bd30'
         ]);
 
         DB::table('categories')->insert([
-            'category' => 'Serie Moto',
+            'category' => 'Moto',
             'description' => 'Línea de productos especialmente para motocicletas.',
-            'slug' => 'serie-moto',
+            'slug' => 'moto',
             'category_color' => 'ed1b24'
         ]);
 
 
         DB::table('categories')->insert([
-            'category' => 'Serie Chumacera',
+            'category' => 'Chumacera',
             'description' => 'Chumaceras tipo puente y tipo brida.',
-            'slug' => 'serie-chumacera',
+            'slug' => 'chumacera',
             'category_color' => '0273b7'
         ]);
 
         DB::table('categories')->insert([
-            'category' => 'Serie Cadenas',
+            'category' => 'Cadenas',
             'description' => 'Cadenas de excelente calidad.',
-            'slug' => 'serie-cadenas',
+            'slug' => 'cadenas',
             'category_color' => 'ffca08'
         ]);
 
