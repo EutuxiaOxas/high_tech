@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('imagenes/favicon.png') }}">
+
     {{-- titulo  --}}
     <title>@yield('title')</title>
 
@@ -46,11 +48,13 @@
         .badge{
             position: absolute;
             bottom: 5px;
-            right: -10px;
-            background-color: rgb(18, 35, 101);
+            right: 0px;
+            background-color: #a2bd30;
             color: #fff;
             padding: 3px 6.5px;
-            border-radius: 25%;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-content: center;

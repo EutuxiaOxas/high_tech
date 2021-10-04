@@ -10,7 +10,11 @@ use App\Category;
 class CmsController extends Controller
 {
     public function index(){
-    	return view('cms.index');
+        if(session()->has('shoppingCar')){
+            return redirect()->route('home.info');
+        }else{
+            return view('cms.index');
+        }
     }
 
     public function subscribersView(){

@@ -1,21 +1,26 @@
 <div class="modal fade" id="modal_shopping_car" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 525px;">
         <div class="modal-content">
-          <div class="modal-header px-1 pt-1 pb-1">
-            <div class="col-11 px-0">
-                <h5 class="modal-title text-base font-bold">Carrito de compras</h5>
-                <span class="text-sm font-light">Agrega todos los productos que desees</span>
+            <div class="modal-header px-1 pt-1 pb-1">
+                <div class="col-11 px-0">
+                    <h5 class="modal-title text-base font-bold">Carrito de compras</h5>
+                    <span class="text-sm font-light">Agrega todos los productos que desees</span>
+                </div>
+                <button type="button" class="close col-1" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <button type="button" class="close col-1" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body px-1 py-1">
-            <h6 class="font-semibold text-base">Listado de productos</h6>
-            <div class="" id="container_products_modal_shopping_car">
+            <div class="modal-body px-1 py-1">
+                <h6 class="font-semibold text-base">Listado de productos</h6>
+                <div class="" id="container_products_modal_shopping_car">
+                    
+                </div>
+                <div class="text-center" id="carEmptyMessage">
+                    <img class="mx-auto" width="70%" src="{{asset('svg/empty-car.svg')}}" alt="Logo High Tech carro vacio" loading="lazy">
+                    <div class="my-3">Aún no tienes productos en el carrito de compras.</div>
+                </div>
 
-            </div>
-            <div class="hidden" id="example">
+                <div class="hidden" id="example">
                     <div class="col">
                         <div class="row px-0 mb-1">
                             <div class="col-3 align-self-center">
@@ -46,34 +51,36 @@
                             <span hidden class="product_id"></span>
                         </div>
                     </div>
-            </div>
-            {{-- TOTAL --}}
-            <div class="row text-lg font-semibold mt-4">
-                <div class="col-6">
-                    TOTAL:
                 </div>
-                <div class="col-6 text-right" id="amount_modal_shopping_car">
-                    15.67 $USD
+                {{-- TOTAL --}}
+                <div class="row text-lg font-semibold mt-4">
+                    <div class="col-6" id="title_amount_modal_shopping_car">
+                        
+                    </div>
+                    <div class="col-6 text-right" id="amount_modal_shopping_car">
+                    </div>
                 </div>
             </div>
-          </div>
 
-          <div class="modal-footer px-1 pb-1 pt-0">
-            <button type="button" class="btn btn-primary btn-sm col-12" id="finalizarCompraButton">Finalizar compra</button>
-          </div>
+            <div class="modal-footer px-1 pb-1 pt-0" id="containerButtonFinalizar">
+                <button type="button" class="btn btn-primary btn-sm col-12" id="finalizarCompraButton">Finalizar compra</button>
+            </div>
         </div>
-      </div>
-  </div>
+    </div>
+</div>
 
-  <script>
-      document.addEventListener("DOMContentLoaded", function() {
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
         const open_modal_shopping_car = document.getElementById('open_modal_shopping_car')
         open_modal_shopping_car.addEventListener('click', event => {
+
+            let containerButtonFinalizar = document.getElementById('containerButtonFinalizar')
+            containerButtonFinalizar.style.display = 'none';
 
             // obtengo los productos del local storage
             let productsInShoppingCar = localStorage.getItem('productsInShoppingCar');
 
-            if( productsInShoppingCar !== null ){
+            if (productsInShoppingCar !== null) {
                 let products = JSON.parse(productsInShoppingCar);
 
                 // total a pagar
@@ -96,7 +103,7 @@
                     imgProduct.src = element.image
                     titleProduct.textContent = element.title
                     priceProduct.textContent = element.price
-                    amount+= element.price * element.quantity;
+                    amount += element.price * element.quantity;
 
 
                     select = document.createElement('select');
@@ -118,6 +125,11 @@
                     select.style.padding = '4px 15px';
                     select.classList.add('select_modal');
 
+                    // agrego el evento al cambiar la cantidad mediante el select
+                    select.addEventListener('change', function(e) {
+                        updateProductInShoppingCar(element.id, e.target.value);
+                    })
+
                     container_products_modal_shopping_car.appendChild(cardProduct);
                 });
 
@@ -126,6 +138,8 @@
                 document.getElementById('amount_modal_shopping_car').textContent = `${amount} $USD`
 
             }
+            updateBadgeProducts();
+            updateTotalAmount();
 
 
             // Eliminar un producto del carrit de compras
@@ -140,9 +154,10 @@
                     let product_id = product_div.querySelector('.product_id').textContent
 
                     // Lo elimino del localstorage
-                    deleteProductByLocalStorage( product_id );
+                    deleteProductByLocalStorage(product_id);
 
                     updateBadgeProducts();
+                    updateTotalAmount();
 
                 })
 
@@ -150,6 +165,7 @@
         })
 
         updateBadgeProducts();
+        updateTotalAmount();
 
         const finalizarCompraButton = document.getElementById('finalizarCompraButton')
         finalizarCompraButton.addEventListener('click', event => {
@@ -157,115 +173,161 @@
             let products = JSON.parse(productsInShoppingCar);
 
             products.forEach(element => {
-                element.image = '';                
+                element.image = '';
+                element.title = '';
             });
             let data = JSON.stringify(products);
 
             // creo la variable de sesion para guardar los datos del carrito de compras en backend
             axios({
-                        method  : 'GET',
-                        url     : '/sesion-shopping-car/'+data,
-                        headers : {
-                            'content-type': 'application/json'
-                            }
-                    }).then((res)=>{}).catch((err) => {console.log(err)});
+                method: 'GET',
+                url: '/sesion-shopping-car/' + data,
+                headers: {
+                    'content-type': 'application/json'
+                }
+            }).then((res) => {}).catch((err) => {
+                console.log(err)
+            });
 
             // creo la variable de sesion para guardar los datos del carrito de compras en backend
             axios({
-                        method  : 'GET',
-                        url     : '/islogin/',
-                        headers : {
-                            'content-type': 'application/json'
-                            }
-                    })
-                    .then((res)=>{
-                        // Usuario logeado
-                        if(res.data == true){
-                            // En caso de estarlo, lo direcciono a la ruta q crea la orden, y luego direcciono a la vista del formulario de pago
-                            window.location.href = "/create-order";
-                        }else{
-                            // Usuario no logeado
-                            window.location.href = "/login-order";
-                            // al iniciar sesion, verifico si el usuario tiene productos en el carrito, en caso de si, creo la orden y lo envio a la vista del formulario de pago.
-                        }
-                    })
-                    .catch((err) => {console.log(err)});
+                    method: 'GET',
+                    url: '/islogin/',
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                })
+                .then((res) => {
+                    // Usuario logeado
+                    if (res.data == true) {
+                        // elimino lo q hay en localStorage
+                        localStorage.removeItem('productsInShoppingCar');
+                        // En caso de estarlo, lo direcciono a la ruta q crea la orden, y luego direcciono a la vista del formulario de pago
+                        window.location.href = "/create-order";
+                    } else {
+                        // Usuario no logeado
+                        window.location.href = "/login-order";
+                        // al iniciar sesion, verifico si el usuario tiene productos en el carrito, en caso de si, creo la orden y lo envio a la vista del formulario de pago.
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                });
 
         });
 
-      })
+    })
 
-    //   Funcion para eliminar un producto desde el modal de carrito de compras
-    function deleteProductByLocalStorage( product_id ){
+    //   Funcion que actualiza en local storage un producto
+    function updateProductInShoppingCar(product_id, quantity) {
         // obtengo los productos del local storage
         let productsInShoppingCar = localStorage.getItem('productsInShoppingCar');
 
-        if( productsInShoppingCar !== null ){
+        if (productsInShoppingCar !== null) {
+            let products = JSON.parse(productsInShoppingCar);
+
+            products.forEach(element => {
+                if (element.id == product_id) {
+                    element.quantity = quantity;
+                }
+
+            });
+
+            localStorage.setItem('productsInShoppingCar', JSON.stringify(products));
+            updateBadgeProducts();
+            updateTotalAmount();
+
+        }
+
+    }
+
+    //   Funcion para eliminar un producto desde el modal de carrito de compras
+    function deleteProductByLocalStorage(product_id) {
+        // obtengo los productos del local storage
+        let productsInShoppingCar = localStorage.getItem('productsInShoppingCar');
+
+        if (productsInShoppingCar !== null) {
             let products = JSON.parse(productsInShoppingCar);
 
             let productInShppingCar = false;
             let keyArray = 0;
 
             products.forEach(element => {
-                if( element.id == product_id ){
+                if (element.id == product_id) {
                     productInShppingCar = true;
                 }
 
-                if (!productInShppingCar){
+                if (!productInShppingCar) {
                     keyArray++;
                 }
             });
 
-            if ( productInShppingCar ){
+            if (productInShppingCar) {
                 // Se elimina el producto del carrito de compras
                 products.splice(keyArray, 1);
             }
 
-            localStorage.setItem('productsInShoppingCar',JSON.stringify(products));
+            localStorage.setItem('productsInShoppingCar', JSON.stringify(products));
 
         }
 
     }
 
     // Fuyncion para actualizar el badge de carrito de compras
-    function updateBadgeProducts(){
-
+    function updateBadgeProducts() {
+        
         let productsInShoppingCar = localStorage.getItem('productsInShoppingCar');
-
+        
+        let carEmptyMessage = document.getElementById('carEmptyMessage')
+        let containerButtonFinalizar = document.getElementById('containerButtonFinalizar')     
         const badge_products = document.getElementById('badge_products')
 
-        if( productsInShoppingCar !== null ){
+        if (productsInShoppingCar !== null) {
             let products = JSON.parse(productsInShoppingCar);
 
-            if( products.length > 0){
+            if (products.length > 0) {
 
                 badge_products.style.display = 'block';
+                carEmptyMessage.style.display = 'none';
+                containerButtonFinalizar.style.display = 'block';
 
-                let total_products = 0;
-                products.forEach(product => {
-
-                    total_products += parseInt(product.quantity);
-
-                })
-
-
-                badge_products.textContent = total_products;
-
-            }else{
+            } else {
                 badge_products.style.display = 'none';
+                carEmptyMessage.style.display = 'block';
+                containerButtonFinalizar.style.display = 'none';
             }
         }
 
     }
 
-    
+    // Fuyncion para actualizar el badge de carrito de compras
+    function updateTotalAmount() {
+        
+        let productsInShoppingCar = localStorage.getItem('productsInShoppingCar');
+        let title_amount_modal_shopping_car = document.getElementById('title_amount_modal_shopping_car');
+        let amount_modal_shopping_car = document.getElementById('amount_modal_shopping_car');
 
+        if (productsInShoppingCar !== null) {
+            let products = JSON.parse(productsInShoppingCar);
 
-    // Al dar click en el boton de 'Finalizar Compra'
-    // Creo en sesion, via api, una variable que guardara los datos del carrito de compras
-    // consulto, via api, si el usuario esta logeado
-    // En caso de estarlo, lo direcciono a la ruta q crea la orden, y luego direcciono a la vista del formulario de pago
-    // Si no esta logeado, lo direcciono a la vista donde le informo que 'debe iniciar sesion para concretar la compra'
-    // al iniciar sesion, verifico si el usuario tiene productos en el carrito, en caso de si, creo la orden y lo envio a la vista del formulario de pago.
+            if (products.length > 0) {
 
-  </script>
+                let total_amount = 0;
+                products.forEach(product => {
+
+                    total_amount += parseInt(product.quantity)*parseFloat(product.price);
+
+                })
+
+                amount_modal_shopping_car.innerHTML = parseFloat(Math.round(total_amount * 100) / 100).toFixed(2) + ' $USD';
+                title_amount_modal_shopping_car.innerHTML = 'TOTAL:';
+
+            } else {
+                amount_modal_shopping_car.innerHTML = '';
+                title_amount_modal_shopping_car.innerHTML = '';
+            }
+        }
+
+    }
+
+</script>

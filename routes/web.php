@@ -14,7 +14,7 @@ Route::get('/products/search', 'ProductsPageController@showSearch')->name('produ
 // Vitrina por categoria
 Route::get('/categorias/{slug}', 'ProductsPageController@showByCategory')->name('products.category');
 // Vitrina filtrada
-Route::get('/products/search/filters', 'ProductsPageController@showByFilter')->name('products.search.filter');
+Route::get('/products/search/filters', 'ProductsPageController@showSearch')->name('products.search.filter');
 // Detalles del product
 Route::get('/product/{slug}', 'ProductsPageController@show')->name('product');
 
@@ -77,9 +77,12 @@ Route::middleware('auth')->group(function () {
 	Route::post('/cms/blog/actualizar/articulo/{id}', 'Blog\ArticuloController@update')->middleware('can:cms.blog.update')->name('cms.blog.update');
 	Route::delete('/cms/blog/eliminar/articulo/{id}', 'Blog\ArticuloController@destroy')->middleware('can:cms.blog.destroy')->name('cms.blog.destroy');
 
+	/* ----------  RUTA VENTAS-ORDERS ---------*/
+	Route::get('/cms/orders', 'Admin\UserController@orders')->middleware('can:cms.orders.show')->name('cms.orders.show');
+
 
 	/* ----------  RUTA BUYERS ---------*/
-	// Route::get('/cms/users', 'Admin\UserController@index')->middleware('can:cms.users.show')->name('cms.users.show');
+	Route::get('/cms/purchases', 'Admin\UserController@purchases')->middleware('can:cms.purchases.show')->name('cms.purchases.show');
 	// Route::get('/cms/users/user', 'Admin\UserController@create')->middleware('can:cms.users.create')->name('cms.users.create');
 
     // Apis
@@ -104,16 +107,11 @@ Route::get('/sesion-shopping-car/{data}', 'HomeController@sesionShoppingCar')->n
 Route::get('/islogin', 'HomeController@userIsLogin')->name('user.login');
 Route::get('/create-order', 'OrderController@create')->name('order.create');
 
-Route::get('/order-transaction', 'OrderController@createTransaction')->name('order.transaction');
-
 Route::get('/login-order', 'HomeController@loginToCreateOrder')->name('home.info');
 
 // Importar Exportar EXCEL Products
 Route::get('/cms/products/export', 'ProductController@exportProducts')->name('products.excel.export');
 Route::post('/cms/products/import', 'ProductController@importProducts')->name('products.excel.import');
 
-
-
-
-
+Route::get('/order-transaction', 'OrderController@createTransaction')->name('order.transaction');
 

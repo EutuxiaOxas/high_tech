@@ -38,10 +38,10 @@
             </li>
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Productos
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
                     @foreach ($categories as $category)
                         <a class="dropdown-item" href="/categorias/{{ $category->slug }}">
                             <span>{{ $category->category }}</span>
@@ -54,21 +54,28 @@
 
           </ul>
 
+          @if ( !isset($page) )
           <ul class="navbar-nav align-items-center mr-0">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}" aria-label="ir al formulario de inicio de sesion">Entrar</a>
+                @auth
+                    <a class="nav-link" href="{{ route('cms.index') }}" aria-label="ir al formulario de inicio de sesion">Mi Perfil</a>
+                @else
+                    <a class="nav-link" href="{{ route('login') }}" aria-label="ir al formulario de inicio de sesion">Entrar</a>
+                @endauth
             </li>
             <li class="ml-2">
-                <a class="nav-link" style="position:relative;" href="#" aria-label="ir al carrito de compras" data-toggle="modal" data-target="#modal_shopping_car" id="open_modal_shopping_car">
-                    @if ($headerLinks == 'light')
-                        <svg class="navbar-logo-dark" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-                    @else
-                        <svg class="navbar-logo-light" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#fff"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-                    @endif
-                    <span class="badge text-xs" id="badge_products" style="display: none;"></span>
-                </a>
-            </li>
-          </ul>
+                    
+                    <a class="nav-link" style="position:relative;" href="#" aria-label="ir al carrito de compras" data-toggle="modal" data-target="#modal_shopping_car" id="open_modal_shopping_car">
+                        @if ($headerLinks == 'light')
+                            <svg class="navbar-logo-dark" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                        @else
+                            <svg class="navbar-logo-light" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#fff"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                        @endif
+                        <span class="badge text-xs" id="badge_products" style="display: none;"></span>
+                    </a>
+                </li>
+            </ul>
+            @endif 
         </div>
       </nav>
     </div>

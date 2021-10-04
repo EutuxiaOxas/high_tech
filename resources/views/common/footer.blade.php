@@ -31,7 +31,7 @@
                 @foreach ($categories as $category)
                     <li class="list-group-item">
                         <a href="/categorias/{{ $category->slug }}" aria-label="ver los productos de la categoria {{ $category->category }}">
-                            {{ $category->category }}
+                            Serie {{ $category->category }}
                         </a>
                     </li>
                 @endforeach

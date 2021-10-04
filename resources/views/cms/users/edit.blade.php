@@ -1,4 +1,4 @@
-@extends('cms')
+@extends('layouts.admin')
 
 @php
     $section = 'usuarios';

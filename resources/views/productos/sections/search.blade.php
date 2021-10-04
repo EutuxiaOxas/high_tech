@@ -4,23 +4,23 @@
 
         <div class="col-12 col-md-10">
             <div class="row mb-0">
-                <div class="col-12 col-sm-7 col-lg-8 px-1 px-lg-2">
+                <div class="col-12 px-1 px-lg-2">
                     <div class="input-group">
                         <input type="search" class="form-control" name="search" placeholder="Buscar productos" aria-label="Buscar productos" aria-describedby="basic-addon2">
                     </div>
-                    @if(isset($slug))
-                        @if ( $slug != 'serie-cadenas' && $slug != 'serie-chumacera')
+                    <!-- @if(isset($slug))
+                        @if ( $slug != 'cadenas' && $slug != 'chumacera')
                             <span class="d-none d-md-block text-info filtrarDimesiones" style="cursor:pointer;">
                                 Filtrar por dimensiones del rodamiento
                             </span>
                         @endif
-                    @endif
+                    @endif -->
                 </div>
-                <div class="col-12 col-sm-5 col-lg-4 px-1 px-lg-2 mb-md-0">
-                    <div class="form-group mb-0 mb-md-2">
+                <!-- <div class="col-12 col-sm-5 col-lg-4 px-1 px-lg-2 mb-md-0"> -->
+                    <!-- <div class="form-group mb-0 mb-md-2">
 
                         @if(isset($slug))
-                            @if ($slug == 'serie-automotriz')
+                            @if ($slug == 'automotriz')
                                 <select class="form-control" name="rueda">
                                     <option value="0">Posición de la rueda</option>
                                     @foreach ($posicion_rueda as $posicion)
@@ -28,7 +28,7 @@
                                     @endforeach
                                 </select>
                                 <input type="hidden" name="category_id" value="1">
-                            @elseif($slug == 'serie-6000')
+                            @elseif($slug == '6000')
                                 <select class="form-control" name="tipo_sello">
                                     <option value="0">Tipo de sello</option>
                                     @foreach ($tipo_sello as $sello)
@@ -36,7 +36,7 @@
                                     @endforeach
                                 </select>
                                 <input type="hidden" name="category_id" value="2">
-                            @elseif($slug == 'serie-moto')
+                            @elseif($slug == 'moto')
                                 <select class="form-control" name="tipo_sello">
                                     <option value="0">Tipo de sello</option>
                                     @foreach ($tipo_sello as $sello)
@@ -44,7 +44,7 @@
                                     @endforeach
                                 </select>
                                 <input type="hidden" name="category_id" value="3">
-                            @elseif($slug == 'serie-chumacera')
+                            @elseif($slug == 'chumacera')
                                 <select class="form-control" name="tipo_brida">
                                     <option value="0">Tipo de brida</option>
                                     @foreach ($tipo_chum as $chum)
@@ -52,7 +52,7 @@
                                     @endforeach
                                 </select>
                                 <input type="hidden" name="category_id" value="4">
-                            @elseif($slug == 'serie-cadenas')
+                            @elseif($slug == 'cadenas')
                                 <select class="form-control" name="tipo_cadena">
                                     <option value="0">Tipo de cadena</option>
                                     @foreach ($tipo_cadena as $tipo)
@@ -71,15 +71,15 @@
                             <input type="hidden" name="no_slug" value="1">
                         @endif
 
-                    </div>
-                    @if(isset($slug))
-                        @if ( $slug != 'serie-cadenas' && $slug != 'serie-chumacera')
+                    </div> -->
+                    <!-- @if(isset($slug))
+                        @if ( $slug != 'cadenas' && $slug != 'chumacera')
                             <span class="d-md-none text-info filtrarDimesiones" style="cursor:pointer;">
                                 Filtrar por dimensiones del rodamiento
                             </span>
                         @endif
-                    @endif
-                </div>
+                    @endif -->
+                <!-- </div> -->
             </div>
             <div class="col-12 px-1 px-md-2 hidden" id="containerDimensiones">
             </div>

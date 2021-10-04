@@ -10,4 +10,9 @@ class Order extends Model
         'user_id', 'status', 'amount'
     ];
 
+    public function buyer()
+    {
+    	return $this->belongsTo('App\User', 'user_id');
+    }
+
 }

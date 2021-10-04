@@ -6,9 +6,7 @@
     $bg_navbar = '';
 @endphp
 
-@section('title')
- High Tech Bearings
-@endsection
+@section('title') High Tech Bearings @endsection
 
 @section('content')
 

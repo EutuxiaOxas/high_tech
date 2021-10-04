@@ -19,38 +19,18 @@
       <div class="row" data-aos="fade-left">
         <div class="col">
           <div class="owl-carousel visible" data-items="[3]" data-nav="true" data-margin="10">
+            @foreach ($categories as $category)
+              
+              <figure class="user">
+                <a href="{{ route('products.category', $category->slug) }}" class="user-photo" aria-label="ver todos los productos de la categoria {{$category->slug}}">
+                  <img src="{{asset('/imagenes/productos_home/serie_'.$category->slug.'.jpg')}}" alt="{{$category->slug}}" loading="lazy">
+                  <span class="text_float text-white font-xl">SERIE 
+                    <strong> @php echo strtoupper($category->category); @endphp </strong>
+                  </span>
+                </a>
+              </figure>
 
-            <figure class="user">
-              <a href="{{ route('products.category', 'serie-automotriz') }}" class="user-photo" aria-label="ver todos los productos de la categoria automotriz">
-                <img src="{{asset('/imagenes/productos_home/serie_auto.jpg')}}" alt="promo-1" loading="lazy">
-                <span class="text_float text-white font-xl">SERIE <strong>AUTOMOTRIZ</strong></span>
-              </a>
-            </figure>
-            <figure class="user">
-              <a href="{{ route('products.category', 'serie-cadenas') }}" class="user-photo" aria-label="ver todos los productos de la categoria cadenas">
-                <img src="{{asset('/imagenes/productos_home/serie_cadenas.jpg')}}" alt="promo-2" loading="lazy">
-                <span class="text_float text-white font-xl">SERIE <strong>CADENAS</strong></span>
-              </a>
-            </figure>
-            <figure class="user">
-              <a href="{{ route('products.category', 'serie-6000') }}" class="user-photo" aria-label="ver todos los productos de la categoria 6000">
-                <img src="{{asset('/imagenes/productos_home/serie_6000.jpg')}}" alt="promo-5" loading="lazy">
-                <span class="text_float text-white font-xl">SERIE <strong>6000</strong></span>
-              </a>
-            </figure>
-            <figure class="user">
-              <a href="{{ route('products.category', 'serie-chumacera') }}" class="user-photo" aria-label="ver todos los productos de la categoria chumacera">
-                <img src="{{asset('/imagenes/productos_home/serie_chumacera.jpg')}}" alt="promo-3" loading="lazy">
-                <span class="text_float text-white font-xl">SERIE <strong>CHUMACERA</strong></span>
-              </a>
-            </figure>
-            <figure class="user">
-              <a href="{{ route('products.category', 'serie-moto') }}" class="user-photo" aria-label="ver todos los productos de la categoria moto">
-                <img src="{{asset('/imagenes/productos_home/serie_moto.jpg')}}" alt="promo-4" loading="lazy">
-                <span class="text_float text-white font-xl">SERIE <strong>MOTO</strong></span>
-              </a>
-            </figure>
-
+            @endforeach
 
           </div>
         </div>

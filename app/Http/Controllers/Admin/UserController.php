@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Order;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
@@ -139,5 +141,17 @@ class UserController extends Controller
         }
 
         return back()->with('message',$message);
+    }
+
+
+    public function orders(){
+        $orders = Order::orderBy('created_at','DESC')->get();
+    	return view('cms.orders.index', compact('orders'));
+    }
+
+    public function purchases(){
+        $user_id = Auth::id();
+        $purchases = Order::where('user_id', $user_id)->orderBy('created_at','DESC')->get();
+    	return view('cms.purchases.index', compact('purchases'));
     }
 }

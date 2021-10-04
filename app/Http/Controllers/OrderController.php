@@ -26,7 +26,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return Auth::user()->hasRole('buyer');
+        // return Auth::user()->hasRole('buyer');
 
         if(session()->has('shoppingCar')){
 
@@ -64,7 +64,8 @@ class OrderController extends Controller
             // eliminar la variable de sesion de 'shoppingCar'
             session()->forget('shoppingCar');
     
-            return route('order.transaction');
+            // return route('order.transaction');
+            return redirect()->route('cms.index')->with('info', 'Compra realizada exitosamente');
         }else{
             return 'false';
         }

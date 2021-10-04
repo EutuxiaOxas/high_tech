@@ -47,11 +47,13 @@ class ProductsPageController extends Controller
 
         $productos = Product::where('titulo', 'LIKE', "%{$search}%")
         ->orWhere('descripcion', 'LIKE', "%{$search}%")
+        ->orWhere('aplicacion', 'LIKE', "%{$search}%")
         ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
         ->paginate($this->perPage);
 
         $total_productos =Product::where('titulo', 'LIKE', "%{$search}%")
         ->orWhere('descripcion', 'LIKE', "%{$search}%")
+        ->orWhere('aplicacion', 'LIKE', "%{$search}%")
         ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
         ->get();
         $total_products = count($total_productos);

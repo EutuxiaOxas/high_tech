@@ -6,27 +6,27 @@
         @if (isset($slug))
         ->
             @switch($slug)
-                @case('serie-automotriz')
+                @case('automotriz')
                 <a class="text-dark" href="/categorias/serie-automotriz">
                     Serie Automotriz
                 </a>
                     @break
-                @case('serie-6000')
+                @case('6000')
                 <a class="text-dark" href="/categorias/serie-6000">
                     Serie 6000
                 </a>
                     @break
-                @case('serie-moto')
+                @case('moto')
                 <a class="text-dark" href="/categorias/serie-moto">
                     Serie Moto
                 </a>
                     @break
-                @case('serie-chumacera')
+                @case('chumacera')
                 <a class="text-dark" href="/categorias/chumaceras">
                     Serie Chumaceras
                 </a>
                     @break
-                @case('serie-cadenas')
+                @case('cadenas')
                     <a class="text-dark" href="/categorias/serie-cadenas">
                         Serie Cadenas
                     </a>

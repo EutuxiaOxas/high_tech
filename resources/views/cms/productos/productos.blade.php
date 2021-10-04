@@ -1,4 +1,4 @@
-@extends('cms')
+@extends('layouts.admin')
 @php
     $section = 'productos';
 @endphp
@@ -109,7 +109,7 @@
           <div class="row mb-2 px-0">
             <div class="col-sm-6">
               <span class="font-light text-lg">Productos</span>
-              <a class="btn btn-success px-3 ml-3" href="{{ route('products.excel.export') }}">Exportar Productos</a>
+              <!-- <a class="btn btn-success px-3 ml-3" href="{{ route('products.excel.export') }}">Exportar Productos</a> -->
               <button class="btn btn-success px-3 ml-3" data-toggle="modal" data-target="#modalProdcutsImport">Cargar Productos</button>
             </div>
             <div class="col-sm-6">
@@ -147,39 +147,41 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php $cont=0; @endphp
                             @foreach ($productos as $producto)
-                            <tr>
-                                <td>{{$producto->id}}</td>
-                                <!-- <td>
-                                    <div class="img_div_rounded" style="background-image: url('{{ Storage::url($producto->imagen) }}');"></div>
-                                </td> -->
-                                <td> <a class="text-primary" target="_blank" href="{{route('product', $producto->slug)}}">{{$producto->titulo}}</a></td>
-                                <td>{{$producto->categoria->category}}</td>
-                                <td class="text-center">
-                                    <strong>
-                                        @php $price = number_format($producto->precio, 2, '.', ','); @endphp
-                                        {{ $price }}
-                                    </strong>
-                                </td>
-                                <td class="text-center">{{$producto->codigo_universal }}</td>
-                                <td>
-                                    @can('cms.products.edit')
-                                    <a href="/cms/editar/producto/{{$producto->id}}">
-                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13.75 7.0025L10 3.2525L0.15 13.1025C0.0500001 13.2025 0 13.3225 0 13.4625V16.5025C0 16.7825 0.22 17.0025 0.5 17.0025H3.54C3.67 17.0025 3.8 16.9525 3.89 16.8525L13.75 7.0025ZM16.71 4.0425C17.1 3.6525 17.1 3.0225 16.71 2.6325L14.37 0.2925C13.98 -0.0975 13.35 -0.0975 12.96 0.2925L11 2.2525L14.75 6.0025L16.71 4.0425Z" fill="#226F87"/>
-                                        </svg>
-                                    </a>
-                                    @endcan
-                                    @can('cms.products.destroy')
-                                    <button class="btn p-0 ml-3" value="Eliminar" data-toggle="modal" data-target='#modalDelete{{$producto->id}}'>
-                                        <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V6C13 4.9 12.1 4 11 4H3C1.9 4 1 4.9 1 6V16ZM13 1H10.5L9.79 0.29C9.61 0.11 9.35 0 9.09 0H4.91C4.65 0 4.39 0.11 4.21 0.29L3.5 1H1C0.45 1 0 1.45 0 2C0 2.55 0.45 3 1 3H13C13.55 3 14 2.55 14 2C14 1.45 13.55 1 13 1Z" fill="#CE3F3D"/>
-                                        </svg>
-                                    </button>
-                                    
-                                    @endcan
-                                </td>
-                            </tr>
+                                @php $cont++; @endphp
+                                <tr>
+                                    <td>{{$cont}}</td>
+                                    <!-- <td>
+                                        <div class="img_div_rounded" style="background-image: url('{{ Storage::url($producto->imagen) }}');"></div>
+                                    </td> -->
+                                    <td> <a class="text-primary" target="_blank" href="{{route('product', $producto->slug)}}">{{$producto->titulo}}</a></td>
+                                    <td>{{$producto->categoria->category}}</td>
+                                    <td class="text-center">
+                                        <strong>
+                                            @php $price = number_format($producto->precio, 2, '.', ','); @endphp
+                                            {{ $price }}
+                                        </strong>
+                                    </td>
+                                    <td class="text-center">{{$producto->codigo_universal }}</td>
+                                    <td>
+                                        @can('cms.products.edit')
+                                        <a href="/cms/editar/producto/{{$producto->id}}">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13.75 7.0025L10 3.2525L0.15 13.1025C0.0500001 13.2025 0 13.3225 0 13.4625V16.5025C0 16.7825 0.22 17.0025 0.5 17.0025H3.54C3.67 17.0025 3.8 16.9525 3.89 16.8525L13.75 7.0025ZM16.71 4.0425C17.1 3.6525 17.1 3.0225 16.71 2.6325L14.37 0.2925C13.98 -0.0975 13.35 -0.0975 12.96 0.2925L11 2.2525L14.75 6.0025L16.71 4.0425Z" fill="#226F87"/>
+                                            </svg>
+                                        </a>
+                                        @endcan
+                                        @can('cms.products.destroy')
+                                        <button class="btn p-0 ml-3" value="Eliminar" data-toggle="modal" data-target='#modalDelete{{$producto->id}}'>
+                                            <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V6C13 4.9 12.1 4 11 4H3C1.9 4 1 4.9 1 6V16ZM13 1H10.5L9.79 0.29C9.61 0.11 9.35 0 9.09 0H4.91C4.65 0 4.39 0.11 4.21 0.29L3.5 1H1C0.45 1 0 1.45 0 2C0 2.55 0.45 3 1 3H13C13.55 3 14 2.55 14 2C14 1.45 13.55 1 13 1Z" fill="#CE3F3D"/>
+                                            </svg>
+                                        </button>
+                                        
+                                        @endcan
+                                    </td>
+                                </tr>
                             <!-- Modal -->
                             <div class="modal fade" id='modalDelete{{$producto->id}}' data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -226,10 +228,8 @@
                     <div class="row mt-4">
                         @foreach ($categories as $category)
                             <div class="col-6">
-                                <!-- <input class="checkbox" type="checkbox" name="category[]" id="{{$category->slug}}" value="{{$category->id}}">
-                                <label class="" for="{{$category->slug}}">{{$category->category}}</label> -->
                                 <label class="container_radio">{{$category->category}}
-                                    <input class="checkbox" type="radio" name="category" id="{{$category->slug}}" value="{{$category->id}}">
+                                    <input class="checkbox" type="radio" name="category" id="{{$category->slug}}" value="{{$category->id}}" required>
                                     <span class="checkmark"></span>
                                 </label>
                             </div>

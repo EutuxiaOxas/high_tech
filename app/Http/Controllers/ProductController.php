@@ -476,54 +476,6 @@ class ProductController extends Controller
 
         $file = $request->file('file');
         Excel::import( new ProductsImport, $file );
-        // $product_id = Product::latest('id')->first()->id;
-                
-        //         switch ($category) {
-        //             case 'automotriz':
-        //                 $auto_parametro = new Auto_Parameter;
-        //                 $auto_parametro->create([
-        //                     'product_id'     => $product_id,
-        //                     'posicion_rueda' => $row[7],
-        //                     'd_interno'      => $row[8],
-        //                     'd_externo'      => $row[9],
-        //                     'espesor'        => $row[10],
-        //                 ]);
-        //                 break;
-        //             case 'industrial':
-        //                 $moto_parametro = new Moto_Parameter;
-        //                 $moto_parametro->create([
-        //                     'product_id' => $product_id,
-        //                     'tipo_sello' => $row[7],
-        //                     'd_interno'  => $row[8],
-        //                     'd_externo'  => $row[9],
-        //                     'espesor'    => $row[10],
-        //                 ]);
-        //                 break;
-        //             case 'moto':
-        //                 $moto_parametro = new Moto_Parameter;
-        //                 $moto_parametro->create([
-        //                     'product_id' => $product_id,
-        //                     'tipo_sello' => $row[7],
-        //                     'd_interno'  => $row[8],
-        //                     'd_externo'  => $row[9],
-        //                     'espesor'    => $row[10],
-        //                 ]);
-        //                 break;
-        //             case 'chumacera':
-        //                 $chumacera_parametro = new Chumacera_Parameter;
-        //                 $chumacera_parametro->create([
-        //                     'product_id'         => $product_id,
-        //                     'diametro_chumacera' => $row[7],
-        //                 ]);
-        //                 break;
-        //             default:
-        //                 $cadena_parametro = new Cadena_Parameter;
-        //                 $cadena_parametro->create([
-        //                     'product_id' => $product_id,
-        //                     'pitch'      => $row[7],
-        //                 ]);
-        //                 break;
-        //         }
 
         return back()->with('Productos Importados Exitosamente!');
         

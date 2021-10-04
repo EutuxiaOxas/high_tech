@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @php
+    $page='info';
     $headerLinks="light";
     $logoNav1="dark";
     $logoNav2="light";
@@ -13,7 +14,7 @@
 @endphp
 
 @section('title')
-    Inicia sesión para concretar tu compra | High Tech Bearings
+        Finaliza tu compra | High Tech Bearings
 @endsection
 
 @section('content')
@@ -21,8 +22,13 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 mt-5 mt-md-0">
-                <span class="eyebrow mb-1 text-dark">Registrarte con nosotros para concretar tu compra</span> <br>
-                <h2>Bienvenido</h2>
+                @auth
+                    <span class="eyebrow mb-1 text-dark">¡Excelente! Ya puedes finalizar tu compra</span> <br>
+                    <h2>Bienvenido {{ auth()->user()->name }}</h2>
+                @else
+                    <span class="eyebrow mb-1 text-dark">Registrarte con nosotros para concretar tu compra</span> <br>
+                    <h2>Bienvenido</h2>
+                @endauth
             </div>
         </div>
         <div class="row justify-content-around">
@@ -31,13 +37,19 @@
                 <div class="row shadow-md p-4" style="background-color: #f2f2f2;border-radius:7px;">
                     <div class="col-12 text-center mb-4">
                         <img src="{{asset('svg/logo-'. $logoNav1 .'.svg')}}" alt="">
-
                     </div>
-                    <div class="col-12 text-center mb-3" style="font-size: 1.2rem;">
-                        Para continuar debes iniciar sesión
-                    </div>
-                    <a class="btn btn-link col-sm-6" href="{{ route('register') }}">Crear cuenta</a>
-                    <a class="btn btn-primary col-sm-6" href="{{ route('login') }}">Iniciar sesión</a>
+                    @auth
+                        <div class="col-12 text-center mb-3" style="font-size: 1.2rem;">
+                            Listo! Ahora puedes concretar tu compra
+                        </div>
+                        <a class="btn btn-primary col-sm-12" href="{{ route('order.create') }}">Finalizar compra</a>
+                    @else
+                        <div class="col-12 text-center mb-3" style="font-size: 1.2rem;">
+                            Para continuar debes iniciar sesión
+                        </div>
+                        <a class="btn btn-link col-sm-6" href="{{ route('register') }}">Crear cuenta</a>
+                        <a class="btn btn-primary col-sm-6" href="{{ route('login') }}">Iniciar sesión</a>
+                    @endauth
                 </div>
 
             </div>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('imagenes/favicon.png') }}">
   <title>Administración</title>
 
   <!-- Font Awesome Icons -->
@@ -54,14 +54,20 @@
 
 <div class="wrapper">
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-dark navbar-lightblue">
+  <nav class="main-header navbar navbar-expand  
+    @role('buyer')
+      navbar-light
+    @else
+      navbar-dark navbar-lightblue
+    @endrole
+    ">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/cms" class="nav-link">Home</a>
+        <a href="{{ route('home') }}" class="nav-link">Inicio</a>
       </li>
     </ul>
 
@@ -80,125 +86,154 @@
     </ul>
   </nav>
 
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar elevation-4 @role('buyer') sidebar-light-primary  @else sidebar-dark-primary @endrole ">
     <!-- Brand Logo -->
-    <a href="/cms" class="brand-link">
-      <span class="brand-text font-weight-light">Dashboard</span>
+    <a href="{{ route('home') }}" class="brand-link text-center">
+      <span class="brand-text font-weight-light">
+        @role('buyer') 
+          <img class="navbar-logo navbar-logo-dark" src="{{asset('svg/logo-dark.svg')}}" alt="Logo High Tech" loading="lazy" width="40%">
+        @else
+          <img class="navbar-logo navbar-logo-dark" src="{{asset('svg/logo-light.svg')}}" alt="Logo High Tech" loading="lazy" width="40%">
+        @endrole
+      </span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+      <nav class="mt-5">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a class="nav-link @if ($section == 'dashboard') active @endif" href="/cms">
+            <a class="nav-link @if ($section == 'dashboard') active @endif" href="{{ route('cms.index') }}">
               <i class="nav-icon fas fa-home"></i>
               <p>
-                Dashboard
+                Mi Perfil
               </p>
             </a>
           </li>
+
           @can('cms.users.show')
 
-          <li class="nav-item">
-            <a class="nav-link @if ($section == 'usuarios') active @endif" href="{{ route('cms.users.show') }}">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Usuarios
-              </p>
-            </a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link @if ($section == 'usuarios') active @endif" href="{{ route('cms.users.show') }}">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Usuarios
+                </p>
+              </a>
+            </li>
 
           @endcan
 
           {{-- @can('cms.users.show') --}}
 
-          <!-- <li class="nav-item">
-            <a class="nav-link @if ($section == 'roles') active @endif" href="{{ route('cms.role.index') }}">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Roles
-              </p>
-            </a>
-          </li> -->
+            <!-- <li class="nav-item">
+              <a class="nav-link @if ($section == 'roles') active @endif" href="{{ route('cms.role.index') }}">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Roles
+                </p>
+              </a>
+            </li> -->
 
           {{-- @endcan --}}
-          {{-- <li class="nav-item">
-            <a class="nav-link @if ($section == 'productos') active @endif" href="/cms/productos">
+
+          @can('cms.products.show')
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link secciones tienda @if ($section == 'productos') active @endif">
                 <i class="nav-icon fas fa-store"></i>
                 <p>
-                    Productos
+                  Productos
+                  <i class="fas fa-angle-left right"></i>
                 </p>
-            </a>
-          </li> --}}
-          @can('cms.products.show')
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link secciones tienda @if ($section == 'productos') active @endif">
-              <i class="nav-icon fas fa-store"></i>
-              <p>
-                Productos
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @can('cms.products.categories.show')
-                <li class="nav-item">
-                    <a href="/cms/productos/categorias" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Categorías Productos</p>
+              </a>
+              <ul class="nav nav-treeview">
+                  @can('cms.products.categories.show')
+                  <li class="nav-item">
+                      <a href="/cms/productos/categorias" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Categorías Productos</p>
+                      </a>
+                  </li>
+                  @endcan
+                  @can('cms.products.parameters.show')
+                  <!-- <li class="nav-item">
+                    <a href=" {{ route('cms.products.parameters.show') }} " class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Parametros Generales</p>
                     </a>
-                </li>
-                @endcan
-                @can('cms.products.parameters.show')
-                <!-- <li class="nav-item">
-                  <a href=" {{ route('cms.products.parameters.show') }} " class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Parametros Generales</p>
-                  </a>
-                </li> -->
-                @endcan
-                @can('cms.products.show')
-                <li class="nav-item">
-                  <a href="{{ route('cms.products.show') }}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Productos</p>
-                  </a>
-                </li>
-                @endcan
+                  </li> -->
+                  @endcan
+                  @can('cms.products.show')
+                  <li class="nav-item">
+                    <a href="{{ route('cms.products.show') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Productos</p>
+                    </a>
+                  </li>
+                  @endcan
 
-            </ul>
-          </li>
+              </ul>
+            </li>
+
           @endcan
+
+          @can('cms.orders.show')
+
+            <li class="nav-item has-treeview">
+              <a href="{{ route('cms.orders.show') }}" class="nav-link secciones tienda @if ($section == 'orders') active @endif">
+                <i class="nav-icon fas fa-tag"></i>
+                <p>
+                  Ventas
+                </p>
+              </a>
+            </li>
+
+          @endcan
+
           @can('cms.blog.show')
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link secciones tienda @if ($section == 'blog') active @endif">
-              <i class="nav-icon fas fa-pencil-alt"></i>
-              <p>
-                Blog
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-                @can('cms.blog.categories.show')
-                <li class="nav-item">
-                  <a href="/cms/blog/categorias" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Categorias Blog</p>
-                  </a>
-                </li>
-                @endcan
-                @can('cms.blog.show')
-                <li class="nav-item">
-                    <a href="/cms/blog/articulos" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Articulos Blog</p>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link secciones tienda @if ($section == 'blog') active @endif">
+                <i class="nav-icon fas fa-pencil-alt"></i>
+                <p>
+                  Blog
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                  @can('cms.blog.categories.show')
+                  <li class="nav-item">
+                    <a href="/cms/blog/categorias" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Categorias Blog</p>
                     </a>
-                </li>
-                @endcan
-            </ul>
-          </li>
+                  </li>
+                  @endcan
+                  @can('cms.blog.show')
+                  <li class="nav-item">
+                      <a href="/cms/blog/articulos" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Articulos Blog</p>
+                      </a>
+                  </li>
+                  @endcan
+              </ul>
+            </li>
+          @endcan
+
+          @can('cms.purchases.show')
+
+            <li class="nav-item has-treeview">
+              <a href="{{ route('cms.purchases.show') }}" class="nav-link secciones tienda @if ($section == 'orders') active @endif">
+                <i class="nav-icon fas fa-store"></i>
+                <p>
+                  Mis Compras
+                </p>
+              </a>
+            </li>
+
           @endcan
         </ul>
       </nav>

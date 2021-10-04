@@ -7,7 +7,7 @@
 @endphp
 
 @section('title')
- Productos de High Tech Bearings
+    {{$producto->titulo}} | High Tech Bearings
 @endsection
 
 <style>
@@ -77,16 +77,22 @@
             <span class="text-muted text-sm">{{$producto->quantity}} disponibles.</span>
         </div>
         <div class="col-12 d-md-none">
-            <div class="row px-1">
-                <div class="col-5 px-0">
-                    <select class="d-inline text-sm form-control-sm quantityProduct" name="quantity">
-                        @for ($i = 1; $i <= $producto->quantity; $i++)
-                            <option value="{{ $i }}">{{ $i }} {{  $i != 1 ? 'unidades' : 'unidad' }}</option>
-                        @endfor
-                    </select>
+            @if ( $producto->quantity > 0 )
+                <div class="row px-1">
+                    <div class="col-5 px-0">
+                        <select class="d-inline text-sm form-control-sm quantityProduct" name="quantity">
+                            @for ($i = 1; $i <= $producto->quantity; $i++)
+                                <option value="{{ $i }}">{{ $i }} {{  $i != 1 ? 'unidades' : 'unidad' }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                    <button class="col-7 btn btn-primary btn-sm d-inline text-sm addProduct">Agregar al carrito</button>
                 </div>
-                <button class="col-7 btn btn-primary btn-sm d-inline text-sm addProduct">Agregar al carrito</button>
-            </div>
+            @lkse
+                <div class="row">
+                    <span class="col-12 btn btn-secondary d-inline">Producto agotado</span>
+                </div>
+            @endif
         </div>
 
         <div class="col-12 col-md-6">
@@ -116,16 +122,22 @@
                     <small class="text-muted">{{$producto->quantity}} disponibles.</small>
                 </div>
                 <div class="col-12 mt-2">
-                    <div class="row">
-                        <div class="col-4">
-                            <select class="d-inline quantityProduct" name="quantity">
-                                @for ($i = 1; $i <= $producto->quantity; $i++)
-                                    <option value="{{ $i }}">{{ $i }} {{  $i != 1 ? 'unidades' : 'unidad' }}</option>
-                                @endfor
-                            </select>
+                    @if ( $producto->quantity > 0 )
+                        <div class="row">
+                            <div class="col-4">
+                                <select class="d-inline quantityProduct" name="quantity">
+                                    @for ($i = 1; $i <= $producto->quantity; $i++)
+                                        <option value="{{ $i }}">{{ $i }} {{  $i != 1 ? 'unidades' : 'unidad' }}</option>
+                                    @endfor
+                                </select>
+                            </div>
+                            <button class="col-8 btn btn-primary d-inline addProduct">Agregar al carrito</button>
                         </div>
-                        <button class="col-8 btn btn-primary d-inline addProduct">Agregar al carrito</button>
-                    </div>
+                    @else
+                        <div class="row">
+                            <span class="col-12 btn btn-secondary d-inline">Producto agotado</span>
+                        </div>
+                    @endif
                 </div>
             </div>
 
