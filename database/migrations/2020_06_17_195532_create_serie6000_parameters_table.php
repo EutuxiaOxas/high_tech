@@ -16,10 +16,10 @@ class CreateSerie6000ParametersTable extends Migration
         Schema::create('serie6000_parameters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
-            $table->string('tipo_sello');
-            $table->float('d_interno');
-            $table->float('d_externo');
-            $table->float('espesor');
+            $table->string('tipo_sello')->nullable();
+            $table->float('d_interno')->nullable();
+            $table->float('d_externo')->nullable();
+            $table->float('espesor')->nullable();
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')

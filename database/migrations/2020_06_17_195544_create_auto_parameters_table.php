@@ -18,9 +18,9 @@ class CreateAutoParametersTable extends Migration
             $table->foreignId('product_id');
             // $table->foreignId('posicion_id');
             $table->string('posicion_rueda')->nullable();
-            $table->float('d_interno');
-            $table->float('d_externo');
-            $table->float('espesor');
+            $table->float('d_interno')->nullable();
+            $table->float('d_externo')->nullable();
+            $table->float('espesor')->nullable();
             $table->timestamps();
 
 

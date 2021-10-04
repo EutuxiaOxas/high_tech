@@ -16,7 +16,7 @@ class CreateChumaceraParametersTable extends Migration
         Schema::create('chumacera_parameters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
-            $table->string('diametro_chumacera');
+            $table->string('diametro_chumacera')->nullable();
             // $table->foreignId('tipo_chum_id');
             // $table->foreignId('forma_chum_id');
             // $table->integer('No_huecos');

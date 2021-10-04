@@ -16,7 +16,7 @@ class CreateCadenaParametersTable extends Migration
         Schema::create('cadena_parameters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
-            $table->string('pitch');
+            $table->string('pitch')->nullable();
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')
