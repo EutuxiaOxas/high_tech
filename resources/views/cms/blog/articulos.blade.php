@@ -47,7 +47,7 @@
         <div class="container-fluid px-0">
             <div class="row mb-2 px-0">
                 <div class="col-sm-6">
-                    <span class="font-light text-lg">Ar´ticluos del Blog</span>
+                    <span class="font-light text-lg">Artículos del Blog</span>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
