@@ -88,7 +88,7 @@
                     </div>
                     <button class="col-7 btn btn-primary btn-sm d-inline text-sm addProduct">Agregar al carrito</button>
                 </div>
-            @lkse
+            @else
                 <div class="row">
                     <span class="col-12 btn btn-secondary d-inline">Producto agotado</span>
                 </div>
