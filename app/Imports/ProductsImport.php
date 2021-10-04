@@ -48,22 +48,22 @@ class ProductsImport implements ToCollection
                         $category_id = $category->id;
                         switch ($category->slug) {
                             case 'automotriz':
-                                $imagen = 'public/products_images/automotriz.jpg';
+                                $imagen = 'public/products_images/automotriz.webp';
                                 break;
                             case 'industrial':
-                                $imagen = 'public/products_images/industrial.jpg';
+                                $imagen = 'public/products_images/industrial.webp';
                                 break;
                             case 'moto':
-                                $imagen = 'public/products_images/moto.jpg';
+                                $imagen = 'public/products_images/moto.webp';
                                 break;
                             case 'chumacera':
-                                $imagen = 'public/products_images/chumacera.jpg';
+                                $imagen = 'public/products_images/chumacera.webp';
                                 break;
                             case 'cadenas':
-                                $imagen = 'public/products_images/cadenas.jpg';
+                                $imagen = 'public/products_images/cadenas.webp';
                                 break;
                             default:
-                                $imagen = 'public/products_images/industrial.jpg';
+                                $imagen = 'public/products_images/industrial.webp';
                                 break;
                         }
     

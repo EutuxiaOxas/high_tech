@@ -3,7 +3,7 @@
       <div class="row align-items-center justify-content-center justify-content-lg-between">
         <div class="col-lg-7 mb-0" style="max-height: 749.859px;">
           <div class="owl-carousel owl-carousel-single pr-0 mb-0 mb-md-4" data-dots="true" data-autoheight="true">
-            <img src="{{asset('imagenes/general_info/banner.jpg')}}" alt="Image" loading="lazy">
+            <img src="{{asset('imagenes/general_info/banner.webp')}}" alt="Image" loading="lazy">
           </div>
         </div>
         <div class="col-md-8 col-lg-5 pl-lg-4">
