@@ -30,6 +30,11 @@
                     <a class="btn btn-success px-5" href="{{ route('cms.purchases.show') }}">Ver mi compra</a>
                 </div>
             </div>
+
+            <script>
+                // Elimino la compra del local storage porq ya se creo
+                localStorage.removeItem('productsInShoppingCar');
+            </script>
         @endif
         <div class="card border-primary mb-3 col" style="max-width: 18rem;">
             <div class="card-header">¡Bienvenido {{ auth()->user()->name }}!</div>

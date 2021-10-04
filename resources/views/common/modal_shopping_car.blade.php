@@ -109,7 +109,7 @@
 
                         select = document.createElement('select');
 
-                        for (let i = 0; i <= element.avalaible; i++) {
+                        for (let i = 1; i <= (element.avalaible - 1) ; i++) {
                             let option = document.createElement("option");
                             option.text = i;
                             option.value = i;
