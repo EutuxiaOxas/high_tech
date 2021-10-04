@@ -16,9 +16,9 @@ class CreateMotoParametersTable extends Migration
         Schema::create('moto_parameters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
-            $table->float('d_interno')->nullable();
-            $table->float('d_externo')->nullable();
-            $table->float('espesor')->nullable();
+            $table->string('d_interno')->nullable();
+            $table->string('d_externo')->nullable();
+            $table->string('espesor')->nullable();
             $table->string('tipo_sello')->nullable();
             $table->timestamps();
 

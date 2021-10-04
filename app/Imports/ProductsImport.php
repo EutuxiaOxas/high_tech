@@ -20,7 +20,7 @@ class ProductsImport implements ToCollection
     public function collection(Collection $rows)
     {
         $cont = 0;
-        foreach ($rows as $index => $row) 
+        foreach ($rows as $row) 
         {
             // ignoro la primera fila
             if( $cont > 0 ){
@@ -69,11 +69,11 @@ class ProductsImport implements ToCollection
     
                         Product::create([
                             'codigo_universal' => $row[0],
-                            'titulo'           => $row[2],
-                            'descripcion'      => $row[3],
+                            'titulo'           => str_replace('"','',$row[2]),
+                            'descripcion'      => str_replace('"','',$row[3]),
                             'quantity'         => $row[4],
                             'precio'           => $row[5],
-                            'aplicacion'       => $row[6],
+                            'aplicacion'       => str_replace('"','',$row[6]),
                             'slug'             => SlugService::createSlug(Product::class, 'slug', trim($row[2])),
                             'category_id'      => $category_id,
                             'imagen'           => $imagen,
@@ -94,10 +94,10 @@ class ProductsImport implements ToCollection
                             case 'industrial':
                                 Serie6000_Parameter::create([
                                     'product_id' => $product_id,
-                                    'tipo_sello' => $row[7],
-                                    'd_interno'  => $row[8],
-                                    'd_externo'  => $row[9],
-                                    'espesor'    => $row[10],
+                                    'tipo_sello' => str_replace('"','',$row[7]),
+                                    'd_interno'  => str_replace('"','',$row[8]),
+                                    'd_externo'  => str_replace('"','',$row[9]),
+                                    'espesor'    => str_replace('"','',$row[10]),
                                 ]);
                                 break;
                             case 'moto':

@@ -17,9 +17,9 @@ class CreateSerie6000ParametersTable extends Migration
             $table->id();
             $table->foreignId('product_id');
             $table->string('tipo_sello')->nullable();
-            $table->float('d_interno')->nullable();
-            $table->float('d_externo')->nullable();
-            $table->float('espesor')->nullable();
+            $table->string('d_interno')->nullable();
+            $table->string('d_externo')->nullable();
+            $table->string('espesor')->nullable();
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')
