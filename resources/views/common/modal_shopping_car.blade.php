@@ -71,97 +71,99 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const open_modal_shopping_car = document.getElementById('open_modal_shopping_car')
-        open_modal_shopping_car.addEventListener('click', event => {
 
-            let containerButtonFinalizar = document.getElementById('containerButtonFinalizar')
-            containerButtonFinalizar.style.display = 'none';
+        document.querySelectorAll('.open_modal_shopping_car').forEach(item => {
+            item.addEventListener('click', event => {
 
-            // obtengo los productos del local storage
-            let productsInShoppingCar = localStorage.getItem('productsInShoppingCar');
+                let containerButtonFinalizar = document.getElementById('containerButtonFinalizar')
+                containerButtonFinalizar.style.display = 'none';
 
-            if (productsInShoppingCar !== null) {
-                let products = JSON.parse(productsInShoppingCar);
+                // obtengo los productos del local storage
+                let productsInShoppingCar = localStorage.getItem('productsInShoppingCar');
 
-                // total a pagar
-                let amount = 0;
+                if (productsInShoppingCar !== null) {
+                    let products = JSON.parse(productsInShoppingCar);
 
-                const container_products_modal_shopping_car = document.getElementById('container_products_modal_shopping_car');
-                container_products_modal_shopping_car.innerHTML = '';
-                const example = document.getElementById('example')
+                    // total a pagar
+                    let amount = 0;
 
-                products.forEach(element => {
-                    let cardProduct = example.firstElementChild.cloneNode(true);
+                    const container_products_modal_shopping_car = document.getElementById('container_products_modal_shopping_car');
+                    container_products_modal_shopping_car.innerHTML = '';
+                    const example = document.getElementById('example')
 
-                    cardProduct.querySelector('.product_id').textContent = element.id
+                    products.forEach(element => {
+                        let cardProduct = example.firstElementChild.cloneNode(true);
 
-                    let imgProduct = cardProduct.querySelector('.imgProduct')
-                    let titleProduct = cardProduct.querySelector('.titleProduct')
-                    let priceProduct = cardProduct.querySelector('.priceProduct')
-                    let selectQuantity = cardProduct.querySelector('.selectQuantity')
+                        cardProduct.querySelector('.product_id').textContent = element.id
 
-                    imgProduct.src = element.image
-                    titleProduct.textContent = element.title
-                    priceProduct.textContent = element.price
-                    amount += element.price * element.quantity;
+                        let imgProduct = cardProduct.querySelector('.imgProduct')
+                        let titleProduct = cardProduct.querySelector('.titleProduct')
+                        let priceProduct = cardProduct.querySelector('.priceProduct')
+                        let selectQuantity = cardProduct.querySelector('.selectQuantity')
+
+                        imgProduct.src = element.image
+                        titleProduct.textContent = element.title
+                        priceProduct.textContent = element.price
+                        amount += element.price * element.quantity;
 
 
-                    select = document.createElement('select');
+                        select = document.createElement('select');
 
-                    for (let i = 0; i <= element.avalaible; i++) {
-                        let option = document.createElement("option");
-                        option.text = i;
-                        option.value = i;
-                        select.add(option);
-                    }
-                    selectQuantity.appendChild(select)
-                    select.value = element.quantity
-                    select.style.opacity = 1;
-                    select.style.width = '100px';
-                    select.style.border = 'solid 1px #eee';
-                    select.style.fontSize = '0.85rem';
-                    select.style.fontWeight = '500';
-                    select.style.borderRadius = '2px';
-                    select.style.padding = '4px 15px';
-                    select.classList.add('select_modal');
+                        for (let i = 0; i <= element.avalaible; i++) {
+                            let option = document.createElement("option");
+                            option.text = i;
+                            option.value = i;
+                            select.add(option);
+                        }
+                        selectQuantity.appendChild(select)
+                        select.value = element.quantity
+                        select.style.opacity = 1;
+                        select.style.width = '100px';
+                        select.style.border = 'solid 1px #eee';
+                        select.style.fontSize = '0.85rem';
+                        select.style.fontWeight = '500';
+                        select.style.borderRadius = '2px';
+                        select.style.padding = '4px 15px';
+                        select.classList.add('select_modal');
 
-                    // agrego el evento al cambiar la cantidad mediante el select
-                    select.addEventListener('change', function(e) {
-                        updateProductInShoppingCar(element.id, e.target.value);
+                        // agrego el evento al cambiar la cantidad mediante el select
+                        select.addEventListener('change', function(e) {
+                            updateProductInShoppingCar(element.id, e.target.value);
+                        })
+
+                        container_products_modal_shopping_car.appendChild(cardProduct);
+                    });
+
+
+                    // agrego el total
+                    document.getElementById('amount_modal_shopping_car').textContent = `${amount} $USD`
+
+                }
+                updateBadgeProducts();
+                updateTotalAmount();
+
+
+                // Eliminar un producto del carrit de compras
+                const delete_product = document.querySelectorAll('.delete_product')
+                delete_product.forEach(element => {
+
+                    element.addEventListener('click', event => {
+
+                        const product_div = element.parentElement.parentElement.parentElement.parentElement;
+                        product_div.style.display = 'none';
+
+                        let product_id = product_div.querySelector('.product_id').textContent
+
+                        // Lo elimino del localstorage
+                        deleteProductByLocalStorage(product_id);
+
+                        updateBadgeProducts();
+                        updateTotalAmount();
+
                     })
 
-                    container_products_modal_shopping_car.appendChild(cardProduct);
                 });
-
-
-                // agrego el total
-                document.getElementById('amount_modal_shopping_car').textContent = `${amount} $USD`
-
-            }
-            updateBadgeProducts();
-            updateTotalAmount();
-
-
-            // Eliminar un producto del carrit de compras
-            const delete_product = document.querySelectorAll('.delete_product')
-            delete_product.forEach(element => {
-
-                element.addEventListener('click', event => {
-
-                    const product_div = element.parentElement.parentElement.parentElement.parentElement;
-                    product_div.style.display = 'none';
-
-                    let product_id = product_div.querySelector('.product_id').textContent
-
-                    // Lo elimino del localstorage
-                    deleteProductByLocalStorage(product_id);
-
-                    updateBadgeProducts();
-                    updateTotalAmount();
-
-                })
-
-            });
+            })
         })
 
         updateBadgeProducts();
@@ -280,19 +282,23 @@
         
         let carEmptyMessage = document.getElementById('carEmptyMessage')
         let containerButtonFinalizar = document.getElementById('containerButtonFinalizar')     
-        const badge_products = document.getElementById('badge_products')
+        const badge_products = document.querySelectorAll('.badge_products')
 
         if (productsInShoppingCar !== null) {
             let products = JSON.parse(productsInShoppingCar);
 
             if (products.length > 0) {
 
-                badge_products.style.display = 'block';
+                badge_products.forEach(element => {
+                    element.style.display = 'block';
+                });
                 carEmptyMessage.style.display = 'none';
                 containerButtonFinalizar.style.display = 'block';
 
             } else {
-                badge_products.style.display = 'none';
+                badge_products.forEach(element => {
+                    element.style.display = 'none';
+                });
                 carEmptyMessage.style.display = 'block';
                 containerButtonFinalizar.style.display = 'none';
             }

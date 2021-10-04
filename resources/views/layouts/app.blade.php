@@ -45,7 +45,7 @@
     <script src="{{ asset('js/shoppingCar.js') }}"></script>
 
     <style>
-        .badge{
+        .badge_shopping_car{
             position: absolute;
             bottom: 5px;
             right: 0px;
@@ -59,6 +59,12 @@
             justify-content: center;
             align-content: center;
             align-items: center;
+        }
+        @media (max-width: 768px) {
+          .badge_shopping_car{
+            bottom: 10px !important;
+            right: -10px;
+          }
         }
         .selecselect_modal{
             width: 75px;
