@@ -180,7 +180,7 @@
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
-                            @role('buyer')
+                            @if($user->role == 'buyer')
                             @else
                                 <tr>
                                     <td>{{ $user->name }}</td>
@@ -195,7 +195,7 @@
                                             data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
                                     </td>
                                 </tr>
-                            @endrole
+                            @endif
                         @endforeach
                     </tbody>
                 </table>
