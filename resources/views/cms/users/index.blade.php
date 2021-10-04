@@ -180,19 +180,22 @@
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
-                        <tr>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ ucwords( $user->roles[0]->name ) }}</td>
-                            <td>
-                                <button type="button" id="{{ $user->id }}" class="btn btn-sm btn-info change_pass" data-toggle="modal"
-                                    data-target="#modalContraseña">Editar Contraseña</button>
-                                <button type="button" id="{{ $user->id }}" class="btn btn-sm btn-primary editar"
-                                    data-toggle="modal" data-target="#modalEditar">Editar</button>
-                                <button type="button" id="{{ $user->id }}" class="btn btn-sm btn-danger eliminar"
-                                    data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
-                            </td>
-                        </tr>
+                            @role('buyer')
+                            @else
+                                <tr>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ ucwords( $user->roles[0]->name ) }}</td>
+                                    <td>
+                                        <button type="button" id="{{ $user->id }}" class="btn btn-sm btn-info change_pass" data-toggle="modal"
+                                            data-target="#modalContraseña">Editar Contraseña</button>
+                                        <button type="button" id="{{ $user->id }}" class="btn btn-sm btn-primary editar"
+                                            data-toggle="modal" data-target="#modalEditar">Editar</button>
+                                        <button type="button" id="{{ $user->id }}" class="btn btn-sm btn-danger eliminar"
+                                            data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
+                                    </td>
+                                </tr>
+                            @endrole
                         @endforeach
                     </tbody>
                 </table>
