@@ -275,6 +275,9 @@
 @include('components.social_lateral')
 {{-- End Social lateral --}}
 
+<!-- Producto Agregado al carrito -->
+<div id="message_success">¡Agregado con éxito!</div>
+
 <script>
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -341,6 +344,9 @@
 
                     updateBadgeProducts();
 
+                    // notificacion visual de producto agregado al carrito
+                    successProductAdd();
+
                 })
 
             });
@@ -378,6 +384,21 @@
 
 
     });
+
+    
+    // Funcion para notificacion de producto agregado exitosamente
+    function successProductAdd(){
+        let messageSuccess = document.getElementById("message_success");
+        messageSuccess.style.visibility = "visible";
+        messageSuccess.style.opacity = "1";
+        messageSuccess.classList.add('transitionClean');
+        setTimeout(hiddenMessageAddProduct,2250);
+        function hiddenMessageAddProduct(){
+            messageSuccess.style.opacity = "0";
+            messageSuccess.style.visibility = "hidden";
+            messageSuccess.classList.remove('transitionClean');
+        }
+    }
 </script>
 
 

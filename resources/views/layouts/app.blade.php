@@ -78,6 +78,27 @@
           -webkit-box-shadow: 0px 2px 7px 0px rgba(135,135,135,0.75);
           -moz-box-shadow: 0px 2px 7px 0px rgba(135,135,135,0.75);
         }
+        #message_success {
+          position: fixed;
+          bottom: 25px;
+          left: -55px;
+          background-color: #222;
+          font-size: 1rem;
+          width: 220px;
+          padding: 0.75rem 1.25rem;
+          border-radius: 7px;
+          z-index: 1750;
+          color: #fff;
+          text-align: center;
+          -webkit-box-shadow: 0px 3px 8px 1px rgba(0, 0, 0, 0.29);
+          box-shadow: 0px 3px 8px 1px rgba(0, 0, 0, 0.29);
+          visibility: hidden;
+          opacity: 0.5;
+      }
+      .transitionClean {
+        left: 7.5vw !important;
+        transition: all 1s !important;
+    }
     </style>
 
   </body>
