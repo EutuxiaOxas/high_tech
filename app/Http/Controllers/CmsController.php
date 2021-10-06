@@ -17,11 +17,6 @@ class CmsController extends Controller
         }
     }
 
-    public function subscribersView(){
-    	$subscriptores = Subscriber::all();
-    	return view('cms.subscriptores')->with(compact('subscriptores'));
-    }
-
     public function clubView(){
     	$users = User::all();
     	return view('cms.club')->with(compact('users'));

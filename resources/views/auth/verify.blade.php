@@ -1,6 +1,6 @@
 @extends('layouts.cms')
 @section('content')
-<meta name="robots" content="noindex,nofollow" />
+    <meta name="robots" content="noindex,nofollow" />
 @endsection
 
 @section('content')

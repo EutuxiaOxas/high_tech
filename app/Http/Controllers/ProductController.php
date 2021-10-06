@@ -28,8 +28,10 @@ use File;
 
 class ProductController extends Controller
 {
+    private $perPage = 75;
+
     public function index(){
-        $productos = Product::all();
+        $productos = Product::where('quantity', '>', 0)->paginate($this->perPage);
         $categories = Category::all();
     	return view('cms.productos.productos')->with(compact('productos', 'categories'));
     }

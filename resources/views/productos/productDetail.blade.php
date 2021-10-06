@@ -275,8 +275,7 @@
 @include('components.social_lateral')
 {{-- End Social lateral --}}
 
-<!-- Producto Agregado al carrito -->
-<div id="message_success">¡Agregado con éxito!</div>
+
 
 <script>
 
@@ -389,6 +388,7 @@
     // Funcion para notificacion de producto agregado exitosamente
     function successProductAdd(){
         let messageSuccess = document.getElementById("message_success");
+        messageSuccess.innerHTML = '¡Agregado con éxito!'
         messageSuccess.style.visibility = "visible";
         messageSuccess.style.opacity = "1";
         messageSuccess.classList.add('transitionClean');

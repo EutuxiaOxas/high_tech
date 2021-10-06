@@ -7,6 +7,7 @@ use App\Category;
 use  App\Blog\Article;
 use  App\Blog\Keyword;
 use App\Product;
+use App\Subscriptor;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -133,5 +134,22 @@ class HomeController extends Controller
         }else{
             return route('home');
         }
+    }
+
+
+    public function subscriber( $email ){
+
+        $existEmail = Subscriptor::where('email', $email)->first();
+
+        if( $existEmail ){
+            return 'Ya estás suscrito!';
+        }else{
+            
+            Subscriptor::create([
+                'email' => $email
+            ]);
+            return 'Gracias por suscribirte!';
+        }
+
     }
 }

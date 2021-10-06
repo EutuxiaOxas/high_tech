@@ -102,7 +102,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        return view('cms.orders.edit_order', compact('order'));
     }
 
     /**
@@ -114,7 +114,17 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $new_status = $request->status;
+        $order_id = $request->order_id;
+        $order = Order::findOrFail($order_id);
+
+        $order->update([
+            'status' => $new_status
+        ]);
+
+        // reducir la cantidad en inventario
+        
+        return back()->with('info', 'Orden actualizada Exitosamente!');
     }
 
     /**
@@ -137,5 +147,11 @@ class OrderController extends Controller
     public function createTransaction()
     {
         return view('transactions.index');
+    }
+
+
+    public function orders(){
+        $orders = Order::orderBy('created_at','DESC')->get();
+    	return view('cms.orders.index', compact('orders'));
     }
 }

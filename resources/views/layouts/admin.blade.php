@@ -74,7 +74,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item d-none d-sm-inline-block">
-        <form action="/logout" id="logout_form" method="POST">
+        <form class="mb-0" action="/logout" id="logout_form" method="POST">
           @csrf
           <a href="#" onclick="document.getElementById('logout_form').submit()" class="nav-link">Cerrar Sesión</a>
         </form>
@@ -115,13 +115,35 @@
 
           @can('cms.users.show')
 
-            <li class="nav-item">
-              <a class="nav-link @if ($section == 'usuarios') active @endif" href="{{ route('cms.users.show') }}">
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link secciones tienda @if ($section == 'usuarios') active @endif">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   Usuarios
+                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('cms.users.show') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Administrativos</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('cms.users.buyers') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Compradores</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('cms.users.subscribers') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Suscriptores</p>
+                        </a>
+                    </li>
+
+              </ul>
             </li>
 
           @endcan

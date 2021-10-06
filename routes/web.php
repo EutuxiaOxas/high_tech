@@ -18,9 +18,6 @@ Route::get('/products/search/filters', 'ProductsPageController@showSearch')->nam
 // Detalles del product
 Route::get('/product/{slug}', 'ProductsPageController@show')->name('product');
 
-// Carrito de compras
-Route::get('/carrito', 'HomeController@cart')->name('cart');
-
 /* ----------------------------  RUTAS DE PRUEBA PARA EL CMS -----------------------*/
 
 Route::middleware('auth')->group(function () {
@@ -39,6 +36,8 @@ Route::middleware('auth')->group(function () {
     /* ----------  RUTA USUARIOS ---------*/
 	Route::get('/cms/users', 'Admin\UserController@index')->middleware('can:cms.users.show')->name('cms.users.show');
 	Route::get('/cms/users/user', 'Admin\UserController@create')->middleware('can:cms.users.create')->name('cms.users.create');
+	Route::get('/cms/users/buyers', 'Admin\UserController@buyers')->middleware('can:cms.users.show')->name('cms.users.buyers');
+	Route::get('/cms/users/subscribers', 'Admin\UserController@subscribers')->middleware('can:cms.users.show')->name('cms.users.subscribers');
 
     /* ----------  RUTA CATEGORIAS PRODUCTOS CONTROLLADOR ---------*/
     Route::get('/cms/productos/categorias', 'ProductController@showCategorias')->middleware('can:cms.products.categories.show')->name('cms.products.categories.show');
@@ -78,7 +77,9 @@ Route::middleware('auth')->group(function () {
 	Route::delete('/cms/blog/eliminar/articulo/{id}', 'Blog\ArticuloController@destroy')->middleware('can:cms.blog.destroy')->name('cms.blog.destroy');
 
 	/* ----------  RUTA VENTAS-ORDERS ---------*/
-	Route::get('/cms/orders', 'Admin\UserController@orders')->middleware('can:cms.orders.show')->name('cms.orders.show');
+	Route::get('/cms/orders', 'OrderController@orders')->middleware('can:cms.orders.show')->name('cms.orders.show');
+	Route::get('/cms/orders/edit/{order}', 'OrderController@edit')->middleware('can:cms.orders.show')->name('cms.orders.edit');
+	Route::post('/cms/orders/update', 'OrderController@update')->middleware('can:cms.orders.show')->name('cms.orders.update');
 
 
 	/* ----------  RUTA BUYERS ---------*/
@@ -106,8 +107,10 @@ Route::get('/blog-tags/{keyword}', 'BlogController@postByTag')->name('main.blog.
 Route::get('/sesion-shopping-car/{data}', 'HomeController@sesionShoppingCar')->name('shopping.car');
 Route::get('/islogin', 'HomeController@userIsLogin')->name('user.login');
 Route::get('/create-order', 'OrderController@create')->name('order.create');
-
 Route::get('/login-order', 'HomeController@loginToCreateOrder')->name('home.info');
+
+// Api para guardar un nuevo subscriptor
+Route::get('/subscriber/{email}', 'HomeController@subscriber')->name('home.subscriber');
 
 // Importar Exportar EXCEL Products
 Route::get('/cms/products/export', 'ProductController@exportProducts')->name('products.excel.export');

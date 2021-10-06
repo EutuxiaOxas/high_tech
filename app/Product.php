@@ -10,12 +10,12 @@ class Product extends Model
     use Sluggable;
     protected $table = 'products';
     protected $fillable = [
-        'category_id', 'codigo_universal', 'titulo', 'imagen', 'descripcion', 'aplicacion', 'precio', 'quantity', 'slug', 
+        'category_id', 'codigo_universal', 'titulo', 'imagen', 'descripcion', 'aplicacion', 'precio', 'quantity', 'slug',
     ];
 
     public function categoria()
     {
-    	return $this->belongsTo('App\Category', 'category_id');
+        return $this->belongsTo('App\Category', 'category_id');
     }
 
     public function auto()
@@ -23,39 +23,39 @@ class Product extends Model
         return $this->hasOne('App\Auto_Parameter');
     }
 
-    public function getAutosBySearch( $search ){
+    public function getAutosBySearch($search)
+    {
 
         $products = Product::where('titulo', $search)
-        ->where('descripcion', $search)
-        ->where('codigo_universal', $search)
-        ->get();
+            ->where('descripcion', $search)
+            ->where('codigo_universal', $search)
+            ->get();
 
         return $products;
-
     }
 
     public function chumacera()
     {
-    	return $this->hasOne('App\Chumacera_Parameter');
+        return $this->hasOne('App\Chumacera_Parameter');
     }
 
     public function cadena()
     {
-    	return $this->hasOne('App\Cadena_Parameter');
+        return $this->hasOne('App\Cadena_Parameter');
     }
 
 
     public function moto()
     {
-    	return $this->hasOne('App\Moto_Parameter');
+        return $this->hasOne('App\Moto_Parameter');
     }
 
     public function industrial()
     {
-    	return $this->hasOne('App\Serie6000_Parameter');
+        return $this->hasOne('App\Serie6000_Parameter');
     }
 
-    
+
 
     /**
      * Return the sluggable configuration array for this model.
@@ -71,4 +71,3 @@ class Product extends Model
         ];
     }
 }
-

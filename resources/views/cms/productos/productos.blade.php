@@ -208,6 +208,11 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="row justify-content-center mt-3">
+                    @if( count($productos) > 0 )
+                        {{ $productos->appends(request()->input())->links() }}
+                    @endif
+                </div>
             </div>
         </div>
     </div>

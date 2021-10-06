@@ -54,12 +54,12 @@
         <div class="container-fluid px-0">
           <div class="row mb-2 px-0">
             <div class="col-sm-6">
-              <span class="font-light text-lg">Usuarios de la administración</span>
+              <span class="font-light text-lg">Usuarios suscritos al sitio</span>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href=" {{ route('cms.index') }} ">Home</a></li>
-                <li class="breadcrumb-item active">Usuarios</li>
+                <li class="breadcrumb-item active">Subscriptores</li>
               </ol>
             </div>
           </div>
@@ -84,80 +84,6 @@
 </section>
 
 <section class="container-fluid">
-    {{-- Crear usuarios --}}
-    <div class="row">
-      <div class="col-12 px-0">
-        <div class="card card-primary">
-          <div class="card-header row justify-content-between align-items-center mx-0">
-                <h3 class="card-title">Crear Usuario Administrativo</h3>
-                <div class="card-tools ml-auto">
-                    <button type="button" class="btn btn-tool " data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                </div>
-          </div>
-          <div class="card-body">
-            <form class="mb-0" action="{{ route('cms.users.create') }}" id="form_create_user" method="POST" autocomplete="off">
-                @csrf
-              <div class="row">
-                  <div class="col-12 col-md-4 px-1">
-                    <div class="form-group">
-                        <label for="inputName">Nombre</label>
-                        <input type="text" class="form-control" id="create_user_name" name="name" placeholder="Nombre" autocomplete="off" required>
-                      </div>
-                  </div>
-                  <div class="col-12 col-md-4 px-1">
-                    <div class="form-group">
-                        <label for="inputDescription">Correo</label>
-                        <input class="form-control" id="create_user_email" type="email" name="email" placeholder="Email" autocomplete="off" required>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 px-1">
-                    <div class="form-group">
-                        <label for="inputDescription">Rol del usuario</label>
-                        <select id="create_rol" class="form-control" name="roles">
-                            <option value="0">Seleccionar rol</option>
-                                @foreach ($roles as $role)
-                                    @if( $role->name != 'buyer' )
-                                        <option value="{{ $role->id }}">{{ ucwords( $role->name ) }}</option>
-                                    @endif
-                                @endforeach
-                        </select>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 px-1">
-                    <div class="form-group">
-                        <label for="inputName">Contraseña</label>
-                        <input class="form-control" type="password" id="contraseña" name="password" placeholder="Contraseña"
-                        autocomplete="off" required>
-                        <a href="#"><small class="inactive pass_watcher">Ver contraseña</small></a>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4 px-1">
-                    <div class="form-group">
-                        <label for="inputName">Confirmar Contraseña</label>
-                        <input class="form-control" type="password" id="confirmar_contraseña" name="password2" placeholder="Confirmar contraseña"
-                        autocomplete="off" required>
-                        <a href="#"><small class="inactive pass_watcher">Ver contraseña</small></a>
-                    </div>
-                  </div>
-              </div>
-              <div id="errors_container">
-
-              </div>
-              <div class="row">
-                  <div class="col">
-                    <div class="form-group mb-0">
-                        <input type="submit" id="crear_user_submit" class="btn btn-sm btn-primary px-5" value="Crear Usuario">
-                        <small id="emailHelp" style="display: none;" class="form-text text-danger col-12 px-1">Las contraseñas no coinciden.</small>
-                    </div>
-                  </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
 
     {{-- Lista de usuario creados --}}
     <div class="row">
@@ -174,98 +100,26 @@
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 25%">Nombre</th>
-                            <th style="width: 25%">Correo</th>
-                            <th style="width: 15%">Rol</th>
+                            <th style="width: 10%">#</th>
+                            <th style="width: 55%">Correo</th>
                             <th style="width: 35%">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
-                            @if( $user->roles[0]->name != 'buyer')
-                                <tr>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ ucwords( $user->roles[0]->name ) }}</td>
-                                    <td>
-                                        <button type="button" id="{{ $user->id }}" class="btn btn-sm btn-info change_pass" data-toggle="modal"
-                                            data-target="#modalContraseña">Editar Contraseña</button>
-                                        <button type="button" id="{{ $user->id }}" class="btn btn-sm btn-primary editar"
-                                            data-toggle="modal" data-target="#modalEditar">Editar</button>
-                                        <button type="button" id="{{ $user->id }}" class="btn btn-sm btn-danger eliminar"
-                                            data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
-                                    </td>
-                                </tr>
-                            @endif
+                        @php $cont=0; @endphp
+                        @foreach ($subscribers as $subscriber)
+                            @php $cont++; @endphp
+                            <tr>
+                                <td>{{ $cont }}</td>
+                                <td>{{ $subscriber->email }}</td>
+                                <td>
+                                    <button type="button" id="{{ $subscriber->id }}" class="btn btn-sm btn-danger eliminar"
+                                        data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
-                </div>
-            </div>
-        </div>
-    </div>
-  {{$users->links()}}
-
-    {{-- Modal editar usuario --}}
-    <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" id="editar_form" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <h5>Nombre</h5>
-                            <input id="editar_name" class="form-control" type="text" name="name">
-                        </div>
-                        <div class="form-group">
-                            <h5>Email</h5>
-                            <input id="editar_email" class="form-control" type="email" name="email">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" id="editar_submit" class="btn btn-primary">Actualizar Usuario</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- Modal editar contraseña --}}
-    <div class="modal fade" id="modalContraseña" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar Contraseña</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" id="contraseña_form" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <h5>Nueva Contraseña</h5>
-                            <input class="form-control" id="modal_password" type="password" name="password">
-                            <a href="#"><small class="inactive modal_change_input">Ver contraseña</small></a>
-                        </div>
-                        <div class="form-group">
-                            <h5>Confirmar Contraseña</h5>
-                            <input class="form-control" id="modal_password_confirm" type="password" name="corfirm_password">
-                            <a href="#"><small class="inactive modal_change_input">Ver contraseña</small></a>
-                        </div>
-                        <small id="modal_password_verify" style="display: none;" class="form-text text-danger col-12 px-1">Las contraseñas no coinciden.</small>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" id="contraseña_submit" class="btn btn-primary">Actualizar Contraseña</button>
                 </div>
             </div>
         </div>

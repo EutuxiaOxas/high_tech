@@ -78,7 +78,7 @@
                                 <th>Monto</th>
                                 <th>Fecha</th>
                                 <th>Estatus</th>
-                                <!-- <th>Acciones</th> -->
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -91,13 +91,21 @@
                                     <td> {{ $order->buyer->email }} </td> 
                                     <td> 
                                         @php $amount = number_format($order->amount, 2, '.', ','); @endphp
-                                        {{ $amount }} 
+                                        {{ $amount }} <strong>$USD</strong>
                                     </td> 
                                     <td> {{ $order->created_at }} </td> 
-                                    <td> {{ $order->status }} </td> 
-                                    <!-- <td>
-                                        
-                                    </td> -->
+                                    <td class="align-middle"> 
+                                        @if( $order->status == 'active' )
+                                            <span class="badge rounded-pill bg-primary px-3">activa</span>
+                                        @elseif( $order->status == 'complete' )
+                                            <span class="badge rounded-pill bg-success px-3">completada</span>
+                                        @else
+                                            <span class="badge rounded-pill bg-danger px-3">cancelada</span>
+                                        @endif
+                                    </td> 
+                                    <td>
+                                        <a class="btn btn-success btn-sm px-2" href="{{ route('cms.orders.edit', $order ) }}">Ver detalles</a>                                        
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

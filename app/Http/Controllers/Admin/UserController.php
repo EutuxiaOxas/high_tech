@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Subscriptor;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -144,14 +145,19 @@ class UserController extends Controller
     }
 
 
-    public function orders(){
-        $orders = Order::orderBy('created_at','DESC')->get();
-    	return view('cms.orders.index', compact('orders'));
-    }
-
     public function purchases(){
         $user_id = Auth::id();
         $purchases = Order::where('user_id', $user_id)->orderBy('created_at','DESC')->get();
     	return view('cms.purchases.index', compact('purchases'));
+    }
+
+    public function buyers(){
+        $buyers = User::all();
+    	return view('cms.users.buyers.index', compact('buyers'));
+    }
+
+    public function subscribers(){
+        $subscribers = Subscriptor::all();
+    	return view('cms.users.subscribers.index', compact('subscribers'));
     }
 }

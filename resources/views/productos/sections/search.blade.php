@@ -1,5 +1,5 @@
 <!-- Search Input -->
-<form class="d-none d-lg-block" action="{{route('products.search.filter')}}" id="formFilterContainer">
+<form class="d-none d-lg-block" action="{{route('products.search')}}" id="formFilterContainer">
     <div class="row mb-1">
 
         <div class="col-12 col-md-10">

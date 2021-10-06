@@ -14,7 +14,7 @@ use App\Tipo_Sello;
 
 class ProductsPageController extends Controller
 {
-    private $perPage = 15;
+    private $perPage = 20;
     /**
      * Display a listing of the resource.
      *
@@ -24,11 +24,11 @@ class ProductsPageController extends Controller
     {
         if(isset($request->search))
         {
-            $productos = Product::with(['categoria'])->where('titulo', 'LIKE', '%'.$request->search.'%')->paginate($this->perPage);
-            $all_products = Product::with(['categoria'])->where('titulo', 'LIKE', '%'.$request->search.'%')->orWhere('codigo_universal', 'LIKE', '%'.$request->search.'%')->get();
+            $productos = Product::with(['categoria'])->where('titulo', 'LIKE', '%'.$request->search.'%')->where('quantity', '>', 0)->paginate($this->perPage);
+            $all_products = Product::with(['categoria'])->where('titulo', 'LIKE', '%'.$request->search.'%')->where('quantity', '>', 0)->orWhere('codigo_universal', 'LIKE', '%'.$request->search.'%')->get();
         }else {
-            $productos = Product::paginate($this->perPage);
-            $all_products = Product::all();
+            $productos = Product::where('quantity', '>', 0)->paginate($this->perPage);
+            $all_products = Product::where('quantity', '>', 0)->get();
         }
 
         $total_products = count($all_products);
@@ -45,18 +45,27 @@ class ProductsPageController extends Controller
     public function showSearch(Request $request){
         $search = $request->search;
 
-        $productos = Product::where('titulo', 'LIKE', "%{$search}%")
-        ->orWhere('descripcion', 'LIKE', "%{$search}%")
-        ->orWhere('aplicacion', 'LIKE', "%{$search}%")
-        ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
-        ->paginate($this->perPage);
+        if( !empty($search) ){
+            $productos = Product::where('quantity', '>', 0)
+            ->where('titulo', 'LIKE', "%{$search}%")
+            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+            ->orWhere('aplicacion', 'LIKE', "%{$search}%")
+            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+            ->paginate($this->perPage);
+    
+            $total_productos =Product::where('quantity', '>', 0)
+            ->where('titulo', 'LIKE', "%{$search}%")
+            ->orWhere('descripcion', 'LIKE', "%{$search}%")
+            ->orWhere('aplicacion', 'LIKE', "%{$search}%")
+            ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
+            ->get();
+            $total_products = count($total_productos);
+        }else{
+            $productos = Product::where('quantity', '>', 0)->paginate($this->perPage);
+            $total_productos = Product::where('quantity', '>', 0)->get();
+            $total_products = count($total_productos);
+        }
 
-        $total_productos =Product::where('titulo', 'LIKE', "%{$search}%")
-        ->orWhere('descripcion', 'LIKE', "%{$search}%")
-        ->orWhere('aplicacion', 'LIKE', "%{$search}%")
-        ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
-        ->get();
-        $total_products = count($total_productos);
 
         $categories = Category::all();
         $posicion_rueda = Posicion::all();
@@ -72,12 +81,14 @@ class ProductsPageController extends Controller
     public function showByCategory($slug)
     {
         $categoria = Category::where('slug', $slug)->first();
+        $category_id = $categoria->id;
 
         if( isset($categoria) && $categoria->products ){
 
-            $productos = $categoria->products()->paginate($this->perPage);
+            $productos = Product::where('category_id', $category_id)->where('quantity', '>', 0)->paginate($this->perPage);
 
-            $total_products = count($categoria->products()->get());
+            $total_products = count(Product::where('category_id', $category_id)->where('quantity', '>', 0)->get());
+            
         }else{
             $productos = [];
             $total_products = 0;
@@ -108,13 +119,15 @@ class ProductsPageController extends Controller
 
         if($request->no_slug && $category_id == 0){
 
-            $productos = Product::where('titulo', 'LIKE', "%{$search}%")
+            $productos = Product::where('quantity', '>', 0)
+            ->where('titulo', 'LIKE', "%{$search}%")
             ->orWhere('descripcion', 'LIKE', "%{$search}%")
             ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
             ->orWhere('aplicacion', 'LIKE', "%{$search}%")
             ->paginate($this->perPage);
 
-            $total_products = Product::where('titulo', 'LIKE', "%{$search}%")
+            $total_products = Product::where('quantity', '>', 0)
+            ->where('titulo', 'LIKE', "%{$search}%")
             ->orWhere('descripcion', 'LIKE', "%{$search}%")
             ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
             ->orWhere('aplicacion', 'LIKE', "%{$search}%")
@@ -136,6 +149,7 @@ class ProductsPageController extends Controller
                             $espesor = $request->espesor;
 
                             $productos = Product::where('category_id', $category_id)
+                            ->where('quantity', '>', 0)
                             ->where(function($query) use ($search) {
                                 $query->where('titulo', 'LIKE', "%{$search}%")
                                 ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -152,6 +166,7 @@ class ProductsPageController extends Controller
                             ->paginate($this->perPage);
 
                             $total_products = Product::where('category_id', $category_id)
+                            ->where('quantity', '>', 0)
                             ->where(function($query) use ($search) {
                                 $query->where('titulo', 'LIKE', "%{$search}%")
                                 ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -170,6 +185,7 @@ class ProductsPageController extends Controller
                         }else{
 
                             $productos = Product::where('category_id', $category_id)
+                            ->where('quantity', '>', 0)
                             ->where(function($query) use ($search) {
                                 $query->where('titulo', 'LIKE', "%{$search}%")
                                 ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -183,6 +199,7 @@ class ProductsPageController extends Controller
                             ->paginate($this->perPage);
 
                             $total_products = Product::where('category_id', $category_id)
+                            ->where('quantity', '>', 0)
                             ->where(function($query) use ($search) {
                                 $query->where('titulo', 'LIKE', "%{$search}%")
                                 ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -204,6 +221,7 @@ class ProductsPageController extends Controller
                         $espesor = $request->espesor;
 
                         $productos = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -219,6 +237,7 @@ class ProductsPageController extends Controller
                         ->paginate($this->perPage);
 
                         $total_products = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -236,6 +255,7 @@ class ProductsPageController extends Controller
                     }else{
 
                         $productos = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -245,6 +265,7 @@ class ProductsPageController extends Controller
                         ->paginate($this->perPage);
 
                         $total_products = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -268,6 +289,7 @@ class ProductsPageController extends Controller
                             $espesor = $request->espesor;
 
                             $productos = Product::where('category_id', $category_id)
+                            ->where('quantity', '>', 0)
                             ->where(function($query) use ($search) {
                                 $query->where('titulo', 'LIKE', "%{$search}%")
                                 ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -284,6 +306,7 @@ class ProductsPageController extends Controller
                             ->paginate($this->perPage);
 
                             $total_products = Product::where('category_id', $category_id)
+                            ->where('quantity', '>', 0)
                             ->where(function($query) use ($search) {
                                 $query->where('titulo', 'LIKE', "%{$search}%")
                                 ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -302,6 +325,7 @@ class ProductsPageController extends Controller
                         }else{
 
                             $productos = Product::where('category_id', $category_id)
+                            ->where('quantity', '>', 0)
                             ->where(function($query) use ($search) {
                                 $query->where('titulo', 'LIKE', "%{$search}%")
                                 ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -315,6 +339,7 @@ class ProductsPageController extends Controller
                             ->paginate($this->perPage);
 
                             $total_products = Product::where('category_id', $category_id)
+                            ->where('quantity', '>', 0)
                             ->where(function($query) use ($search) {
                                 $query->where('titulo', 'LIKE', "%{$search}%")
                                 ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -336,6 +361,7 @@ class ProductsPageController extends Controller
                         $espesor = $request->espesor;
 
                         $productos = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -351,6 +377,7 @@ class ProductsPageController extends Controller
                         ->paginate($this->perPage);
 
                         $total_products = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -368,6 +395,7 @@ class ProductsPageController extends Controller
                     }else{
 
                         $productos = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -377,6 +405,7 @@ class ProductsPageController extends Controller
                         ->paginate($this->perPage);
 
                         $total_products = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -399,6 +428,7 @@ class ProductsPageController extends Controller
                             $espesor = $request->espesor;
 
                             $productos = Product::where('category_id', $category_id)
+                            ->where('quantity', '>', 0)
                             ->where(function($query) use ($search) {
                                 $query->where('titulo', 'LIKE', "%{$search}%")
                                 ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -415,6 +445,7 @@ class ProductsPageController extends Controller
                             ->paginate($this->perPage);
 
                             $total_products = Product::where('category_id', $category_id)
+                            ->where('quantity', '>', 0)
                             ->where(function($query) use ($search) {
                                 $query->where('titulo', 'LIKE', "%{$search}%")
                                 ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -433,6 +464,7 @@ class ProductsPageController extends Controller
                         }else{
 
                             $productos = Product::where('category_id', $category_id)
+                            ->where('quantity', '>', 0)
                             ->where(function($query) use ($search) {
                                 $query->where('titulo', 'LIKE', "%{$search}%")
                                 ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -446,6 +478,7 @@ class ProductsPageController extends Controller
                             ->paginate($this->perPage);
 
                             $total_products = Product::where('category_id', $category_id)
+                            ->where('quantity', '>', 0)
                             ->where(function($query) use ($search) {
                                 $query->where('titulo', 'LIKE', "%{$search}%")
                                 ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -467,6 +500,7 @@ class ProductsPageController extends Controller
                         $espesor = $request->espesor;
 
                         $productos = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -482,6 +516,7 @@ class ProductsPageController extends Controller
                         ->paginate($this->perPage);
 
                         $total_products = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -499,6 +534,7 @@ class ProductsPageController extends Controller
                     }else{
 
                         $productos = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -508,6 +544,7 @@ class ProductsPageController extends Controller
                         ->paginate($this->perPage);
 
                         $total_products = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -525,6 +562,7 @@ class ProductsPageController extends Controller
                     if( $id_tipo_brida == 0 ){
 
                         $productos = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -534,6 +572,7 @@ class ProductsPageController extends Controller
                         ->paginate($this->perPage);
 
                         $total_products = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -545,6 +584,7 @@ class ProductsPageController extends Controller
                     }else{
 
                         $productos = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -558,6 +598,7 @@ class ProductsPageController extends Controller
                         ->paginate($this->perPage);
 
                         $total_products = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -579,6 +620,7 @@ class ProductsPageController extends Controller
                     if ( $id_tipo_cadena == 0 ){
 
                         $productos = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -588,6 +630,7 @@ class ProductsPageController extends Controller
                         ->paginate($this->perPage);
 
                         $total_products = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -599,6 +642,7 @@ class ProductsPageController extends Controller
                     }else{
 
                         $productos = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -612,6 +656,7 @@ class ProductsPageController extends Controller
                         ->paginate($this->perPage);
 
                         $total_products = Product::where('category_id', $category_id)
+                        ->where('quantity', '>', 0)
                         ->where(function($query) use ($search) {
                             $query->where('titulo', 'LIKE', "%{$search}%")
                             ->orWhere('descripcion', 'LIKE', "%{$search}%")
@@ -628,13 +673,15 @@ class ProductsPageController extends Controller
 
                     break;
                 default:
-                    $productos = Product::where('category_id', $category_id)
+                    $productos = Product::where('quantity', '>', 0)
+                    ->where('category_id', $category_id)
                     ->where('titulo', 'LIKE', "%{$search}%")
                     ->orWhere('descripcion', 'LIKE', "%{$search}%")
                     ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
                     ->paginate(15);
 
-                    $total_productos = Product::where('category_id', $category_id)
+                    $total_productos = Product::where('quantity', '>', 0)
+                    ->where('category_id', $category_id)
                     ->where('titulo', 'LIKE', "%{$search}%")
                     ->orWhere('descripcion', 'LIKE', "%{$search}%")
                     ->orWhere('codigo_universal', 'LIKE', "%{$search}%")
@@ -660,7 +707,7 @@ class ProductsPageController extends Controller
     {
         $categories = Category::all();
         $producto = Product::where('slug', $slug)->first();
-        $products = Product::where('category_id', $producto->category_id)->take(8)->get();
+        $products = Product::where('category_id', $producto->category_id)->where('quantity', '>', 0)->take(8)->get();
         return view('productos.productDetail', compact('producto', 'categories', 'products'));
     }
 }
