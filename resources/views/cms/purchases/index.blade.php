@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @php
     $section = 'orders';
+    $meses = ['','Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 @endphp
 <style>
     .img_div_rounded{
@@ -64,14 +65,32 @@
             @foreach ($purchases as $purchase)
                 @php $cont++; @endphp
                 <div class="card">
-                    <h5 class="card-header">{{$purchase->created_at }}</h5>
+                    <div class="card-header">
+                      <div class="row">
+                        <div class="col">
+                          <h5>
+                            Compra realizada el  {{ $purchase->created_at->day }} de {{ $meses[$purchase->created_at->month] }} del {{ $purchase->created_at->year }}  
+                          </h5>
+                        </div>
+                        <div class="col-auto my-auto ml-auto">
+                          @if( $purchase->status == 'active' )
+                              <span class="badge bg-primary px-3 py-2">Activa</span>
+                          @elseif( $purchase->status == 'complete' )
+                              <span class="badge bg-success px-3 py-2">Completada</span>
+                          @else
+                              <span class="badge bg-danger px-3 py-2">Cancelada</span>
+                          @endif
+                        </div>
+                      </div>
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title">
+                        <h5 class="card-title font-bold">
+                            Monto total:
                             @php $price = number_format($purchase->amount, 2, '.', ','); @endphp
                             {{ $price }} $USD
                         </h5>
                         <p class="card-text">Escribenos a nuestro Whatsapp para concretar tu compra.</p>
-                        <!-- <a href="#" class="btn btn-primary px-5">Ver productos</a> -->
+                        <a href="{{ route('cms.purchases.edit', $purchase) }}" class="btn btn-primary px-5">Ver detalles</a>
                         <a href="https://api.whatsapp.com/send/?phone=584244174759?texto=Buen%20dia,%20escribo%20del%20sitio%20web%20acabo%20de%20realizar%20una%20compra" class="btn btn-success px-5">Whatsapp</a>
                     </div>
                 </div>

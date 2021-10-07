@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\OrderProduct;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -123,6 +124,24 @@ class OrderController extends Controller
         ]);
 
         // reducir la cantidad en inventario
+        if( $new_status == 'complete' ){
+
+            $products = $order->products_purchase;
+            foreach ($products as $product) {
+    
+                $quantity_order = $product->quantity;
+                $product_id = $product->product_id;
+    
+                $product_to_update = Product::findOrFail($product_id);
+                $quantity_bd = $product_to_update->quantity;
+                $quantity_total = $quantity_bd - $quantity_order;
+    
+                $product_to_update->update([
+                    'quantity' => $quantity_total
+                ]);
+            }
+
+        }
         
         return back()->with('info', 'Orden actualizada Exitosamente!');
     }
@@ -153,5 +172,16 @@ class OrderController extends Controller
     public function orders(){
         $orders = Order::orderBy('created_at','DESC')->get();
     	return view('cms.orders.index', compact('orders'));
+    }
+
+    public function purchases(){
+        $user_id = Auth::id();
+        $purchases = Order::where('user_id', $user_id)->orderBy('created_at','DESC')->get();
+    	return view('cms.purchases.index', compact('purchases'));
+    }
+
+    public function editPurchase(Request $request, Order $order)
+    {
+        return view('cms.purchases.edit_purchase', compact('order'));
     }
 }

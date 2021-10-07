@@ -75,6 +75,7 @@
                                 <th>#</th>
                                 <th>Comprador</th>
                                 <th>Correo</th>
+                                <th>Télefono</th>
                                 <th>Monto</th>
                                 <th>Fecha</th>
                                 <th>Estatus</th>
@@ -89,6 +90,7 @@
                                     <td>{{$cont}}</td>
                                     <td> {{ $order->buyer->name }} </td> 
                                     <td> {{ $order->buyer->email }} </td> 
+                                    <td> {{ $order->buyer->phone }} </td> 
                                     <td> 
                                         @php $amount = number_format($order->amount, 2, '.', ','); @endphp
                                         {{ $amount }} <strong>$USD</strong>

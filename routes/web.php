@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
 	Route::get('/cms/users/user', 'Admin\UserController@create')->middleware('can:cms.users.create')->name('cms.users.create');
 	Route::get('/cms/users/buyers', 'Admin\UserController@buyers')->middleware('can:cms.users.show')->name('cms.users.buyers');
 	Route::get('/cms/users/subscribers', 'Admin\UserController@subscribers')->middleware('can:cms.users.show')->name('cms.users.subscribers');
+	Route::get('/cms/users/subscribers/download', 'Admin\UserController@subscribersDownload')->middleware('can:cms.users.show')->name('cms.users.subscribers.download');
+	Route::get('/cms/users/buyers/download', 'Admin\UserController@buyersDownload')->middleware('can:cms.users.show')->name('cms.users.buyers.download');
 
     /* ----------  RUTA CATEGORIAS PRODUCTOS CONTROLLADOR ---------*/
     Route::get('/cms/productos/categorias', 'ProductController@showCategorias')->middleware('can:cms.products.categories.show')->name('cms.products.categories.show');
@@ -79,11 +81,12 @@ Route::middleware('auth')->group(function () {
 	/* ----------  RUTA VENTAS-ORDERS ---------*/
 	Route::get('/cms/orders', 'OrderController@orders')->middleware('can:cms.orders.show')->name('cms.orders.show');
 	Route::get('/cms/orders/edit/{order}', 'OrderController@edit')->middleware('can:cms.orders.show')->name('cms.orders.edit');
-	Route::post('/cms/orders/update', 'OrderController@update')->middleware('can:cms.orders.show')->name('cms.orders.update');
+	Route::post('/cms/orders/update', 'OrderController@update')->name('cms.orders.update');
 
 
 	/* ----------  RUTA BUYERS ---------*/
-	Route::get('/cms/purchases', 'Admin\UserController@purchases')->middleware('can:cms.purchases.show')->name('cms.purchases.show');
+	Route::get('/cms/purchases', 'OrderController@purchases')->middleware('can:cms.purchases.show')->name('cms.purchases.show');
+	Route::get('/cms/purchases/edit/{order}', 'OrderController@editPurchase')->middleware('can:cms.purchases.show')->name('cms.purchases.edit');
 	// Route::get('/cms/users/user', 'Admin\UserController@create')->middleware('can:cms.users.create')->name('cms.users.create');
 
     // Apis

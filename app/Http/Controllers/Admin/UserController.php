@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\BuyersExport;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\Subscriptor;
@@ -10,6 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\SubscribersExport;
 
 class UserController extends Controller
 {
@@ -144,20 +148,23 @@ class UserController extends Controller
         return back()->with('message',$message);
     }
 
-
-    public function purchases(){
-        $user_id = Auth::id();
-        $purchases = Order::where('user_id', $user_id)->orderBy('created_at','DESC')->get();
-    	return view('cms.purchases.index', compact('purchases'));
+    public function buyers(){
+        $buyers = User::role('buyer')->get();
+    	return view('cms.users.buyers.index', compact('buyers'));
     }
 
-    public function buyers(){
-        $buyers = User::all();
-    	return view('cms.users.buyers.index', compact('buyers'));
+    public function buyersDownload(){
+        return Excel::download(new BuyersExport, 'compradores.xlsx');
     }
 
     public function subscribers(){
         $subscribers = Subscriptor::all();
     	return view('cms.users.subscribers.index', compact('subscribers'));
     }
+
+    public function subscribersDownload(){
+        return Excel::download(new SubscribersExport, 'suscriptores.xlsx');
+    }
+
+    
 }

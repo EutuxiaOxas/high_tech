@@ -55,6 +55,7 @@
           <div class="row mb-2 px-0">
             <div class="col-sm-6">
               <span class="font-light text-lg">Usuarios suscritos al sitio</span>
+              <a class="btn btn-success btn-sm ml-2" href="{{ route('cms.users.subscribers.download') }}">Descargar Suscriptores</a>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -88,13 +89,13 @@
     {{-- Lista de usuario creados --}}
     <div class="row">
         <div class="col px-0">
-            <div class="card">
+            <div class="card card-info">
                 <div class="card-header row justify-content-between align-items-center mx-0">
-                <h3 class="card-title">Usuarios administrativos registrados</h3>
-                <div class="card-tools ml-auto">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                    <i class="fas fa-minus"></i></button>
-                </div>
+                    <h3 class="card-title">Usuarios administrativos registrados</h3>
+                    <div class="card-tools ml-auto">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i></button>
+                    </div>
                 </div>
                 <div class="card-body table-responsive p-0">
                 <table class="table table-striped projects">

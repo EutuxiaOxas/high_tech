@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @php
     $section = 'orders';
+    $meses = ['','Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 @endphp
 
 <style>
@@ -58,7 +59,7 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href=" {{ route('cms.index') }} ">Home</a></li>
-                <li class="breadcrumb-item"><a href=" {{ route('cms.orders.show') }} ">Ventas</a></li>
+                <li class="breadcrumb-item"><a href=" {{ route('cms.purchases.show') }} ">Mis Compras</a></li>
                 <li class="breadcrumb-item active">Ver Detalles</li>
               </ol>
             </div>
@@ -70,30 +71,29 @@
         <div class="row">
             <div class="col-lg-8"> 
                 <div class="row">
-                    <div class="col px-0">
+                    <div class="col px-0 ">
                         <span class="lead" style="font-size:1.75rem">{{ $order->buyer->name }}</span> -
                         @if( $order->status == 'active' )
-                            <span class="badge rounded-pill bg-primary px-3 py-1">activa</span>
+                            <span class="badge bg-primary px-3 py-2 ml-2">Activa</span>
                         @elseif( $order->status == 'complete' )
-                            <span class="badge rounded-pill bg-success px-3">completada</span>
+                            <span class="badge bg-success px-3 py-2 ml-2">Completada</span>
                         @else
-                            <span class="badge rounded-pill bg-danger px-3">cancelada</span>
+                            <span class="badge bg-danger px-3 py-2 ml-2">Cancelada</span>
                         @endif
                     </div>
                 </div>
                 <div class="row">
                     <h5 class="font-bold">{{ $order->buyer->email }}</h5>
-                    <h6 class="font-bold">{{ $order->buyer->phone }}</h6>
                 </div>
             </div> 
             <div class="col-lg-auto ml-auto"> 
-                <div class="row mb-2">
-                    Orden creada: {{ $order->created_at }}
+                <div class="row mb-2" style="font-size:1.25rem;">
+                    Orden creada: {{ $order->created_at->day }} de {{ $meses[$order->created_at->month] }} del {{ $order->created_at->year }}  
                 </div>
                 <div class="row">
                     @if( $order->status == 'active' )
-                        <button class="btn btn-success px-3 mr-3" data-toggle="modal" data-target="#modalCompleteOrder">Completar</button>
-                        <button class="btn btn-danger px-2" data-toggle="modal" data-target="#modalCanceledOrder">Cancelar</button>
+                        <!-- <button class="btn btn-success px-3 mr-3" data-toggle="modal" data-target="#modalCompleteOrder">Completar</button>
+                        <button class="btn btn-danger px-2" data-toggle="modal" data-target="#modalCanceledOrder">Cancelar</button> -->
                     @endif
                 </div>
             </div>
@@ -132,7 +132,7 @@
     </section>
 
     <!-- Modal Cancelar Orden-->
-    <div class="modal fade" id="modalCanceledOrder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="modalCanceledOrder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
@@ -153,10 +153,10 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Modal Completar Orden-->
-    <div class="modal fade" id="modalCompleteOrder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="modalCompleteOrder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
@@ -177,7 +177,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 @endsection

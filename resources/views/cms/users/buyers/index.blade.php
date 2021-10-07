@@ -55,6 +55,7 @@
           <div class="row mb-2 px-0">
             <div class="col-sm-6">
               <span class="font-light text-lg">Usuarios compradores</span>
+              <a class="btn btn-success btn-sm ml-2" href="{{ route('cms.users.buyers.download') }}">Descargar Compradores</a>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -88,7 +89,7 @@
     {{-- Lista de usuario creados --}}
     <div class="row">
         <div class="col px-0">
-            <div class="card">
+            <div class="card card card-primary">
                 <div class="card-header row justify-content-between align-items-center mx-0">
                 <h3 class="card-title">Compradores registrados</h3>
                 <div class="card-tools ml-auto">
@@ -107,16 +108,14 @@
                     </thead>
                     <tbody>
                         @foreach ($buyers as $buyer)
-                            @if( $buyer->roles[0]->name == 'buyer')
-                                <tr>
-                                    <td>{{ $buyer->name }}</td>
-                                    <td>{{ $buyer->email }}</td>
-                                    <td>
-                                        <button type="button" id="{{ $buyer->id }}" class="btn btn-sm btn-danger eliminar"
-                                            data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
-                                    </td>
-                                </tr>
-                            @endif
+                            <tr>
+                                <td>{{ $buyer->name }}</td>
+                                <td>{{ $buyer->email }}</td>
+                                <td>
+                                    <button type="button" id="{{ $buyer->id }}" class="btn btn-sm btn-danger eliminar"
+                                        data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
