@@ -27,7 +27,7 @@
                     <h2>Bienvenido {{ auth()->user()->name }}</h2>
                 @else
                     <span class="eyebrow mb-1 text-dark">Registrarte con nosotros para concretar tu compra</span> <br>
-                    <h2>Bienvenido</h2>
+                    <h2>Bienvenido!</h2>
                 @endauth
             </div>
         </div>
