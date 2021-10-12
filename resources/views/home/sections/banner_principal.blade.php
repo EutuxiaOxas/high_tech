@@ -59,7 +59,7 @@
                       </div>
                       <div class="col text-center">
                         <a href="{{ route('products.category', 'moto') }}" aria-label="ver los productos de la categoria moto">
-                            <img class="mb-1" src="/imagenes/banner_principal/05.webp" alt="imagen de la categoria motos | High Tech Bearings" loading="lazy">
+                            <img class="mb-1" src="/imagenes/banner_principal/05.webp" alt="imagen de la categoria motos | High Tech Bearings" loading="lazy" width="100%">
                             <div class="text-white font-lg">SERIE <strong class="font_myriad">MOTO</strong> </div>
                             <small class="text-white"> <strong class="font_myriad">LINEA ROJA - MOTOCICLETAS</strong></small>
                         </a>
