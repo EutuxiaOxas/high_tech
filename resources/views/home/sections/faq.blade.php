@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-10 col-lg-6 text-md-center">
         <h2>¿Quieres <i class="font-weight-bold">Conocernos</i>?</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint maiores, consequuntur tempore, odio voluptatem</p>
+        <p class="text-second">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint maiores, consequuntur tempore, odio voluptatem</p>
       </div>
     </div>
     <div class="row">
@@ -15,7 +15,7 @@
             </div>
             <div class="accordion-content" data-content>
               <div class="accordion-content-wrapper">
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
+                <p class="text-second">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
               </div>
             </div>
           </div>
@@ -25,7 +25,7 @@
             </div>
             <div class="accordion-content" data-content>
               <div class="accordion-content-wrapper">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
+                <p class="text-second">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@
             </div>
             <div class="accordion-content" data-content>
               <div class="accordion-content-wrapper">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
+                <p class="text-second">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@
             </div>
             <div class="accordion-content" data-content>
               <div class="accordion-content-wrapper">
-                <p>Una marca con el respaldo de ROLITEC más de 25 años en el mercado de rodamientos técnicos </p>
+                <p class="text-second">Una marca con el respaldo de ROLITEC más de 25 años en el mercado de rodamientos técnicos </p>
               </div>
             </div>
           </div>
@@ -59,7 +59,7 @@
             </div>
             <div class="accordion-content" data-content>
               <div class="accordion-content-wrapper">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
+                <p class="text-second">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
               </div>
             </div>
           </div>
@@ -69,7 +69,7 @@
             </div>
             <div class="accordion-content" data-content>
               <div class="accordion-content-wrapper">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
+                <p class="text-second">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quam odit voluptatum, rem libero modi labore porro commodi inventore architecto explicabo reiciendis, perspiciatis voluptatibus odio, sequi nobis? Optio, aperiam, tenetur!</p>
               </div>
             </div>
           </div>

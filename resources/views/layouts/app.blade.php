@@ -85,6 +85,9 @@
       left: 7.5vw !important;
       transition: all 1s !important;
     }
+    .text-second{
+      color: #555555;
+    }
   </style>
   @yield('head')
 </head>

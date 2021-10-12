@@ -5,7 +5,7 @@
           <h2><b>HIGH TECH</b><br>BEARINGS</h2>
         </div>
         <div class="col-lg-6">
-          <p class="text-muted">
+          <p class="text-second">
             {{-- Un producto de innovación y calidad, con el respaldo de una experiencia en el ramo de rodamientos con más de 20 años en el mercado nacional e internacional. --}}
             HIGH TECH BEARINGS, sinónimo de tecnología y seguridad, somos una marca con el respaldo de más de 30 años de experiencias en el sector de rodamientos industriales y automotrices.
             <br>
