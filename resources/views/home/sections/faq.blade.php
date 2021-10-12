@@ -11,7 +11,7 @@
         <div class="accordion-group accordion-group-minimal" data-accordion-group>
           <div class="accordion" data-accordion data-aos="fade-up">
             <div class="accordion-control" data-control>
-              <h5>¿Quienes somos?</h5>
+              <h3>¿Quienes somos?</h3>
             </div>
             <div class="accordion-content" data-content>
               <div class="accordion-content-wrapper">
@@ -21,7 +21,7 @@
           </div>
           <div class="accordion" data-accordion data-aos="fade-up">
             <div class="accordion-control" data-control>
-              <h5>¿Comó me convierto en DISTRIBUIDOR AUTORIZADO HIGH TECH ?</h5>
+              <h3>¿Comó me convierto en DISTRIBUIDOR AUTORIZADO HIGH TECH ?</h3>
             </div>
             <div class="accordion-content" data-content>
               <div class="accordion-content-wrapper">
@@ -31,7 +31,7 @@
           </div>
           <div class="accordion" data-accordion data-aos="fade-up">
             <div class="accordion-control" data-control>
-              <h5>¿Cuales son nuestros puntos de contacto ?</h5>
+              <h3>¿Cuales son nuestros puntos de contacto ?</h3>
             </div>
             <div class="accordion-content" data-content>
               <div class="accordion-content-wrapper">
@@ -45,7 +45,7 @@
         <div class="accordion-group accordion-group-minimal" data-accordion-group>
           <div class="accordion" data-accordion data-aos="fade-up">
             <div class="accordion-control" data-control>
-              <h5>¿Cuantos años en el Mercado ?</h5>
+              <h3>¿Cuantos años en el Mercado ?</h3>
             </div>
             <div class="accordion-content" data-content>
               <div class="accordion-content-wrapper">
@@ -55,7 +55,7 @@
           </div>
           <div class="accordion" data-accordion data-aos="fade-up">
             <div class="accordion-control" data-control>
-              <h5>¿Como contactarnos?</h5>
+              <h3>¿Como contactarnos?</h3>
             </div>
             <div class="accordion-content" data-content>
               <div class="accordion-content-wrapper">
@@ -65,7 +65,7 @@
           </div>
           <div class="accordion" data-accordion data-aos="fade-up">
             <div class="accordion-control" data-control>
-              <h5>¿Donde descargar catalogo de productos?</h5>
+              <h3>¿Donde descargar catalogo de productos?</h3>
             </div>
             <div class="accordion-content" data-content>
               <div class="accordion-content-wrapper">
