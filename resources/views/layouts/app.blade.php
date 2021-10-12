@@ -115,37 +115,40 @@
   <script>
     const buttonSubmitSubscriber = document.getElementById('buttonSubmitSubscriber')
 
-    buttonSubmitSubscriber.addEventListener('click', function() {
-      let messageSuccess = document.getElementById('message_success')
-      const inputSubscriber = document.getElementById('inputSubscriber').value;
-      
-      if(inputSubscriber != ''){
-        axios({
-          method: 'GET',
-          url: '/subscriber/' + inputSubscriber,
-          headers: {
-            'content-type': 'application/json'
-          }
-        })
-        .then((res) => {
-          console.log(res)
-          console.log(res.data)
-          messageSuccess.innerHTML = res.data;
-          messageSuccess.style.visibility = "visible";
-          messageSuccess.style.opacity = "1";
-          messageSuccess.classList.add('transitionClean');
-          setTimeout(hiddenMessageAddProduct,3000);
-          function hiddenMessageAddProduct(){
-              messageSuccess.style.opacity = "0";
-              messageSuccess.style.visibility = "hidden";
-              messageSuccess.classList.remove('transitionClean');
-          }
-        })
-        .catch((err) => {
-          console.log(err)
-        });
-      }
-    })
+    if(buttonSubmitSubscriber){
+      buttonSubmitSubscriber.addEventListener('click', function() {
+        let messageSuccess = document.getElementById('message_success')
+        const inputSubscriber = document.getElementById('inputSubscriber').value;
+        
+        if(inputSubscriber != ''){
+          axios({
+            method: 'GET',
+            url: '/subscriber/' + inputSubscriber,
+            headers: {
+              'content-type': 'application/json'
+            }
+          })
+          .then((res) => {
+            console.log(res)
+            console.log(res.data)
+            messageSuccess.innerHTML = res.data;
+            messageSuccess.style.visibility = "visible";
+            messageSuccess.style.opacity = "1";
+            messageSuccess.classList.add('transitionClean');
+            setTimeout(hiddenMessageAddProduct,3000);
+            function hiddenMessageAddProduct(){
+                messageSuccess.style.opacity = "0";
+                messageSuccess.style.visibility = "hidden";
+                messageSuccess.classList.remove('transitionClean');
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+          });
+        }
+      })
+    }
+
   </script>
 
 </body>
