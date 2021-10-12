@@ -7,6 +7,9 @@
 @endphp
 
 @section('title') High Tech Bearings @endsection
+@section('head') 
+    <meta name="description" content="High Tech Bearings">
+@endsection
 
 @section('content')
 

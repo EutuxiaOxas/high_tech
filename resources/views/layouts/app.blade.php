@@ -86,7 +86,7 @@
       transition: all 1s !important;
     }
   </style>
-
+  @yield('head')
 </head>
 
 <body>
