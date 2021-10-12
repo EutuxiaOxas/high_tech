@@ -23,7 +23,7 @@
               
               <figure class="user">
                 <a href="{{ route('products.category', $category->slug) }}" class="user-photo" aria-label="ver todos los productos de la categoria {{$category->slug}}">
-                  <img src="{{asset('/imagenes/productos_home/serie_'.$category->slug.'.webp')}}" alt="{{$category->slug}}" loading="lazy" width="100%" height="auto">
+                  <img src="{{asset('/imagenes/productos_home/serie_'.$category->slug.'.webp')}}" alt="{{$category->slug}}" loading="lazy" width="100px" height="100px">
                   <span class="text_float text-white font-xl">SERIE 
                     <strong> @php echo strtoupper($category->category); @endphp </strong>
                   </span>

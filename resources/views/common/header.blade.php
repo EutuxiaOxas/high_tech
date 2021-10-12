@@ -3,8 +3,8 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-{{$headerLinks}}">
         <a class="navbar-brand" href="{{route('home')}}" aria-label="ir a la pagina de inicio del sitio web">
-          <img class="navbar-logo navbar-logo-light" src="{{asset('svg/logo-'. $logoNav1 .'.svg')}}" alt="Logo High Tech" loading="lazy" width="100%" height="auto">
-          <img class="navbar-logo navbar-logo-dark" src="{{asset('svg/logo-'. $logoNav2 .'.svg')}}" alt="Logo High Tech" loading="lazy" width="100%" height="auto">
+          <img class="navbar-logo navbar-logo-light" src="{{asset('svg/logo-'. $logoNav1 .'.svg')}}" alt="Logo High Tech" loading="lazy" width="100px" height="75px">
+          <img class="navbar-logo navbar-logo-dark" src="{{asset('svg/logo-'. $logoNav2 .'.svg')}}" alt="Logo High Tech" loading="lazy" width="100px" height="75px">
         </a>
         <div class="navbar d-md-none">
             <button class="btn px-0 open_modal_shopping_car" data-toggle="modal" data-target="#modal_shopping_car" style="position:relative;">
