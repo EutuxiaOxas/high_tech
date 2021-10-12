@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-lg-4 text-center">
             <div class="mb-1">
-            <img  style="max-height: 6rem;"  src="{{asset('svg/logo-light.svg')}}" alt="Logo" loading="lazy">
+            <img  style="max-height: 6rem;"  src="{{asset('svg/logo-light.svg')}}" alt="Logo" loading="lazy" width="50px" height="50px">
             </div>
             <span class="copyright-text">&copy; High Tech Bearings. 1976 - 2020<br>Todos los derechos reservados</span>
         </div>
