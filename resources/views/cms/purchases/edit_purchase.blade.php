@@ -4,6 +4,8 @@
     $meses = ['','Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 @endphp
 
+@section('title') Mis Compras - High Tech Bearings@endsection
+
 <style>
     .img_product_card{
         max-height: 25vh;

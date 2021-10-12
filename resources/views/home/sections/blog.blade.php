@@ -11,7 +11,7 @@
         <div class="col-md-6 col-lg-4">
             <article class="card card-minimal">
             <a href="{{route('main.blog.show', $post->slug)}}" class="card-img-container" aria-label="ver el articulo">
-                <img class="card-img" src="{{ Storage::url($post->picture) }}" alt="{{ ucfirst(strtolower($post->title)) }} | High Tech" loading="lazy">
+                <img class="card-img" src="{{ Storage::url($post->picture) }}" alt="{{ ucfirst(strtolower($post->title)) }} | High Tech" loading="lazy" img="100%" height="auto">
             </a>
             <div class="card-body">
                 <h5 class="card-title">

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('imagenes/favicon.png') }}">
-  <title>Administración</title>
+  <title>
+    @yield('title')
+  </title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/AdminLTE/plugins/fontawesome-free/css/all.min.css">
@@ -61,12 +62,12 @@
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand  
-    @role('buyer')
-      navbar-light
-    @else
-      navbar-dark navbar-lightblue
-    @endrole
-    ">
+      @role('buyer')
+        navbar-light
+      @else
+        navbar-dark navbar-lightblue
+      @endrole
+      ">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -221,6 +222,19 @@
 
             @endcan
 
+            @can('cms.orders.show')
+
+              <li class="nav-item has-treeview">
+                <a href="{{ route('cms.accounts.show') }}" class="nav-link secciones tienda @if ($section == 'account') active @endif">
+                  <i class="nav-icon fas fa-credit-card"></i>
+                  <p>
+                    Cuentas Bancarias
+                  </p>
+                </a>
+              </li>
+
+            @endcan
+
             @can('cms.blog.show')
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link secciones tienda @if ($section == 'blog') active @endif">
@@ -264,14 +278,14 @@
 
             @endcan
 
-            <!-- <li class="nav-item has-treeview">
-              <a href="{{ route('cms.orders.show') }}" class="nav-link secciones tienda @if ($section == 'config') active @endif">
+            <li class="nav-item has-treeview">
+              <a href="{{ route('cms.config.show') }}" class="nav-link secciones tienda @if ($section == 'config') active @endif">
                 <i class="nav-icon fas fa-cog"></i>
                 <p>
                   Configuración
                 </p>
               </a>
-            </li> -->
+            </li>
 
           </ul>
         </nav>
@@ -339,10 +353,14 @@
     const formSubmit = document.getElementById('formSubmit');
     const buttonAction = document.getElementById('buttonAction');
 
-    formSubmit.addEventListener("submit", function() {
-      buttonAction.disabled = true;
-      load.style.display = 'inline-block';
-    });
+    if(formSubmit){
+      formSubmit.addEventListener("submit", function() {
+        buttonAction.disabled = true;
+        load.style.display = 'inline-block';
+      });
+
+    }
+
   </script>
 
 </body>

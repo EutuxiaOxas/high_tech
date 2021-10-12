@@ -83,11 +83,17 @@ Route::middleware('auth')->group(function () {
 	Route::get('/cms/orders/edit/{order}', 'OrderController@edit')->middleware('can:cms.orders.show')->name('cms.orders.edit');
 	Route::post('/cms/orders/update', 'OrderController@update')->name('cms.orders.update');
 
+	/* ----------  RUTA CUENTAS BANCARIAS ---------*/
+	Route::get('/cms/accounts', 'CmsController@accounts')->middleware('can:cms.orders.show')->name('cms.accounts.show');
+	Route::post('/cms/accounts/create', 'CmsController@accountsCreate')->middleware('can:cms.orders.show')->name('cms.accounts.create');
+
+	/* ----------  RUTA CONFIGURACIONES ---------*/
+	Route::get('/cms/config/show', 'CmsController@config')->name('cms.config.show');
+	Route::post('/cms/config/password/update', 'CmsController@passwordUpdate')->name('cms.config.pasword.update');
 
 	/* ----------  RUTA BUYERS ---------*/
 	Route::get('/cms/purchases', 'OrderController@purchases')->middleware('can:cms.purchases.show')->name('cms.purchases.show');
 	Route::get('/cms/purchases/edit/{order}', 'OrderController@editPurchase')->middleware('can:cms.purchases.show')->name('cms.purchases.edit');
-	// Route::get('/cms/users/user', 'Admin\UserController@create')->middleware('can:cms.users.create')->name('cms.users.create');
 
     // Apis
     Route::get('/cms/get/user/{id}', 'Admin\UserController@getUserById')->middleware('can:cms.users.show');

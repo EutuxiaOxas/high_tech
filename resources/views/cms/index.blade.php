@@ -3,6 +3,8 @@
     $section = 'dashboard';
 @endphp
 
+@section('title') Mi Perfil - High Tech Bearings @endsection
+
 @section('content')
     <div class="row">
         <div class="col-12">
