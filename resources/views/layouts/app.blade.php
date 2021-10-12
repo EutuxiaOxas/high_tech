@@ -86,7 +86,7 @@
       transition: all 1s !important;
     }
     .text-second{
-      color: #000;
+      color: #555555;
     }
   </style>
   @yield('head')
