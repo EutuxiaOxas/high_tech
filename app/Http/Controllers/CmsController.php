@@ -36,13 +36,13 @@ class CmsController extends Controller
 
     public function config(){
         $user_id = Auth::id();
-    	$user = User::findOrFail($user_id);
+    	$user    = User::findOrFail($user_id);
     	return view('cms.config.index')->with(compact('user'));
     }
 
     public function passwordUpdate( Request $request ){
         $user_id = Auth::id();
-    	$user = User::findOrFail($user_id);
+    	$user    = User::findOrFail($user_id);
 
         $user->update([
             'password' => Hash::make($request->password)
@@ -57,10 +57,11 @@ class CmsController extends Controller
     }
 
     public function accountsCreate(Request $request){
-        $account_name = $request->account;
-        $account_number = $request->account_number;
-        $account_mail = $request->account_mail;
-        $account_titular = $request->account_titular;
+        
+        $account_name        = $request->account;
+        $account_number      = $request->account_number;
+        $account_mail        = $request->account_mail;
+        $account_titular     = $request->account_titular;
         $account_description = $request->account_description;
 
         $account = new Account;
@@ -74,4 +75,34 @@ class CmsController extends Controller
 
     	return back()->with('message', 'Cuenta creada Exitosamente!');
     }
+
+    public function accountsRemove( $account_id ){
+        
+        $account = Account::findOrFail($account_id);
+        $account->delete();
+
+    	return back()->with('message', 'Cuenta eliminada Exitosamente!');
+    }
+
+    public function accountsUpdate(Request $request){
+        
+        $account_id          = $request->account_id;
+        $account_name        = $request->account;
+        $account_number      = $request->account_number;
+        $account_mail        = $request->account_mail;
+        $account_titular     = $request->account_titular;
+        $account_description = $request->account_description;
+
+        $account = Account::findOrFail($account_id);
+        $account->update([
+            'account' => $account_name,
+            'account_number' => $account_number,
+            'account_mail' => $account_mail,
+            'account_titular' => $account_titular,
+            'account_description' => $account_description
+        ]);
+
+    	return back()->with('message', 'Cuenta actualizada Exitosamente!');
+    }
+
 }

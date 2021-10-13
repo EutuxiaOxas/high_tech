@@ -86,6 +86,8 @@ Route::middleware('auth')->group(function () {
 	/* ----------  RUTA CUENTAS BANCARIAS ---------*/
 	Route::get('/cms/accounts', 'CmsController@accounts')->middleware('can:cms.orders.show')->name('cms.accounts.show');
 	Route::post('/cms/accounts/create', 'CmsController@accountsCreate')->middleware('can:cms.orders.show')->name('cms.accounts.create');
+	Route::post('/cms/accounts/update', 'CmsController@accountsUpdate')->middleware('can:cms.orders.show')->name('cms.accounts.update');
+	Route::delete('/cms/accounts/remove/{id}', 'CmsController@accountsRemove')->middleware('can:cms.orders.show')->name('cms.accounts.remove');
 
 	/* ----------  RUTA CONFIGURACIONES ---------*/
 	Route::get('/cms/config/show', 'CmsController@config')->name('cms.config.show');
