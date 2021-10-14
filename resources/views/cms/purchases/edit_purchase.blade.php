@@ -4,7 +4,7 @@
     $meses = ['','Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 @endphp
 
-@section('title') Mis Compras - High Tech Bearings@endsection
+@section('title') Mis Compras - High Tech Bearings @endsection
 
 <style>
     .img_product_card{
@@ -92,8 +92,9 @@
                 <div class="row mb-2" style="font-size:1.25rem;">
                     Orden creada: {{ $order->created_at->day }} de {{ $meses[$order->created_at->month] }} del {{ $order->created_at->year }}  
                 </div>
-                <div class="row">
+                <div class="row justify-content-end">
                     @if( $order->status == 'active' )
+                        <a class="btn btn-info col-12 px-5" href="{{ route( 'account.create.transaction', $order->id ) }}">Registrar pago</a>
                         <!-- <button class="btn btn-success px-3 mr-3" data-toggle="modal" data-target="#modalCompleteOrder">Completar</button>
                         <button class="btn btn-danger px-2" data-toggle="modal" data-target="#modalCanceledOrder">Cancelar</button> -->
                     @endif

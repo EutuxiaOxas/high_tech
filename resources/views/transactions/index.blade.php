@@ -20,7 +20,7 @@
                 <h2>Registra tu pago</h2>
             </div>
             <div class="col-md-6 mt-5 mt-md-0 text-right">
-                <h4>Monto de la compra: 12.54 $USD</h4>
+                <h4>Monto de la compra: {{ $order->amount }} $USD</h4>
             </div>
         </div>
         <div class="row justify-content-around">
@@ -64,13 +64,13 @@
                         <h3><strong>Registra tu pago</strong></h3>
                     </div>
                     <div class="col-12 px-0">
-                        <form action="{{ route('account.store.transaction') }}" method="POST">
+                        <form action="{{ route('account.store.transaction') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="inputName">Cuenta a la cual pagaste</label>
-                                <select class="" name="payment_method_id">
+                                <select class="" name="accounts_id">
                                     @foreach($accounts as $account)
-                                        <option class="bg-white"" value="{{ $account->id }}">{{ $account->account }}</option>
+                                        <option class="bg-white" value="{{ $account->id }}">{{ $account->account }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -78,7 +78,7 @@
                             <div class="col-12 px-0">
                                 <div class="form-group">
                                     <label for="inputDescription">Monto</label>
-                                    <input class="form-control" type="number" name="amount" autocomplete="off">
+                                    <input class="form-control" type="number" name="amount" autocomplete="off" step="0.01">
                                 </div>
                             </div>
                             <div class="col-12 px-0">
@@ -100,7 +100,7 @@
                                     <input type="file" name="capture" id="capture" >
                                 </div>
                             </div>
-                            <input type="text" hidden value="{{session('order_id')}}">
+                            <input type="text" hidden name="order_id" value="{{ $order->id }}">
                             <button type="submit" class="col-12 btn btn-success">Confirmar</button>
                         </form>
                     </div>

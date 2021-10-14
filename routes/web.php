@@ -104,8 +104,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/cms/eliminar/user/{id}', 'Admin\UserController@destroy')->middleware('can:cms.users.destroy');
 
 	// Formulario para registrar un pago
-	Route::get('/create-transaction', 'OrderController@createTransaction')->middleware('can:cms.index')->name('account.create.transaction');
-	Route::get('/store/transaction', 'OrderController@storeTransaction')->middleware('can:cms.index')->name('account.store.transaction');
+	Route::get('/create-transaction/{id}', 'OrderController@createTransaction')->middleware('can:cms.index')->name('account.create.transaction');
+	Route::post('/store/transaction', 'OrderController@storeTransaction')->middleware('can:cms.index')->name('account.store.transaction');
 	
 });
 

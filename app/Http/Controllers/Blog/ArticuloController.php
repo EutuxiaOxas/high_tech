@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-
 use  App\Blog\Article;
 use  App\Blog\Category;
 use  App\Blog\Keyword;
@@ -44,18 +43,18 @@ class ArticuloController extends Controller
     public function store(Request $request)
     {
         $autor_id = $request->article_author;
-        $image = $request->file('article_picture');
+        $image    = $request->file('article_picture');
 
         if(auth()->user()->id == $autor_id)
         {
 
             $articulo = new Article;
-            $articulo->title = $request->articulo_title;
-            $articulo->content = $request->articulo_content;
-            $articulo->date = $request->articulo_date;
-            $articulo->autor_id = $autor_id;
+            $articulo->title       = $request->articulo_title;
+            $articulo->content     = $request->articulo_content;
+            $articulo->date        = $request->articulo_date;
+            $articulo->autor_id    = $autor_id;
             $articulo->category_id = $request->articulo_categoria;
-            $articulo->slug = $request->slug;
+            $articulo->slug        = $request->slug;
 
 
             if($image){
@@ -66,19 +65,15 @@ class ArticuloController extends Controller
                     $articulo->picture = $imagen;
                     $articulo->save();
 
-
-
                     $keywords = $request->articulo_keywords;
                     $tags = explode(",", $keywords);
 
                     $keywords = [];
 
-                    foreach ($tags as $tag)
-                    {
+                    foreach ($tags as $tag){
                         $verificar = Keyword::where('keyword', $tag)->first();
 
-                        if(isset($verificar))
-                        {
+                        if(isset($verificar)){
                             $keywords[] = $verificar->id;
                         }else {
                             $keyword = Keyword::create([

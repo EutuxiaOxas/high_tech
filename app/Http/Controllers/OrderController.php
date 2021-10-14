@@ -6,6 +6,7 @@ use App\Account;
 use App\Order;
 use App\OrderProduct;
 use App\Product;
+use App\TransactionOrder;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -165,34 +166,47 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function createTransaction()
+    public function createTransaction($order_id)
     {
+        $order = Order::findOrFail($order_id);
         $accounts = Account::all();
         $categories = Category::all();
-        return view('transactions.index', compact('accounts', 'categories'));
+        return view('transactions.index', compact('accounts', 'categories', 'order'));
     }
     public function storeTransaction(Request $request)
     {
         $order_id          = $request->order_id;
-        $payment_method_id = $request->payment_method_id;
+        $accounts_id       = $request->accounts_id;
         $amount            = $request->amount;
         $referencia        = $request->referencia;
-        $capture           = $request->capture;
+        $capture           = $request->file('capture');        
         $observation       = $request->observation;
 
-        $payment = new PaymentOrder;
-        $payment->create([
-            'order_id'           => $order_id,
-            'payment_methods_id' => $payment_method_id,
-            'amount'             => $amount,
-            'referencia'         => $referencia,
-            'capture'            => $capture,
-            'observation'        => $observation,
-        ]);
+        if($capture){
+            $imagen = $capture->store('public');
+            $payment = new TransactionOrder;
+            $payment->create([
+                'order_id'           => $order_id,
+                'accounts_id'        => $accounts_id,
+                'amount'             => $amount,
+                'referencia'         => $referencia,
+                'capture'            => $imagen,
+                'observation'        => $observation,
+            ]);
+            
+        }else{
+            $payment = new TransactionOrder;
+            $payment->create([
+                'order_id'           => $order_id,
+                'accounts_id'        => $accounts_id,
+                'amount'             => $amount,
+                'referencia'         => $referencia,
+                'observation'        => $observation,
+            ]);
+        }
 
-        $user_id = Auth::id();
-        $purchases = Order::where('user_id', $user_id)->orderBy('created_at','DESC')->get();
-    	return view('cms.purchases.index', compact('purchases'));
+        $order = Order::findOrFail($order_id);
+    	return redirect()->route('cms.purchases.edit', [$order])->with('message', 'Se registro tu pago exitosamente!');
     }
 
 
