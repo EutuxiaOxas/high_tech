@@ -103,7 +103,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/cms/update/user/{id}', 'Admin\UserController@update')->middleware('can:cms.users.update');
     Route::post('/cms/eliminar/user/{id}', 'Admin\UserController@destroy')->middleware('can:cms.users.destroy');
 
+	// Formulario para registrar un pago
+	Route::get('/create-transaction', 'OrderController@createTransaction')->middleware('can:cms.index')->name('account.create.transaction');
+	Route::get('/store/transaction', 'OrderController@storeTransaction')->middleware('can:cms.index')->name('account.store.transaction');
+	
 });
+
 
 /*------------------------------------ END --------------------------*/
 
@@ -126,6 +131,4 @@ Route::get('/subscriber/{email}', 'HomeController@subscriber')->name('home.subsc
 // Importar Exportar EXCEL Products
 Route::get('/cms/products/export', 'ProductController@exportProducts')->name('products.excel.export');
 Route::post('/cms/products/import', 'ProductController@importProducts')->name('products.excel.import');
-
-Route::get('/order-transaction', 'OrderController@createTransaction')->name('order.transaction');
 

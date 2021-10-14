@@ -42,19 +42,19 @@ $section = 'productos';
       <div class="row">
         <div class="col-12 col-md-6 mb-4">
           <h5>Titulo</h5>
-          <input class="form-control" id="titulo_producto" type="text" maxlength="191" required name="titulo_producto" placeholder="Titulo" value="testt">
+          <input class="form-control" id="titulo_producto" type="text" maxlength="191" required name="titulo_producto" placeholder="Titulo">
         </div>
         <div class="col-12 col-md-3 mb-4">
           <h5>Precio - <b>$USD</b> </h5>
-          <input class="form-control" type="number" required name="precio_producto" placeholder="Precio" maxlength="191" min="0.01" step="0.01" value="15">
+          <input class="form-control" type="number" required name="precio_producto" placeholder="Precio" maxlength="191" min="0.01" step="0.01">
         </div>
         <div class="col-12 col-md-3 mb-4">
           <h5>Cantidad </h5>
-          <input class="form-control" type="number" required name="cantidad_producto" placeholder="Existencia" min="1" step="1" value="15">
+          <input class="form-control" type="number" required name="cantidad_producto" placeholder="Existencia" min="1" step="1">
         </div>
         <div class="col-12 col-md-6 mb-4">
           <h5>Código Universal</h5>
-          <input class="form-control" type="text" required name="codigo_producto" placeholder="Código Universal" maxlength="191" value="234123423">
+          <input class="form-control" type="text" required name="codigo_producto" placeholder="Código Universal" maxlength="191">
         </div>
         <div class="col-12 col-md-6 mb-4">
           <h5>Imagen del producto</h5>
@@ -64,12 +64,12 @@ $section = 'productos';
         </div>
         <div class="col-12 mb-4">
           <h5>Descripción</h5>
-          <textarea class="form-control" required name="descripcion_producto">ewgsdgsdfgsdf</textarea>
+          <textarea class="form-control" required name="descripcion_producto"></textarea>
         </div>
 
         <div class="col-12 mb-4">
           <h5>Aplicación</h5>
-          <textarea class="form-control auto" name="aplicacion" required>asdfasdf</textarea>
+          <textarea class="form-control auto" name="aplicacion" required></textarea>
         </div>
 
         <div class="col-12 mb-4">
@@ -77,7 +77,7 @@ $section = 'productos';
           <select name="categoria_producto" class="form-control form-control" id="categoria_select" required>
             <option>Selecciona una Categoría</option>
             @foreach($categorias as $categoria)
-            <option value="{{$categoria->id}}">{{$categoria->category}}</option>
+              <option value="{{$categoria->id}}">{{$categoria->category}}</option>
             @endforeach
           </select>
         </div>
@@ -227,14 +227,15 @@ $section = 'productos';
     let opcion = e.target.options[catSelect.selectedIndex]
     activeForms(opcion)
   });
-
-
+  
+  
   //funcion para activar los formularios
   function activeForms(target) {
-
+    
     offForms()
+    console.log(target.text)
 
-    if (target.text === "Serie Automotriz") {
+    if (target.text === "Automotriz") {
 
       let form = document.querySelector('#auto')
       let inputHidden = document.querySelector('#auto_inputs');
@@ -246,7 +247,7 @@ $section = 'productos';
         formulario.setAttribute('required', true)
       })
 
-    } else if (target.text === "Serie Industrial") {
+    } else if (target.text === "Industrial") {
 
       let form = document.querySelector('#serie6000')
       let inputHidden = document.querySelector('#serie6000_inputs');
@@ -258,7 +259,7 @@ $section = 'productos';
         formulario.setAttribute('required', true)
       })
 
-    } else if (target.text === "Serie Moto") {
+    } else if (target.text === "Moto") {
 
       let form = document.querySelector('#moto')
       let inputHidden = document.querySelector('#moto_inputs');
@@ -270,7 +271,7 @@ $section = 'productos';
         formulario.setAttribute('required', true)
       })
 
-    } else if (target.text === "Serie Cadenas") {
+    } else if (target.text === "Cadenas") {
 
       let form = document.querySelector('#cadena')
       let inputHidden = document.querySelector('#cadena_inputs');
@@ -282,7 +283,7 @@ $section = 'productos';
         formulario.setAttribute('required', true)
       })
 
-    } else if (target.text === "Serie Chumacera") {
+    } else if (target.text === "Chumacera") {
       let form = document.querySelector('#chumacera')
       let inputHidden = document.querySelector('#chumacera_inputs');
       let formularios = document.querySelectorAll('.chumacera')

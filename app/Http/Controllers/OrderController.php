@@ -6,6 +6,7 @@ use App\Account;
 use App\Order;
 use App\OrderProduct;
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -166,7 +167,32 @@ class OrderController extends Controller
      */
     public function createTransaction()
     {
-        return view('transactions.index');
+        $accounts = Account::all();
+        $categories = Category::all();
+        return view('transactions.index', compact('accounts', 'categories'));
+    }
+    public function storeTransaction(Request $request)
+    {
+        $order_id          = $request->order_id;
+        $payment_method_id = $request->payment_method_id;
+        $amount            = $request->amount;
+        $referencia        = $request->referencia;
+        $capture           = $request->capture;
+        $observation       = $request->observation;
+
+        $payment = new PaymentOrder;
+        $payment->create([
+            'order_id'           => $order_id,
+            'payment_methods_id' => $payment_method_id,
+            'amount'             => $amount,
+            'referencia'         => $referencia,
+            'capture'            => $capture,
+            'observation'        => $observation,
+        ]);
+
+        $user_id = Auth::id();
+        $purchases = Order::where('user_id', $user_id)->orderBy('created_at','DESC')->get();
+    	return view('cms.purchases.index', compact('purchases'));
     }
 
 

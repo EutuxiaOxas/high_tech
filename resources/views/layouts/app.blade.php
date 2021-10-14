@@ -88,6 +88,15 @@
     .text-second{
       color: #555555;
     }
+    .text-gray-800{
+      color: #222;
+    }
+    .text-blue-700{
+      color: #1D4ED8 ;
+    }
+    .cursor-pointer{
+      cursor:pointer;
+    }
   </style>
   @yield('head')
 </head>
