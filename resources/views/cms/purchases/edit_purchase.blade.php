@@ -68,7 +68,7 @@
           </div>
         </div>
     </section>
-
+    <!-- Productos -->
     <section class="container-fluid">
         <div class="row">
             <div class="col-lg-8"> 
@@ -95,8 +95,6 @@
                 <div class="row justify-content-end">
                     @if( $order->status == 'active' )
                         <a class="btn btn-info col-12 px-5" href="{{ route( 'account.create.transaction', $order->id ) }}">Registrar pago</a>
-                        <!-- <button class="btn btn-success px-3 mr-3" data-toggle="modal" data-target="#modalCompleteOrder">Completar</button>
-                        <button class="btn btn-danger px-2" data-toggle="modal" data-target="#modalCanceledOrder">Cancelar</button> -->
                     @endif
                 </div>
             </div>
@@ -132,6 +130,68 @@
         <div class="row font-bold" style="font-size:1.5rem">
             MONTO TOTAL:  {{ $order->amount }} $USD
         </div>
+    </section>
+
+    <!-- Transacciones -->
+    <section class="container-fluid mt-5">
+        <div class="row">
+            <h4 class="text-primary">
+                Pagos registrados
+            </h4>
+        </div>
+        @if ( count( $order->transactions ) > 0 )
+            @foreach ($order->transactions as $trasaction )
+                <div class="row my-2 bg-white bg-rounded-md shadow-md p-3">
+                    <div class="col-12">
+                        <div class="row">
+                            <span class="col-7 text-info" style="font-size:1.1rem;">{{ $trasaction->account->account }}</span>
+                            <span class="col-auto ml-auto font-bold" style="font-size:1.4rem;">{{ number_format( $trasaction->amount, 2, '.', ',') }}</span>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-7">
+                                <div class="row">
+                                    <div class="col">
+                                        <strong>Referencia:</strong> {{ $trasaction->referencia }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <strong>Comentario:</strong> {{ $trasaction->observation }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto ml-auto mt-3">
+                                <button class="btn btn-sm btn-info px-4" data-toggle="modal" data-target="#modalCapture{{ $trasaction->id }}">Ver capture</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal Capture Transaccion-->
+                    <div class="modal fade" id="modalCapture{{ $trasaction->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">{{ $trasaction->account->account }} - {{ number_format( $trasaction->amount, 2, '.', ',') }}</h5>
+                                    <button type="button" class="btn" data-dismiss="modal" aria-label="Close">x</button>
+                                </div>
+                                <div class="modal-body">
+                                    <img width="100%" src="{{ Storage::url($trasaction->capture) }}" loading="lazy">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">Listo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @else
+        <div class="row">
+            <div class="col">
+                <p>No se han registrados pagos para esta compra.</p>
+            </div>
+        </div>
+        @endif
+
     </section>
 
     <!-- Modal Cancelar Orden-->

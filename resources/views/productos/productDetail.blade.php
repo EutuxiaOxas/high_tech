@@ -126,8 +126,14 @@
                         <div class="row">
                             <div class="col-4">
                                 <select class="d-inline quantityProduct" name="quantity">
+                                    @php $cont=0; @endphp
                                     @for ($i = 1; $i <= $producto->quantity; $i++)
-                                        <option value="{{ $i }}">{{ $i }} {{  $i != 1 ? 'unidades' : 'unidad' }}</option>
+                                        @if( $cont > 99 )
+                                            @php break; @endphp
+                                        @else
+                                            @php $cont++; @endphp
+                                            <option value="{{ $i }}">{{ $i }} {{  $i != 1 ? 'unidades' : 'unidad' }}</option>
+                                        @endif
                                     @endfor
                                 </select>
                             </div>

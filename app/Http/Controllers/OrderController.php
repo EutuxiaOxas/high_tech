@@ -28,9 +28,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        // return Auth::user()->hasRole('buyer');
+    public function create(){
 
         if(session()->has('shoppingCar')){
 
@@ -68,8 +66,8 @@ class OrderController extends Controller
             // eliminar la variable de sesion de 'shoppingCar'
             session()->forget('shoppingCar');
     
-            // return route('order.transaction');
-            return redirect()->route('cms.index')->with('info', 'Compra realizada exitosamente');
+            return redirect()->route( 'account.create.transaction', $order_id)->with('info', 'Compra realizada exitosamente!');
+            // return redirect()->route('cms.index')->with('info', 'Compra realizada exitosamente');
         }else{
             return 'false';
         }
@@ -106,6 +104,11 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
+        // $order_id = $order->id;
+        // $trasactions = TransactionOrder::where('order_id', $order_id)->get();
+        // dd($trasactions);
+        // dd($order->transactions);
+        // return view('cms.orders.edit_order', compact('order', 'trasactions'));
         return view('cms.orders.edit_order', compact('order'));
     }
 
@@ -173,6 +176,7 @@ class OrderController extends Controller
         $categories = Category::all();
         return view('transactions.index', compact('accounts', 'categories', 'order'));
     }
+
     public function storeTransaction(Request $request)
     {
         $order_id          = $request->order_id;

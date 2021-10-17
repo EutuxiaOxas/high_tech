@@ -15,11 +15,15 @@
 <section class="bg-light">
     <div class="container mt-5">
         <div class="row">
-            <div class="col-md-6 mt-5 mt-md-0">
-                <span class="eyebrow mb-1 text-dark">¡Excelente! Ya puedes finalizar tu compra</span> <br>
-                <h2>Registra tu pago</h2>
+            <div class="col-md-7 mt-5 mt-md-0 px-lg-0">
+                <span class="eyebrow mb-1 text-dark">Estaremos confirmando tu pago lo antes posible.</span> <br>
+                @if (session('info'))
+                    <h2 class="text-info">{{ session('info') }}</h2>
+                @else
+                    <h2>Registra tu pago</h2>
+                @endif
             </div>
-            <div class="col-md-6 mt-5 mt-md-0 text-right">
+            <div class="col-md-5 mt-5 mt-md-0 text-right">
                 <h4>Monto de la compra: {{ $order->amount }} $USD</h4>
             </div>
         </div>
@@ -54,7 +58,7 @@
                 </div>
                 <p class="mt-5 text-gray-800">
                     Realiza tu pago a una de nuestras cuentas bancarias y registra tu pago. <br>
-                    estaremos confirmando tu pago y comunicandonos contigo para entregarte los rodamientos.
+                    Estaremos confirmando tu pago y comunicandonos contigo para entregarte los rodamientos.
                 </p>
 
             </div>

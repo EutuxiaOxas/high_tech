@@ -24,7 +24,7 @@
             <div class="container-fluid px-5">
               <div class="row justify-content-between vh-100 align-items-center">
                 <div class="col-lg-8 align-md-self-end text-white text-shadow text-center text-md-left" data-swiper-parallax="-100%">
-                  <img class="img_banner" src="/svg/logo-light.svg" alt="Imagen Logo de High Tech Bearings" width="200px" height="150px" loading="lazy">
+                  <img class="img_banner" src="/svg/logo-light.svg" alt="Imagen Logo de High Tech Bearings" width="100%" loading="lazy">
                   <a class="btn btn-white btn-rounded px-5 d-md-none mt-4" href="{{ route('products') }}" aria-label="ver todos los productos">Ver Productos</a>
                 </div>
                 <div class="col-12 align-self-end d-none d-md-block">

@@ -19,4 +19,9 @@ class Order extends Model
         return $this->hasMany('App\OrderProduct');
     }
 
+    //Relacion uno a muchos
+    public function transactions(){
+        return $this->hasMany('App\TransactionOrder');
+    }
+
 }

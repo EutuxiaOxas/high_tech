@@ -225,7 +225,7 @@
             @can('cms.orders.show')
 
               <li class="nav-item has-treeview">
-                <a href="{{ route('cms.accounts.show') }}" class="nav-link secciones tienda @if ($section == 'account') active @endif">
+                <a href="{{ route('cms.accounts.show') }}" class="nav-link secciones tienda @if ($section == 'accounts') active @endif">
                   <i class="nav-icon fas fa-credit-card"></i>
                   <p>
                     Cuentas Bancarias

@@ -4,13 +4,16 @@
         <div class="boxed p-2 p-lg-5" style="background-color: #76bd22;">
             <div class="row justify-content-between align-items-center text-center text-md-left">
             <div class="col-md-3">
-                <h3 class="text-white">CTA.</h3>
+                <h3 class="text-white">HIGH TECH BEARINGS</h3>
             </div>
             <div class="col-md-6 text-white">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p class="text-white text-lead">
+                    Estamos atentos a responderte cualquier duda que tengas. <br>
+                    Ponte en contacto con nosotros
+                </p>
             </div>
             <div class="col-md-3 text-lg-right">
-                <a href="" class="btn btn-dark btn-rounded px-5">Write Us</a>
+                <a href="{{ route('contacto') }}" class="btn btn-dark btn-rounded px-5">Contactar</a>
             </div>
             </div>
         </div>
