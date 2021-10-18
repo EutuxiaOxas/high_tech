@@ -243,7 +243,7 @@
 
     offForms()
 
-    if (target.text === "Serie Automotriz") {
+    if (target.text === "Automotriz") {
 
       let form = document.querySelector('#auto')
       let inputHidden = document.querySelector('#auto_inputs');
@@ -255,7 +255,7 @@
         formulario.setAttribute('required', true)
       })
 
-    } else if(target.text === "Serie Industrial") {
+    } else if(target.text === "Industrial") {
 
       let form = document.querySelector('#serie6000')
       let inputHidden = document.querySelector('#serie6000_inputs');
@@ -267,7 +267,7 @@
         formulario.setAttribute('required', true)
       });
 
-    } else if(target.text === "Serie Moto") {
+    } else if(target.text === "Moto") {
 
       let form = document.querySelector('#moto')
       let inputHidden = document.querySelector('#moto_inputs');
@@ -279,7 +279,7 @@
         formulario.setAttribute('required', true)
       })
 
-    } else if(target.text === "Serie Cadenas") {
+    } else if(target.text === "Cadenas") {
 
       let form = document.querySelector('#cadena')
       let inputHidden = document.querySelector('#cadena_inputs');
@@ -291,7 +291,7 @@
         formulario.setAttribute('required', true)
       })
 
-    } else if(target.text === "Serie Chumacera") {
+    } else if(target.text === "Chumacera") {
       let form = document.querySelector('#chumacera')
       let inputHidden = document.querySelector('#chumacera_inputs');
       let formularios = document.querySelectorAll('.chumacera')

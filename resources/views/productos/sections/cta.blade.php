@@ -7,7 +7,7 @@
                 <h3 class="text-white">HIGH TECH BEARINGS</h3>
             </div>
             <div class="col-md-6 text-white">
-                <p class="text-white text-lead">
+                <p class="text-white lead my-3">
                     Estamos atentos a responderte cualquier duda que tengas. <br>
                     Ponte en contacto con nosotros
                 </p>

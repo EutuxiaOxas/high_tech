@@ -83,7 +83,7 @@
 </section>
 
 <section class="container-fluid">
-    {{-- Crear usuarios --}}
+    {{-- Crear cuenta bancaria --}}
     <div class="row">
       <div class="col-12 px-0">
         <div class="card card-primary collapsed-card">
@@ -146,12 +146,12 @@
       </div>
     </div>
 
-    {{-- Lista de usuario creados --}}
+    {{-- Lista de cuentas creados --}}
     <div class="row">
         <div class="col px-0">
             <div class="card">
                 <div class="card-header row justify-content-between align-items-center mx-0">
-                <h3 class="card-title">Cuentas bancarias registrados</h3>
+                <h3 class="card-title">Cuentas bancarias creadas</h3>
                 <div class="card-tools ml-auto">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                     <i class="fas fa-minus"></i></button>

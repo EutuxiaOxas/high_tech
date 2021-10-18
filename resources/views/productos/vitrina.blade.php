@@ -10,6 +10,23 @@
  Productos de High Tech Bearings
 @endsection
 
+@section('head') 
+    <link rel="canonical" href="https://www.hightechinternational.net/products" />
+    <meta name="robots" content="index,follow"/>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="High Tech Bearings - Rodamientos">
+    <meta name="description" content="Rodamientos en Valencia, todos nuestros productos - High Tech Bearings">
+    <meta name="keywords" content="rodamientos en valencia">
+
+    <!-- Open Graph para Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="High Tech Bearings - Rodamientos" />
+    <meta property="og:url" content="https://www.hightechinternational.net/products" />
+    <meta property="og:image" content="{{ asset( 'home.png' ) }}" />
+    <meta property="og:description" content="Rodamientos en Valencia, todos nuestros productos - High Tech Bearings" />
+    <meta property="og:site_name" content="High Tech Bearings" />
+@endsection
 
 @section('content')
 <style>

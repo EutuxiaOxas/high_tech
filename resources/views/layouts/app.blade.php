@@ -28,8 +28,8 @@
   <style>
     .badge_shopping_car {
       position: absolute;
-      bottom: 5px;
-      right: 0px;
+      bottom: 7px;
+      right: 2px;
       background-color: #a2bd30;
       color: #fff;
       padding: 3px 6.5px;

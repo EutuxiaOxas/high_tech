@@ -10,6 +10,24 @@
 	{{$post->title}}
 @endsection
 
+@section('head') 
+    <link rel="canonical" href="https://www.hightechinternational.net/{{$post->slug}}" />
+    <meta name="robots" content="index,follow"/>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="{{$post->title}} - High Tech Bearings">
+    <meta name="description" content="{{$post->title}} - High Tech Bearings">
+    <meta name="keywords" content="{{$post->title}}">
+
+    <!-- Open Graph para Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{$post->title}} - High Tech Bearings" />
+    <meta property="og:url" content="https://www.hightechinternational.net/{{$post->slug}}" />
+    <meta property="og:image" content="{{ asset( 'home.png' ) }}" />
+    <meta property="og:description" content="{{$post->title}}" />
+    <meta property="og:site_name" content="High Tech Bearings" />
+@endsection
+
 <style>
     .tag-cloud a:hover {
         background: #17a2b8!important;

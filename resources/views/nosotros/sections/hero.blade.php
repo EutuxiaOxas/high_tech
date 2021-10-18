@@ -18,43 +18,43 @@
         <div class="col-md-10">
             <div class="owl-carousel visible gallery" data-items="[2]" data-autoplay="true" data-loop="true" data-dots="true" data-margin="20">
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/high1.webp" alt="Image" loading="lazy">
+                <img src="https://hightechinternational.net/imagenes/imagenes_pagina/high1.webp" alt="Image" loading="lazy" width="100%" height="auto">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/high2.webp" alt="Image" loading="lazy">
+                <img src="https://hightechinternational.net//imagenes/imagenes_pagina/high2.webp" alt="Image" loading="lazy" width="100%" height="auto">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/serie1.webp" alt="Image" loading="lazy">
+                <img src="https://hightechinternational.net//imagenes/imagenes_pagina/serie1.webp" alt="Image" loading="lazy" width="100%" height="auto">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/high3.webp" alt="Image" loading="lazy">
+                <img src="https://hightechinternational.net//imagenes/imagenes_pagina/high3.webp" alt="Image" loading="lazy" width="100%" height="auto">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/serie2.webp" alt="Image" loading="lazy">
+                <img src="https://hightechinternational.net//imagenes/imagenes_pagina/serie2.webp" alt="Image" loading="lazy" width="100%" height="auto">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/serie4.webp" alt="Image" loading="lazy">
+                <img src="https://hightechinternational.net//imagenes/imagenes_pagina/serie4.webp" alt="Image" loading="lazy" width="100%" height="auto">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/high3.webp" alt="Image" loading="lazy">
+                <img src="https://hightechinternational.net//imagenes/imagenes_pagina/high3.webp" alt="Image" loading="lazy" width="100%" height="auto">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/serie3.webp" alt="Image" loading="lazy">
+                <img src="https://hightechinternational.net//imagenes/imagenes_pagina/serie3.webp" alt="Image" loading="lazy" width="100%" height="auto">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/high4.webp" alt="Image" loading="lazy">
+                <img src="https://hightechinternational.net//imagenes/imagenes_pagina/high4.webp" alt="Image" loading="lazy" width="100%" height="auto">
             </figure>
 
             <figure class="photo">
-                <img src="/imagenes/imagenes_pagina/serie5.webp" alt="Image" loading="lazy">
+                <img src="https://hightechinternational.net//imagenes/imagenes_pagina/serie5.webp" alt="Image" loading="lazy" width="100%" height="auto">
             </figure>
             </div>
         </div>

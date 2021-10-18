@@ -11,12 +11,32 @@
  High Tech Blog
 @endsection
 
+
+
 <style>
     .tag-cloud a:hover {
         background: #17a2b8!important;
         color: #fff;
     }
 </style>
+
+@section('head') 
+    <link rel="canonical" href="https://www.hightechinternational.net/blog" />
+    <meta name="robots" content="index,follow"/>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="High Tech Bearings - Blog de noticias">
+    <meta name="description" content="Noticias e información sobre rodamientos industriales - High Tech Bearings">
+    <meta name="keywords" content="informacion sobre rodamientos industriales">
+
+    <!-- Open Graph para Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="High Tech Bearings - Blog de noticias" />
+    <meta property="og:url" content="https://www.hightechinternational.net/blog" />
+    <meta property="og:image" content="{{ asset( 'home.png' ) }}" />
+    <meta property="og:description" content="Informacion sobre rodamientos industriales" />
+    <meta property="og:site_name" content="High Tech Bearings" />
+@endsection
 
 @section('content')
 <!-- hero -->

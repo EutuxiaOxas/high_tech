@@ -101,18 +101,47 @@
                                 </a>
                                 @endcan
                                 @can('cms.blog.categories.destroy')
-                                <form class="d-inline mb-0" action="/cms/blog/eliminar/categoria/{{$categoria->id}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn p-0 ml-3" value="Eliminar" type="submit">
+                                
+                                    <button class="btn p-0 ml-3" value="Eliminar" data-toggle="modal" data-target="#modalEliminar">
                                         <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M1 16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V6C13 4.9 12.1 4 11 4H3C1.9 4 1 4.9 1 6V16ZM13 1H10.5L9.79 0.29C9.61 0.11 9.35 0 9.09 0H4.91C4.65 0 4.39 0.11 4.21 0.29L3.5 1H1C0.45 1 0 1.45 0 2C0 2.55 0.45 3 1 3H13C13.55 3 14 2.55 14 2C14 1.45 13.55 1 13 1Z" fill="#CE3F3D"/>
                                         </svg>
                                     </button>
-                                </form>
+                                
                                 @endcan
                             </td>
                         </tr>
+
+                        {{-- Modal eliminar usuario --}}
+                        <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Eliminar Categoria - {{$categoria->name}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form class="d-inline mb-0" action="/cms/blog/eliminar/categoria/{{$categoria->id}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                        <div class="modal-body" >
+                                            ¿Seguro desea eliminar esta categoria? <br> <br>
+                                            <p class="text-muted">
+                                                Tenga en cuenta que al eliminar la categoria, se eliminaran todos los articulos del blog que estan 
+                                                asociados a esta categoria. <br>
+                                            </p>
+
+                                            <p class="text-info mt-2">Le recomendamos primero cambiar la categoria de los articulos antes de elimnar la categoria.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-danger">Eliminar categoria</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </tbody>
                 </table>

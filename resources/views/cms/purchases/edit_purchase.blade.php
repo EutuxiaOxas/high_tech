@@ -145,7 +145,7 @@
                     <div class="col-12">
                         <div class="row">
                             <span class="col-7 text-info" style="font-size:1.1rem;">{{ $trasaction->account->account }}</span>
-                            <span class="col-auto ml-auto font-bold" style="font-size:1.4rem;">{{ number_format( $trasaction->amount, 2, '.', ',') }}</span>
+                            <span class="col-auto ml-auto font-bold" style="font-size:1.4rem;">Monto: {{ number_format( $trasaction->amount, 2, '.', ',') }}</span>
                         </div>
                         <div class="row mt-2">
                             <div class="col-7">
@@ -159,9 +159,14 @@
                                         <strong>Comentario:</strong> {{ $trasaction->observation }}
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <strong>Fecha:</strong> {{ $trasaction->created_at }}
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-auto ml-auto mt-3">
-                                <button class="btn btn-sm btn-info px-4" data-toggle="modal" data-target="#modalCapture{{ $trasaction->id }}">Ver capture</button>
+                            <div class="col-auto ml-auto mt-4">
+                                <button class="btn btn-sm btn-info px-4 mt-2" data-toggle="modal" data-target="#modalCapture{{ $trasaction->id }}">Ver capture</button>
                             </div>
                         </div>
                     </div>

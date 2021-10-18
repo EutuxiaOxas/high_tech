@@ -2,7 +2,6 @@
     <div class="card shadow-md" style="border: 0px;">
         <div class="img_product_card">
             <a href="{{route('product', $producto->slug)}}" itemprop="url" aria-label="ver el producto {{$producto->titulo}}">
-                {{-- <img class="img_product" src="{{ Storage::url($producto->imagen) }}" alt="{{$producto->titulo}}" itemprop="image"> --}}
                 <div class="img_product" style="background-image: url('{{ Storage::url($producto->imagen) }}')"></div>
             </a>
         </div>
@@ -32,4 +31,3 @@
         </div>
     </div>
 </div>
-{{-- <div class="bg-no-repeat bg-cover bg-center w-full h-24 md:h-32 xl:h-36 overflow-hidden z-10 rounded-md shadow-md" ></div> --}}

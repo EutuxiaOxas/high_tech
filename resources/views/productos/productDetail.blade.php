@@ -10,6 +10,24 @@
     {{$producto->titulo}} | High Tech Bearings
 @endsection
 
+@section('head') 
+    <link rel="canonical" href="https://www.hightechinternational.net/{{$producto->slug}}" />
+    <meta name="robots" content="index,follow"/>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="{{$producto->titulo}} - High Tech Bearings">
+    <meta name="description" content="{{$producto->titulo}} - High Tech Bearings">
+    <meta name="keywords" content="{{$producto->titulo}}">
+
+    <!-- Open Graph para Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{$producto->titulo}} - High Tech Bearings" />
+    <meta property="og:url" content="https://www.hightechinternational.net/{{$producto->slug}}" />
+    <meta property="og:image" content="{{ asset( 'home.png' ) }}" />
+    <meta property="og:description" content="{{$producto->titulo}} - High Tech Bearings" />
+    <meta property="og:site_name" content="High Tech Bearings" />
+@endsection
+
 <style>
     .img_product_card{
         max-height: 65vh;
@@ -27,6 +45,7 @@
     }
 
 </style>
+
 @section('content')
 <span id="product_id_detail" hidden>{{$producto->id}}</span>
 

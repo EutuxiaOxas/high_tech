@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     /* ----------  RUTA USUARIOS ---------*/
 	Route::get('/cms/users', 'Admin\UserController@index')->middleware('can:cms.users.show')->name('cms.users.show');
 	Route::get('/cms/users/user', 'Admin\UserController@create')->middleware('can:cms.users.create')->name('cms.users.create');
+	Route::post('/cms/users/user', 'Admin\UserController@store')->middleware('can:cms.users.store')->name('cms.users.store');
 	Route::get('/cms/users/buyers', 'Admin\UserController@buyers')->middleware('can:cms.users.show')->name('cms.users.buyers');
 	Route::get('/cms/users/subscribers', 'Admin\UserController@subscribers')->middleware('can:cms.users.show')->name('cms.users.subscribers');
 	Route::get('/cms/users/subscribers/download', 'Admin\UserController@subscribersDownload')->middleware('can:cms.users.show')->name('cms.users.subscribers.download');

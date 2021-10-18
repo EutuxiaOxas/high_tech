@@ -157,13 +157,13 @@
                                     </td> -->
                                     <td> <a class="text-primary" target="_blank" href="{{route('product', $producto->slug)}}">{{$producto->titulo}}</a></td>
                                     <td>{{$producto->categoria->category}}</td>
-                                    <td class="text-center">
+                                    <td >
                                         <strong>
                                             @php $price = number_format($producto->precio, 2, '.', ','); @endphp
                                             {{ $price }}
                                         </strong>
                                     </td>
-                                    <td class="text-center">{{$producto->codigo_universal }}</td>
+                                    <td >{{$producto->codigo_universal }}</td>
                                     <td>
                                         @can('cms.products.edit')
                                         <a href="/cms/editar/producto/{{$producto->id}}">
@@ -188,7 +188,7 @@
                                     <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="staticBackdropLabel">Eliminar <strong>{{$producto->titulo}}</strong></h5>
-                                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">x</button>
+                                        <button type="button" class="btn" data-dismiss="modal" aria-label="Close">x</button>
                                     </div>
                                     <form action="/cms/eliminar/producto/{{$producto->id}}" method="POST">
                                         <div class="modal-body">
@@ -197,7 +197,7 @@
                                             <span>¿Esta seguro que desea elimnar este producto?</span>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancelar</button>
                                             <button type="submit" class="btn btn-sm btn-danger px-5">Eliminar</button>
                                         </div>
                                         </form>
@@ -223,7 +223,7 @@
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Cargar productos via Excel</h5>
-                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">x</button>
+                <button type="button" class="btn" data-dismiss="modal" aria-label="Close">x</button>
             </div>
             <form action="{{ route('products.excel.import') }}" method="POST" enctype='multipart/form-data'>
                 <div class="modal-body">
@@ -245,7 +245,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button class="btn btn-success px-5" type="submit" href="{{ route('products.excel.export') }}">Cargar excel</button>
                 </div>
                 </form>

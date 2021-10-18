@@ -8,7 +8,7 @@
 <section class="seccion-crear-publicidad-cms">
 	<div class="container-fluid">
 		<h2 class="my-3">
-			Crear Categoria
+			Crear Categoria del Blog
 		</h2>
 		@if(session('message'))
 		  <div class="alert alert-success" role="alert">

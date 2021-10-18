@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @php
 $section = 'orders';
+$meses = ['','Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 @endphp
 
 <style>
@@ -93,13 +94,17 @@ $section = 'orders';
                     </div>
                 </div>
                 <div class="row">
-                    <h5 class="font-bold">{{ $order->buyer->email }}</h5>
-                    <h6 class="font-bold">{{ $order->buyer->phone }}</h6>
+                    <div class="col-12 px-0">
+                        <h5 class="font-bold">{{ $order->buyer->email }}</h5>
+                    </div>
+                    <div class="col-12 px-0">
+                        <h6 class="">Télefono: {{ $order->buyer->phone }}</h6>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-auto ml-auto">
                 <div class="row mb-2">
-                    Orden creada: {{ $order->created_at }}
+                    Orden creada: {{ $order->created_at->day }} de {{ $meses[$order->created_at->month] }} del {{ $order->created_at->year }}  
                 </div>
                 <div class="row">
                     @if( $order->status == 'active' )
@@ -155,7 +160,7 @@ $section = 'orders';
                     <div class="col-12">
                         <div class="row">
                             <span class="col-7 text-info" style="font-size:1.1rem;">{{ $trasaction->account->account }}</span>
-                            <span class="col-auto ml-auto font-bold" style="font-size:1.4rem;">{{ number_format( $trasaction->amount, 2, '.', ',') }}</span>
+                            <span class="col-auto ml-auto font-bold" style="font-size:1.4rem;">Monto: {{ number_format( $trasaction->amount, 2, '.', ',') }}</span>
                         </div>
                         <div class="row mt-2">
                             <div class="col-7">
@@ -169,9 +174,14 @@ $section = 'orders';
                                         <strong>Comentario:</strong> {{ $trasaction->observation }}
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <strong>Fecha:</strong> {{ $trasaction->created_at }}
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-auto ml-auto mt-3">
-                                <button class="btn btn-sm btn-info px-4" data-toggle="modal" data-target="#modalCapture{{ $trasaction->id }}">Ver capture</button>
+                            <div class="col-auto ml-auto mt-4">
+                                <button class="btn btn-sm btn-info px-4 mt-2" data-toggle="modal" data-target="#modalCapture{{ $trasaction->id }}">Ver capture</button>
                             </div>
                         </div>
                     </div>

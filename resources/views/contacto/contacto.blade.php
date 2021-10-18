@@ -6,10 +6,28 @@
     $bg_navbar = 'bg-white';
 @endphp
 
-
 @section('title')
  High Tech Bearings - Contacto
 @endsection
+
+@section('head') 
+    <link rel="canonical" href="https://www.hightechinternational.net/contacto" />
+    <meta name="robots" content="index,follow"/>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="High Tech Bearings - Contacto">
+    <meta name="description" content="Rodamientos en Valencia, contáctanos - High Tech Bearings">
+    <meta name="keywords" content="rodamientos industriales en valencia">
+
+    <!-- Open Graph para Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="High Tech Bearings - Contacto" />
+    <meta property="og:url" content="https://www.hightechinternational.net/contacto" />
+    <meta property="og:image" content="{{ asset( 'home.png' ) }}" />
+    <meta property="og:description" content="Rodamientos en Valencia, contáctanos - High Tech Bearings" />
+    <meta property="og:site_name" content="High Tech Bearings" />
+@endsection
+
 <style>
     .container_iframe {
         position: relative;

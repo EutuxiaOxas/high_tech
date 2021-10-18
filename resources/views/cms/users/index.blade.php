@@ -192,8 +192,10 @@
                                             data-target="#modalContraseña">Editar Contraseña</button>
                                         <button type="button" id="{{ $user->id }}" class="btn btn-sm btn-primary editar"
                                             data-toggle="modal" data-target="#modalEditar">Editar</button>
-                                        <button type="button" id="{{ $user->id }}" class="btn btn-sm btn-danger eliminar"
-                                            data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
+                                            @if( !$loop->first )
+                                            <button type="button" id="{{ $user->id }}" class="btn btn-sm btn-danger eliminar"
+                                                data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
+                                            @endif
                                     </td>
                                 </tr>
                             @endif
@@ -204,7 +206,7 @@
             </div>
         </div>
     </div>
-  {{$users->links()}}
+    {{$users->links()}}
 
     {{-- Modal editar usuario --}}
     <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
