@@ -79,12 +79,12 @@
     position: fixed;
     bottom: 2.5rem;
     right: 1.5rem;
-    width: 80px;
+    width: 70px;
     z-index: 50;
 }
 @media (max-width: 600px) {
     .button_whatsapp {
-        width: 66px;
+        width: 65px;
         bottom: 2rem;
         right: 1.25rem;
     }
