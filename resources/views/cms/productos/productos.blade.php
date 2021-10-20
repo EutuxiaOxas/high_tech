@@ -279,6 +279,11 @@ $section = 'productos';
                             <a class="text-info" href="https://www.hightechinternational.net/formatos/cadenas.xlsx" target="_blank">Serie Cadenas</a>
                         </div>
                     </div>
+                    <div class="row mt-3 px-3">
+                        <strong>
+                            Importante no cambiar el orden de las columnas.
+                        </strong>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
