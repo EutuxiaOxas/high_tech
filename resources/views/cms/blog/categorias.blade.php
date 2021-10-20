@@ -4,6 +4,8 @@
     $section = 'blog';
 @endphp
 
+@section('title')Categorías del blog - High Tech Bearings @endsection
+
 <style>
     .img_div_rounded{
         background-repeat: no-repeat;

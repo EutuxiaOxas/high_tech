@@ -4,6 +4,8 @@ $section = 'orders';
 $meses = ['','Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 @endphp
 
+@section('title')Ver detalles de la venta - High Tech Bearings @endsection
+
 <style>
     .img_product_card {
         max-height: 25vh;

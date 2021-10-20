@@ -3,6 +3,7 @@
 @php
     $section = 'usuarios';
 @endphp
+@section('title') Suscriptores - High Tech Bearings @endsection
 
 <style>
     .img_div_rounded{

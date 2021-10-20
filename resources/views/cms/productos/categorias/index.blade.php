@@ -2,6 +2,8 @@
 @php
     $section = 'productos';
 @endphp
+
+@section('title') Categorías de productos - High Tech Bearings @endsection
 <style>
     .img_div_rounded{
         background-repeat: no-repeat;

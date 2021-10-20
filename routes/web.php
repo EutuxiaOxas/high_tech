@@ -22,7 +22,6 @@ Route::get('/product/{slug}', 'ProductsPageController@show')->name('product');
 
 Route::middleware('auth')->group(function () {
 
-	// Route::get('/cms', 'CmsController@index')->name('cms.index');
 	Route::get('/cms', 'CmsController@index')->middleware('can:cms.index')->name('cms.index');
 
     // Roles

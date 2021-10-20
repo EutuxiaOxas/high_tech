@@ -3,6 +3,7 @@
     $section = 'blog';
 @endphp
 
+@section('title')Crear artículo del blog - High Tech Bearings @endsection
 
 @section('content')
 <section class="seccion-crear-publicidad-cms">

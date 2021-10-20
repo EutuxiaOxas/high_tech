@@ -3,6 +3,7 @@
 @php
 $section = 'productos';
 @endphp
+@section('title')Crear Productos - High Tech Bearings @endsection
 <style>
   .pointer {
     cursor: pointer;

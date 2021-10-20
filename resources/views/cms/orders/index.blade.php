@@ -2,6 +2,8 @@
 @php
     $section = 'orders';
 @endphp
+
+@section('title')Ventas - High Tech Bearings @endsection
 <style>
     .img_div_rounded{
         background-repeat: no-repeat;

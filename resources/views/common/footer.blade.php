@@ -9,8 +9,8 @@
         </div>
         <div class="col-md-6 text-md-right">
             <ul class="socials">
-                <li><a href="#" class="icon-facebook fs-20" rel="noreferrer" aria-label="ver el perfil de facebook"></a></li>
-                <li><a href="#" class="icon-instagram fs-20" rel="noreferrer" aria-label="ver el perfil de instagram"></a></li>
+                <li><a href="https://www.facebook.com/hightechbearings" class="icon-facebook fs-20" rel="noreferrer" aria-label="ver el perfil de facebook" target="_blank"></a></li>
+                <li><a href="https://www.instagram.com/hightechbearings/" class="icon-instagram fs-20" rel="noreferrer" aria-label="ver el perfil de instagram" target="_blank"></a></li>
                 <li><a href="#" class="icon-twitter fs-20" rel="noreferrer" aria-label="ver el perfil de twitter"></a></li>
                 <li><a href="#" class="icon-linkedin fs-20" rel="noreferrer" aria-label="ver el perfil de linkedin"></a></li>
             </ul>
