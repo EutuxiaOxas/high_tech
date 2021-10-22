@@ -40,13 +40,12 @@ class ArticuloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+
         $autor_id = $request->article_author;
         $image    = $request->file('article_picture');
 
-        if(auth()->user()->id == $autor_id)
-        {
+        if(auth()->user()->id == $autor_id){
 
             $articulo = new Article;
             $articulo->title       = $request->articulo_title;
@@ -174,11 +173,32 @@ class ArticuloController extends Controller
                         $articulo->keywords()->sync($keywords);
                     }
 
-                } else {
+                } else {                    
                     return back()->with('message','No se pudo actualizar la imagen con éxito');
                 }
 
         } else {
+            $keywords = $request->articulo_keywords;
+            $tags = explode(",", $keywords);
+
+            $keywords = [];
+
+            foreach ($tags as $tag)
+            {
+                $verificar = Keyword::where('keyword', $tag)->first();
+
+                if(isset($verificar))
+                {
+                    $keywords[] = $verificar->id;
+                }else {
+                    $keyword = Keyword::create([
+                        'keyword' => $tag,
+                    ]);
+
+                    $keywords[] = $keyword->id;
+                }
+            }
+            $articulo->keywords()->sync($keywords);
             $articulo->save();
         }
 

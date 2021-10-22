@@ -43,7 +43,7 @@
 				<textarea class="ckeditor" id="content" required name="articulo_content">{{$articulo->content}}</textarea>
 			</div>
 			<div class="form-group col-12">
-				<h5>Keywords</h5>
+				<h5>Keywords - <small class="text-muted">Coloque las keywords separadas por comas(,)</small></h5>
 				<input type="text" name="articulo_keywords" value="@foreach($articulo->keywords as $keyword){{$keyword->keyword}}, @endforeach" placeholder="Keywords..." class="form-control">
 			</div>
 			<div class="form-group col-12 col-md-6">
