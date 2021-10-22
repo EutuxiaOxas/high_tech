@@ -44,7 +44,12 @@
 			</div>
 			<div class="form-group col-12">
 				<h5>Keywords - <small class="text-muted">Coloque las keywords separadas por comas(,)</small></h5>
-				<input type="text" name="articulo_keywords" value="@foreach($articulo->keywords as $keyword){{$keyword->keyword}}, @endforeach" placeholder="Keywords..." class="form-control">
+				@php $keywords = array(); @endphp
+				@foreach($articulo->keywords as $keyword)
+					@php array_push( $keywords, $keyword->keyword); @endphp
+				@endforeach
+				@php $keywords = implode(',', $keywords); @endphp
+				<input type="text" name="articulo_keywords" value="{{ $keywords }}" placeholder="Keywords..." class="form-control">
 			</div>
 			<div class="form-group col-12 col-md-6">
 				<h5>Fecha</h5>
