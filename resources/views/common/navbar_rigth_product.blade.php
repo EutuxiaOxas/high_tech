@@ -19,7 +19,8 @@
     <div class="col-12 mb-2">
         Solicitud de información
     </div>
-    <form class="col-12">
+    <form class="col-12" action="{{ route('mail.send.info') }}" method="POST">
+        @csrf
         <div class="form-group">
             <label for="exampleFormControlInput1">Correo electrónico</label>
             <input type="email" name="email" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
@@ -39,7 +40,7 @@
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message"></textarea>
         </div>
         <div class="form-group">
-            <button class="btn btn-info btn-sm px-4">Enviar</button>
+            <button type="submit" class="btn btn-info btn-sm px-4">Enviar</button>
         </div>
     </form>
 </div>
