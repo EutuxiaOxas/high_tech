@@ -22,21 +22,21 @@
     <form class="col-12">
         <div class="form-group">
             <label for="exampleFormControlInput1">Correo electrónico</label>
-            <input type="email" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
+            <input type="email" name="email" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Serie a consultar</label>
-            <select class="form-control form-control-sm" id="exampleFormControlSelect1">
-                <option>Serie Automotriz</option>
-                <option>Serie Industrial</option>
-                <option>Serie Moto</option>
-                <option>Serie Chumacera</option>
-                <option>Serie Cadenas</option>
+            <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="serie">
+                <option value="Automotriz">Serie Automotriz</option>
+                <option value="Industrial">Serie Industrial</option>
+                <option value="Moto">Serie Moto</option>
+                <option value="Chumaceras">Serie Chumacera</option>
+                <option value="Cadenas"> Serie Cadenas</option>
             </select>
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Mensaje</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message"></textarea>
         </div>
         <div class="form-group">
             <button class="btn btn-info btn-sm px-4">Enviar</button>

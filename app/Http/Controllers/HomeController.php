@@ -10,6 +10,7 @@ use App\Subscriptor;
 use Illuminate\Support\Facades\Auth;
 
 use App\Mail\MessageContact;
+use App\Mail\MessageInfoRightNav;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -101,6 +102,19 @@ class HomeController extends Controller
         $mensaje = $request;
 
         Mail::to('ventas@hightechinternational.net')->send(new MessageContact($mensaje));
+        
+        return back()->with('info', 'Mensaje enviado con éxito');
+
+    }
+
+    //Enviar correo de solicitud de informacion
+    public function sendInfo(Request $request){
+
+        // validar info
+
+        $mensaje = $request;
+
+        Mail::to('ventas@hightechinternational.net')->send(new MessageInfoRightNav($mensaje));
         
         return back()->with('info', 'Mensaje enviado con éxito');
 

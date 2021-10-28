@@ -66,12 +66,12 @@
         </div>
     @endif
 
-{{-- galeria --}}
-@include('contacto.sections.mapa')
-{{-- End galeria --}}
+    {{-- galeria --}}
+    @include('contacto.sections.mapa')
+    {{-- End galeria --}}
 
-{{-- CallToAction --}}
-@include('contacto.sections.formulario')
-{{-- End CallToAction --}}
+    {{-- CallToAction --}}
+    @include('contacto.sections.formulario')
+    {{-- End CallToAction --}}
 
 @endsection

@@ -7,7 +7,7 @@
 @endphp
 
 @section('title')
- Productos de High Tech Bearings
+    Productos de High Tech Bearings
 @endsection
 
 @section('head') 
@@ -29,29 +29,39 @@
 @endsection
 
 @section('content')
-<style>
 
-    .img_product_card{
-        max-height: 20vh;
-        min-height: 20vh;
-        max-width:100%;
+    @if (session('info'))
+        <div class="alert alert-dark alert-dismissible fade show py-2 mb-0" role="alert" style="position: fixed; top: 100px; right: 10%;z-index:1000;background:#222;">
+            <span class="text-white">{{ session('info') }}</strspanong>
+            <button type="button" class="close text-white py-2" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
 
-        border-radius: 5px 5px 0 0;
-        overflow: hidden;
-    }
-    .img_product{
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        overflow: hidden;
+    <style>
 
-        min-height: 20vh;
-        max-height: 20vh;
-        min-width: auto;
-        max-width: 100%;
-    }
+        .img_product_card{
+            max-height: 20vh;
+            min-height: 20vh;
+            max-width:100%;
 
-</style>
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+        }
+        .img_product{
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+
+            min-height: 20vh;
+            max-height: 20vh;
+            min-width: auto;
+            max-width: 100%;
+        }
+
+    </style>
     <section class="container-fluid px-1 px-md-2">
         {{-- Filtro --}}
         <div class="row mb-1">
