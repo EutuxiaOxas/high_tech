@@ -8,8 +8,8 @@
 </head>
 <body>
 
-    <p>Recibiste un mensaje de: {{ $mensaje->name }} - {{ $mensaje->email }} </p>
-    <p>Telefono de contacto: {{ $mensaje->phone }} </p>
+    <p>Recibiste un mensaje de: <strong style="font-size:1.25rem;">{{ $mensaje->name }} - {{ $mensaje->email }} </strong> </p>
+    <p>Teléfono de contacto: <strong style="font-size:1.25rem;"> {{ $mensaje->phone }} </strong> </p>
     <p> <strong>Mensaje: </strong> </p>
     <p>Recibiste un mensaje de: {{ $mensaje->message }} </p>
     
