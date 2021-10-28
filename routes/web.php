@@ -6,7 +6,7 @@ use App\Subscriber;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/nosotros', 'HomeController@nosotros')->name('nosotros');
 Route::get('/contacto', 'HomeController@contacto')->name('contacto');
-Route::get('/send-mail-contact', 'HomeController@createMessage')->name('mail.send.contact');
+Route::post('/send-mail-contact', 'HomeController@createMessage')->name('mail.send.contact');
 
 // Vitrina total
 Route::get('/products', 'ProductsPageController@index')->name('products');
