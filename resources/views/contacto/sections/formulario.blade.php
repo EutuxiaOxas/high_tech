@@ -30,19 +30,6 @@
                     <div class="col">
                         <button type="submit" class="btn btn-info px-5">Enviar</button>
                     </div>
-                    @if (session('info'))
-                        <div class="col-auto ml-auto">
-                            <div class="card card-info">
-                                <div class="card-header row align-items-center justify-content-between mx-0">
-                                    <h3 class="card-title">{{ session('info') }}</h3>
-                                    <div class="card-tools ml-auto">
-                                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
                 </div>
                 <div>
                     <small class="text-muted mt-4">* Obligatorio</small>

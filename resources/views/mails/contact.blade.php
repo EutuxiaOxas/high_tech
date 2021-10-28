@@ -10,7 +10,6 @@
 
     <p>Recibiste un mensaje de: {{ $mensaje->name }} - {{ $mensaje->email }} </p>
     <p>Telefono de contacto: {{ $mensaje->phone }} </p>
-    <br>
     <p> <strong>Mensaje: </strong> </p>
     <p>Recibiste un mensaje de: {{ $mensaje->message }} </p>
     
