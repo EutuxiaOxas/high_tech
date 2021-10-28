@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
-use  App\Blog\Article;
-use  App\Blog\Keyword;
+use App\Blog\Article;
+use App\Mail\MessageContact;
 use App\Product;
 use App\Subscriptor;
 use Illuminate\Support\Facades\Auth;
@@ -89,6 +89,19 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    //Enviar correo de contacto
+    public function createMessage(Request $request){
+
+        // validar info
+
+        $mensaje = $request;
+
+        Mail::to('alexisamm9261@gmail.com')->queue(new MessageContact($mensaje));
+        
+        return back()->with('info', 'Tu mensaje ha sido enviado con éxito');
+
     }
 
     //Controlador vista Nosotros
