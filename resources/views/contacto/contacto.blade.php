@@ -58,9 +58,9 @@
 
 @section('content')
     @if (session('info'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert" style="position: fixed; top: 10%; right: 10%;">
-            <strong>{{ session('info') }}</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <div class="alert alert-dark alert-dismissible fade show py-2 mb-0" role="alert" style="position: fixed; top: 100px; right: 10%;z-index:1000;background:#222;">
+            <span class="text-white">{{ session('info') }}</strspanong>
+            <button type="button" class="close text-white py-2" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>

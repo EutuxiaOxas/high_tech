@@ -100,9 +100,9 @@ class HomeController extends Controller
 
         $mensaje = $request;
 
-        Mail::to('alexisamm9261@gmail.com')->send(new MessageContact($mensaje));
+        Mail::to('ventas@hightechinternational.net')->send(new MessageContact($mensaje));
         
-        return back()->with('info', 'Tu mensaje ha sido enviado con éxito');
+        return back()->with('info', 'Mensaje enviado con éxito');
 
     }
 
