@@ -100,7 +100,7 @@ class HomeController extends Controller
 
         $mensaje = $request;
 
-        Mail::to('alexisamm9261@gmail.com')->queue(new MessageContact($mensaje));
+        Mail::to('alexisamm9261@gmail.com')->send(new MessageContact($mensaje));
         
         return back()->with('info', 'Tu mensaje ha sido enviado con éxito');
 
