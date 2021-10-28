@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Blog\Article;
-use App\Mail\MessageContact;
 use App\Product;
 use App\Subscriptor;
 use Illuminate\Support\Facades\Auth;
+
+use App\Mail\MessageContact;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
