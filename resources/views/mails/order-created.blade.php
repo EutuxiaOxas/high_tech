@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h5>Nueva venta en el sitio web!</h5>
+    <h3 style="font-size:1.25rem;color:#1f8a27;">Nueva venta en el sitio web!</h3>
 
     <p style="font-size:1.15rem;">
         Mail del comprador: <strong style="font-size:1.25rem;">{{ $buyer->email }} </strong> 
@@ -18,7 +18,7 @@
         Nombre del comprador: <strong style="font-size:1.25rem;">{{ $buyer->name }} </strong> 
     </p>
     <p style="font-size:1.15rem;">
-        Monto total de la venta: <strong style="font-size:1.25rem;"> {{ $amount }} </strong> 
+        Monto total de la venta: <strong style="font-size:1.25rem;"> {{ $amount }} $USD</strong> 
     </p>
 
 </body>
