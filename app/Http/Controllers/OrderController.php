@@ -11,6 +11,9 @@ use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Mail\OrderCreated;
+use Illuminate\Support\Facades\Mail;
+
 class OrderController extends Controller
 {
     /**
@@ -35,8 +38,9 @@ class OrderController extends Controller
             $shoppingCar = session('shoppingCar');
             $productsInShoppingCar = json_decode($shoppingCar);
     
+            $buyer   = Auth::user();
             $user_id = Auth::id();
-            $amount=0;
+            $amount  = 0;
 
             foreach ($productsInShoppingCar as $product) {
                 $amount += ($product->quantity * $product->price);
@@ -45,8 +49,8 @@ class OrderController extends Controller
             $order = new Order;
             $order->create([
                 'user_id' => $user_id,
-                'amount' => $amount,
-                'status' => 'active',
+                'amount'  => $amount,
+                'status'  => 'active',
             ]);
     
             $order_id = Order::latest('id')->first()->id;
@@ -55,19 +59,22 @@ class OrderController extends Controller
                 $product_order = new OrderProduct;
     
                 $product_order->create([
-                    'order_id' => $order_id,
+                    'order_id'   => $order_id,
                     'product_id' => $product->id,
-                    'price' => floatval($product->price),
-                    'quantity' => intval($product->quantity)
+                    'price'      => floatval($product->price),
+                    'quantity'   => intval($product->quantity)
                 ]);
             }
     
     
             // eliminar la variable de sesion de 'shoppingCar'
             session()->forget('shoppingCar');
+
+            // Enviar mensaje de correo con el nombre del comprador, indicando que se ha realizado una compra 
+            Mail::to('ventas@hightechinternational.net')->send(new OrderCreated($amount, $buyer));
     
             return redirect()->route( 'account.create.transaction', $order_id)->with('info', 'Compra realizada exitosamente!');
-            // return redirect()->route('cms.index')->with('info', 'Compra realizada exitosamente');
+
         }else{
             return 'false';
         }

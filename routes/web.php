@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Subscriber;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/nosotros', 'HomeController@nosotros')->name('nosotros');
