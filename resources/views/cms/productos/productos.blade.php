@@ -144,8 +144,8 @@ $section = 'productos';
                                 <th>Titulo</th>
                                 <th>Categoría</th>
                                 <th>Precio $</th>
-                                <th>Cantidad<th>
-                                <th>codigo universal</th>
+                                <th>Cantidad</th>
+                                <th>Código Universal</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
