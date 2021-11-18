@@ -144,6 +144,7 @@ $section = 'productos';
                                 <th>Titulo</th>
                                 <th>Categoría</th>
                                 <th>Precio $</th>
+                                <th>Cantidad<th>
                                 <th>codigo universal</th>
                                 <th>Acciones</th>
                             </tr>
@@ -162,6 +163,7 @@ $section = 'productos';
                                         {{ $price }}
                                     </strong>
                                 </td>
+                                <td>{{$producto->quantity }}</td>
                                 <td>{{$producto->codigo_universal }}</td>
                                 <td>
                                     @can('cms.products.edit')
