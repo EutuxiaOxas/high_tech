@@ -227,21 +227,13 @@ $section = 'productos';
                 <form class="mb-0" action="{{ route('products.excel.import') }}" method="POST" enctype='multipart/form-data'>
                     <div class="modal-body">
                         @csrf
-                        <p class="font-bold">Selecciona el archivo a cargar:</p>
+                        <p class="text-bold">Selecciona el archivo a cargar:</p>
                         <input type="file" name="file" required>
 
                         <div class="row mt-4 px-2">
-                            <!-- @foreach ($categories as $category)
-                            <div class="col-6">
-                                <label class="container_radio">{{$category->category}}
-                                    <input class="checkbox" type="radio" name="category" id="{{$category->slug}}" value="{{$category->id}}" required>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            @endforeach -->
-                            <div class="col-12 px-0 text-muted">
+                            <small class="col-12 px-0 text-muted">
                                 Puedes descargar el formato requerido para llenarlo con la información de los productos.
-                            </div>
+                            </small>
                             <button class="btn btn-info btn-sm col-12" data-toggle="modal" data-target='#modalFormatProducts'>Descargar formato</button>
                         </div>
                     </div>
