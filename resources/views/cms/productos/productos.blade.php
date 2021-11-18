@@ -157,11 +157,9 @@ $section = 'productos';
                                 <td>{{$cont}}</td>
                                 <td> <a class="text-primary" target="_blank" href="{{route('product', $producto->slug)}}">{{$producto->titulo}}</a></td>
                                 <td>{{$producto->categoria->category}}</td>
-                                <td>
-                                    <strong>
-                                        @php $price = number_format($producto->precio, 2, '.', ','); @endphp
-                                        {{ $price }}
-                                    </strong>
+                                <td class="font-bold">
+                                    @php $price = number_format($producto->precio, 2, '.', ','); @endphp
+                                    {{ $price }}
                                 </td>
                                 <td>{{$producto->quantity }}</td>
                                 <td>{{$producto->codigo_universal }}</td>
