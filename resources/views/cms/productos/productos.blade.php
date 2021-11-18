@@ -227,6 +227,7 @@ $section = 'productos';
                 <form class="mb-0" action="{{ route('products.excel.import') }}" method="POST" enctype='multipart/form-data'>
                     <div class="modal-body">
                         @csrf
+                        <p class="font-bold">Selecciona el archivo a cargar:</p>
                         <input type="file" name="file" required>
 
                         <div class="row mt-4 px-2">
@@ -238,7 +239,7 @@ $section = 'productos';
                                 </label>
                             </div>
                             @endforeach -->
-                            <div class="col-12 px-0">
+                            <div class="col-12 px-0 text-muted">
                                 Puedes descargar el formato requerido para llenarlo con la información de los productos.
                             </div>
                             <button class="btn btn-info btn-sm col-12" data-toggle="modal" data-target='#modalFormatProducts'>Descargar formato</button>
@@ -246,7 +247,7 @@ $section = 'productos';
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button class="btn btn-success px-5" type="submit" href="{{ route('products.excel.export') }}">Cargar excel</button>
+                        <button class="btn btn-success px-5" type="submit" href="{{ route('products.excel.export') }}">Continuar</button>
                     </div>
                 </form>
             </div>
