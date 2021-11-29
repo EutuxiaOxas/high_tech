@@ -5,8 +5,10 @@
         <div class="row justify-content-between">
 
           <div class="col-12 col-lg-4 align-self-center text-center text-md-left">
-            <h2 class="h1">Nuestra <b>Visión</b></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet placeat velit provident blanditiis, dolore nobis cum voluptates</p>
+            <h2 class="h1">Brindándote <b>Soluciones</b></h2>
+            <p>
+              Nuestro mayor enfoque es brindar soluciones en la industria con la amplia gama de productos que tenemos para todos los rubros de la industria.
+            </p>
           </div>
 
           <div class="col-12 col-lg-7 scrolling-gallery" data-aos="fade-up" data-aos-anchor-placement="top-bottom">

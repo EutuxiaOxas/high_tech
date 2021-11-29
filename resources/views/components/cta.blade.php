@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row justify-content-between align-items-center">
         <div class="col-md-6 text-center text-md-left">
-          <h2 class="h3">Únete a nosotros, y disfurta de nuestras promociones.</h2>
+          <h2 class="h3">Únete a nosotros y aprovecha nuestras promociones.</h2>
         </div>
         <div class="col-md-6 text-center text-md-right">
           <div class="row justify-content-center">

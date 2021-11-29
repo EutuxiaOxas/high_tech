@@ -65,7 +65,7 @@
               <h5 class="fs-20 font-weight-normal">Experiencia</h5>
             </div>
           </div>
-          <p>Tenemos más de 20 años de experiencia en el mercado nacional e internacional.</p>
+          <p>Tenemos más de 40 años de experiencia en el rubro de rodamientos a nivel nacional e internacional.</p>
         </div>
       </div>
       <div class="row gutter-2 gutter-lg-4 justify-content-around">
@@ -87,10 +87,10 @@
               </svg>
             </i>
             <div class="media-body">
-              <h5 class="fs-20 font-weight-normal">Todas las medidas que buscas</h5>
+              <h5 class="fs-20 font-weight-normal">Funcionalidad y Versatilidad</h5>
             </div>
           </div>
-          <p>Todos lo rodamientos que buscabas, sin buscar en otro lugar.</p>
+          <p>Todos lo rodamientos disponibles con una amplia gama de tamaños y aplicaciones para la industria.</p>
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="media align-items-center mb-2">
@@ -101,7 +101,7 @@
               </svg>
             </i>
             <div class="media-body">
-              <h5 class="fs-20 font-weight-normal">Cotálogos disponibles</h5>
+              <h5 class="fs-20 font-weight-normal">Catálogos disponibles</h5>
             </div>
           </div>
           <p>Puedes descargar todos nuestros productosen formato pdf para revisarlos en cualquier momento</p>
