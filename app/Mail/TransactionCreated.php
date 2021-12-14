@@ -25,9 +25,9 @@ class TransactionCreated extends Mailable
      */
     public function __construct($amount, $account, $reference, $buyer, $observations){
         $this->amount       = $amount;
-        $this->amount       = $account;
-        $this->buyer        = $reference;
-        $this->account      = $buyer;
+        $this->account      = $account;
+        $this->reference    = $reference;
+        $this->buyer        = $buyer;
         $this->observations = $observations;
     }
 
@@ -38,6 +38,6 @@ class TransactionCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.order-created');
+        return $this->view('mails.transaction-created');
     }
 }

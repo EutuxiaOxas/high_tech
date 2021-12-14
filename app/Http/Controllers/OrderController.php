@@ -222,9 +222,9 @@ class OrderController extends Controller
             ]);
         }
 
-        $account  = Account::findOrFail($accounts_id);
+        $account = Account::findOrFail($accounts_id);
         $buyer   = Auth::user();
-        Mail::to('ventas@hightechinternational.net')->send(new OrderCreated($amount, $account, $referencia, $buyer, $observation));
+        Mail::to('ventas@hightechinternational.net')->send(new TransactionCreated($amount, $account, $referencia, $buyer, $observation));
 
         $order = Order::findOrFail($order_id);
     	return redirect()->route('cms.purchases.edit', [$order])->with('message', 'Se registro tu pago exitosamente!');
