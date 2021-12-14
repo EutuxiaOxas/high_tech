@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Mail\OrderCreated;
+use App\Mail\TransactionCreated;
 use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
@@ -54,7 +55,7 @@ class OrderController extends Controller
             ]);
     
             $order_id = Order::latest('id')->first()->id;
-    
+            $products = array();
             foreach ($productsInShoppingCar as $product) {
                 $product_order = new OrderProduct;
     
@@ -64,6 +65,13 @@ class OrderController extends Controller
                     'price'      => floatval($product->price),
                     'quantity'   => intval($product->quantity)
                 ]);
+
+                $productBuy = new \stdClass;
+                $producto = Product::findOrFail($product->id);
+                $productBuy->name     = $product->price;
+                $productBuy->quantity = $product->quantity;
+                $productBuy->title    = $producto->titulo;
+                array_push($products, $productBuy);
             }
     
     
@@ -71,9 +79,9 @@ class OrderController extends Controller
             session()->forget('shoppingCar');
 
             // Enviar mensaje de correo con el nombre del comprador, indicando que se ha realizado una compra 
-            Mail::to('ventas@hightechinternational.net')->send(new OrderCreated($amount, $buyer));
+            Mail::to('ventas@hightechinternational.net')->send(new OrderCreated($amount, $buyer, $products));
     
-            return redirect()->route( 'account.create.transaction', $order_id)->with('info', 'Compra realizada exitosamente!');
+            return redirect()->route( 'account.create.transaction', $order_id)->with('info', 'Ahora registra tu pago');
 
         }else{
             return 'false';
@@ -176,16 +184,14 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function createTransaction($order_id)
-    {
+    public function createTransaction($order_id)    {
         $order = Order::findOrFail($order_id);
         $accounts = Account::all();
         $categories = Category::all();
         return view('transactions.index', compact('accounts', 'categories', 'order'));
     }
 
-    public function storeTransaction(Request $request)
-    {
+    public function storeTransaction(Request $request)    {
         $order_id          = $request->order_id;
         $accounts_id       = $request->accounts_id;
         $amount            = $request->amount;
@@ -215,6 +221,10 @@ class OrderController extends Controller
                 'observation'        => $observation,
             ]);
         }
+
+        $account  = Account::findOrFail($accounts_id);
+        $buyer   = Auth::user();
+        Mail::to('ventas@hightechinternational.net')->send(new OrderCreated($amount, $account, $referencia, $buyer, $observation));
 
         $order = Order::findOrFail($order_id);
     	return redirect()->route('cms.purchases.edit', [$order])->with('message', 'Se registro tu pago exitosamente!');

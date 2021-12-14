@@ -16,10 +16,11 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-7 mt-5 mt-md-0 px-lg-0">
-                <span class="eyebrow mb-1 text-dark">Estaremos confirmando tu pago lo antes posible.</span> <br>
                 @if (session('info'))
+                    <span class="eyebrow mb-1 text-dark">Gracias por comprar con nosotros!</span> <br>
                     <h2 class="text-info">{{ session('info') }}</h2>
                 @else
+                    <span class="eyebrow mb-1 text-dark">Estaremos confirmando tu pago lo antes posible.</span> <br>
                     <h2>Registra tu pago</h2>
                 @endif
             </div>
@@ -29,7 +30,7 @@
         </div>
         <div class="row justify-content-around">
             <div class="col-lg-7 pr-5 pl-0">
-                <h6 class="font-bold">Cuentas bancarias</h6>
+                <h4 class="font-bold">Cuentas bancarias</h4>
 
                 <div class="accordion" id="accordionExample">
                     @php $cont = 0; @endphp
@@ -65,7 +66,7 @@
             <div class="col-lg-5">
                 <div class="row px-2">
                     <div class="col-12 mb-3 px-0">
-                        <h3><strong>Registra tu pago</strong></h3>
+                        <h2 class="lead" style="font-size:1.5rem">Registra tu pago</h2>
                     </div>
                     <div class="col-12 px-0">
                         <form action="{{ route('account.store.transaction') }}" method="POST" enctype="multipart/form-data">

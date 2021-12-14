@@ -15,16 +15,18 @@ class OrderCreated extends Mailable
 
     public $amount;
     public $buyer;
+    public $products;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($amount, $buyer)
+    public function __construct($amount, $buyer, $products)
     {
-        $this->amount = $amount;
-        $this->buyer  = $buyer;
+        $this->amount    = $amount;
+        $this->buyer     = $buyer;
+        $this->products  = $products;
     }
 
     /**
