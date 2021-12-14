@@ -68,13 +68,12 @@ class OrderController extends Controller
 
                 $productBuy = new \stdClass;
                 $producto = Product::findOrFail($product->id);
-                $productBuy->name     = $product->price;
+                $productBuy->price    = $product->price;
                 $productBuy->quantity = $product->quantity;
                 $productBuy->title    = $producto->titulo;
                 array_push($products, $productBuy);
             }
-    
-    
+        
             // eliminar la variable de sesion de 'shoppingCar'
             session()->forget('shoppingCar');
 
@@ -184,14 +183,14 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function createTransaction($order_id)    {
+    public function createTransaction($order_id){
         $order = Order::findOrFail($order_id);
         $accounts = Account::all();
         $categories = Category::all();
         return view('transactions.index', compact('accounts', 'categories', 'order'));
     }
 
-    public function storeTransaction(Request $request)    {
+    public function storeTransaction(Request $request) {
         $order_id          = $request->order_id;
         $accounts_id       = $request->accounts_id;
         $amount            = $request->amount;

@@ -28,7 +28,7 @@
     @foreach ($products as $product)
         <div style="font-size:1.15rem;">
             <strong>{{ $product->title }}: </strong> &nbsp &nbsp &nbsp 
-            <span> {{ $product->title }} x {{ $product->price }}$USD </span>
+            <span> {{ $product->quantity }} x {{ $product->price }}$USD </span>
         </div>
         <hr>
     @endforeach
