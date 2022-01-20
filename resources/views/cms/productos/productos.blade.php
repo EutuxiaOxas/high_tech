@@ -266,7 +266,7 @@ $section = 'productos';
                             <a class="text-info" href="https://www.hightechinternational.net/formatos/moto.xlsx" target="_blank">Serie Moto</a>
                         </div>
                         <div class="col-12">
-                            <a class="text-info" href="https://www.hightechinternational.net/formatos/chumaceras.xlsx" target="_blank">Serie Chumaceras</a>
+                            <a class="text-info" href="https://www.hightechinternational.net/formatos/chumacera.xlsx" target="_blank">Serie Chumaceras</a>
                         </div>
                         <div class="col-12">
                             <a class="text-info" href="https://www.hightechinternational.net/formatos/cadenas.xlsx" target="_blank">Serie Cadenas</a>
