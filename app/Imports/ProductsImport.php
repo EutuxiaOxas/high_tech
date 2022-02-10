@@ -36,8 +36,8 @@ class ProductsImport implements ToCollection
                 // en caso de existir, actualizar el precio y cantidad
                 if ($producto) {
     
-                    $producto->quantity = $row[4];
-                    $producto->precio   = $row[5];
+                    $producto->quantity = (int) $row[4];
+                    $producto->precio   = (double) $row[5];
                     
                     $producto->save();
                     
