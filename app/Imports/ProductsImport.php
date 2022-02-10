@@ -26,10 +26,11 @@ class ProductsImport implements ToCollection
             if( $cont > 0 ){
                 
                 // obtener el titulo y buscar si ya existe
-                $title = $row[2];
+                $universal_code = $row[0];
+                $title    = $row[2];
                 $category = strtolower($row[1]);
     
-                $producto = Product::where('titulo', $title)->first();
+                $producto = Product::where('codigo_universal', $universal_code)->first();
                 $category = Category::where('slug', $category)->first();
                 
     
@@ -68,7 +69,7 @@ class ProductsImport implements ToCollection
                         }
     
                         Product::create([
-                            'codigo_universal' => $row[0],
+                            'codigo_universal' => $universal_code,
                             'titulo'           => str_replace('"','',$row[2]),
                             'descripcion'      => str_replace('"','',$row[3]),
                             'quantity'         => $row[4],
