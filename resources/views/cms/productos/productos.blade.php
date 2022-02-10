@@ -77,6 +77,77 @@ $section = 'productos';
         border-radius: 50%;
         background: white;
     }
+
+    /* The container */
+    .container_checkbox {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 400!important;
+    }
+
+    /* Hide the browser's default checkbox */
+    .container_checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    
+    }
+
+    /* Create a custom checkbox */
+    .checkmark_filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #aaa;
+    border-radius: 0;
+    font-weight: 500;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container_checkbox:hover input ~ .checkmark_filter {
+    background-color: #555;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .container_checkbox input:checked ~ .checkmark_filter {
+    background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark_filter:after {
+    content: "";
+    position: absolute;
+    display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .container_checkbox input:checked ~ .checkmark_filter:after {
+    display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .container_checkbox .checkmark_filter:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    }
 </style>
 
 @section('content')
@@ -121,6 +192,28 @@ $section = 'productos';
                         <li class="breadcrumb-item active">Productos</li>
                     </ol>
                 </div>
+            </div>
+            <div class="bg-light py-3 px-2" style="border: solid 1px #eee;">
+                <form class="row align-items-center mb-0" action="{{ route('cms.products.show') }}">
+                    
+                    @foreach ($categories as $category)
+                        <div class="col">
+                            <label class="container_checkbox">{{ $category->category }}
+                            <input type="checkbox" 
+                                name="categories[]" 
+                                value="{{ $category->id }}" 
+                                @if ( in_array($category->id, $categories_selected) )
+                                    checked="checked"
+                                @endif
+                            >
+                            <span class="checkmark_filter"></span>
+                            </label>
+                        </div>                        
+                    @endforeach
+                    <div class="col">
+                        <input class="btn btn-info px-5" value="Filtrar" type="submit" />
+                    </div>
+                </form>                
             </div>
         </div>
     </section>

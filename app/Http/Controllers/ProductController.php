@@ -30,10 +30,21 @@ class ProductController extends Controller
 {
     private $perPage = 75;
 
-    public function index(){
+    public function index(Request $request){
+
+        $categories_selected = $request->categories;
+
         $productos = Product::paginate($this->perPage);
+
+        if(isset($categories_selected)){
+            $productos = Product::whereIn('category_id', $categories_selected)
+                ->paginate($this->perPage);
+        }else{
+            $categories_selected = array();
+        }
+
         $categories = Category::all();
-    	return view('cms.productos.productos')->with(compact('productos', 'categories'));
+    	return view('cms.productos.productos')->with(compact('productos', 'categories', 'categories_selected'));
     }
 
     public function showCategorias(){
