@@ -222,7 +222,7 @@ $section = 'productos';
         <div class="col px-0">
             <div class="card">
                 <div class="card-header row justify-content-between align-items-center mx-0">
-                    <h3 class="card-title col">Productos creados</h3>
+                    <h3 class="card-title col">Productos <strong>({{$productos->total()}} encontrados)</strong></h3>
                     <a class="btn btn-primary btn-sm ml-2 text-white" href="/cms/crear/productos">Agregar producto</a>
                     <div class="card-tools ml-auto">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
