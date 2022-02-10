@@ -233,10 +233,10 @@ $section = 'productos';
                     <table class="table table-striped projects">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>ID</th>
                                 <th>Titulo</th>
                                 <th>Categoría</th>
-                                <th>Precio $</th>
+                                <th>Precio$</th>
                                 <th>Cantidad</th>
                                 <th>Código Universal</th>
                                 <th>Acciones</th>
@@ -245,9 +245,8 @@ $section = 'productos';
                         <tbody>
                             @php $cont=0; @endphp
                             @foreach ($productos as $producto)
-                            @php $cont++; @endphp
                             <tr>
-                                <td>{{$cont}}</td>
+                                <td>{{ $producto->id }}</td>
                                 <td> <a class="text-primary" target="_blank" href="{{route('product', $producto->slug)}}">{{$producto->titulo}}</a></td>
                                 <td>{{$producto->categoria->category}}</td>
                                 <td class="font-bold">
