@@ -7,7 +7,7 @@ Para instalar el proyecto en local debe seguir los siguientes pasos:
 
 1- Clone el repositorio en su maquina local
 ```
-git clone [https://github.com/EutuxiaOxas/e-commerce_distrialimentos.git](https://github.com/EutuxiaOxas/high_tech.git)
+git clone https://github.com/EutuxiaOxas/e-commerce_distrialimentos.git
 ```
 
 2- Cree una base de datos en su entorno local. En este proyecto se estara trabajando con MySQL.
